@@ -1,0 +1,205 @@
+.case {
+    margin-left: 30px;
+    display: inline-block;
+    width: 150px;
+    height: 122px;
+    border-radius: 5px;
+    position: relative;
+    z-index: 1;
+
+    float:left;
+}
+ 
+.case:after {
+    width: 100%;
+    height: 10px;
+    border-radius: 20px;
+    content: "";
+    background: rgba(0, 0, 0, 0.3);
+    position: absolute;
+    bottom: -5px;
+    -webkit-transform: perspective(600) rotateX(100deg);
+       -moz-transform: perspective(600) rotateX(100deg);
+        -ms-transform: perspective(600) rotateX(100deg);
+         -o-transform: perspective(600) rotateX(100deg);
+            transform: perspective(600) rotateX(100deg);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    left: 0;
+}
+ 
+    .case > div {
+        width: 100%;
+        height: 100%;
+        background: #46b0e9;
+        background: rgba(70, 176, 233, 0.8);
+        border-radius: 8px 8px 5px 5px;
+        -webkit-box-sizing: border-box;
+           -moz-box-sizing: border-box;
+                box-sizing: border-box;
+        padding: 14px 3px 3px 0;
+        overflow: hidden;
+        position: relative;
+    }
+    
+    .case > div:after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 35px;
+        width: 100%;
+        height: 200%;
+        background: rgba(255, 255, 255, 0.2);
+        z-index: 10;
+        -webkit-transform: rotate(30deg);
+           -moz-transform: rotate(30deg);
+            -ms-transform: rotate(30deg);
+             -o-transform: rotate(30deg);
+                transform: rotate(30deg);
+    }
+    
+        .case > div > .logo {
+            position: absolute;
+            top: 5px;
+            left: 0;
+            width: 100%;
+        }
+        
+            .case > div > .logo > img {
+                max-height: 8px;
+                width: auto;
+                margin: auto;
+                display: block;
+            }
+    
+        .case > div > .img {
+            -webkit-box-sizing: border-box;
+               -moz-box-sizing: border-box;
+                    box-sizing: border-box;
+            width: 100%;
+            height: 100%;
+            padding: 1px 1px 1px 0;
+            border-radius: 0 4px 4px 0;
+            background: rgba(0, 0, 0, 0.2);
+            position: relative;
+        }
+        
+        .case > div > .img:before {
+            content: "";
+            position: absolute;
+            top: -10px;
+            left: 1px;
+            width: 2px;
+            bottom: 0;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 8px;
+            z-index: 3;
+        }
+        
+        .case > div > .img:after {
+            content: "";
+            position: absolute;
+            top: -13px;
+            left: 1px;
+            right: -2px;
+            height: 15px;
+            border-top: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 8px;
+        }
+        
+            .case > div > .img > span {
+                -webkit-box-sizing: border-box;
+                   -moz-box-sizing: border-box;
+                        box-sizing: border-box;
+                width: 100%;
+                height: 100%;
+                padding: 1px 1px 1px 0;
+                border-radius: 0 4px 4px 0;
+                background: rgba(255, 255, 255, 0.2);
+                display: block;
+                position: relative;
+            }
+            
+            .case > div > .img > span:before {
+                position: absolute;
+                top: 2px;
+                left: 0;
+                width: 0;
+                height: 100%;
+                content: "";
+                box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.3);
+                z-index: 2;
+            }
+            
+            .case > div > .img > span:after {
+                position: absolute;
+                top: 5px;
+                left: 0;
+                width: 0;
+                height: 100%;
+                content: "";
+                box-shadow: 0 0 5px 3px rgba(255, 255, 255, 0.3);
+                z-index: 1;
+            }
+            
+                .case > div > .img > span > img {
+                    width: 100%;
+                    height: 100%;
+                    display: block;
+                    border-radius: 0 3px 3px 0;
+                }
+/* CD */
+.case.cd {
+    height: 130px;
+    margin-bottom: 7px;
+}
+ 
+.case.cd > div {
+    background: #fff;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 0;
+    padding: 1px 1px 1px 13px;
+    border: 1px solid rgba(0, 0, 0, 0.6);
+}
+ 
+    .case.cd > div > .img {
+        border-radius: 0;
+        padding: 0;
+        border: 1px solid rgba(0, 0, 0, 0.6);
+        background-color: #54544f;
+        
+        background-image: url('/img/compactdisc.png');
+        background-size: 95% auto;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+    
+    .case.cd > div > .img:after,
+    .case.cd > div > .img > span:before,
+    .case.cd > div > .img > span:after {
+        display: none;
+    }
+    
+    .case.cd > div > .img:before {
+        box-shadow: none;
+        width: 12px;
+        background-color: #444;
+        background-image: -webkit-gradient(linear, 0 0, 100% 0, color-stop(.5, rgba(0, 0, 0, .2)), color-stop(.5, transparent), to(transparent));
+        background-image: -webkit-linear-gradient(0deg, rgba(0, 0, 0, .2) 50%, transparent 50%, transparent);
+        background-image: -moz-linear-gradient(0deg, rgba(0, 0, 0, .2) 50%, transparent 50%, transparent);
+        background-image: -ms-linear-gradient(0deg, rgba(0, 0, 0, .2) 50%, transparent 50%, transparent);
+        background-image: -o-linear-gradient(0deg, rgba(0, 0, 0, .2) 50%, transparent 50%, transparent);
+        background-image: linear-gradient(0deg, rgba(0, 0, 0, .2) 50%, transparent 50%, transparent);
+        border-radius: 0;
+        background-size: 2px 100%;
+        top: -1px;
+        bottom: -1px;
+        left: -14px;
+    }
+    
+        .case.cd > div > .img > span {
+            background: transparent;
+        }
+        
+            .case.cd > div > .img > span > img {
+                border-radius: 0;
+            }

@@ -1,0 +1,241 @@
+.main_weather {
+    /* Size and position */    
+    min-height: 140px;
+    min-width: 600px;
+    width: 600px;
+    margin-top: 60px;
+    margin-bottom: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    /*margin: 60px auto 30px;*/
+    padding: 15px;
+    position: relative;
+
+    /* Styles */
+    background: #fffaf6;
+    border-radius: 4px;
+    color: #7e7975;
+    box-shadow:
+        0 2px 2px rgba(0,0,0,0.2),        
+        0 1px 5px rgba(0,0,0,0.2),        
+        0 0 0 12px rgba(255,255,255,0.4); 
+}
+
+
+.main_weather h1 {
+    width: 500px;
+    text-align: center;
+    
+    float: none;
+    font-size: 15px;
+    font-weight: bold;
+    color: #bdb5aa;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #EBE6E2;
+    text-shadow: 0 2px 0 rgba(255,255,255,0.8);
+    box-shadow: 0 1px 0 rgba(255,255,255,0.8);
+
+    display: inline-block;
+    text-transform: uppercase;
+    color: #6c6763;
+    padding-right: 50px;
+    padding-left: 50px;
+}
+
+.main_weather #weathericon {
+    height: 340px;
+    width: 80px;
+    float: left;
+    margin-right: 80px;
+}
+
+.main_weather #weathericon img {
+    float: left;
+    width: 80px;
+    margin-left: 50px;
+    margin-top: 20px;
+    margin-right: 50px;
+}
+
+.main_weather #details #zeitraum {
+    font-weight: bold;
+}
+
+.main_weather #details {
+    min-height: 100px;
+    margin-top: 20px;
+    
+    float: none;
+}
+
+.main_weather #warnung {
+    margin-left: 50px;
+    margin-right: 50px;
+    text-align: justify;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.main_weather #warnung #aktiv {
+    color: #ff0000;
+    font-weight: bold;
+}
+
+.main_weather #details div {
+    margin-bottom: 3px;
+}
+
+.main_weather #footer {
+    text-align: right;
+    font-size: 8px;
+    color: #bfb9b4;
+}
+
+.main_weather #dwdimage {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.main_weather #radar {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.main_weather #legend {
+    text-align: center;
+    margin-top: 0px;
+    margin-bottom: 10px;
+}
+
+.main_weather #title {
+    font-weight: bold;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 5px;
+}
+
+.main_weather #text {
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 15px;
+}
+
+.main_weather #text p {
+    margin-bottom: 10px;
+}
+
+
+
+
+
+
+.main_weather_graph {
+    /* Size and position */    
+    min-height: 140px;
+    min-width: 800px;
+    width: 800px;
+    margin-top: 60px;
+    margin-bottom: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    /*margin: 60px auto 30px;*/
+    padding: 15px;
+    position: relative;
+
+    /* Styles */
+    background: #fffaf6;
+    border-radius: 4px;
+    color: #7e7975;
+    box-shadow:
+        0 2px 2px rgba(0,0,0,0.2),        
+        0 1px 5px rgba(0,0,0,0.2),        
+        0 0 0 12px rgba(255,255,255,0.4); 
+}
+
+
+.main_weather_graph #headline h1 {
+    width: 700px;
+    text-align: center;
+    
+    float: left;
+    font-size: 15px;
+    font-weight: bold;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #EBE6E2;
+    text-shadow: 0 2px 0 rgba(255,255,255,0.8);
+    box-shadow: 0 1px 0 rgba(255,255,255,0.8);
+
+    display: inline-block;
+    text-transform: uppercase;
+    color: #6c6763;
+    padding-right: 50px;
+    padding-left: 50px;
+    margin-bottom: -20px;
+}
+
+.main_weather_graph #range {
+    text-align: right;
+}
+
+.main_weather_graph #range select {
+    margin-top: -10px;
+}
+
+.main_weather_graph h2 {
+    margin-top: 40px;
+    margin-bottom: 10px;
+}
+
+
+.main_weather_graph #flot_200 {
+    position: relative;
+    width: 800px;
+    height: 200px;
+
+    table-layout:fixed;
+}
+
+.main_weather_graph #flot_200 .graph {
+    width: auto;
+}
+
+.main_weather_graph #flot_200 #xaxis_label {
+    color: #bdb5aa;
+
+    width: 25px;
+    height: 200px;
+
+    vertical-align: middle;
+    text-align: center;
+}
+
+.main_weather_graph #flot_200 #xaxis_label div {
+    margin-left: -90px;
+    width: 200px;
+    -moz-transform: rotate(270deg);
+    -moz-rotation-point: 0 0;
+    -webkit-transform: rotate(270deg);
+    -webkit-rotation-point: 0 0;
+    -o-transform: rotate(270deg);
+    -ms-transform: rotate(270deg);
+    white-space:nowrap;
+}
+
+
+
+
+
+/* Flot Chart on hover ToolTips */
+body #tooltip {
+    font-size: 12px;
+    font-weight: bold;
+    position: absolute;
+    display: none;
+    padding: 5px;
+    background-color: rgba(0,0,0,0.4); 
+    border-radius: 5px;
+    color: #fff;
+}
+

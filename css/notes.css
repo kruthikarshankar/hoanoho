@@ -1,0 +1,188 @@
+
+.main_notes {
+    /* Size and position */    
+    min-height: 140px;
+    min-width: 800px;
+    width: 800px;
+    margin-top: 60px;
+    margin-bottom: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    /*margin: 60px auto 30px;*/
+    padding: 15px;
+    position: relative;
+
+    /* Styles */
+    background: #fffaf6;
+    border-radius: 4px;
+    color: #7e7975;
+    box-shadow:
+        0 2px 2px rgba(0,0,0,0.2),        
+        0 1px 5px rgba(0,0,0,0.2),        
+        0 0 0 12px rgba(255,255,255,0.4); 
+}
+
+.main_notes h1 {
+    width: 700px;
+    text-align: center;
+    
+    float: none;
+    font-size: 15px;
+    font-weight: bold;
+    color: #bdb5aa;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #EBE6E2;
+    text-shadow: 0 2px 0 rgba(255,255,255,0.8);
+    box-shadow: 0 1px 0 rgba(255,255,255,0.8);
+
+    display: inline-block;
+    text-transform: uppercase;
+    color: #6c6763;
+    padding-right: 50px;
+    padding-left: 50px;
+}
+
+.main_notes a {
+    color: #7e7975;
+}
+
+.main_notes #toolbar {
+    margin-top: 10px;
+    width: 100%;
+    height: 40px;
+    margin-bottom: 20px;
+}
+
+.main_notes #toolbar #left {
+    text-align: left;
+    width: 180px;
+    float: left;
+}
+
+.main_notes #toolbar #right {
+    text-align: right;
+    width: auto;
+}
+
+.main_notes #toolbar #right input {
+    font: 13px Verdana, 'Lucida Grande';
+    height: 23px;
+    width: 300px;
+    border-color: #EBE6E2;
+    border-width: 1px;
+    border-style: solid;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.main_notes #toolbar img {
+    height: 32px;
+    max-width: 32px;
+    vertical-align: middle;
+    margin-top: -1px;
+}
+
+.main_notes #header {
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.main_notes #header #status {
+    width: 70px;
+    float: left;
+}
+
+.main_notes #header #title {
+    width: 350px;
+    float: left;
+}
+
+.main_notes #header #date_created {
+    width: 150px;
+    float: left;
+}
+
+.main_notes #header #action {
+    text-align: right;
+    width: auto;
+}
+
+.main_notes #listitem {
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 5px;
+}
+
+.main_notes #listitem:hover {
+    background-color: #f2edea;
+}
+
+.main_notes #listitem img {
+    height: 20px;
+    max-width: 20px;
+}
+
+.main_notes #listitem #status {
+    width: 70px;
+    float: left;
+}
+
+.main_notes #listitem #title {
+    width: 350px;
+    float: left;
+}
+
+.main_notes #listitem #date_created {
+    width: 150px;
+    float: left;
+}
+
+.main_notes #listitem #action img {
+    padding-left: 20px;
+    height: 20px;
+    max-width: 20px;
+}
+
+.main_notes #listitem #action #editform {
+    width: auto;
+    float: left;
+}
+
+
+.main_notes #edit {
+    width: 700px;
+}
+
+.main_notes #edit #text {
+    margin-top: 8px;
+    width: 130px;
+    float: left;    
+}
+
+.main_notes #edit #value {
+    margin-top: 5px;
+    width: auto;
+    float: none;   
+}
+
+.main_notes #edit #value input {
+    font: 13px Verdana, 'Lucida Grande';
+    height: 23px;
+    width: 250px;
+    border-color: #EBE6E2;
+    border-width: 1px;
+    border-style: solid;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.main_notes #edit #value textarea {
+    width: 100%;
+    height: 300px;
+}
+
+
+
+

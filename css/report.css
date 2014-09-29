@@ -1,0 +1,701 @@
+
+.main_report {
+    /* Size and position */    
+    min-height: 120px;
+    min-width: 800px;
+    width: 800px;
+    margin-top: 60px;
+    margin-bottom: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    /*margin: 60px auto 30px;*/
+    padding: 15px;
+    position: relative;
+
+    /* Styles */
+    background: #fffaf6;
+    border-radius: 4px;
+    color: #7e7975;
+    box-shadow:
+        0 2px 2px rgba(0,0,0,0.2),        
+        0 1px 5px rgba(0,0,0,0.2),        
+        0 0 0 12px rgba(255,255,255,0.4); 
+}
+
+.main_report select {
+    width: auto;
+    font: 13px Verdana, 'Lucida Grande';
+    height: 23px;
+    border-color: #EBE6E2;
+    border-width: 1px;
+    border-style: solid;
+    margin-left: -1px;
+}
+
+.main_report h1 {
+    width: 700px;
+    text-align: center;
+    
+    float: none;
+    font-size: 15px;
+    font-weight: bold;
+    color: #bdb5aa;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #EBE6E2;
+    text-shadow: 0 2px 0 rgba(255,255,255,0.8);
+    box-shadow: 0 1px 0 rgba(255,255,255,0.8);
+
+    display: inline-block;
+    text-transform: uppercase;
+    color: #6c6763;
+    padding-right: 50px;
+    padding-left: 50px;
+}
+
+.main_report a {
+    color: #7e7975;
+}
+
+
+.main_report #toolbar {
+    margin-top: 10px;
+    width: 100%;
+    height: 40px;
+    margin-bottom: 20px;
+}
+
+.main_report #toolbar #left {
+    text-align: left;
+    width: 220px;
+    float: left;
+}
+
+.main_report #toolbar #right {
+    text-align: right;
+    width: auto;
+}
+
+.main_report #toolbar #right input {
+    font: 13px Verdana, 'Lucida Grande';
+    height: 23px;
+    width: 200px;
+    border-color: #EBE6E2;
+    border-width: 1px;
+    border-style: solid;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.main_report #toolbar img {
+    height: 32px;
+    max-width: 32px;
+    vertical-align: middle;
+    margin-top: -1px;
+}
+
+.main_report #header {
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.main_report #header #icon {
+    width: 25px;
+    float: left;
+}
+
+.main_report #header #name {
+    width: 300px;
+    float: left;
+}
+
+.main_report #header #type {
+    width: 300px;
+    float: left;
+}
+
+.main_report #header #action {
+    text-align: right;
+    width: auto;
+}
+
+.main_report #listitem {
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 5px;
+}
+
+.main_report #listitem:hover {
+    background-color: #f2edea;
+}
+
+.main_report #listitem #icon {
+    width: 25px;
+    float: left;
+}
+
+.main_report #listitem #icon img {
+    max-width: 15px;
+    max-height: 15px;
+    margin: auto;
+}
+
+.main_report #listitem #name {
+    width: 300px;
+    float: left;
+    white-space: nowrap;
+}
+
+.main_report #listitem #type {
+    width: 300px;
+    float: left;
+}
+
+.main_report #listitem #action {
+    margin-left: 0;
+    width: auto;
+    text-align: right;
+}
+
+.main_report #listitem #action img {
+    margin: auto;
+    width: 20px;
+    max-height: 20px;
+    margin-top: 2px;
+}
+
+
+.main_report #edit {
+    width: 700px;
+}
+
+.main_report #edit #text {
+    margin-top: 8px;
+    width: 180px;
+    float: left;    
+}
+
+.main_report #edit #value {
+    margin-top: 5px;
+    width: auto;
+    float: none;   
+}
+
+.main_report #edit #value input {
+    font: 13px Verdana, 'Lucida Grande';
+    height: 23px;
+    width: 250px;
+    border-color: #EBE6E2;
+    border-width: 1px;
+    border-style: solid;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.main_report #edit input[id=greenbutton] { 
+    width: 130px; 
+    height: 32px; 
+    position: relative; 
+    box-shadow: inset 0 1px rgba(255,255,255,0.3); 
+    border-radius: 3px; cursor: pointer; font-size: 12px;
+    line-height: 18px; 
+    text-align: center; 
+    background: #c6ee42; 
+    background: -moz-linear-gradient(#c6ee42, #a8ca38); 
+    background: -ms-linear-gradient(#c6ee42, #a8ca38); 
+    background: -o-linear-gradient(#c6ee42, #a8ca38); 
+    background: -webkit-gradient(linear, 0 0, 0 100%, from(#c6ee42), to(#a8ca38)); 
+    background: -webkit-linear-gradient(#c6ee42, #a8ca38); 
+    background: linear-gradient(#c6ee42, #a8ca38); 
+    border: 1px solid #8daa2f; 
+    color: #262423;  
+    text-shadow: 0 1px rgba(255,255,255,0.3); 
+}
+
+.main_report #edit input[id=greenbutton]:hover { 
+    box-shadow: inset 0 1px rgba(255,255,255,0.3), inset 0 20px 40px rgba(255,255,255,0.15);
+}
+
+.main_report #edit input[id=redbutton] { 
+    width: 130px; 
+    height: 32px; 
+    position: relative; 
+    box-shadow: inset 0 1px rgba(255,255,255,0.3); 
+    border-radius: 3px; cursor: pointer; font-size: 12px;
+    line-height: 18px; 
+    text-align: center; 
+    background: #d77a19; 
+    background: -moz-linear-gradient(#d77a19, #d74319); 
+    background: -ms-linear-gradient(#d77a19, #d74319); 
+    background: -o-linear-gradient(#d77a19, #d74319); 
+    background: -webkit-gradient(linear, 0 0, 0 100%, from(#d77a19), to(#d74319)); 
+    background: -webkit-linear-gradient(#d77a19, #d74319); 
+    background: linear-gradient(#d77a19, #d74319); 
+    border: 1px solid #b52d06;
+    color: #262423; 
+    text-shadow: 0 1px rgba(255,255,255,0.3);    
+}
+
+.main_report #edit input[id=redbutton]:hover { 
+    box-shadow: inset 0 1px rgba(255,255,255,0.3), inset 0 20px 40px rgba(255,255,255,0.15);
+}
+
+.main_report #edit input[id=greybutton] { 
+    width: 130px; 
+    height: 32px; 
+    position: relative; 
+    box-shadow: inset 0 1px rgba(255,255,255,0.3); 
+    border-radius: 3px; cursor: pointer; font-size: 12px;
+    line-height: 18px; 
+    text-align: center; 
+    background: #c0bebb; 
+    background: -moz-linear-gradient(#e1e0de, #c0bebb); 
+    background: -ms-linear-gradient(#e1e0de, #c0bebb); 
+    background: -o-linear-gradient(#e1e0de, #c0bebb); 
+    background: -webkit-gradient(linear, 0 0, 0 100%, from(#e1e0de), to(#c0bebb));
+    background: -webkit-linear-gradient(#e1e0de, #c0bebb);
+    background: linear-gradient(#e1e0de, #c0bebb); 
+    border: 1px solid #7e7975; 
+    color: #262423; 
+    text-shadow: 0 1px rgba(255,255,255,0.3); 
+}
+
+.main_report #edit input[id=greybutton]:hover { 
+    box-shadow: inset 0 1px rgba(255,255,255,0.8), inset 0 20px 40px rgba(255,255,255,0.5); 
+}
+
+.main_report #edit #block_auto #replacetxt {
+    margin-left: 180px;
+    background-color: #f4f0ec;
+    border-radius: 4px;
+    margin-top: 10px;
+    min-height: 50px;
+}
+
+.main_report #edit #block_auto #headline {
+    margin-left: 5px;
+    margin-right: 5px;
+    padding-top: 5px;
+    width: 100%;
+    
+    margin-right: 15px;
+
+    font-weight: bold;
+}
+
+.main_report #edit #block_auto #headline #value_label {
+    width: 200px;
+    float: left;
+}
+
+.main_report #edit #block_auto #headline #value_unit {
+    width: 70px;
+    float: left;
+}
+
+.main_report #edit #block_auto #headline #value_color {
+    width: 100px;
+    float: left;
+}
+
+.main_report #edit #block_auto #headline #value_status {
+    width: auto;
+}
+
+.main_report #edit #block_auto #value_row {
+    width: auto;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-top: 5px;
+    padding-bottom: 5px;
+    height: 22px;
+}
+
+.main_report #edit #block_auto #value_row a { color: #ff9300; }
+.main_report #edit #block_auto #value_row a:hover { text-decoration: underline; }
+
+.main_report #edit #block_auto #value_row #value_label {
+    margin-top: 4px;
+    width: 200px;
+    float: left;
+}
+
+.main_report #edit #block_auto #value_row #value_unit {
+    margin-top: 4px;
+    width: 70px;
+    float: left;
+}
+
+.main_report #edit #block_auto #value_row #value_color {
+    width: 100px;
+    float: left;
+}
+
+.main_report #edit #block_auto #value_row #value_color input {
+    font: 13px Verdana, 'Lucida Grande';
+    height: 23px;
+    width: 78px;
+    border-color: #EBE6E2;
+    border-width: 1px;
+    border-style: solid;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+}
+
+.main_report #edit #block_auto #value_row #value_status {
+    width: auto;
+}
+
+
+
+.main_report_graph {
+    /* Size and position */    
+    min-height: 140px;
+    min-width: 800px;
+    width: 800px;
+    margin-top: 60px;
+    margin-bottom: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    /*margin: 60px auto 30px;*/
+    padding: 15px;
+    position: relative;
+
+    /* Styles */
+    background: #fffaf6;
+    border-radius: 4px;
+    color: #7e7975;
+    box-shadow:
+        0 2px 2px rgba(0,0,0,0.2),        
+        0 1px 5px rgba(0,0,0,0.2),        
+        0 0 0 12px rgba(255,255,255,0.4); 
+}
+
+
+.main_report_graph #headline h1 {
+    width: 700px;
+    text-align: center;
+    
+    float: left;
+    font-size: 15px;
+    font-weight: bold;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #EBE6E2;
+    text-shadow: 0 2px 0 rgba(255,255,255,0.8);
+    box-shadow: 0 1px 0 rgba(255,255,255,0.8);
+
+    display: inline-block;
+    text-transform: uppercase;
+    color: #6c6763;
+    padding-right: 50px;
+    padding-left: 50px;
+    margin-bottom: -20px;
+}
+
+.main_report_graph a {
+    color: #7e7975;
+}
+
+.main_report_graph #toolbar {
+    margin-top: 10px;
+    width: 100%;
+    height: 40px;
+    margin-bottom: -20px;
+}
+
+.main_report_graph #toolbar #left {
+    text-align: left;
+    width: 220px;
+    float: left;
+}
+
+.main_report_graph #toolbar #right {
+    text-align: right;
+    width: auto;
+}
+
+.main_report_graph #toolbar #right input {
+    font: 13px Verdana, 'Lucida Grande';
+    height: 23px;
+    width: 200px;
+    border-color: #EBE6E2;
+    border-width: 1px;
+    border-style: solid;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.main_report_graph #toolbar img {
+    height: 32px;
+    max-width: 32px;
+    vertical-align: middle;
+    margin-top: -1px;
+}
+
+.main_report_graph #reportyear {
+    text-align: right;
+
+    float: left;
+}
+
+.main_report_graph #reportyear select {
+    margin-top: -10px;
+}
+
+.main_report_graph #range {
+    text-align: right;
+}
+
+.main_report_graph #range select {
+    margin-top: -10px;
+}
+
+.main_report_graph h2 {
+    margin-top: 40px;
+    margin-bottom: 10px;
+}
+
+
+.main_report_graph #flot_200 {
+    position: relative;
+    width: 800px;
+    height: 200px;
+
+    table-layout:fixed;
+
+    margin-bottom: 40px;
+}
+
+.main_report_graph #flot_200 .graph {
+    width: auto;
+}
+
+.main_report_graph #flot_200 #xaxis_label {
+    color: #bdb5aa;
+
+    width: 25px;
+    height: 200px;
+
+    vertical-align: middle;
+    text-align: center;
+}
+
+.main_report_graph #flot_200 #xaxis_label div {
+    margin-left: -90px;
+    width: 200px;
+    -moz-transform: rotate(270deg);
+    -moz-rotation-point: 0 0;
+    -webkit-transform: rotate(270deg);
+    -webkit-rotation-point: 0 0;
+    -o-transform: rotate(270deg);
+    -ms-transform: rotate(270deg);
+    white-space:nowrap;
+}
+
+.main_report_graph #flot_200 .button {
+    position: absolute;
+    cursor: pointer;
+
+    color: #262423; 
+
+    margin-top: -40px;
+    margin-right: 12px;
+}
+
+.main_report_graph #flot_200 .button:hover { 
+    box-shadow: inset 0 1px rgba(255,255,255,0.8), inset 0 20px 40px rgba(255,255,255,0.5); 
+}
+
+.main_report_graph #flot_200 div.button {
+    font-size: smaller;
+    color: #262423; 
+    background-color: #eee;
+    padding: 4px;
+
+    box-shadow: inset 0 1px rgba(255,255,255,0.3); 
+    border-radius: 3px; cursor: pointer; font-size: 8px;
+    line-height: 12px; 
+    text-align: center; 
+    background: #c0bebb; 
+    background: -moz-linear-gradient(#e1e0de, #c0bebb); 
+    background: -ms-linear-gradient(#e1e0de, #c0bebb); 
+    background: -o-linear-gradient(#e1e0de, #c0bebb); 
+    background: -webkit-gradient(linear, 0 0, 0 100%, from(#e1e0de), to(#c0bebb));
+    background: -webkit-linear-gradient(#e1e0de, #c0bebb);
+    background: linear-gradient(#e1e0de, #c0bebb); 
+    border: 1px solid #7e7975; 
+    text-shadow: 0  1px rgba(255,255,255,0.3);
+}
+
+
+
+.main_report_graph #header {
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.main_report_graph #header #number {
+    width: 50px;
+    float: left;
+}
+
+.main_report_graph #header #date {
+    width: 210px;
+    float: left;
+}
+
+.main_report_graph #header #data {
+    width: 160px;
+    float: left;
+}
+
+.main_report_graph #header #datadiff {
+    width: 110px;
+    float: left;
+}
+
+.main_report_graph #header #startval {
+    width: 50px;
+    float: left;
+}
+
+.main_report_graph #header #action {
+    text-align: right;
+    width: auto;
+}
+
+.main_report_graph #listitem {
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 5px;
+}
+
+.main_report_graph #listitem:hover {
+    background-color: #f2edea;
+}
+
+.main_report_graph #listitem #number {
+    width: 50px;
+    float: left;
+}
+
+.main_report_graph #listitem #date {
+    width: 210px;
+    float: left;
+}
+
+.main_report_graph #listitem #data {
+    width: 160px;
+    float: left;
+}
+
+.main_report_graph #listitem #datadiff {
+    width: 110px;
+    float: left;
+}
+
+.main_report_graph #listitem #startval {
+    width: 50px;
+    float: left;
+}
+
+.main_report_graph #listitem #action {
+    margin-left: 0;
+    width: auto;
+    text-align: right;
+}
+
+.main_report_graph #listitem #action img {
+    margin: auto;
+    width: 20px;
+    max-height: 20px;
+    margin-top: 2px;
+}
+
+.main_report_graph #listitem #date input {
+    font: 13px Verdana, 'Lucida Grande';
+    height: 23px;
+    width: 200px;
+    border-color: #EBE6E2;
+    border-width: 1px;
+    border-style: solid;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.main_report_graph #listitem #data input {
+    font: 13px Verdana, 'Lucida Grande';
+    height: 23px;
+    width: 150px;
+    border-color: #EBE6E2;
+    border-width: 1px;
+    border-style: solid;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.main_report_graph #listitem #datadiff input {
+    font: 13px Verdana, 'Lucida Grande';
+    height: 23px;
+    width: 100px;
+    border-color: #EBE6E2;
+    border-width: 1px;
+    border-style: solid;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.main_report_graph #listitem #startval input {
+    margin-top: 6px;
+}
+
+.main_report_graph #listitem input[readonly] {
+    background-color: #f0f0f0;
+}
+
+
+.main_report_graph #text {
+    width: 220px;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 5px;
+
+    float: left;
+}
+
+.main_report_graph #value {
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 5px;
+}
+
+
+
+/* Flot Chart on hover ToolTips */
+body #tooltip {
+    width: auto;
+    font-size: 12px;
+    font-weight: bold;
+    position: absolute;
+    display: none;
+    padding: 5px;
+    background-color: rgba(0,0,0,0.5); 
+    border-radius: 5px;
+    color: #fff;
+}
+
+body #tooltip #label {
+    margin: auto;
+    font-weight: bold;
+    float: left;
+}
+
+body #tooltip #value {
+    margin: auto;
+    font-weight: normal;
+    text-align: center;
+}

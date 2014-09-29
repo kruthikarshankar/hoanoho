@@ -1,0 +1,173 @@
+.main_telephone {
+    /* Size and position */    
+    min-height: 140px;
+    min-width: 700px;
+    width: 700px;
+    margin-top: 60px;
+    margin-bottom: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    /*margin: 60px auto 30px;*/
+    padding: 15px;
+    position: relative;
+
+    /* Styles */
+    background: #fffaf6;
+    border-radius: 4px;
+    color: #7e7975;
+    box-shadow:
+        0 2px 2px rgba(0,0,0,0.2),        
+        0 1px 5px rgba(0,0,0,0.2),        
+        0 0 0 12px rgba(255,255,255,0.4); 
+}
+
+
+.main_telephone h1 {
+    width: 600px;
+    text-align: center;
+    
+    float: none;
+    font-size: 15px;
+    font-weight: bold;
+    color: #bdb5aa;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #EBE6E2;
+    text-shadow: 0 2px 0 rgba(255,255,255,0.8);
+    box-shadow: 0 1px 0 rgba(255,255,255,0.8);
+
+    display: inline-block;
+    text-transform: uppercase;
+    color: #6c6763;
+    padding-right: 50px;
+    padding-left: 50px;
+}
+
+.main_telephone div {
+    margin-bottom: 10px;
+    margin-left: 20px;
+}
+
+
+.main_telephone #legend {
+    margin-top: 20px;
+    margin-bottom: 30px;
+    margin-left: 20px;
+}
+
+.main_telephone #legend div {
+    float: left;
+    margin-left: 10px;
+    margin-right: 20px;
+}
+
+.main_telephone #legend #item {
+    margin-right: 0px;
+}
+
+.main_telephone #legend #item img {
+    width: 16px;
+    max-height: 16px;
+
+    margin: auto;
+}
+
+.main_telephone #legend #clear {
+    float: none;
+}
+
+.main_telephone #headline {
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+.main_telephone #icon img {
+    margin-top: 4px;
+    width: 10px;
+    max-height: 10px;
+}
+
+.main_telephone #headline #icon {
+    width: 30px;
+    float: left;
+}
+
+.main_telephone #headline #date {
+    width: 120px;
+    float: left;
+}
+
+.main_telephone #headline #number {
+    width: 170px;
+    float: left;
+}
+
+.main_telephone #headline #line {
+    width: 150px;
+    float: left;
+}
+
+.main_telephone #headline #period {
+    width: 50px;
+    margin-right: 20px;
+    float: left;
+}
+
+.main_telephone #headline #action {
+    width: auto;
+    margin-right: 20px;
+}
+
+.main_telephone #entry {
+    margin-bottom: 15px;
+}
+
+.main_telephone #entry #icon {
+    width: 30px;
+    float: left;
+    vertical-align: middle;
+}
+
+.main_telephone #entry #date {
+    width: 120px;
+    float: left;
+}
+
+.main_telephone #entry #number {
+    width: 170px;
+    float: left;
+}
+
+.main_telephone #entry #line {
+    width: 150px;
+    float: left;
+}
+
+.main_telephone #entry #period {
+    width: 50px;
+    margin-right: 20px;
+    float: left;
+}
+
+.main_telephone #entry #action {
+    width: auto;
+    margin-right: 20px;
+    text-align: right;
+}
+
+.main_telephone #entry #action form {
+    float: left;
+}
+
+.main_telephone #entry img {
+    width: 16px;
+    max-height: 16px;
+
+    margin: auto;
+}
+
+.main_telephone #entry #action img {
+    width: 18px;
+    max-height: 18px;
+
+    margin: auto;
+}

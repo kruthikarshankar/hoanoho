@@ -1,0 +1,256 @@
+
+html, body, div, span, applet, object, iframe,h1, h2, h3, h4, h5, h6, p, blockquote, pre,a, abbr, acronym, address, big, cite, code,del, dfn, em, font, img, ins, kbd, q, s, samp,small, strike, strong, sub, sup, tt, var,b, u, i, center,dl, dt, dd, ol, ul, li,fieldset, form, label, legend,table, caption, tbody, tfoot, thead, tr, th, td {margin: 0;padding: 0;border: 0;outline: 0;font-size: 100%;vertical-align: baseline;background: transparent;}body {line-height: 1;}ol, ul {list-style: none;}blockquote, q {quotes: none;}blockquote:before, blockquote:after,q:before, q:after {content: '';content: none;} /* remember to define focus styles! */ :focus {outline: 0;} /* remember to highlight inserts somehow! */ins {text-decoration: none;}del {text-decoration: line-through;} /* tables still need 'cellspacing="0"' in the markup */ table {border-collapse: collapse;border-spacing: 0;}
+
+
+/*---------- BODY --------------------------------*/
+
+body {
+	font: 13px Verdana, 'Lucida Grande';
+	padding-bottom: 70px;
+	min-width: 880px;
+	-webkit-font-smoothing: antialiased;
+}
+
+a {
+	text-decoration: none;
+}
+
+
+/* Main Content */
+
+.main {
+    /* Size and position */
+    min-width: 600px;
+    width: auto;
+    margin-top: 60px;
+    margin-bottom: 30px;
+    margin-left: 50px;
+    margin-right: 50px;
+    /*margin: 60px auto 30px;*/
+    padding: 15px;
+    position: relative;
+
+    /* Styles */
+    background: #fffaf6;
+    border-radius: 4px;
+    color: #7e7975;
+    box-shadow:
+        0 2px 2px rgba(0,0,0,0.2),        
+        0 1px 5px rgba(0,0,0,0.2),        
+        0 0 0 12px rgba(255,255,255,0.4); 
+}
+
+
+.main h1 {
+    width: 500px;
+    text-align: center;
+    
+    float: none;
+    font-size: 15px;
+    font-weight: bold;
+    color: #bdb5aa;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #EBE6E2;
+    text-shadow: 0 2px 0 rgba(255,255,255,0.8);
+    box-shadow: 0 1px 0 rgba(255,255,255,0.8);
+
+    display: inline-block;
+    text-transform: uppercase;
+    color: #6c6763;
+    padding-right: 50px;
+    padding-left: 50px;
+}
+
+
+
+/* Login Form */
+
+.install_main {
+    text-align: center;
+    
+    /* Size and position */
+    width: 405px;
+    height: auto;
+    margin-top: 100px;
+    margin-bottom: auto;
+    margin-left: auto;
+    margin-right: auto;
+    /*margin: 60px auto 30px;*/
+    padding: 15px;
+    position: relative;
+
+    /* Styles */
+    background: #fffaf6;
+    border-radius: 4px;
+    color: #7e7975;
+    box-shadow:
+        0 2px 2px rgba(0,0,0,0.2),        
+        0 1px 5px rgba(0,0,0,0.2),        
+        0 0 0 12px rgba(255,255,255,0.4); 
+}
+
+.install h1 {
+    font-size: 15px;
+    font-weight: bold;
+    color: #bdb5aa;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #EBE6E2;
+    text-shadow: 0 2px 0 rgba(255,255,255,0.8);
+    box-shadow: 0 1px 0 rgba(255,255,255,0.8);
+}
+
+.install h1 .log-in {
+    display: inline-block;
+    text-transform: uppercase;
+}
+
+.install h1 .log-in {
+    color: #6c6763;
+    padding-right: 2px;
+}
+
+.install .float {
+    width: 200px;
+    float: left;
+    padding-top: 15px;
+    border-top: 1px solid rgba(255,255,255,1);
+}
+
+.install .float:first-of-type {
+    padding-right: 5px;
+}
+
+.install .float:last-of-type {
+    padding-left: 5px;
+}
+
+.install label {
+	width: 200px;
+	text-align: left;
+    display: block;
+    padding: 0 0 5px 2px;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-weight: 400;
+    text-shadow: 0 1px 0 rgba(255,255,255,0.8);
+    font-size: 11px;
+}
+
+.install img {
+	max-width: 10px;
+	max-height: 10px;
+
+	padding-right: 5px;
+}
+
+.install input[type=text],
+.install input[type=password] {
+    font-size: 13px;
+    font-weight: 400;
+    display: block;
+    width: 200px;
+    padding: 5px;
+    margin-bottom: 5px;
+    border: 3px solid #ebe6e2;
+    border-radius: 5px;
+    -webkit-transition: all 0.3s ease-out;
+    -moz-transition: all 0.3s ease-out;
+    -ms-transition: all 0.3s ease-out;
+    -o-transition: all 0.3s ease-out;
+    transition: all 0.3s ease-out;
+}
+
+.install input[type=text]:hover,
+.install input[type=password]:hover {
+    border-color: #CCC;
+}
+
+.install label:hover ~ input {
+    border-color: #CCC;
+}
+
+.install input[type=text]:focus,
+.install input[type=password]:focus {
+    border-color: #BBB;
+    outline: none; /* Remove Chrome's outline */
+}
+
+.install input[type=submit] {
+    /* Size and position */
+    width: 100px;
+    height: 38px;
+    
+    position: relative;
+
+    /* Styles */
+    box-shadow: inset 0 1px rgba(255,255,255,0.3);
+    border-radius: 3px;
+    cursor: pointer;
+
+    /* Font styles */
+    font-size: 14px;
+    line-height: 38px; /* Same as height */
+    text-align: center;
+    font-weight: bold;
+
+    margin-top:20px;
+    background: #fbd568; /* Fallback */
+    background: -moz-linear-gradient(#fbd568, #ffb347);
+    background: -ms-linear-gradient(#fbd568, #ffb347);
+    background: -o-linear-gradient(#fbd568, #ffb347);
+    background: -webkit-gradient(linear, 0 0, 0 100%, from(#fbd568), to(#ffb347));
+    background: -webkit-linear-gradient(#fbd568, #ffb347);
+    background: linear-gradient(#fbd568, #ffb347);
+    border: 1px solid #f4ab4c;
+    color: #996319;
+    text-shadow: 0 1px rgba(255,255,255,0.3);
+}
+
+.install input[type=submit]:hover {
+    box-shadow: 
+        inset 0 1px rgba(255,255,255,0.3), 
+        inset 0 20px 40px rgba(255,255,255,0.15);
+}
+
+.install input[type=submit]:active {
+    top: 1px;
+}
+
+/* Fallback fro broswers that don't support box shadows */
+.no-boxshadow .install input[type=submit]:hover {
+    background: #ffb347;
+}
+
+.install p:last-of-type {
+    clear: both;    
+}
+
+.install .name {
+    margin-top: 10px;
+    width: 350px;
+    text-align: left;
+    float: left;
+}
+
+.install .value {
+    margin-top: 10px;
+    width: 100%;
+}
+
+.install .value input {
+    width: 100%;
+}
+
+.install .errormsg {
+    margin-top: 10px;
+    width: 100%;
+    color: #f3291c;
+    font-weight: bold;
+}
+
+.install .left {
+    margin: 0;
+    width: 100%;
+    text-align: left;   
+}
+

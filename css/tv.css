@@ -1,0 +1,66 @@
+
+.main {
+    /* Size and position */    
+    min-height: 120px;
+    height: auto;
+    min-width: 800px;
+    width: 1555px;
+    margin-top: 60px;
+    margin-bottom: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    /*margin: 60px auto 30px;*/
+    padding: 15px;
+    position: relative;
+
+    /* Styles */
+    background: #fffaf6;
+    border-radius: 4px;
+    color: #7e7975;
+    box-shadow:
+        0 2px 2px rgba(0,0,0,0.2),        
+        0 1px 5px rgba(0,0,0,0.2),        
+        0 0 0 12px rgba(255,255,255,0.4); 
+}
+
+.main h1 {
+    width: 1455px;
+    text-align: center;
+    
+    float: none;
+    font-size: 15px;
+    font-weight: bold;
+    color: #bdb5aa;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #EBE6E2;
+    text-shadow: 0 2px 0 rgba(255,255,255,0.8);
+    box-shadow: 0 1px 0 rgba(255,255,255,0.8);
+
+    display: inline-block;
+    text-transform: uppercase;
+    color: #6c6763;
+    padding-right: 50px;
+    padding-left: 50px;
+}
+
+.main select {
+    width: auto;
+    font: 13px Verdana, 'Lucida Grande';
+    height: 23px;
+    border-color: #EBE6E2;
+    border-width: 1px;
+    border-style: solid;
+    margin-left: -1px;
+}
+
+.main a {
+    color: #7e7975;
+}
+
+.main #frame {
+    width: 100%;
+    height: 100%;
+
+    border: none;
+    overflow: hidden;
+}

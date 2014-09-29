@@ -1,0 +1,346 @@
+
+.main {
+    /* Size and position */    
+    min-height: 120px;
+    min-width: 800px;
+    width: 800px;
+    margin-top: 60px;
+    margin-bottom: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    /*margin: 60px auto 30px;*/
+    padding: 15px;
+    position: relative;
+
+    /* Styles */
+    background: #fffaf6;
+    border-radius: 4px;
+    color: #7e7975;
+    box-shadow:
+        0 2px 2px rgba(0,0,0,0.2),        
+        0 1px 5px rgba(0,0,0,0.2),        
+        0 0 0 12px rgba(255,255,255,0.4); 
+}
+
+.main h1 {
+    width: 700px;
+    text-align: center;
+    
+    float: none;
+    font-size: 15px;
+    font-weight: bold;
+    color: #bdb5aa;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #EBE6E2;
+    text-shadow: 0 2px 0 rgba(255,255,255,0.8);
+    box-shadow: 0 1px 0 rgba(255,255,255,0.8);
+
+    display: inline-block;
+    text-transform: uppercase;
+    color: #6c6763;
+    padding-right: 50px;
+    padding-left: 50px;
+}
+
+.main select {
+    width: auto;
+    font: 13px Verdana, 'Lucida Grande';
+    height: 23px;
+    border-color: #EBE6E2;
+    border-width: 1px;
+    border-style: solid;
+    margin-left: -1px;
+}
+
+.main a {
+    color: #7e7975;
+}
+
+.main #toolbar {
+    margin-top: 10px;
+    width: 100%;
+    height: 40px;
+    margin-bottom: 20px;
+}
+
+.main #toolbar #left {
+    text-align: left;
+    width: 220px;
+    float: left;
+}
+
+.main #toolbar #right {
+    text-align: right;
+    width: auto;
+}
+
+.main #toolbar #right input {
+    font: 13px Verdana, 'Lucida Grande';
+    height: 23px;
+    width: 200px;
+    border-color: #EBE6E2;
+    border-width: 1px;
+    border-style: solid;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.main #toolbar img {
+    height: 32px;
+    max-width: 32px;
+    vertical-align: middle;
+    margin-top: -1px;
+}
+
+.main #header {
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.main #header #name {
+    width: 235px;
+    float: left;
+}
+
+.main #header #status {
+    width: 60px;
+    float: left;
+}
+
+.main #header #counter {
+    width: 65px;
+    float: left;
+}
+
+.main #header #lastaccess {
+    width: 180px;
+    float: left;
+}
+
+.main #header #action {
+    text-align: right;
+    width: auto;
+}
+
+.main #header #accessdate {
+    width: 200px;
+    float: left;
+}
+
+.main #header #accessip {
+    width: 200px;
+    float: left;
+}
+
+.main #header #browser {
+    width: auto;
+}
+
+.main #listitem {
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 5px;
+    padding-top: 5px;
+}
+
+.main #listitem:hover {
+    background-color: #f2edea;
+}
+
+.main #listitem #name {
+    width: 235px;
+    float: left;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.main #listitem #status {
+    width: 60px;
+    float: left;
+}
+
+.main #listitem #status img {
+    margin: auto;
+    width: 12px;
+    max-height: 12px;
+    margin-top: 2px;
+    margin-left: 10px;
+    float: left;
+}
+
+.main #listitem #status img:last-of-type {
+    margin: auto;
+    width: 12px;
+    max-height: 12px;
+    margin-top: 2px;
+    margin-left: 10px;
+    float: none;
+}
+
+.main #listitem #counter {
+    width: 65px;
+    float: left;
+}
+
+.main #listitem #lastaccess {
+    width: 180px;
+    float: left;
+}
+
+.main #listitem #action {
+    margin-left: 0;
+    width: auto;
+    text-align: right;
+    margin-top: -5px;
+}
+
+.main #listitem #action img {
+    margin: auto;
+    width: 20px;
+    max-height: 20px;
+    margin-top: 2px;
+}
+
+.main #listitem #message {
+    margin: auto;
+}
+
+.main #listitem #accessdate {
+    width: 200px;
+    float: left;
+}
+
+.main #listitem #accessip {
+    width: 200px;
+    float: left;
+}
+
+.main #listitem #browser {
+    overflow: hidden;
+    width: auto;
+}
+
+
+.main #edit {
+    width: 700px;
+}
+
+.main #edit #text {
+    margin-top: 8px;
+    margin-left: 170px;
+    width: 150px;
+    float: left;    
+}
+
+.main #edit #value {
+    margin-top: 5px;
+    width: auto;
+    float: none;   
+}
+
+.main #edit #value input {
+    font: 13px Verdana, 'Lucida Grande';
+    height: 23px;
+    width: 250px;
+    border-color: #EBE6E2;
+    border-width: 1px;
+    border-style: solid;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.main #edit #submit {
+    margin-left: 330px;
+}
+
+.main #edit #message {
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+.main #edit #message a {
+    color: #7e7975;
+    font-weight: bold;
+}
+
+.main #edit #message a:hover {
+    color: #ff9300;
+    font-weight: bold;
+}
+
+.main #edit input[id=greenbutton] { 
+    width: 130px; 
+    height: 32px; 
+    position: relative; 
+    box-shadow: inset 0 1px rgba(255,255,255,0.3); 
+    border-radius: 3px; cursor: pointer; font-size: 12px;
+    line-height: 18px; 
+    text-align: center; 
+    background: #c6ee42; 
+    background: -moz-linear-gradient(#c6ee42, #a8ca38); 
+    background: -ms-linear-gradient(#c6ee42, #a8ca38); 
+    background: -o-linear-gradient(#c6ee42, #a8ca38); 
+    background: -webkit-gradient(linear, 0 0, 0 100%, from(#c6ee42), to(#a8ca38)); 
+    background: -webkit-linear-gradient(#c6ee42, #a8ca38); 
+    background: linear-gradient(#c6ee42, #a8ca38); 
+    border: 1px solid #8daa2f; 
+    color: #262423;  
+    text-shadow: 0 1px rgba(255,255,255,0.3); 
+}
+
+.main #edit input[id=greenbutton]:hover { 
+    box-shadow: inset 0 1px rgba(255,255,255,0.3), inset 0 20px 40px rgba(255,255,255,0.15);
+}
+
+.main #edit input[id=redbutton] { 
+    width: 130px; 
+    height: 32px; 
+    position: relative; 
+    box-shadow: inset 0 1px rgba(255,255,255,0.3); 
+    border-radius: 3px; cursor: pointer; font-size: 12px;
+    line-height: 18px; 
+    text-align: center; 
+    background: #d77a19; 
+    background: -moz-linear-gradient(#d77a19, #d74319); 
+    background: -ms-linear-gradient(#d77a19, #d74319); 
+    background: -o-linear-gradient(#d77a19, #d74319); 
+    background: -webkit-gradient(linear, 0 0, 0 100%, from(#d77a19), to(#d74319)); 
+    background: -webkit-linear-gradient(#d77a19, #d74319); 
+    background: linear-gradient(#d77a19, #d74319); 
+    border: 1px solid #b52d06;
+    color: #262423; 
+    text-shadow: 0 1px rgba(255,255,255,0.3);    
+}
+
+.main #edit input[id=redbutton]:hover { 
+    box-shadow: inset 0 1px rgba(255,255,255,0.3), inset 0 20px 40px rgba(255,255,255,0.15);
+}
+
+.main #edit input[id=greybutton] { 
+    width: 230px; 
+    height: 32px; 
+    margin-left: -48px;
+    position: relative; 
+    box-shadow: inset 0 1px rgba(255,255,255,0.3); 
+    border-radius: 3px; cursor: pointer; font-size: 12px;
+    line-height: 18px; 
+    text-align: center; 
+    background: #c0bebb; 
+    background: -moz-linear-gradient(#e1e0de, #c0bebb); 
+    background: -ms-linear-gradient(#e1e0de, #c0bebb); 
+    background: -o-linear-gradient(#e1e0de, #c0bebb); 
+    background: -webkit-gradient(linear, 0 0, 0 100%, from(#e1e0de), to(#c0bebb));
+    background: -webkit-linear-gradient(#e1e0de, #c0bebb);
+    background: linear-gradient(#e1e0de, #c0bebb); 
+    border: 1px solid #7e7975; 
+    color: #262423; 
+    text-shadow: 0 1px rgba(255,255,255,0.3); 
+}
+
+.main #edit input[id=greybutton]:hover { 
+    box-shadow: inset 0 1px rgba(255,255,255,0.8), inset 0 20px 40px rgba(255,255,255,0.5); 
+}
+
+
