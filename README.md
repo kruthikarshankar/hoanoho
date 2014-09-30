@@ -49,7 +49,7 @@ State of network devices:
 */1 * * * * root php -f /var/www/homie/cron/ping.php &> /dev/null
 
 DLNA Device Scan:
-*/5 * * * * root curl -s http://homie.springfield.lan/tablet/includes/pupnp/cronjob.php &> /dev/null
+*/5 * * * * root curl -s http://yourhostname/tablet/includes/pupnp/cronjob.php &> /dev/null
 
 Check Batteries:
 0 8,20 * * * root php -f /var/www/homie/cron/check_batteries.php &> /dev/null
