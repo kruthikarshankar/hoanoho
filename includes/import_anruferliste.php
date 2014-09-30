@@ -1,6 +1,7 @@
 <? 
 
 require("/var/www/homie/config/dbconfig.inc.php");
+include "/var/www/homie/includes/pushover.php";
     
 $dbh = mysql_connect("localhost",$dbusername,$dbpassword) or die("There was a problem with the database connection.");
 $dbs = mysql_select_db($dbname, $dbh) or die("There was a problem selecting the categories.");
@@ -14,9 +15,16 @@ while($row = mysql_fetch_array($result)) {
     $__CONFIG[$row[0]] = $row[1];
 }
 
+function pushMessageToUsers($title, $message, $priority)
+	{
+		$sql ="select * from users join usersettings on usersettings.uid = users.uid where pushover_usertoken is not null and pushover_apptoken is not null";
+		$result = mysql_query($sql);
 
-
-
+		while($row = mysql_fetch_array($result)) 
+		{
+			pushMessage($row['pushover_apptoken'], $row['pushover_usertoken'], $title, $message, $priority);
+		}
+	}
 
 function QueryKlickTelDe($Rufnummer) { 
     $record = false; 
@@ -104,4 +112,15 @@ foreach ($file_array as $line_number => $line)
 	mysql_query($sql);
 }
 
+
+	//pushMessageToUsers("Neuer verpasster Anruf", "import beendet", -2);
+
+	$result = mysql_query("select rufnummer,date from callerlist where date >= date_sub(NOW(), interval 10 MINUTE) and typ = 2");
+	while ($caller = mysql_fetch_object($result)) 
+	{
+		$message = utf8_encode($caller->rufnummer);
+		//$message = explode(":",utf8_encode($pickup->text))[0];
+	
+		pushMessageToUsers("Neuer verpasster Anruf", $message, 0);
+	}
 ?>
