@@ -164,7 +164,7 @@
 			print("</div>");
 			print("<div id=\"row_\">&nbsp;</div>");
 			print("<div id=\"row_\">");
-				print("<div id=\"text\">Temperatur:</div><div id=\"value\">".$weather['main.temp']."°C</div>");
+				print("<div id=\"text\">Temperatur:</div><div id=\"value\">".($weather['ws_available'] == true ? $weather['ws_OT']."°C" : $weather['main_temp']."°C")."</div>");
 			print("</div>");
 			print("<div id=\"row_\">");
 				print("<div id=\"text\">Temperatur Minimum:</div><div id=\"value\">".$weather['main.temp_min']."°C</div>");
@@ -173,24 +173,37 @@
 				print("<div id=\"text\">Temperatur Maximum:</div><div id=\"value\">".$weather['main.temp_max']."°C</div>");
 			print("</div>");
 			print("<div id=\"row_\">&nbsp;</div>");
-			print("<div id=\"row_\">");
-				print("<div id=\"text\">Regenmenge:</div><div id=\"value\">".(isset($weather['rain']) ? $weather['rain'] : "0")." l/qm</div>");
-			print("</div>");
+			if($weather['ws_available'] == true)
+			{
+				print("<div id=\"row_\">");
+					print("<div id=\"text\">Regenmenge pro Stunde:</div><div id=\"value\">".$weather['ws_Rain1h']." l/qm</div>");
+				print("</div>");
+				print("<div id=\"row_\">");
+					print("<div id=\"text\">Regenmenge pro Tag:</div><div id=\"value\">".$weather['ws_Rain24h']." l/qm</div>");
+				print("</div>");
+				print("<div id=\"row_\">&nbsp;</div>");
+			} 
+			else
+			{
+				print("<div id=\"row_\">");
+					print("<div id=\"text\">Regenmenge:</div><div id=\"value\">".(isset($weather['rain']) ? $weather['rain'] : "0")." l/qm</div>");
+				print("</div>");
+			}
 			print("<div id=\"row_\">");
 				print("<div id=\"text\">Bewölkung:</div><div id=\"value\">".$weather['clouds.all']."%</div>");
 			print("</div>");
 			print("<div id=\"row_\">");
-				print("<div id=\"text\">Luftfeuchtigkeit:</div><div id=\"value\">".$weather['main.humidity']."%</div>");
+				print("<div id=\"text\">Luftfeuchtigkeit:</div><div id=\"value\">".($weather['ws_available'] == true ? $weather['ws_OH'] : $weather['main.humidity'])."%</div>");
 			print("</div>");
 			print("<div id=\"row_\">");
-				print("<div id=\"text\">Luftdruck:</div><div id=\"value\">".$weather['main.pressure']." hPa</div>");
+				print("<div id=\"text\">Luftdruck:</div><div id=\"value\">".($weather['ws_available'] == true ? $weather['ws_P'] : $weather['main.pressure'])." hPa</div>");
 			print("</div>");
 			print("<div id=\"row_\">&nbsp;</div>");
 			print("<div id=\"row_\">");
-				print("<div id=\"text\">Windgeschwindigkeit:</div><div id=\"value\">".$weather['wind.speed']." km/h</div>");
+				print("<div id=\"text\">Windgeschwindigkeit:</div><div id=\"value\">".($weather['ws_available'] == true ? $weather['ws_Wind'] : $weather['wind.speed'])." km/h</div>");
 			print("</div>");
 			print("<div id=\"row_\">");
-				print("<div id=\"text\">Windrichtung:</div><div id=\"value\">".$weather['wind.dir']." (".$weather['wind.deg']."°)</div>");
+				print("<div id=\"text\">Windrichtung:</div><div id=\"value\">".($weather['ws_available'] == true ? $weather['ws_WindDir'] : $weather['wind.dir']." (".$weather['wind.deg']."°)")."</div>");
 			print("</div>");
 			print("<div id=\"row_\">&nbsp;</div>");
 			print("<div id=\"row_\">");

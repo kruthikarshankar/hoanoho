@@ -29,6 +29,31 @@ Just put these files into your webserver root directory and went through the ins
 You should also edit the Database credentials in the following files:
 js/socketserver.js
 
+### Cron Jobs
+Weather:
+*/15 * * * * root php -f /var/www/homie/cron/datacollector_openweathermap.php &> /dev/null
+*/15 * * * * root php -f /var/www/homie/cron/datacollector_openweathermap_forecast.php &> /dev/null
+*/5 * * * * root php -f /var/www/homie/cron/dwd_warning.php &> /dev/null
+
+Fritzbox callerlist:
+*/10 * * * * root bash /var/www/homie/cron/getCallerlistFromFritzbox.sh &> /dev/null
+
+Garbage:
+0 18,20 * * * root php -f /var/www/homie/cron/check_garbageplan.php &> /dev/null
+0 1 * * * root php -f /var/www/homie/cron/import_garbageplan.php &> /dev/null
+
+Scheduler:
+*/1 * * * * root php -f /var/www/homie/cron/scheduler.php &> /dev/null
+
+State of network devices:
+*/1 * * * * root php -f /var/www/homie/cron/ping.php &> /dev/null
+
+DLNA Device Scan:
+*/5 * * * * root curl -s http://homie.springfield.lan/tablet/includes/pupnp/cronjob.php &> /dev/null
+
+Check Batteries:
+0 8,20 * * * root php -f /var/www/homie/cron/check_batteries.php &> /dev/null
+
 
 ## Compatibility List
 
