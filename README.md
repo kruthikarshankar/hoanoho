@@ -54,6 +54,17 @@ DLNA Device Scan:
 Check Batteries:
 0 8,20 * * * root php -f /var/www/homie/cron/check_batteries.php &> /dev/null
 
+Dienste ueberwachen
+*/2 * * * * root bash /etc/scripts/serviceWatchdog >> /var/log/messages
+
+PVServer abrufen
+*/5 * * * * root php -f /var/www/homie/cron/datacollector_pvserver.php
+
+Stromzaehler ablesen
+*/5 * * * * root bash  /var/www/homie/cron/datacollector_mt681.sh /dev/ttyUSB0 http://yourhostname/helper/datacollector.php
+
+Phonecalls pushen
+*/10 * * * * root php -f /var/www/homie/cron/check_phonecalls.php &> /dev/null 
 
 ## Compatibility List
 
