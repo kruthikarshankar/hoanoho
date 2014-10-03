@@ -24,47 +24,55 @@ node.js needs the following modules to be installed:
 * ws
 
 ## Installation
-Just put these files into your webserver root directory and went through the installer located under **http://yourhostname/install** .
+Just put these files into your webserver root directory and went through the installer located under **http://yourhostname/install**.
 
-You should also edit the Database credentials in the following files:
-js/socketserver.js
+You should also edit the Database credentials in file **js/socketserver.js**.
+
+Give write access to folders named **pupnp**.
 
 ### Cron Jobs
-Weather:
-*/15 * * * * root php -f /var/www/homie/cron/datacollector_openweathermap.php &> /dev/null
-*/15 * * * * root php -f /var/www/homie/cron/datacollector_openweathermap_forecast.php &> /dev/null
-*/5 * * * * root php -f /var/www/homie/cron/dwd_warning.php &> /dev/null
+**Weather**:
 
-Fritzbox callerlist:
-*/10 * * * * root bash /var/www/homie/cron/getCallerlistFromFritzbox.sh &> /dev/null
+*/15 * * * * root php -f /path_to_install/cron/datacollector_openweathermap.php &> /dev/null
+*/15 * * * * root php -f /path_to_install/cron/datacollector_openweathermap_forecast.php &> /dev/null
+*/5 * * * * root php -f /path_to_install/cron/dwd_warning.php &> /dev/null
 
-Garbage:
-0 18,20 * * * root php -f /var/www/homie/cron/check_garbageplan.php &> /dev/null
-0 1 * * * root php -f /var/www/homie/cron/import_garbageplan.php &> /dev/null
+**Fritzbox callerlist**:
 
-Scheduler:
-*/1 * * * * root php -f /var/www/homie/cron/scheduler.php &> /dev/null
+*/10 * * * * root bash /path_to_install/cron/getCallerlistFromFritzbox.sh &> /dev/null
 
-State of network devices:
-*/1 * * * * root php -f /var/www/homie/cron/ping.php &> /dev/null
+**Garbage**:
 
-DLNA Device Scan:
-*/5 * * * * root curl -s http://homie.springfield.lan/tablet/includes/pupnp/cronjob.php &> /dev/null
+0 18,20 * * * root php -f /path_to_install/cron/check_garbageplan.php &> /dev/null
+0 1 * * * root php -f /path_to_install/cron/import_garbageplan.php &> /dev/null
 
-Check Batteries:
-0 8,20 * * * root php -f /var/www/homie/cron/check_batteries.php &> /dev/null
+**Scheduler**:
 
-Dienste ueberwachen
-*/2 * * * * root bash /etc/scripts/serviceWatchdog >> /var/log/messages
+*/1 * * * * root php -f /path_to_install/cron/scheduler.php &> /dev/null
 
-PVServer abrufen
-*/5 * * * * root php -f /var/www/homie/cron/datacollector_pvserver.php
+**State of network devices**:
 
-Stromzaehler ablesen
-*/5 * * * * root bash  /var/www/homie/cron/datacollector_mt681.sh /dev/ttyUSB0 http://yourhostname/helper/datacollector.php
+*/1 * * * * root php -f /path_to_install/cron/ping.php &> /dev/null
 
-Phonecalls pushen
-*/10 * * * * root php -f /var/www/homie/cron/check_phonecalls.php &> /dev/null 
+**DLNA Device Scan**:
+
+*/5 * * * * root curl -s http://yourhostname/tablet/includes/pupnp/cronjob.php &> /dev/null
+
+**Check Batteries**:
+
+0 8,20 * * * root php -f /path_to_install/cron/check_batteries.php &> /dev/null
+
+**Collect data from PVServer**:
+
+*/5 * * * * root php -f /path_to_install/cron/datacollector_pvserver.php
+
+**Power meter**:
+
+*/5 * * * * root bash  /path_to_install/cron/datacollector_mt681.sh /dev/ttyUSB0 http://yourhostname/helper/datacollector.php
+
+**Push phonecalls**:
+
+*/10 * * * * root php -f /path_to_install/cron/check_phonecalls.php &> /dev/null 
 
 ## Compatibility List
 
@@ -90,12 +98,3 @@ Currently the following devices are supported:
 
 ### Lawn Sprinkler
 * Gardena selfbuild via Raspberry PI GPIO
-
-## About the Developer Team
-
-#### Daniel Schaefer
-
-Father of Hoanoho, Core Developer
-
-* [Daniel Schaefer aka @gotteshand](http://twitter.com/gotteshand)
-* [schaefer2.de](http://schaefer2.de)
