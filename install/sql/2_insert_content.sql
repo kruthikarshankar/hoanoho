@@ -1,4 +1,4 @@
-INSERT INTO `types` (`type_id`, `name`) VALUES
+INSERT IGNORE INTO `types` (`type_id`, `name`) VALUES
 (1, 'Ein/Aus-Schalter'),
 (2, 'Temperaturregelung'),
 (3, 'Webcam'),
@@ -14,7 +14,7 @@ INSERT INTO `types` (`type_id`, `name`) VALUES
 (13, 'PVServer');
 
 
-INSERT INTO `network_os` (`os_id`, `name`, `icon`) VALUES
+INSERT IGNORE INTO `network_os` (`os_id`, `name`, `icon`) VALUES
 (1, 'Windows', 'windows.png'),
 (2, 'Mac OS X', 'osx.png'),
 (3, 'Linux', 'linux.png'),
@@ -28,7 +28,7 @@ INSERT INTO `network_os` (`os_id`, `name`, `icon`) VALUES
 (11, 'Android', 'android.png');
 
 
-INSERT INTO `configuration` (`dev_id`, `configstring`, `value`, `title`, `hint`, `type`, `category`) VALUES
+INSERT IGNORE INTO `configuration` (`dev_id`, `configstring`, `value`, `title`, `hint`, `type`, `category`) VALUES
 (0, 'main_sitetitle', 'Homie', 'Seitentitel', '', 'text', 'Allgemein'),
 (0, 'fbox_address', '', 'Fritzbox Adresse', '', 'text', 'Fritzbox'),
 (0, 'fbox_password', '', 'Fritzbox Passwort', '', 'password', 'Fritzbox'),
@@ -46,4 +46,4 @@ INSERT INTO `configuration` (`dev_id`, `configstring`, `value`, `title`, `hint`,
 (0, 'sharefile_remoteaddress', '', 'Hostname/IP für Dateibereitstellung', 'z.B. cloud.dyndns.org', 'text', 'Allgemein'),
 (0, 'homie_baseurl', '', 'Basis URL', 'http://localhost', 'text', 'Allgemein');
 
-INSERT INTO `groups` (`gid`, `isAdmin`, `grpname`) VALUES (1, 0, 'Benutzer'), (2, 1, 'Administrator');
+INSERT IGNORE INTO `groups` (`gid`, `isAdmin`, `grpname`) VALUES (1, 0, 'Benutzer'), (2, 1, 'Administrator');
