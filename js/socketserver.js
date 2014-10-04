@@ -1,5 +1,5 @@
 var WebSocketServer = require('ws').Server;
-var wss = new WebSocketServer({port: 8000});
+var wss = new WebSocketServer({port: 8000, path: '/ws'});
 
 var mysql = require('mysql');
 var connection = mysql.createConnection({});
