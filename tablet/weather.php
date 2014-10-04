@@ -34,7 +34,7 @@
 			$(document).ready(function() {
 				$('.dropdown-toggle').dropdown();
 
-				connectWebSocket(<? echo "\"ws://".$__CONFIG['main_socketaddress'].":".$__CONFIG['main_socketport']."\""; ?>);
+				connectWebSocket(<? echo "\"".$__CONFIG['main_socketaddress']."\""; ?>);
 
 				// responsive
 				$("#boxitem.wetter_aktuell").load("helper/datacontroller.php?cmd=refresh_current_weather").fadeIn('500');

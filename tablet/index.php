@@ -39,7 +39,7 @@
 			});
 
 			$(document).ready(function(){
-				connectWebSocket(<? echo "\"ws://".$__CONFIG['main_socketaddress'].":".$__CONFIG['main_socketport']."\""; ?>);
+				connectWebSocket(<? echo "\"".$__CONFIG['main_socketaddress']."\""; ?>);
 			});
 
 

@@ -45,7 +45,7 @@
 		    document.onmousewheel = preventScrolling;
 		    window.onscroll = preventScrolling;
 
-		    connectWebSocket(<? echo "\"ws://".$__CONFIG['main_socketaddress'].":".$__CONFIG['main_socketport']."\""; ?>);
+		    connectWebSocket(<? echo "\"".$__CONFIG['main_socketaddress']."\""; ?>);
 
 
 		    // create color pickers for philips hue
