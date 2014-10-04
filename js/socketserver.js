@@ -16,33 +16,33 @@ var connectionsArray = [];
 
 var devices = { };
 
-//var sqlquery_fhem = 'SELECT homie.devices.dev_id, homie.bindata.data image, homie.types.name typename, fhem.current.DEVICE, fhem.current.VALUE, fhem.current.UNIT FROM fhem.current JOIN homie.devices ON homie.devices.identifier = fhem.current.DEVICE JOIN homie.device_types ON homie.device_types.dtype_id = homie.devices.dtype_id JOIN homie.bindata ON homie.bindata.binid = CASE WHEN (fhem.current.VALUE = \'on\' or fhem.current.VALUE > 0) AND homie.device_types.image_on_id is not null THEN homie.device_types.image_on_id ELSE homie.device_types.image_off_id END JOIN homie.types on homie.types.type_id = homie.device_types.type_id WHERE fhem.current.TYPE !=  "GLOBAL" and fhem.current.READING = "state"';
-var sqlquery_fhem = 'SELECT distinct fhem.current.DEVICE FHEMDEVICE, homie.devices.dev_id, homie.bindata.data image, homie.types.name typename, fhem.current.timestamp, homie.devices.identifier, homie.devices.identifier DEVICE, fhem.current.READING, fhem.current.VALUE, fhem.current.UNIT '+
+//var sqlquery_fhem = 'SELECT hoanoho.devices.dev_id, hoanoho.bindata.data image, hoanoho.types.name typename, fhem.current.DEVICE, fhem.current.VALUE, fhem.current.UNIT FROM fhem.current JOIN hoanoho.devices ON hoanoho.devices.identifier = fhem.current.DEVICE JOIN hoanoho.device_types ON hoanoho.device_types.dtype_id = hoanoho.devices.dtype_id JOIN hoanoho.bindata ON hoanoho.bindata.binid = CASE WHEN (fhem.current.VALUE = \'on\' or fhem.current.VALUE > 0) AND hoanoho.device_types.image_on_id is not null THEN hoanoho.device_types.image_on_id ELSE hoanoho.device_types.image_off_id END JOIN hoanoho.types on hoanoho.types.type_id = hoanoho.device_types.type_id WHERE fhem.current.TYPE !=  "GLOBAL" and fhem.current.READING = "state"';
+var sqlquery_fhem = 'SELECT distinct fhem.current.DEVICE FHEMDEVICE, hoanoho.devices.dev_id, hoanoho.bindata.data image, hoanoho.types.name typename, fhem.current.timestamp, hoanoho.devices.identifier, hoanoho.devices.identifier DEVICE, fhem.current.READING, fhem.current.VALUE, fhem.current.UNIT '+
 					'FROM fhem.current ' +
-						'JOIN homie.devices ON fhem.current.DEVICE like concat(homie.devices.identifier,\'%\') '+
-						'JOIN homie.device_types ON homie.device_types.dtype_id = homie.devices.dtype_id '+
-						'LEFT OUTER JOIN homie.bindata ON homie.bindata.binid = '+
-							'CASE WHEN (fhem.current.VALUE = \'on\' or fhem.current.VALUE = \'closed\') AND homie.device_types.image_on_id is not null and fhem.current.READING = \'state\' THEN '+
-								'homie.device_types.image_on_id '+
-							'WHEN (fhem.current.VALUE = \'off\' or fhem.current.VALUE = \'open\') AND homie.device_types.image_on_id is not null and fhem.current.READING = \'state\' THEN '+
-								'homie.device_types.image_off_id '+
+						'JOIN hoanoho.devices ON fhem.current.DEVICE like concat(hoanoho.devices.identifier,\'%\') '+
+						'JOIN hoanoho.device_types ON hoanoho.device_types.dtype_id = hoanoho.devices.dtype_id '+
+						'LEFT OUTER JOIN hoanoho.bindata ON hoanoho.bindata.binid = '+
+							'CASE WHEN (fhem.current.VALUE = \'on\' or fhem.current.VALUE = \'closed\') AND hoanoho.device_types.image_on_id is not null and fhem.current.READING = \'state\' THEN '+
+								'hoanoho.device_types.image_on_id '+
+							'WHEN (fhem.current.VALUE = \'off\' or fhem.current.VALUE = \'open\') AND hoanoho.device_types.image_on_id is not null and fhem.current.READING = \'state\' THEN '+
+								'hoanoho.device_types.image_off_id '+
 							'ELSE '+
 								'null '+
 							'END '+
-						'JOIN homie.types on homie.types.type_id = homie.device_types.type_id '+
+						'JOIN hoanoho.types on hoanoho.types.type_id = hoanoho.device_types.type_id '+
 					'WHERE fhem.current.READING in (SELECT DISTINCT fhem.current.READING FROM fhem.current WHERE fhem.current.type != "GLOBAL")';
 
-var sqlquery_gpio = 'select homie.device_data.VALUE, t1.deviceident DEVICE, homie.types.name typename, homie.bindata.data image, homie.devices.dev_id  from homie.device_data ' +
+var sqlquery_gpio = 'select hoanoho.device_data.VALUE, t1.deviceident DEVICE, hoanoho.types.name typename, hoanoho.bindata.data image, hoanoho.devices.dev_id  from hoanoho.device_data ' +
 						'join ( ' +
-								'select max(ddid) ddid, deviceident, max(timestamp) from homie.device_data group by deviceident ' +
+								'select max(ddid) ddid, deviceident, max(timestamp) from hoanoho.device_data group by deviceident ' +
 							  ') t1 on t1.ddid = device_data.ddid ' +
-						'join homie.devices on devices.identifier = t1.deviceident ' +
-						'join homie.device_types on devices.dtype_id = device_types.dtype_id ' +
-						'join homie.types on device_types.type_id = types.type_id ' +
-						'join homie.bindata ON homie.bindata.binid = CASE WHEN (VALUE = \'on\' or VALUE > 0) AND homie.device_types.image_on_id is not null THEN homie.device_types.image_on_id ELSE homie.device_types.image_off_id END ' +
+						'join hoanoho.devices on devices.identifier = t1.deviceident ' +
+						'join hoanoho.device_types on devices.dtype_id = device_types.dtype_id ' +
+						'join hoanoho.types on device_types.type_id = types.type_id ' +
+						'join hoanoho.bindata ON hoanoho.bindata.binid = CASE WHEN (VALUE = \'on\' or VALUE > 0) AND hoanoho.device_types.image_on_id is not null THEN hoanoho.device_types.image_on_id ELSE hoanoho.device_types.image_off_id END ' +
 						'where types.name = "Raspberry Pi GPIO"';
-var sqlquery_weatherwarning = 'select id, name, data from homie.cron_data where name = \'dwd_warning\'';
-var sqlquery_garbage = 'select id, date_format(pickupdate, \'%d.%m.%Y\') pickupdate,text from homie.garbageplan where date(NOW()) = pickupdate -INTERVAL 1 DAY';
+var sqlquery_weatherwarning = 'select id, name, data from hoanoho.cron_data where name = \'dwd_warning\'';
+var sqlquery_garbage = 'select id, date_format(pickupdate, \'%d.%m.%Y\') pickupdate,text from hoanoho.garbageplan where date(NOW()) = pickupdate -INTERVAL 1 DAY';
 
 
 // helper to count nested objects
