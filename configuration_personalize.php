@@ -195,7 +195,7 @@
 		}
 		?>
 		<section class="main_configuration_personal">
-			<h1><span>Allgmeines</span></h1>
+			<h1><span>Allgemeines</span></h1>
 			<form method="POST" enctype="multipart/form-data" name="editUserSetttings" id="editForm">
 				<div id="listitem">
 					<div id="text">Farbe des Notizzettels:</div>
