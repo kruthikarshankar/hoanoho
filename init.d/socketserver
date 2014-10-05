@@ -22,7 +22,7 @@
 # Do NOT "set -e"
 
 # Node.js specific user settings
-JSSOURCE_FILE=/var/www/homie/js/socketserver.js
+JSSOURCE_FILE=/var/www/hoanoho/js/socketserver.js
 JSLOGFILE=/var/log/socketserver.log
 
 

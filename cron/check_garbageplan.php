@@ -1,6 +1,6 @@
 <?
-	require("/var/www/homie/config/dbconfig.inc.php");
-	include "/var/www/homie/includes/pushover.php";
+	require("/var/www/hoanoho/config/dbconfig.inc.php");
+	include "/var/www/hoanoho/includes/pushover.php";
 
 	$dbh = mysql_connect("localhost",$dbusername,$dbpassword) or die("There was a problem with the database connection.");
 	$dbs = mysql_select_db($dbname, $dbh) or die("There was a problem selecting the categories.");

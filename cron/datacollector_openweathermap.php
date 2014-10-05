@@ -2,7 +2,7 @@
 
 // description: http://openweathermap.org/weather-data
 
-require("/var/www/homie/config/dbconfig.inc.php");
+require("/var/www/hoanoho/config/dbconfig.inc.php");
 
 function parseData($key,$in)
 {

@@ -1,5 +1,5 @@
 <?php
-      require("/var/www/homie/config/dbconfig.inc.php");
+      require("/var/www/hoanoho/config/dbconfig.inc.php");
       
       $sql = "select configstring, value from configuration where dev_id = 0 order by configstring asc";
       
