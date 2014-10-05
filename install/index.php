@@ -8,12 +8,16 @@
 	{
 		$dbh = mysql_connect($_POST['dbhostname'],$_POST['dbusername'],$_POST['dbpassword']);
 		$dbs = mysql_select_db($_POST['dbname'], $dbh);
+		$dbf = mysql_select_db($_POST['fhem_dbname'], $dbh);
 
 		if(!$dbh) {
 			$errormsg = "Benutzername oder Passwort fehlerhaft, bitte überprüfen!";	
 		}
 		else if (!$dbs) {
-			$errormsg = "Datenbankname fehlerhaft, bitte überprüfen!";
+			$errormsg = "Datenbankname ".$_POST['dbname']." fehlerhaft, bitte überprüfen!";
+		}
+		else if (!$dbf) {
+			$errormsg = "Datenbankname ".$_POST['fhem_dbname']." fehlerhaft, bitte überprüfen!";
 		}
 		else
 		{
@@ -27,6 +31,7 @@
 				$filecontent .= "\t\$dbpassword = '" . $_POST['dbpassword'] . "';\n";
 				$filecontent .= "\t\$dbhostname = '" . $_POST['dbhostname'] . "';\n";
 				$filecontent .= "\t\$dbname = '" . $_POST['dbname'] . "';\n";
+				$filecontent .= "\t\$fhem_dbname = '" . $_POST['fhem_dbname'] . "';\n";
 				$filecontent .= "?>\n";
 
 				fwrite($fp, $filecontent);
@@ -39,6 +44,7 @@
 				$_SESSION['dbpassword'] = $_POST['dbpassword'];
 				$_SESSION['dbhostname'] = $_POST['dbhostname'];
 				$_SESSION['dbname'] = $_POST['dbname'];
+				$_SESSION['fhem_dbname'] = $_POST['fhem_dbname'];
 
 				header('Location: ./prepdb.php');
 				exit;
@@ -70,6 +76,7 @@
 				<div class="name">MySQL Benutzername</div><div class="value"><input type="text" name="dbusername" value="<? echo $_POST['dbusername']; ?>"></div>
 				<div class="name">MySQL Passwort</div><div class="value"><input type="password" name="dbpassword" value="<? echo $_POST['dbpassword']; ?>"></div>
 				<div class="name">MySQL Datenbankname:</div><div class="value"><input type="text" name="dbname" value="<? echo $_POST['dbname']; ?>"></div>
+				<div class="name">MySQL FHEM DB Name:</div><div class="value"><input type="text" name="fhem_dbname" value="<? echo $_POST['fhem_dbname']; ?>"></div>
 				<p class="clearfix">    
 					<input type="submit" name="submit" value="Weiter">
 				</p>
