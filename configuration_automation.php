@@ -190,7 +190,7 @@
 			$dtype_id = $tmp[0];
 		}
 
-		$url = "http://".$_SERVER['HTTP_HOST']:$_SERVER['SERVER_PORT']."/includes/sendMessageToSocketServer.php?command=\"update_device\"&message=\"".$_POST['dev_id']."\"";
+		$url = "http://".$_SERVER['HTTP_HOST'].":".$_SERVER['SERVER_PORT']."/includes/sendMessageToSocketServer.php?command=\"update_device\"&message=\"".$_POST['dev_id']."\"";
 		$curl = curl_init();
 		curl_setopt($curl, CURLOPT_URL, $url);
 		curl_exec($curl);
