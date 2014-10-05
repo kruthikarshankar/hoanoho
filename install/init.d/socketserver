@@ -24,7 +24,7 @@ JSLOGFILE=/var/log/socketserver.log
 
 
 # PATH should only include /usr/* if it runs after the mountnfs.sh script
-PATH=$PATH:/sbin:/usr/sbin:/bin:/usr/bin
+PATH=$PATH:/usr/local/bin:/sbin:/usr/sbin:/bin:/usr/bin
 DESC="Hoanoho Node.js socket server"
 NAME=socketserver
 PIDFILE=/var/run/$NAME.pid
