@@ -331,10 +331,6 @@
 		    	
 		    	<li class="list-divider">Suchen ...</li>
 	    		<li class="login"><form action="http://www.google.com/search" name="searchForm1"><input type="text" name="q" placeholder="bei Google"></input></form></li>
-				<? if($_SESSION['isAdmin'] == 1) { ?>
-				<li class="login"><form action="http://wiki.springfield.lan/index.php" name="searchForm2"><input type="text" name="search" id="search" placeholder="in Wiki (IT)"></input></form></li>
-				<? } ?>
-				<li class="login"><form action="http://wiki2.springfield.lan/index.php" name="searchForm3"><input type="text" name="search" placeholder="in Wiki (Haus)"></input></form></li>
 			</ul>
 			<br><br><br>
 		</div>

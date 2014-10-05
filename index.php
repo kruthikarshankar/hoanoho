@@ -546,10 +546,6 @@
 				<div id="block_first">
 					<div id="headline_search"></div><div id="headline">Suchen ...</div>
 					<form action="http://www.google.com/search" target="_blank" onsubmit="javascript:setTimeout('document.searchForm1.reset()', 200);" name="searchForm1"><input type="text" name="q" placeholder="bei Google"></input></form>
-					<? if($_SESSION['isAdmin'] == 1) { ?>
-					<form action="http://wiki.springfield.lan/index.php" target="_blank" onsubmit="javascript:setTimeout('document.searchForm2.reset()', 200);" name="searchForm2"><input type="text" name="search" id="search" placeholder="in Wiki (IT)"></input></form>
-					<? } ?>
-					<form action="http://wiki2.springfield.lan/index.php" target="_blank" onsubmit="javascript:setTimeout('document.searchForm3.reset()', 200);" name="searchForm3"><input type="text" name="search" placeholder="in Wiki (Haus)"></input></form>
 				</div>
 				<div id="block">
 					<div id="headline_hyperlink"></div><div id="headline">Links</div>
