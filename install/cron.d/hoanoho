@@ -1,0 +1,23 @@
+# Weather
+*/15 * * * * www-data php -f ${HOANOHO_DIR}/cron/datacollector_openweathermap.php &> /dev/null
+*/15 * * * * www-data php -f ${HOANOHO_DIR}/cron/datacollector_openweathermap_forecast.php &> /dev/null
+*/5 * * * * www-data php -f ${HOANOHO_DIR}/cron/dwd_warning.php &> /dev/null
+
+# Fritzbox callerlist
+*/10 * * * * www-data bash ${HOANOHO_DIR}/cron/getCallerlistFromFritzbox.sh &> /dev/null
+
+# Garbage
+0 18,20 * * * www-data php -f ${HOANOHO_DIR}/cron/check_garbageplan.php &> /dev/null
+0 1 * * * www-data php -f ${HOANOHO_DIR}/cron/import_garbageplan.php &> /dev/null
+
+# Scheduler:
+*/1 * * * * www-data php -f ${HOANOHO_DIR}/cron/scheduler.php &> /dev/null
+
+# State of network devices
+*/1 * * * * www-data php -f ${HOANOHO_DIR}/cron/ping.php &> /dev/null
+
+# DLNA Device Scan
+*/5 * * * * www-data curl -s -k -L http://localhost/tablet/includes/pupnp/cronjob.php &> /dev/null
+
+# Check Batteries
+0 8,20 * * * www-data php -f ${HOANOHO_DIR}/cron/check_batteries.php &> /dev/null
