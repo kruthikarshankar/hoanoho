@@ -43,7 +43,6 @@ INSERT IGNORE INTO `configuration` (`dev_id`, `configstring`, `value`, `title`, 
 (0, 'position_latitude', '', 'Ortsangabe Längengrad', '13.2905', 'text', 'Wetter'),
 (0, 'garbageplan_url', '', 'URL zum CSV Abfallkalender', '', 'text', 'Kalender'),
 (0, 'accessable_ipranges', '', 'IP-Bereiche mit Zufriffserlaubnis', '192.168.1*, 10.0.0.*', 'text', 'Allgemein'),
-(0, 'sharefile_remoteaddress', '', 'Hostname/IP für Dateibereitstellung', 'z.B. cloud.dyndns.org', 'text', 'Allgemein'),
-(0, 'homie_baseurl', '', 'Basis URL', 'http://localhost', 'text', 'Allgemein');
+(0, 'sharefile_remoteaddress', '', 'Hostname/IP für Dateibereitstellung', 'z.B. cloud.dyndns.org', 'text', 'Allgemein');
 
 INSERT IGNORE INTO `groups` (`gid`, `isAdmin`, `grpname`) VALUES (1, 0, 'Benutzer'), (2, 1, 'Administrator');

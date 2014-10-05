@@ -90,10 +90,12 @@ while($device = mysql_fetch_object($result))
   $JSON=$JSON."] }";
 
   $curl = curl_init();
-  curl_setopt($curl, CURLOPT_URL, $__CONFIG['homie_baseurl']."/helper/datacollector.php");
+  curl_setopt($curl, CURLOPT_URL, "http://localhost/helper/datacollector.php");
   curl_setopt($curl, CURLOPT_CUSTOMREQUEST, "POST"); 
   curl_setopt($curl, CURLOPT_POSTFIELDS, "json=".$JSON);
   curl_setopt($curl, CURLOPT_POST, 1);
+  curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, 0);
+  curl_setopt($curl, CURLOPT_FOLLOWLOCATION, 1);
   curl_exec($curl);
   curl_close($curl);
 }

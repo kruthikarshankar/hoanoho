@@ -58,9 +58,11 @@ while ($task = mysql_fetch_object($result))
 			$raspi_output_pin = $configResult['value'];
 
 			// TODO: check if call is localhost then do call without wrapper
-			$url = $__CONFIG['homie_baseurl']."/helper/gpio_wrapper.php?cmd=set&protocol=".$raspi_protocol."&remote_addr=".$raspi_address."&pin=".$raspi_output_pin."&value=".$task->dev_state."&identifier=".$task->identifier;
+			$url = "http://localhost/helper/gpio_wrapper.php?cmd=set&protocol=".$raspi_protocol."&remote_addr=".$raspi_address."&pin=".$raspi_output_pin."&value=".$task->dev_state."&identifier=".$task->identifier;
 			$curl = curl_init();
 			curl_setopt($curl, CURLOPT_URL, $url);
+      curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, 0);
+      curl_setopt($curl, CURLOPT_FOLLOWLOCATION, 1);
 			curl_exec($curl);
 			curl_close($curl);
 		}
@@ -80,9 +82,21 @@ while ($task = mysql_fetch_object($result))
 			}
 
 			if($reading != "")
-				fopen($__CONFIG['homie_baseurl']."/includes/fhem.php?cmd=set&device=".$task->identifier."&value=".$task->dev_state."&reading=".$reading, "r");
+				$url = "http://localhost/includes/fhem.php?cmd=set&device=".$task->identifier."&value=".$task->dev_state."&reading=".$reading;
+  			$curl = curl_init();
+  			curl_setopt($curl, CURLOPT_URL, $url);
+        curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, 0);
+        curl_setopt($curl, CURLOPT_FOLLOWLOCATION, 1);
+  			curl_exec($curl);
+  			curl_close($curl);
 			else
-				fopen($__CONFIG['homie_baseurl']."/includes/fhem.php?cmd=set&device=".$task->identifier."&value=".$task->dev_state, "r");
+				$url = "http://localhost/includes/fhem.php?cmd=set&device=".$task->identifier."&value=".$task->dev_state;
+  			$curl = curl_init();
+  			curl_setopt($curl, CURLOPT_URL, $url);
+        curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, 0);
+        curl_setopt($curl, CURLOPT_FOLLOWLOCATION, 1);
+  			curl_exec($curl);
+  			curl_close($curl);
 		}	
 	}
 }
