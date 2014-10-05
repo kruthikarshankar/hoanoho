@@ -17,7 +17,7 @@
 		}
 		else
 		{
-			$fp = fopen(dirname(__FILE__).'/..//config/dbconfig.inc.php', 'w');
+			$fp = fopen(dirname(__FILE__).'/../config/dbconfig.inc.php', 'w');
 
 			if($fp)
 			{
@@ -62,7 +62,7 @@
 	<section class="install_main">
 		<form class="install" action="index.php" method="post">
 			<h1><span class="log-in">Datenbankkonfiguration</span></h1>
-			<? if(!file_exists(dirname(__FILE__).'/..//config/dbconfig.inc.php')) { ?>
+			<? if(!file_exists(dirname(__FILE__).'/../config/dbconfig.inc.php')) { ?>
 				<? if(strlen($errormsg) > 0) { ?>
 					<div class="errormsg"><? echo $errormsg; ?></div>
 				<? } ?>
