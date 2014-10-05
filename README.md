@@ -24,9 +24,13 @@ node.js needs the following modules to be installed:
 * ws
 
 ## Installation
-Just put these files into your webserver root directory and went through the installer located under **http://yourhostname/install**.
+Just put these files into your webserver root directory and go through the installer located under **http://yourhostname/install**.
+Installation in a subdirectory might not be fully supported at this stage.
+The installer will setup the initial database structure as well as store database credentials in /config/dbconfig.inc.php.
 
 You should also edit the Database credentials in file **js/socketserver.js**.
+Daemonize the Socketserver by using the template startup file in /init.d/socketserver.
+The socketserver runs on port 8000, ensure this is accessible from external (e.g. open your firewall).
 
 Give write access to folders named **pupnp**.
 
