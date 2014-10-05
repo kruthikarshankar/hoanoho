@@ -31,6 +31,7 @@ INSERT IGNORE INTO `network_os` (`os_id`, `name`, `icon`) VALUES
 INSERT IGNORE INTO `configuration` (`dev_id`, `configstring`, `value`, `title`, `hint`, `type`, `category`) VALUES
 (0, 'main_sitetitle', 'Hoanoho', 'Seitentitel', '', 'text', 'Allgemein'),
 (0, 'fbox_address', '', 'Fritzbox Adresse', '', 'text', 'Fritzbox'),
+(0, 'fbox_user', '', 'Fritzbox Benutzer', 'optional', 'text', 'Fritzbox'),
 (0, 'fbox_password', '', 'Fritzbox Passwort', '', 'password', 'Fritzbox'),
 (0, 'main_socketaddress', '', 'Websocket Addresse', 'ws://192.168.0.1:8000/ws', 'text', 'Allgemein'),
 (0, 'dwd_url_bundesland', 'http://www.dwd.de/dyn/app/ws/html/reports/SU_report_de.html', 'DWD URL für das Bundesland', 'Warnungen f. Bundesland - http://www.dwd.de/dyn/app/ws/html/reports/SU_report_de.html', 'text', 'Wetter'),
