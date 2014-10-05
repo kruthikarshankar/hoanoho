@@ -3,7 +3,7 @@
 # this script allows www-data user to enable and disable gpio ports as root
 #
 # required /etc/sudoers Entry:
-#  www-data ALL=NOPASSWD:/var/www/homie/helper/shellexec.sh
+#  www-data ALL=NOPASSWD:/var/www/hoanoho/helper/shellexec.sh
 #
 # parameters:
 # 1: command (enable/disable/set)
