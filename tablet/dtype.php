@@ -475,6 +475,7 @@
 					var el_raspi_address = document.getElementById("gpio_raspi_address" + device_id);
 					var el_outputpin = document.getElementById("gpio_outputpin" + device_id);
 
+          /* #FIXME - make protocol http/https and port dynamic */
 					cmdurl = "http://"+el_raspi_address.value+"/helper/gpio.php?cmd=set&pin="+el_outputpin.value+"&value="+value+"&identifier="+d_identifier+"&t=0";
 
 					mygetrequest.open("GET", cmdurl+value, true);

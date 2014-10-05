@@ -60,6 +60,7 @@
 
 		if(strlen($title) > 0 || strlen($content) > 0)
 		{
+      // #FIXME - make this more dynamic as domains not always start with www ...
 			// set urls to real hyperlinks
 			$content = preg_replace('@((https?://)?([-\w]+\.[-\w\.]+)+\w(:\d+)?(/([-\w/_\.]*(\?\S+)?)?)*)@', '<a href="$1" target="blank">$1</a>', $content);
 			$content = str_replace("href=\"www.","href=\"http://www.",$content);

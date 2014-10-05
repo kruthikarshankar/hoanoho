@@ -23,6 +23,7 @@
 			else
 				$value = $_GET['value'];
 
+      // #FIXME - somehow remove comment or reintegrate in more general terms
 			// http://maggie.springfield.lan:8083/fhem?cmd=set%20az_THERMOSTAT_Climate%20desired-temp%2010
 			if(isset($_GET['reading']))
 				fopen($__CONFIG['fhem_url']."/fhem?cmd=set%20".$_GET['device']."%20".$_GET['reading']."%20".$value, "r");

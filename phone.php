@@ -3,6 +3,7 @@
 	include dirname(__FILE__).'/includes/sessionhandler.php';
 	include dirname(__FILE__).'/includes/getConfiguration.php';
 
+  //FIXME
 	function displayCallBackIcon($i,$number) {
 		print("<form method=\"POST\" action=\"http://moe.springfield.lan/cgi-bin/webcm\" target=\"_self\" id=\"callBackForm".$i."\" name=\"callBackForm".$i."\">".
 			   		"<input type=\"hidden\" name=\"login:command/password\" value=\"sal89te\" id=\"uiPostPassword\">".
@@ -14,6 +15,7 @@
 			  "<a href=\"#\" onclick=\"javascript:document.callBackForm".$i.".submit()\" title=\"Rückruf\"><img src=\"./img/call2.png\"></a>");
 	}
 
+  //FIXME
 	function displayMessageIcon($i,$number) {
 		print("<form method=\"POST\" action=\"http://moe.springfield.lan/cgi-bin/webcm\" target=\"_self\" id=\"messageForm".$i."\" name=\"messageForm".$i."\">".
 			   		"<input type=\"hidden\" name=\"login:command/password\" value=\"sal89te\" id=\"uiPostPassword\">".
