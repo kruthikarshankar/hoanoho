@@ -1,15 +1,10 @@
 #!/bin/bash
 # read and evaluate wslogger.pl output from ISKRA MT681 device and queries the middleware
 
-#FIXME - move config settings to separate file
-PATH_TO_WSLOGGER='/opt/homie/wslogger.pl'
+PATH_TO_WSLOGGER='${HOANOHO_DIR}/cron/wslogger.pl'
 PATH_TO_WSLOGGER_LOGFILE='/tmp/wslogger.log'
 
 
-
-
-
-#FIXME - correct localhost/port etc
 # set serial device
 if [[ "$#" -eq  "0" ]]; then
 	echo "./datacollector_wslogger <url_to_middleware>"

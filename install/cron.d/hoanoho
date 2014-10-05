@@ -10,7 +10,7 @@
 0 18,20 * * * www-data php -f ${HOANOHO_DIR}/cron/check_garbageplan.php &> /dev/null
 0 1 * * * www-data php -f ${HOANOHO_DIR}/cron/import_garbageplan.php &> /dev/null
 
-# Scheduler:
+# Scheduler
 */1 * * * * www-data php -f ${HOANOHO_DIR}/cron/scheduler.php &> /dev/null
 
 # State of network devices

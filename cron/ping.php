@@ -1,6 +1,6 @@
 <?
-
-require("/var/www/hoanoho/config/dbconfig.inc.php");
+$HOANOHO_DIR = exec('. /etc/environment; echo $HOANOHO_DIR');
+require($HOANOHO_DIR."/config/dbconfig.inc.php");
 
 $dbh = mysql_connect("localhost",$dbusername,$dbpassword) or die("There was a problem with the database connection.");
 $dbs = mysql_select_db($dbname, $dbh) or die("There was a problem selecting the categories.");
@@ -60,5 +60,4 @@ for($i = 1; $i <= $count[0]; $i++)
 	
 	sleep(0.5);
 }
-
 ?>

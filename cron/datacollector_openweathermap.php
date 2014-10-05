@@ -1,8 +1,8 @@
 <?
-
 // description: http://openweathermap.org/weather-data
 
-require("/var/www/hoanoho/config/dbconfig.inc.php");
+$HOANOHO_DIR = exec('. /etc/environment; echo $HOANOHO_DIR');
+require($HOANOHO_DIR."/config/dbconfig.inc.php");
 
 function parseData($key,$in)
 {
