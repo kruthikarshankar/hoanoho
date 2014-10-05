@@ -1,4 +1,4 @@
-<?php
+<?
 
 require(dirname(__FILE__)."/../config/dbconfig.inc.php");
 

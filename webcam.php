@@ -129,8 +129,7 @@
 							echo "activeModalIsWebcamLiveStream = \"yes\";";
 							echo "imagebox = document.getElementById(\"webcamstream_img".$webcam->dev_id."\");";
 							echo "if(imagebox != null && device_id == ".$webcam->dev_id.") {";
-							echo "	imagebox.src = 'http: //
-".$cam_ipaddress.":".$cam_port."/videostream.cgi?user=".$cam_username."&pwd=".$cam_password."&resolution=32&rate=0';";
+							echo "	imagebox.src = 'http://".$cam_ipaddress.":".$cam_port."/videostream.cgi?user=".$cam_username."&pwd=".$cam_password."&resolution=32&rate=0';";
 							echo "}";
 						}
 					}
