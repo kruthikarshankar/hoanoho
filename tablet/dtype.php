@@ -1,6 +1,6 @@
 <?
-	include dirname(__FILE__).'/..//includes/dbconnection.php';
-	include dirname(__FILE__).'/..//includes/getConfiguration.php';
+	include dirname(__FILE__).'/../includes/dbconnection.php';
+	include dirname(__FILE__).'/../includes/getConfiguration.php';
 	include dirname(__FILE__).'/..//tablet/includes/device_optimizer.php';
 
 	header("Cache-Control: no-cache, must-revalidate"); // HTTP/1.1

@@ -1,7 +1,7 @@
 <?
-	include dirname(__FILE__).'/..//includes/dbconnection.php';
-	include dirname(__FILE__).'/..//includes/getConfiguration.php';
-	include dirname(__FILE__).'/..//includes/dwd_parser.php';
+	include dirname(__FILE__).'/../includes/dbconnection.php';
+	include dirname(__FILE__).'/../includes/getConfiguration.php';
+	include dirname(__FILE__).'/../includes/dwd_parser.php';
 
 	header("Cache-Control: no-cache, must-revalidate"); // HTTP/1.1
 	header("Expires: Sat, 26 Jul 1997 05:00:00 GMT"); // Date in the past

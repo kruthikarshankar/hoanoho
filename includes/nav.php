@@ -1,5 +1,5 @@
 <?
-	include dirname(__FILE__).'/..//includes/sessionhandler.php';
+	include dirname(__FILE__).'/../includes/sessionhandler.php';
 ?>
 
 <script type="text/javascript">

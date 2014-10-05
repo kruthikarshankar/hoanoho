@@ -1,7 +1,7 @@
 <?
 
-include dirname(__FILE__).'/..//includes/dbconnection.php';
-include dirname(__FILE__).'/..//includes/sessionhandler.php';
+include dirname(__FILE__).'/../includes/dbconnection.php';
+include dirname(__FILE__).'/../includes/sessionhandler.php';
 
 if(isset($_GET['id']) && isset($_GET['pos_x']) && isset($_GET['pos_y']))
 {

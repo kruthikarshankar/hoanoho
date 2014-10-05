@@ -1,6 +1,6 @@
 <?
-	include dirname(__FILE__).'/..//includes/simple_html_dom.php';
-	include dirname(__FILE__).'/..//includes/getConfiguration.php';
+	include dirname(__FILE__).'/../includes/simple_html_dom.php';
+	include dirname(__FILE__).'/../includes/getConfiguration.php';
 
 	/* ************************** 
 	   DWD Wetterreport für das Bundesland
