@@ -1,19 +1,16 @@
 #! /bin/sh
 ### BEGIN INIT INFO
-# Provides:          skeleton
+# Provides:          socketserver
 # Required-Start:    $remote_fs $syslog $all
 # Required-Stop:     $remote_fs $syslog
 # Default-Start:     2 3 4 5
 # Default-Stop:      0 1 6
-# Short-Description: Example initscript
-# Description:       This file should be used to construct scripts to be
-#                    placed in /etc/init.d.
+# Short-Description: Hoanoho Node.js socket server
+# Description:       Hoanoho Node.js socket server
 ### END INIT INFO
 
-# Author: Foo Bar <foobar@baz.org>
+# Author: Julian Pawlowski <jp@jps-networks.eu>
 #
-# Please remove the "Author" lines above and replace them
-# with your own name if you copy and modify this script.
 
 #
 # INSTALL FOREVER: npm install forever --global
@@ -22,13 +19,13 @@
 # Do NOT "set -e"
 
 # Node.js specific user settings
-JSSOURCE_FILE=/var/www/hoanoho/js/socketserver.js
+JSSOURCE_FILE=${HOANOHO_DIR}/js/socketserver.js
 JSLOGFILE=/var/log/socketserver.log
 
 
 # PATH should only include /usr/* if it runs after the mountnfs.sh script
 PATH=$PATH:/sbin:/usr/sbin:/bin:/usr/bin
-DESC="node.js Homeautomation SocketServer"
+DESC="Hoanoho Node.js socket server"
 NAME=socketserver
 PIDFILE=/var/run/$NAME.pid
 SCRIPTNAME=/etc/init.d/$NAME
