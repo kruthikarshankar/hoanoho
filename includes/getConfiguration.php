@@ -1,5 +1,5 @@
 <?php
-	include $_SERVER['DOCUMENT_ROOT'].'/includes/dbconnection.php';
+	include dirname(__FILE__).'/..//includes/dbconnection.php';
 
 	$sql = "select configstring, value from configuration where dev_id = 0 order by configstring asc";
 	$result = mysql_query($sql);

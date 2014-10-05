@@ -1,6 +1,6 @@
 <?
 
-include $_SERVER['DOCUMENT_ROOT'].'/includes/dbconnection.php';
+include dirname(__FILE__).'/..//includes/dbconnection.php';
 
 if(isset($_GET['uid']) && isset($_GET['backgroundimage']))
 {

@@ -1,7 +1,7 @@
 <?
-	include $_SERVER['DOCUMENT_ROOT'].'/includes/dbconnection.php';
-	include $_SERVER['DOCUMENT_ROOT'].'/includes/sessionhandler.php';
-	include $_SERVER['DOCUMENT_ROOT'].'/includes/getConfiguration.php';
+	include dirname(__FILE__).'/includes/dbconnection.php';
+	include dirname(__FILE__).'/includes/sessionhandler.php';
+	include dirname(__FILE__).'/includes/getConfiguration.php';
 ?>
 
 <?
@@ -317,7 +317,7 @@
 		<link rel="stylesheet" href="./css/report.css" type="text/css" media="screen" title="no title" charset="UTF-8">
 		<link rel="stylesheet" href="./css/nav.css" type="text/css" media="screen" title="no title" charset="UTF-8">
 
-		<? include $_SERVER['DOCUMENT_ROOT'].'/includes/getUserSettings.php'; ?> 
+		<? include dirname(__FILE__).'/includes/getUserSettings.php'; ?> 
 
 		<script type="text/javascript" src="./js/jquery.min.js"></script>
 		<script language="javascript" type="text/javascript" src="./js/flot/jquery.flot.js"></script>
@@ -442,7 +442,7 @@
 		<title><? echo $__CONFIG['main_sitetitle'] ?> - Auswertung <? echo $reportname." ".$reportyear; ?> (letzte <? echo $range." ".($reporttype == "manual" ? "Einträge" : "Tage");?>)</title>
 	</head>
 <body>
-	<? require($_SERVER['DOCUMENT_ROOT'].'/includes/nav.php'); ?>
+	<? require(dirname(__FILE__).'/includes/nav.php'); ?>
 
 	<section class="main_report_graph">
 		<div id="headline"><h1><span><? echo $reportname; ?></span></h1></div><div id="reportyear"><form method="POST" enctype="multipart/form-data" name="yearForm" id="reportYearForm"><? displayReportYears($reportyear, $reporttype, $_GET['rid']); ?></form></div><div id="range"><form method="POST" enctype="multipart/form-data" name="rangeForm" id="rangeForm"><? displayRange($range, $reporttype); ?></form></div>

@@ -21,8 +21,8 @@ use at\mkweb\upnp\frontend\AuthManager;
 
 require_once('src/at/mkweb/upnp/init.php');
 
-include $_SERVER['DOCUMENT_ROOT'].'/includes/dbconnection.php';
-include $_SERVER['DOCUMENT_ROOT'].'/includes/getConfiguration.php';
+include dirname(__FILE__).'/..//includes/dbconnection.php';
+include dirname(__FILE__).'/..//includes/getConfiguration.php';
 
 header("Cache-Control: no-cache, must-revalidate"); // HTTP/1.1
 header("Expires: Sat, 26 Jul 1997 05:00:00 GMT"); // Date in the past
@@ -103,7 +103,7 @@ $css = array(
 
 </head>
 <body>
-    <? include $_SERVER['DOCUMENT_ROOT']."/tablet/includes/header.php"; ?>
+    <? include dirname(__FILE__)."/../../header.php"; ?>
     <div id="boxarea">
         <? 
         print("<div id=\"boxitem\" class=\"librarybrowser\">");
@@ -148,7 +148,7 @@ $css = array(
         print("</div>");
         ?>
     </div>
-    <? include $_SERVER['DOCUMENT_ROOT']."/tablet/includes/footer.php"; ?>
+    <? include dirname(__FILE__)."/../../footer.php"; ?>
 </body>
 
 

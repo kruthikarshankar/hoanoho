@@ -1,9 +1,9 @@
 <?
 
-include $_SERVER['DOCUMENT_ROOT'].'/includes/dbconnection.php';
-include $_SERVER['DOCUMENT_ROOT'].'/includes/sessionhandler.php';
-include $_SERVER['DOCUMENT_ROOT'].'/includes/dwd_parser.php';
-include $_SERVER['DOCUMENT_ROOT'].'/includes/getConfiguration.php';
+include dirname(__FILE__).'/includes/dbconnection.php';
+include dirname(__FILE__).'/includes/sessionhandler.php';
+include dirname(__FILE__).'/includes/dwd_parser.php';
+include dirname(__FILE__).'/includes/getConfiguration.php';
 
 function getCurrentOpenWeatherMapData($in_arr)
 {
@@ -170,14 +170,14 @@ switch ($day) {
 		<link rel="stylesheet" href="./css/weather.css" type="text/css" media="screen" title="no title" charset="UTF-8">
 		<link rel="stylesheet" href="./css/nav.css" type="text/css" media="screen" title="no title" charset="UTF-8">
 
-		<? include $_SERVER['DOCUMENT_ROOT'].'/includes/getUserSettings.php'; ?> 
+		<? include dirname(__FILE__).'/includes/getUserSettings.php'; ?> 
 
 		<link rel="apple-touch-icon" href="./img/favicon.ico"/>
 		<link rel="shortcut icon" type="image/x-icon" href="./img/favicon.ico" />
 		<title><? echo $__CONFIG['main_sitetitle'] ?> - Wetterübersicht</title>
 	</head>
 <body>
-	<? require($_SERVER['DOCUMENT_ROOT'].'/includes/nav.php'); ?>
+	<? require(dirname(__FILE__).'/includes/nav.php'); ?>
 
 	<?
 		$weather = array();

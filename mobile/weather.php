@@ -1,8 +1,8 @@
 <?
-	include $_SERVER['DOCUMENT_ROOT'].'/includes/dbconnection.php';
-	include $_SERVER['DOCUMENT_ROOT'].'/includes/sessionhandler.php';
-	include $_SERVER['DOCUMENT_ROOT'].'/includes/getConfiguration.php';
-	include $_SERVER['DOCUMENT_ROOT'].'/includes/dwd_parser.php';
+	include dirname(__FILE__).'/..//includes/dbconnection.php';
+	include dirname(__FILE__).'/..//includes/sessionhandler.php';
+	include dirname(__FILE__).'/..//includes/getConfiguration.php';
+	include dirname(__FILE__).'/..//includes/dwd_parser.php';
 
 	function getCurrentOpenWeatherMapData($in_arr)
 {

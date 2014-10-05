@@ -1,7 +1,7 @@
 <?
-	include $_SERVER['DOCUMENT_ROOT'].'/includes/dbconnection.php';
-	include $_SERVER['DOCUMENT_ROOT'].'/includes/sessionhandler.php';
-	include $_SERVER['DOCUMENT_ROOT'].'/includes/getConfiguration.php';
+	include dirname(__FILE__).'/includes/dbconnection.php';
+	include dirname(__FILE__).'/includes/sessionhandler.php';
+	include dirname(__FILE__).'/includes/getConfiguration.php';
 
 
 	function rotateImage($content, $type, $orientation)
@@ -127,7 +127,7 @@
 		<link rel="stylesheet" href="./css/sharefile.css" type="text/css" media="screen" title="no title" charset="UTF-8">
 		<link rel="stylesheet" href="./css/nav.css" type="text/css" media="screen" title="no title" charset="UTF-8">
 
-		<? include $_SERVER['DOCUMENT_ROOT'].'/includes/getUserSettings.php'; ?> 
+		<? include dirname(__FILE__).'/includes/getUserSettings.php'; ?> 
 
 		<script type="text/javascript" src="./js/nicEdit.js"></script>
 
@@ -142,7 +142,7 @@
 		</script>
 	</head>
 <body>
-	<? require($_SERVER['DOCUMENT_ROOT'].'/includes/nav.php'); ?>
+	<? require(dirname(__FILE__).'/includes/nav.php'); ?>
 
 	<? if(isset($_GET['sid']) && !isset($_GET['cmd'])) { ?>
 		<section class="main">

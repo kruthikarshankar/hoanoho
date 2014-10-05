@@ -1,7 +1,7 @@
 <?
-	include $_SERVER['DOCUMENT_ROOT'].'/includes/dbconnection.php';
-	include $_SERVER['DOCUMENT_ROOT'].'/includes/sessionhandler.php';
-	include $_SERVER['DOCUMENT_ROOT'].'/includes/getConfiguration.php';
+	include dirname(__FILE__).'/includes/dbconnection.php';
+	include dirname(__FILE__).'/includes/sessionhandler.php';
+	include dirname(__FILE__).'/includes/getConfiguration.php';
 
 	
 	if ($_POST['cmd'] == "deletereport" && strlen($_POST['rid']) > 0) 
@@ -86,7 +86,7 @@
 		<link rel="stylesheet" href="./css/report.css" type="text/css" media="screen" title="no title" charset="UTF-8">
 		<link rel="stylesheet" href="./css/nav.css" type="text/css" media="screen" title="no title" charset="UTF-8">
 
-		<? include $_SERVER['DOCUMENT_ROOT'].'/includes/getUserSettings.php'; ?> 
+		<? include dirname(__FILE__).'/includes/getUserSettings.php'; ?> 
 
 		<script type="text/javascript" src="./js/jscolor/jscolor.js"></script>
 
@@ -140,7 +140,7 @@
 		</script>
 	</head>
 <body>
-	<? require($_SERVER['DOCUMENT_ROOT'].'/includes/nav.php'); ?>
+	<? require(dirname(__FILE__).'/includes/nav.php'); ?>
 
 	<?
 	// editiermodus

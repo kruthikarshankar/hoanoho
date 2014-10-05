@@ -133,9 +133,9 @@
 </script>
 
 <?
-	include $_SERVER['DOCUMENT_ROOT'].'/includes/dbconnection.php';
-	include $_SERVER['DOCUMENT_ROOT'].'/includes/sessionhandler.php';
-	include $_SERVER['DOCUMENT_ROOT'].'/includes/getConfiguration.php';
+	include dirname(__FILE__).'/includes/dbconnection.php';
+	include dirname(__FILE__).'/includes/sessionhandler.php';
+	include dirname(__FILE__).'/includes/getConfiguration.php';
 
 	function displayDevices($dev_id,$sch_id) {
 		$selected = false;
@@ -252,14 +252,14 @@
 		
 		<link rel="stylesheet" href="./css/nav.css" type="text/css" media="screen" title="no title" charset="UTF-8">
 
-		<? include $_SERVER['DOCUMENT_ROOT'].'/includes/getUserSettings.php'; ?> 
+		<? include dirname(__FILE__).'/includes/getUserSettings.php'; ?> 
 
 		<link rel="apple-touch-icon" href="./img/favicon.ico"/>
 		<link rel="shortcut icon" type="image/x-icon" href="./img/favicon.ico" />
 		<title><? echo $__CONFIG['main_sitetitle'] ?> - Einstellungen - Zeitplaner</title>
 	</head>
 <body>
-	<? require($_SERVER['DOCUMENT_ROOT'].'/includes/nav.php'); ?>
+	<? require(dirname(__FILE__).'/includes/nav.php'); ?>
 
 	<section class="main_configuration_scheduler">
 		<h1><span>Zeitpläne</span></h1>
