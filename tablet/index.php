@@ -54,8 +54,7 @@
                             //suppress error
                         }
                     }
-                } elseif (window.XMLHttpRequest) // if Mozilla, Safari etc
-
+                } else if (window.XMLHttpRequest) // if Mozilla, Safari etc
                     return new XMLHttpRequest()
                 else
                     return false
@@ -101,7 +100,7 @@
                                 el_value.innerHTML = "Ausgeschaltet";
                             else
                                 el_value.innerHTML = "---";
-                        } elseif (messageObj['typename'] == "Temperaturregelung") {
+                        } else if (messageObj['typename'] == "Temperaturregelung") {
                             var split = [];
                             var splitSign = ", ";
 
@@ -162,7 +161,7 @@
                             }
 
                             el_value.innerHTML = value;
-                        } elseif (messageObj['typename'] == "Jalousie") {
+                        } else if (messageObj['typename'] == "Jalousie") {
                             switch (messageObj['reading']) {
                                 case 'pct':
                                     if(messageObj['value'] == 100)
@@ -239,7 +238,7 @@
                                             '</div>'+
                                           '</div>';
                             $('#griditem').before(content);
-                        } elseif ($('#boxitem.alarm.weather','#griditem').length > 0 && message.length > 0 && message != last_weatherwarning) {
+                        } else if ($('#boxitem.alarm.weather','#griditem').length > 0 && message.length > 0 && message != last_weatherwarning) {
                             last_weatherwarning = message;
 
                             // refresh warning box
@@ -251,12 +250,12 @@
                             $('#boxitem.alarm.weather #rows #message','#griditem').html(message);
 
                             console.log('refresh');
-                        } elseif ($('#boxitem.alarm.weather','#griditem').length > 0 && message.length == 0) {
+                        } else if ($('#boxitem.alarm.weather','#griditem').length > 0 && message.length == 0) {
                             // delete warning box
                             $('#boxitem.alarm.weather','#griditem').parent().parent().parent().parent().remove();
                             last_weatherwarning = null;
                         }
-                    } elseif (messageObj['typename'] == "garbage") {
+                    } else if (messageObj['typename'] == "garbage") {
                         var element = $('#griditem #boxitem.info.garbage');
                         var garbageid = messageObj['value']['id'];
                         var message = messageObj['value']['text'];
@@ -280,7 +279,7 @@
                                             '</div>'+
                                           '</div>';
                             $('#griditem').before(content);
-                        } elseif ($('#boxitem.info.garbage','#griditem').length != 0 && message.length > 0) {
+                        } else if ($('#boxitem.info.garbage','#griditem').length != 0 && message.length > 0) {
                             // append message
                             if ($('#boxitem.info.garbage #message_'+garbageid,'#griditem').length == 0) {
                                 $('#boxitem.info.garbage #rows','#griditem').append('<div id="message_'+garbageid+'">'+message2+'</div>');

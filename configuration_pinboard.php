@@ -95,7 +95,7 @@ function displayDeviceData($dev_id, $dev_value)
 
             if (isNaN(chr2)) {
                 enc3 = enc4 = 64;
-            } elseif (isNaN(chr3)) {
+            } else if (isNaN(chr3)) {
                 enc4 = 64;
             }
             output += keyStr.charAt(enc1) + keyStr.charAt(enc2) + keyStr.charAt(enc3) + keyStr.charAt(enc4);
@@ -147,9 +147,9 @@ function displayDeviceData($dev_id, $dev_value)
                     type = file.type;
 
                     if (file.name.length < 1) {
-                    } elseif (file.size > 100000) {
+                    } else if (file.size > 100000) {
                         alert("Datei ist zu groß!");
-                    } elseif (file.type != 'image/png' && file.type != 'image/jpg' && !file.type != 'image/gif' && file.type != 'image/jpeg') {
+                    } else if (file.type != 'image/png' && file.type != 'image/jpg' && !file.type != 'image/gif' && file.type != 'image/jpeg') {
                         alert("Datei ist kein Bild!");
                     } else {
                         var reader = new FileReader();

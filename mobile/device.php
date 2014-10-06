@@ -50,7 +50,7 @@
 
                     if (isNaN(chr2)) {
                         enc3 = enc4 = 64;
-                    } elseif (isNaN(chr3)) {
+                    } else if (isNaN(chr3)) {
                         enc4 = 64;
                     }
                     output += keyStr.charAt(enc1) + keyStr.charAt(enc2) + keyStr.charAt(enc3) + keyStr.charAt(enc4);
@@ -71,7 +71,7 @@
                             //suppress error
                         }
                     }
-                } elseif (window.XMLHttpRequest) // if Mozilla, Safari etc
+                } else if (window.XMLHttpRequest) // if Mozilla, Safari etc
 
                     return new XMLHttpRequest()
                 else
@@ -108,7 +108,7 @@
                                     if (messageObj['value'] == "on" || messageObj['value'] == "1") {
                                         css_class = "toggle active";
                                         el_value.className = css_class;
-                                    } elseif (messageObj['value'] == "off" || messageObj['value'] == "0") {
+                                    } else if (messageObj['value'] == "off" || messageObj['value'] == "0") {
                                         css_class = "toggle";
                                         el_value.className = css_class;
                                     }
@@ -117,7 +117,7 @@
                                     el_value.innerHTML = "<div class=\"toggle-handle\"></div>";
                                     break;
                             }
-                        } elseif (messageObj['typename'] == "Temperaturregelung") {
+                        } else if (messageObj['typename'] == "Temperaturregelung") {
                             switch (messageObj['reading']) {
                                 case 'desired-temp': // set temperature
                                     var postfix = '';
@@ -142,7 +142,7 @@
                                 default:
                                     break;
                             }
-                        } elseif (messageObj['typename'] == "Jalousie") {
+                        } else if (messageObj['typename'] == "Jalousie") {
                             switch (messageObj['reading']) {
                                 case 'pct': // set blinds
                                     var postfix = '';
@@ -226,7 +226,7 @@
                             setvalue = 30.0;
 
                         setvalue = setvalue.toFixed(1);
-                    } elseif (value == "down") {
+                    } else if (value == "down") {
                         setvalue = parseFloat(current_value) - parseFloat(stepsize);
                         setvalue = setvalue.toFixed(1);
 
@@ -243,7 +243,7 @@
                         mygetrequest.send(null);
                         setTimeout(function () { disableValueRefreshForDeviceID = null; }, 3000);
                     }, 2000);
-                } elseif (type == "Jalousie") {
+                } else if (type == "Jalousie") {
                     if(timeout) window.clearTimeout(timeout);
 
                     if (value != "on" && value != "off" && value != "stop") {
@@ -264,7 +264,7 @@
                                 value = 100;
 
                             el_soll.innerHTML = value+"%";
-                        } elseif (direction == "down") {
+                        } else if (direction == "down") {
                             value = parseInt(value) - parseInt(stepsize);
                             if(value < 0)
                                 value = 0;
@@ -309,7 +309,7 @@
                             mygetrequest.open("GET", cmdurl+value, true);
                             mygetrequest.send(null);
                         }, 2000);
-                    } elseif (value == "down") {
+                    } else if (value == "down") {
                         value = parseInt(current_value) - parseInt(stepsize);
                         if(value < 0)
                             value = 0;
@@ -336,7 +336,7 @@
                         mygetrequest.open("GET", cmdurl+value, true);
                         mygetrequest.send(null);
                     }, 2000);
-                } elseif (type == "Raspberry Pi GPIO") {
+                } else if (type == "Raspberry Pi GPIO") {
                     var el_raspi_address = document.getElementById("gpio_raspi_address" + device_id);
                     var el_outputpin = document.getElementById("gpio_outputpin" + device_id);
 

@@ -67,8 +67,7 @@
                             //suppress error
                         }
                     }
-                } elseif (window.XMLHttpRequest) // if Mozilla, Safari etc
-
+                } else if (window.XMLHttpRequest) // if Mozilla, Safari etc
                     return new XMLHttpRequest()
                 else
                     return false
@@ -118,7 +117,7 @@
                                 case 'state':
                                     if (messageObj['value'] == "on" || messageObj['value'] == "1") {
                                         css_class = "toggle active";
-                                    } elseif (messageObj['value'] == "off" || messageObj['value'] == "0") {
+                                    } else if (messageObj['value'] == "off" || messageObj['value'] == "0") {
                                         css_class = "toggle";
                                     } else {
                                         css_class = "toggle";
@@ -129,7 +128,7 @@
                                     el_value.innerHTML = "<div class=\"toggle-handle\"></div>";
                                     break;
                             }
-                        } elseif (messageObj['typename'] == "Temperaturregelung") {
+                        } else if (messageObj['typename'] == "Temperaturregelung") {
                             var postfix = ' \xB0C';
 
                             switch (messageObj['reading']) {
@@ -155,7 +154,7 @@
                                 default:
                                     break;
                             }
-                        } elseif (messageObj['typename'] == "Tuer/Fenster-Kontakt") {
+                        } else if (messageObj['typename'] == "Tuer/Fenster-Kontakt") {
                             switch (messageObj['reading']) {
                                 case 'state':
                                     var translated_value = "";
@@ -173,7 +172,7 @@
                                     $('#battery'+messageObj['dev_id']).text(messageObj['value']);
                                     break;
                             }
-                        } elseif (messageObj['typename'] == "Jalousie") {
+                        } else if (messageObj['typename'] == "Jalousie") {
                             switch (messageObj['reading']) {
                                 case 'pct': // set blinds
                                     var postfix = '';
@@ -235,7 +234,7 @@
                                             '</div>'+
                                           '</div>';
                             $('#griditem').before(content);
-                        } elseif ($('#boxitem.alarm.weather','#griditem').length > 0 && message.length > 0 && message != last_weatherwarning) {
+                        } else if ($('#boxitem.alarm.weather','#griditem').length > 0 && message.length > 0 && message != last_weatherwarning) {
                             last_weatherwarning = message;
 
                             // refresh warning box
@@ -247,12 +246,12 @@
                             $('#boxitem.alarm.weather #rows #message','#griditem').html(message);
 
                             console.log('refresh');
-                        } elseif ($('#boxitem.alarm.weather','#griditem').length > 0 && message.length == 0) {
+                        } else if ($('#boxitem.alarm.weather','#griditem').length > 0 && message.length == 0) {
                             // delete warning box
                             $('#boxitem.alarm.weather','#griditem').parent().parent().parent().parent().remove();
                             last_weatherwarning = null;
                         }
-                    } elseif (messageObj['typename'] == "garbage") {
+                    } else if (messageObj['typename'] == "garbage") {
                         var element = $('#griditem #boxitem.info.garbage');
                         var garbageid = messageObj['value']['id'];
                         var message = messageObj['value']['text'];
@@ -276,7 +275,7 @@
                                             '</div>'+
                                           '</div>';
                             $('#griditem').before(content);
-                        } elseif ($('#boxitem.info.garbage','#griditem').length != 0 && message.length > 0) {
+                        } else if ($('#boxitem.info.garbage','#griditem').length != 0 && message.length > 0) {
                             // append message
                             if ($('#boxitem.info.garbage #message_'+garbageid,'#griditem').length == 0) {
                                 $('#boxitem.info.garbage #rows','#griditem').append('<div id="message_'+garbageid+'">'+message2+'</div>');
@@ -335,7 +334,7 @@
                         setvalue = setvalue.toFixed(1);
 
                         el_soll.value = setvalue+postfix;
-                    } elseif (value == "down") {
+                    } else if (value == "down") {
                         if(setvalue == "off")
                             setvalue = 4.5;
 
@@ -354,7 +353,7 @@
                         mygetrequest.open("GET", cmdurl+"&device="+d_identifier+"&value="+setvalue+"&reading="+reading, true);
                         mygetrequest.send(null);
                     }, 2000);
-                } elseif (type == "Jalousie") {
+                } else if (type == "Jalousie") {
                     if(timeout) window.clearTimeout(timeout);
 
                     if (value != "on" && value != "off" && value != "stop") {
@@ -375,7 +374,7 @@
                                 value = 100;
 
                             el_soll.value = value+'%';
-                        } elseif (direction == "down") {
+                        } else if (direction == "down") {
                             if(el_soll.value.indexOf('%') > -1)
                                 value = el_soll.value.split("%")[0];
 
@@ -404,7 +403,7 @@
                             mygetrequest.send(null);
                         }, 2000);
                     }
-                } elseif (type == "Dimmer") {
+                } else if (type == "Dimmer") {
                     var el_soll = document.getElementById("slider_value" + device_id);
 
                     el_soll.value = value;
@@ -415,7 +414,7 @@
                         mygetrequest.open("GET", cmdurl+value, true);
                         mygetrequest.send(null);
                     }, 2000);
-                } elseif (type == "Raspberry Pi GPIO") {
+                } else if (type == "Raspberry Pi GPIO") {
                     var el_raspi_address = document.getElementById("gpio_raspi_address" + device_id);
                     var el_outputpin = document.getElementById("gpio_outputpin" + device_id);
 

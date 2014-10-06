@@ -332,8 +332,7 @@
                         //suppress error
                     }
                 }
-            } elseif (window.XMLHttpRequest) // if Mozilla, Safari etc
-
+            } else if (window.XMLHttpRequest) // if Mozilla, Safari etc
                 return new XMLHttpRequest()
             else
                 return false
@@ -485,7 +484,7 @@
                     eltmp.style.backgroundSize = "60% auto";
                     eltmp.style.backgroundImage = "url(./img/photo_placeholder.png)";
                 }
-            } elseif (module == "type") {
+            } else if (module == "type") {
                 title.innerHTML = "Gerätetyp Icons";
 
                 eltmp = document.getElementById("section_floor");
@@ -558,12 +557,12 @@
             if (basetype == "Webcam") {
                 var elem = document.getElementById("properties_webcam_"+dev_id);
                 elem.style.display = "block";
-            } elseif (basetype == "Datensammler") {
+            } else if (basetype == "Datensammler") {
                 showDataCollectorIdentifierList(dev_id);
 
                 var elem = document.getElementById("properties_datacollector_"+dev_id);
                 elem.style.display = "block";
-            } elseif (basetype == "Raspberry Pi GPIO") {
+            } else if (basetype == "Raspberry Pi GPIO") {
                 var elem = document.getElementById("properties_gpio_"+dev_id);
                 elem.style.display = "block";
             } else {

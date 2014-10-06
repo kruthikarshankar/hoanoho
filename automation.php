@@ -91,7 +91,7 @@
 
                 if (isNaN(chr2)) {
                     enc3 = enc4 = 64;
-                } elseif (isNaN(chr3)) {
+                } else if (isNaN(chr3)) {
                     enc4 = 64;
                 }
                 output += keyStr.charAt(enc1) + keyStr.charAt(enc2) + keyStr.charAt(enc3) + keyStr.charAt(enc4);
@@ -112,7 +112,7 @@
                         //suppress error
                     }
                 }
-            } elseif (window.XMLHttpRequest) // if Mozilla, Safari etc
+            } else if (window.XMLHttpRequest) // if Mozilla, Safari etc
 
                 return new XMLHttpRequest()
             else

@@ -72,7 +72,7 @@
 
                     if (isNaN(chr2)) {
                         enc3 = enc4 = 64;
-                    } elseif (isNaN(chr3)) {
+                    } else if (isNaN(chr3)) {
                         enc4 = 64;
                     }
                     output += keyStr.charAt(enc1) + keyStr.charAt(enc2) + keyStr.charAt(enc3) + keyStr.charAt(enc4);
@@ -108,7 +108,7 @@
                                 value = "---";
 
                             el_value.firstChild.nodeValue = value;
-                        } elseif (messageObj['typename'] == "Temperaturregelung") {
+                        } else if (messageObj['typename'] == "Temperaturregelung") {
                             var split = [];
                             var splitSign = ", ";
 
@@ -169,7 +169,7 @@
                             }
 
                             el_value.firstChild.nodeValue = value;
-                        } elseif (messageObj['typename'] == "Jalousie") {
+                        } else if (messageObj['typename'] == "Jalousie") {
                             switch (messageObj['reading']) {
                                 case 'pct':
                                     if(messageObj['value'] == 100)

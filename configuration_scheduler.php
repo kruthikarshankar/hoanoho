@@ -23,7 +23,7 @@
                 selectobj.options.selectedIndex = 0;
             else if(value == "on")
                 selectobj.options.selectedIndex = 1;
-        } elseif (deviceArr[1] == "Dimmer") {
+        } else if (deviceArr[1] == "Dimmer") {
             div.innerHTML = "<select id='dev_state"+sch_id+"' name='dev_state'></select>";
             var selectobj = document.getElementById("dev_state"+sch_id);
 
@@ -55,7 +55,7 @@
                 selectobj.options.selectedIndex = 9;
             else if(value == "100")
                 selectobj.options.selectedIndex = 10;
-        } elseif (deviceArr[1] == "Temperaturregelung") {
+        } else if (deviceArr[1] == "Temperaturregelung") {
             div.innerHTML = "<select id='dev_state"+sch_id+"' name='dev_state'></select>";
             var selectobj = document.getElementById("dev_state"+sch_id);
 
