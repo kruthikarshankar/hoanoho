@@ -25,12 +25,44 @@
         return ("0" + D).slice(-2) + "." + ("0" + M).slice(-2) + "." + Y;
     }
 
+    /**
+     * Returns the week number for this date.  dowOffset is the day of week the week
+     * "starts" on for your locale - it can be from 0 to 6. If dowOffset is 1 (Monday),
+     * the week returned is the ISO 8601 week number.
+     * @param int dowOffset
+     * @return int
+     */
+    Date.prototype.getWeek = function (dowOffset) {
+        dowOffset = typeof(dowOffset) == 'int' ? dowOffset : 0;
+        var newYear = new Date(this.getFullYear(),0,1);
+        var day = newYear.getDay() - dowOffset;
+        day = (day >= 0 ? day : day + 7);
+        var daynum = Math.floor((this.getTime() - newYear.getTime() -
+        (this.getTimezoneOffset()-newYear.getTimezoneOffset())*60000)/86400000) + 1;
+        var weeknum;
+
+        if (day < 4) {
+            weeknum = Math.floor((daynum+day-1)/7) + 1;
+            if (weeknum > 52) {
+                nYear = new Date(this.getFullYear() + 1,0,1);
+                nday = nYear.getDay() - dowOffset;
+                nday = nday >= 0 ? nday : nday + 7;
+                weeknum = nday < 4 ? 1 : 53;
+            }
+        } else {
+            weeknum = Math.floor((daynum+day-1)/7);
+        }
+
+        return weeknum;
+    };
+
     //
     setInterval(function () {
                     var navWochentag = new Array("Sonntag", "Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag");
                     var el_navClock = document.getElementById("navclock");
                     var el_navClockIcon = document.getElementById("navclockicon");
                     var navNow = new Date();
+                    var navNowWeek = ("0" + navNow.getWeek(1)).slice(-2);
                     var navNowDay = ("0" + navNow.getDate()).slice(-2);
                     var navNowMonth = ("0" + eval(navNow.getMonth()+1)).slice(-2);
                     var navNowHour = ("0" + navNow.getHours()).slice(-2);
@@ -53,8 +85,7 @@
                         if(prevDay != navNowDay)
                             el_navClockIcon.innerHTML = "<img src=\"./img/" + navClockImage + "\" style=\"margin-top:-3px;\">";
 
-                        //el_navClock.innerHTML = "<b>" + navWochentag[navNow.getDay()] + "</b>, <b>" + navNowDay + "." + navNowMonth + "." + navNow.getFullYear() + "</b> - <b>" + navNowHour + ":" + navNowMinute + ":" + navNowSecond + "</b> Uhr";
-                        el_navClock.innerHTML = "<b>" + navWochentag[navNow.getDay()] + "</b>, <b>" + navNowDay + "." + navNowMonth + "." + navNow.getFullYear() + "</b> - <b>" + navNowHour + ":" + navNowMinute + "</b> Uhr";
+                        el_navClock.innerHTML = "<b>" + navWochentag[navNow.getDay()] + "</b>, <b>" + navNowDay + "." + navNowMonth + "." + navNow.getFullYear() + "</b> - <b>" + navNowHour + ":" + navNowMinute + "</b> Uhr<br />Woche" + navNowWeek;
                         prevDay = navNowDay;
                     }
                 }, 1000);
