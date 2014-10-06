@@ -74,7 +74,7 @@
         <div id="entry">
             <?php echo "<div id=\"icon\"><img src=\"./img/telefon_" . $row->typ . ".png\"></div>"; ?>
             <div id="date"><?php echo $row->date; ?></div>
-            <div id="number"><?php if(strlen($row->name) > 0) echo utf8_encode($row->name); else echo $row->rufnummer; ?></div>
+            <div id="number"><?php if(strlen($row->name) > 0) echo '<a href="tel:'.$row->rufnummer.'">'.utf8_encode($row->name).'</a>'; else echo '<a href="tel:'.$row->rufnummer.'">'.utf8_encode($row->rufnummer).'</a>'; ?></div>
             <div id="line"><?php echo $row->nebenstelle; ?></div>
             <div id="period"><?php echo $row->dauer; ?></div>
             <div id="action">&nbsp;</div>
