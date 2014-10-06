@@ -3,7 +3,7 @@ $HOANOHO_DIR = exec('. /etc/environment; echo $HOANOHO_DIR');
 require($HOANOHO_DIR."/config/dbconfig.inc.php");
 include($HOANOHO_DIR."/includes/pushover.php");
 
-$dbh = mysql_connect("localhost",$dbusername,$dbpassword) or die("There was a problem with the database connection.");
+$dbh = mysql_connect($dbhostname,$dbusername,$dbpassword) or die("There was a problem with the database connection.");
 $dbs = mysql_select_db($dbname, $dbh) or die("There was a problem selecting the categories.");
 
 function pushMessageToUsers($title, $message, $priority)

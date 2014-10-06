@@ -2,7 +2,7 @@
 
 require(dirname(__FILE__)."/../../config/dbconfig.inc.php");
 
-$dbh = mysql_connect("localhost",$dbusername,$dbpassword) or die("There was a problem with the database connection.");
+$dbh = mysql_connect($dbhostname,$dbusername,$dbpassword) or die("There was a problem with the database connection.");
 $dbs = mysql_select_db($dbname, $dbh) or die("There was a problem selecting the categories.");
 
 $sql = "select configstring, value from configuration where dev_id = 0 order by configstring asc";
