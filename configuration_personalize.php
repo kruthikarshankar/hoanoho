@@ -128,8 +128,7 @@
                 //suppress error
                }
               }
-             } elseif (window.XMLHttpRequest) // if Mozilla, Safari etc
-
+             } else if (window.XMLHttpRequest) // if Mozilla, Safari etc
               return new XMLHttpRequest()
              else
               return false
