@@ -5,7 +5,7 @@
 ?>
 
 <?php
-    public function displayNoteColors($notecolor)
+    function displayNoteColors($notecolor)
     {
         echo "<select id=\"notecolor\" name=\"notecolor\">";
             echo "<option ".($notecolor == "yellow" ? "selected" : "")." value=\"yellow\">Gelb</option>";
@@ -18,7 +18,7 @@
         echo "</select>&nbsp;";
     }
 
-    public function displayMailserverTypes($type)
+    function displayMailserverTypes($type)
     {
         echo "<select id=\"mailserver_type\" name=\"mailserver_type\">";
             echo "<option ".($type == "POP3" ? "selected" : "")." value=\"POP3\">POP3</option>";
@@ -26,7 +26,7 @@
         echo "</select>&nbsp;";
     }
 
-    public function displayMailserverEncryption($encryption)
+    function displayMailserverEncryption($encryption)
     {
         echo "<select id=\"mailserver_encryption\" name=\"mailserver_encryption\">";
             echo "<option ".($encryption == "" ? "selected" : "")." value=\"\">Keine Verschlüsselung</option>";
