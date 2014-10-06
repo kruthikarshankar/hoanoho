@@ -76,7 +76,7 @@ function displayDeviceData($dev_id, $dev_value)
     <script src="./js/jquery-ui.min.js"></script>
 
     <script type="text/javascript">
-    public function encode(input)
+    function encode(input)
     {
         var keyStr = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=";
         var output = "";

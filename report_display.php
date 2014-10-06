@@ -7,7 +7,7 @@
 <?php
     date_default_timezone_set('Europe/Paris');
 
-    public function displayRange($range, $type)
+    function displayRange($range, $type)
     {
         if ($type == "manual") {
             print("<select name=\"range\" onchange=\"javascript:rangeForm.submit();\">");
@@ -30,7 +30,7 @@
         }
     }
 
-    public function displayReportYears($param_year, $mode, $reportid)
+    function displayReportYears($param_year, $mode, $reportid)
     {
         if($mode == "manual")
             $sql = "SELECT year(savedate) reportyear from reportdata where rid = ".$_GET['rid']." group by year(savedate) order by year(savedate) desc";
@@ -48,7 +48,7 @@
         print("</select>");
     }
 
-    public function calcAveragePerDayForYear($year)
+    function calcAveragePerDayForYear($year)
     {
         $retVal = array();
 
@@ -90,7 +90,7 @@
         return $retVal;
     }
 
-    public function calcAveragePerMonthForYear($year)
+    function calcAveragePerMonthForYear($year)
     {
         $retVal = calcAveragePerDayForYear($year);
 

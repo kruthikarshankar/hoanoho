@@ -25,7 +25,7 @@
 ?>
 
 <?php
-    public function displayDeviceTypes($ndtype_id)
+    function displayDeviceTypes($ndtype_id)
     {
         $selected = false;
         $sql = "select ndtype_id, name from network_device_types order by name asc";
@@ -42,7 +42,7 @@
         echo "</select>";
     }
 
-    public function displayOS($os_id)
+    function displayOS($os_id)
     {
         $selected = false;
         $sql = "select os_id, name from network_os order by name asc";

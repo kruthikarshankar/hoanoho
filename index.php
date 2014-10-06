@@ -13,7 +13,7 @@
             header("Location: " . $protocol . "://" . $_SERVER['HTTP_HOST'] . "/mobile/login.php?" . $_SERVER['QUERY_STRING']);
     }
 
-    public function generateNoteColors()
+    function generateNoteColors()
     {
         echo "<div id=\"colorchooser_yellow\" onclick=\"javascript:setNoteColor('yellow');\">&nbsp;</div>";
         echo "<div id=\"colorchooser_orange\" onclick=\"javascript:setNoteColor('orange');\">&nbsp;</div>";

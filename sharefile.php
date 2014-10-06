@@ -3,7 +3,7 @@
     include dirname(__FILE__).'/includes/sessionhandler.php';
     include dirname(__FILE__).'/includes/getConfiguration.php';
 
-    public function rotateImage($content, $type, $orientation)
+    function rotateImage($content, $type, $orientation)
     {
         $deg = 0;
 

@@ -3,7 +3,7 @@
     include dirname(__FILE__).'/includes/sessionhandler.php';
     include dirname(__FILE__).'/includes/getConfiguration.php';
 
-    public function displayBaseTypes($type_id)
+    function displayBaseTypes($type_id)
     {
         $empty = 0;
         $sql = "select * from types order by name asc";
@@ -21,7 +21,7 @@
         print("</select>");
     }
 
-    public function displayTypes($dev_id, $dtype_id)
+    function displayTypes($dev_id, $dtype_id)
     {
         $empty = 0;
         #$sql = "select * from device_types order by name asc";
@@ -40,7 +40,7 @@
         print("</select>");
     }
 
-    public function displayWebcamVendors($vendor, $dev_id)
+    function displayWebcamVendors($vendor, $dev_id)
     {
         print("<select id=\"vendor".$dev_id."\" name=\"vendor\" onchange=\"javascript:displayWebcamModels(this.value, ".$dev_id.");\">");
             print("<option ".($vendor == "" ? "selected" : "")." value=\"\"></option>");
@@ -48,7 +48,7 @@
         print("</select>");
     }
 
-    public function displayWebcamModels($vendor, $model, $dev_id)
+    function displayWebcamModels($vendor, $model, $dev_id)
     {
         print("<select id=\"model".$dev_id."\" name=\"model\" onchange=\"javascript:set_webcam_positionslots(".$dev_id.",this.value)\">");
             print("<option ".($model == "" ? "selected" : "")." value=\"\"></option>");
@@ -74,7 +74,7 @@
         print("</select>");
     }
 
-    public function displayGPIOProtocols($dev_id,$protocol)
+    function displayGPIOProtocols($dev_id,$protocol)
     {
         print("<select id=\"gpio_raspi_protocol".$dev_id."\" name=\"gpio_raspi_protocol\">");
             print("<option ".($protocol == "" ? "selected" : "")." value=\"\"></option>");
@@ -83,7 +83,7 @@
         print("</select>");
     }
 
-    public function getBinData($bindid)
+    function getBinData($bindid)
     {
         $sql = "select data from bindata where binid = ".$bindid;
         $result = mysql_query($sql);
@@ -120,7 +120,7 @@
         print("</select>");
     }*/
 
-    public function displayRooms($room_id)
+    function displayRooms($room_id)
     {
         $sql = "select room_id, rooms.name room_name, device_floors.name floor_name from rooms join device_floors on device_floors.floor_id = rooms.floor_id order by device_floors.position asc, rooms.name asc";
         $result = mysql_query($sql);
@@ -138,7 +138,7 @@
         print("</select>");
     }
 
-    public function displayFloors($floor_id)
+    function displayFloors($floor_id)
     {
         $sql = "select * from device_floors order by position asc";
         $result = mysql_query($sql);

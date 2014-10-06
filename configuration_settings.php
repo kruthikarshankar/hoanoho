@@ -3,7 +3,7 @@
     include dirname(__FILE__).'/includes/sessionhandler.php';
     include dirname(__FILE__).'/includes/getConfiguration.php';
 
-    public function displayValue($object)
+    function displayValue($object)
     {
             if ($object->type == "text") {
                 echo "<input type=\"text\" name=\"".$object->configstring."\" value=\"".utf8_encode($object->value)."\" placeholder=\"".utf8_encode($object->hint)."\" >";

@@ -38,7 +38,7 @@
 ?>
 
 <?php
-    public function displayReportTypes($rtype)
+    function displayReportTypes($rtype)
     {
         print("<select name=\"reporttype\" onchange=\"javascript:displayFields(this.value);\">");
             print("<option ".($rtype == "manual" ? "selected" : "")." value=\"manual\">Manuell</option>");
@@ -46,7 +46,7 @@
         print("</select>");
     }
 
-    public function displayUnits($unit)
+    function displayUnits($unit)
     {
         print("<select name=\"unit\">");
             print("<option ".($unit == "" ? "selected" : "")." value=\"null\"></option>");
@@ -55,7 +55,7 @@
         print("</select>");
     }
 
-    public function displayDataCollectorDevices($rid, $dev_id)
+    function displayDataCollectorDevices($rid, $dev_id)
     {
         $empty = 0;
         $sql = "select devices.dev_id, devices.identifier, devices.name from devices join device_types on device_types.dtype_id = devices.dtype_id join types on types.type_id = device_types.type_id where (types.name = 'Datensammler' or types.name = 'PVServer') order by devices.name asc";

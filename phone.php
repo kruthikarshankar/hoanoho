@@ -4,7 +4,7 @@
     include dirname(__FILE__).'/includes/getConfiguration.php';
 
     //FIXME
-    public function displayCallBackIcon($i,$number)
+    function displayCallBackIcon($i,$number)
     {
         print("<form method=\"POST\" action=\"http://moe.springfield.lan/cgi-bin/webcm\" target=\"_self\" id=\"callBackForm".$i."\" name=\"callBackForm".$i."\">".
                     "<input type=\"hidden\" name=\"login:command/password\" value=\"sal89te\" id=\"uiPostPassword\">".
@@ -17,7 +17,7 @@
     }
 
     //FIXME
-    public function displayMessageIcon($i,$number)
+    function displayMessageIcon($i,$number)
     {
         print("<form method=\"POST\" action=\"http://moe.springfield.lan/cgi-bin/webcm\" target=\"_self\" id=\"messageForm".$i."\" name=\"messageForm".$i."\">".
                     "<input type=\"hidden\" name=\"login:command/password\" value=\"sal89te\" id=\"uiPostPassword\">".

@@ -1,5 +1,5 @@
 <script language="javascript">
-    public function displayDeviceStates(device, sch_id, value)
+    function displayDeviceStates(device, sch_id, value)
     {
         // [0] = device_id
         // [1] = devicetype name als klartext
@@ -128,7 +128,7 @@
     include dirname(__FILE__).'/includes/sessionhandler.php';
     include dirname(__FILE__).'/includes/getConfiguration.php';
 
-    public function displayDevices($dev_id,$sch_id)
+    function displayDevices($dev_id,$sch_id)
     {
         $selected = false;
         $sql = "select devices.dev_id, devices.name devicename, devices.identifier, types.name typename from devices join device_types on device_types.dtype_id = devices.dtype_id join types on types.type_id = device_types.type_id order by identifier asc";
@@ -155,7 +155,7 @@
         echo "</select>";
     }
 
-    public function displayDays($inDays,$weekend)
+    function displayDays($inDays,$weekend)
     {
         if(!$weekend)
             $days = array("mo","di","mi","do","fr");
