@@ -29,7 +29,7 @@ if (isset($__CONFIG)) {
 session_start();
 
 $protocol = "http";
-if( (isset($_SERVER["HTTPS"] && $_SERVER["HTTPS"] == "on") ) || (isset($_SERVER["HTTP_X_FORWARDED_PROTO"]) && $_SERVER["HTTP_X_FORWARDED_PROTO"] == "https") )
+if( (isset($_SERVER["HTTPS"]) && $_SERVER["HTTPS"] == "on") || (isset($_SERVER["HTTP_X_FORWARDED_PROTO"]) && $_SERVER["HTTP_X_FORWARDED_PROTO"] == "https") )
   $protocol = "https";
 
 $_SESSION['REAL_REFERER'] = $protocol . "://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
@@ -68,5 +68,3 @@ if (isset($_GET['login'])) {
   else
     header('Location: ' . $protocol . '://' . $_SERVER['HTTP_HOST'] . '/login.php');
 }
-
-?>
