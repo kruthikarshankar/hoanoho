@@ -127,7 +127,11 @@
         $weather = array_merge($weather, getCurrentOpenWeatherMapData($weather));
         $weather = array_merge($weather, getCurrentWeatherDataFromLocalStation($weather));
 
-        echo "<img src=\"/img/weather/openweathermap/".$weather['weather.0.icon'].".png\">".$weather['weather.0.description'].", ".$weather['main.temp']. "&deg;C";
+        $weathericon = "null";
+        if(strlen($weather['weather.0.icon']) > 0)
+            $weathericon = $weather['weather.0.icon'];
+
+        echo "<img src=\"/img/weather/openweathermap/".$weathericon.".png\">".$weather['weather.0.description'].", ".$weather['main.temp']. "&deg;C";
     }
 
     if ($_GET['cmd'] == 'refresh_current_weather') {
@@ -140,7 +144,11 @@
         $sunrise = date('H:i',$weather['sys.sunrise']);
         $sunset = date('H:i',$weather['sys.sunset']);
 
-        print("<div id=\"title\"><img src=\"../img/weather/openweathermap/".$weather['weather.0.icon'].".png\">Aktuelle Wetterlage</div>");
+        $weathericon = "null";
+        if(strlen($weather['weather.0.icon']) > 0)
+            $weathericon = $weather['weather.0.icon'];
+
+        print("<div id=\"title\"><img src=\"../img/weather/openweathermap/".$weathericon.".png\">Aktuelle Wetterlage</div>");
         print("<div style=\"position: absolute; width: 98%;\"><div id=\"icon\"></div></div>");
         print("<div id=\"rows_left\">");
             print("<div id=\"row_\">");
@@ -245,8 +253,12 @@
         print("<div style=\"position: absolute; width: 98%;\"><div id=\"icon\"></div></div>");
 
         for ($i=0; $i < $forecast_days; $i++) {
+            $weathericon = "null";
+            if(strlen($forecast[$i]['list.'.$i.'.weather.0.icon']) > 0)
+                $weathericon = $forecast[$i]['list.'.$i.'.weather.0.icon'];
+
             print("<div id=\"forecast_".$i."\">");
-                print("<div id=\"title\"><img src=\"../img/weather/openweathermap/".$forecast[$i]['list.'.$i.'.weather.0.icon'].".png\">".$days_relative[$i] . " (".$days[$i].")</div>");
+                print("<div id=\"title\"><img src=\"../img/weather/openweathermap/".$weathericon.".png\">".$days_relative[$i] . " (".$days[$i].")</div>");
                 print("<div id=\"text\">&nbsp;</div><div id=\"value\">&nbsp;</div>");
                 print("<div id=\"text\">Beschreibung:</div><div id=\"value\">".$forecast[$i]['list.'.$i.'.weather.0.description']."</div>");
                 print("<div id=\"text\">&nbsp;</div><div id=\"value\">&nbsp;</div>");

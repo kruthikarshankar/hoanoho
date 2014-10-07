@@ -95,7 +95,7 @@
                                               '</div>'+
                                           '</div>';
                             $('#boxitem').before(content);
-                        } elseif ($('#boxitem.alarm.weather').length > 0 && message.length == 0) {
+                        } else if ($('#boxitem.alarm.weather').length > 0 && message.length == 0) {
                             // delete warning box
                             $('#boxitem.large.alarm.weather').remove();
                         }
@@ -112,7 +112,8 @@
 
             print("<div id=\"boxitem\" class=\"large wetter_prognose\"></div>");
 
-            print("<div id=\"boxitem\" class=\"large wetter_report\"></div>");
+            if(strlen($__CONFIG['dwd_url_bundesland']) > 0)
+                print("<div id=\"boxitem\" class=\"large wetter_report\"></div>");
             ?>
         </div>
        <?php include dirname(__FILE__)."/includes/footer.php"; ?>
