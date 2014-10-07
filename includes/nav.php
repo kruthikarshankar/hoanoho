@@ -85,7 +85,7 @@
                         if(prevDay != navNowDay)
                             el_navClockIcon.innerHTML = "<img src=\"./img/" + navClockImage + "\" style=\"margin-top:-3px;\">";
 
-                        el_navClock.innerHTML = "<b>" + navWochentag[navNow.getDay()] + "</b>, <b>" + navNowDay + "." + navNowMonth + "." + navNow.getFullYear() + "</b> - <b>" + navNowHour + ":" + navNowMinute + "</b> Uhr<br />Woche" + navNowWeek;
+                        el_navClock.innerHTML = "<b>" + navWochentag[navNow.getDay()] + "</b>, <b>" + navNowDay + "." + navNowMonth + "." + navNow.getFullYear() + "</b> &middot; <b>" + navNowHour + ":" + navNowMinute + "</b> Uhr &middot; KW " + navNowWeek;
                         prevDay = navNowDay;
                     }
                 }, 1000);
