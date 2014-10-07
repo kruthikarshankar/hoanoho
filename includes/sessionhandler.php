@@ -1,6 +1,6 @@
 <?php
 
-if (isset($__CONFIG)) {
+if (isset($__CONFIG) && isset($__CONFIG['accessable_ipranges']) && $__CONFIG['accessable_ipranges'] != "") {
   $valid_access = false;
 
   $accessable_ipranges = explode(",",$__CONFIG['accessable_ipranges']);
@@ -14,7 +14,13 @@ if (isset($__CONFIG)) {
     $accessable_ipranges[$i] = str_replace("%", "", trim($accessable_ipranges[$i]));
     $accessable_ipranges[$i] = str_replace("?", "", trim($accessable_ipranges[$i]));
 
-    if(stristr($_SERVER['REMOTE_ADDR'], $accessable_ipranges[$i]) != false)
+    if (isset($_SERVER["HTTP_X_FORWARDED_FOR"])) {
+      $client_address = $_SERVER["HTTP_X_FORWARDED_FOR"];
+    } else {
+      $client_address = $_SERVER["REMOTE_ADDR"];
+    }
+
+    if(stristr($client_address, $accessable_ipranges[$i]) != false)
       $valid_access = true;
   }
 
@@ -26,7 +32,9 @@ if (isset($__CONFIG)) {
   }
 }
 
-session_start();
+if (!isset($_SESSION)) {
+    session_start();
+}
 
 $protocol = "http";
 if( (isset($_SERVER["HTTPS"]) && $_SERVER["HTTPS"] == "on") || (isset($_SERVER["HTTP_X_FORWARDED_PROTO"]) && $_SERVER["HTTP_X_FORWARDED_PROTO"] == "https") )
@@ -49,9 +57,9 @@ if (isset($_GET['login'])) {
     }
   }
 } elseif (isset($_SESSION['username']) && isset($_SESSION['md5password'])) {
-  $result = mysql_query("SELECT users.uid, password, grpname, isAdmin from users left join usergroups on users.uid = usergroups.uid left join groups on groups.gid = usergroups.gid  where username = '" . $_POST['login_username'] . "' limit 1");
+  $result = mysql_query("SELECT users.uid, password, grpname, isAdmin from users left join usergroups on users.uid = usergroups.uid left join groups on groups.gid = usergroups.gid  where username = '" . $_SESSION['username'] . "' limit 1");
   while ($row = mysql_fetch_object($result)) {
-    if ($row->password == md5($_POST['login_password'])) {
+    if ($row->password == $_SESSION['md5password']) {
       $_SESSION['login'] = 1;
       $_SESSION['isAdmin'] = $row->isAdmin;
       $_SESSION['uid'] = $row->uid;

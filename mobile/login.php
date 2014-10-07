@@ -1,7 +1,9 @@
 <?php
     $referer = "";
 
-    session_start();
+    if (!isset($_SESSION)) {
+        session_start();
+    }
 
     if(isset($_GET['cmd']) && $_GET['cmd'] == "logout")
         $_SESSION['REAL_REFERER'] = "";

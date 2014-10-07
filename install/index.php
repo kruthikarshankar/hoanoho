@@ -1,7 +1,8 @@
 <?php
     if (!isset($_POST['cmd'])) {
-        session_start();
-        session_destroy();
+      if (isset($_SESSION)) {
+          session_destroy();
+      }
     } elseif ($_POST['cmd'] == "checkdb") {
         $dbh = mysql_connect($_POST['dbhostname'],$_POST['dbusername'],$_POST['dbpassword']);
         $dbs = mysql_select_db($_POST['dbname'], $dbh);

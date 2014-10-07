@@ -1,5 +1,7 @@
 <?php
+if(!isset($_SESSION)){
     session_start();
+}
 ?>
 
 <html>
@@ -26,7 +28,3 @@
     </section>
 </body>
 </html>
-
-<?php
-    session_destroy();
-?>

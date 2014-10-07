@@ -1,7 +1,9 @@
 <?php
     $referer = "";
 
-    session_start();
+    if (!isset($_SESSION)) {
+        session_start();
+    }
 
     if(isset($_GET['cmd']) && $_GET['cmd'] == "logout")
         $_SESSION['REAL_REFERER'] = "";
@@ -40,8 +42,6 @@
     if (isset($_GET['login'])) {
         $result = mysql_query("SELECT users.uid, password, username, grpname, isAdmin from users left join usergroups on users.uid = usergroups.uid left join groups on groups.gid = usergroups.gid  where users.hash = '" . $_GET['login'] . "' limit 1");
         while ($row = mysql_fetch_object($result)) {
-            session_start();
-
             $_SESSION['username'] = $row->username;
             $_SESSION['md5password'] = md5($row->password);
             $_SESSION['isAdmin'] = $row->isAdmin;
@@ -62,8 +62,6 @@
             $result = mysql_query("SELECT users.uid,password, grpname, isAdmin from users left join usergroups on users.uid = usergroups.uid left join groups on groups.gid = usergroups.gid  where username = '" . $_POST['login_username'] . "' limit 1");
             while ($row = mysql_fetch_object($result)) {
                 if ($row->password == md5($_POST['login_password'])) {
-                    session_start();
-
                     $_SESSION['username'] = $_POST['login_username'];
                     $_SESSION['md5password'] = md5($_POST['login_password']);
                     $_SESSION['isAdmin'] = $row->isAdmin;

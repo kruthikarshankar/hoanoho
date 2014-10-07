@@ -1,15 +1,17 @@
 <?php
-session_start();
+if (!isset($_SESSION)) {
+    session_start();
+}
 
 $template = 'index';
 
-if(isset($_GET['mode']) && file_exists(dirname(__FILE__) . '/templates/' . $_GET['mode'] . '.php')) {
+if (isset($_GET['mode']) && file_exists(dirname(__FILE__) . '/templates/' . $_GET['mode'] . '.php')) {
 
     $template = $_GET['mode'];
 }
 
 $flash = '';
-if(isset($_SESSION['flash'])) {
+if (isset($_SESSION['flash'])) {
 
     $flash = '<div class="flash">' . $_SESSION['flash'] . '</div>';
     unset($_SESSION['flash']);

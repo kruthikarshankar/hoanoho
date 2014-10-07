@@ -1,5 +1,7 @@
 <?php
-    session_start();
+    if (!isset($_SESSION)) {
+        session_start();
+    }
 
     $filelist = scandir('./sql');
     if ($filelist) {
@@ -50,4 +52,3 @@
             die('Invalid query: ' . mysql_error());
         }
     }
-?>
