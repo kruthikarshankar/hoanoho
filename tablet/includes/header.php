@@ -49,6 +49,7 @@ else if (basename($_SERVER['SCRIPT_NAME']) == "floor.php") {
 $weekday = array("So.", "Mo.", "Di.", "Mi.", "Do.", "Fr.", "Sa.");
 $date = $weekday[date('w')]." ".date('d.m.Y');
 $clock = date('H:i');
+$week = date('W');
 
 ?>
 
@@ -64,7 +65,8 @@ $clock = date('H:i');
     <div id="left">
         <div id="status" class="<?php echo $connstate; ?>">&nbsp;</div>
         <div id="date"><?php echo $date; ?></div>
-        <div id="time"><?php echo $clock." Uhr"; ?></div>
+        <div id="time"><?php echo $clock; ?> Uhr</div>
+        <div id="week">KW <?php echo $week; ?></div>
     </div>
     <div id="middle">
         <div id="title"><?php echo $title; ?></div>
