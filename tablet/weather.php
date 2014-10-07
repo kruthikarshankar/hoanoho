@@ -95,7 +95,7 @@
                                               '</div>'+
                                           '</div>';
                             $('#boxitem').before(content);
-                        } elseif ($('#boxitem.alarm.weather').length > 0 && message.length == 0) {
+                        } else if ($('#boxitem.alarm.weather').length > 0 && message.length == 0) {
                             // delete warning box
                             $('#boxitem.large.alarm.weather').remove();
                         }
