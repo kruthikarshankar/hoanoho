@@ -217,7 +217,7 @@
 
         <?php
         // suchabfrage - suchen in name und text
-        if ( $_POST['cmd'] == "search" && strlen($_POST['query']) > 0 ) {
+        if ( isset($_POST['cmd']) && $_POST['cmd'] == "search" && isset($_POST['query']) && strlen($_POST['query']) > 0 ) {
             $sql = "SELECT network_devices.state, network_devices.nd_id, network_devices.name devicename, network_devices.ip, network_devices.ip_dhcp, network_devices.subnet, network_device_types.name devicetypename, network_device_types.icon devicetypeicon, network_os.name osname, network_os.icon osicon, network_devices.infos infos FROM network_devices left outer join network_device_types on network_device_types.ndtype_id = network_devices.ndtype_id left outer join network_os on network_os.os_id = network_devices.os_id where network_devices.ip like '%".$_POST['query']."%' or network_devices.name like '%".$_POST['query']."%' or network_device_types.name like '%".$_POST['query']."%' or network_os.name like '%".$_POST['query']."%' or network_devices.infos like '%".$_POST['query']."%' order by network_devices.ip asc, network_devices.name asc";
         } else {
             $sql = "SELECT network_devices.state, network_devices.nd_id, network_devices.name devicename, network_devices.ip, network_devices.ip_dhcp, network_devices.subnet, network_device_types.name devicetypename, network_device_types.icon devicetypeicon, network_os.name osname, network_os.icon osicon, network_devices.infos infos FROM network_devices left outer join network_device_types on network_device_types.ndtype_id = network_devices.ndtype_id left outer join network_os on network_os.os_id = network_devices.os_id order by network_devices.ip asc, network_devices.name asc";
