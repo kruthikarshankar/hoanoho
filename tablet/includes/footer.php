@@ -4,8 +4,8 @@ $floor_id = null;
 if (!isset($_GET['floor'])) {
     $sql = "select floor_id from device_floors order by position asc limit 0,1";
     $result = mysql_fetch_object(mysql_query($sql));
-    $floor_id = $result->floor_id
-      if (isset($result->floor_id));
+    if (isset($result->floor_id))
+      $floor_id = $result->floor_id;
 } else
     $floor_id = $_GET['floor'];
 ?>
