@@ -444,7 +444,7 @@
         ?>
     </head>
     <body>
-        <?php include "./includes/header.php"; ?>
+        <?php include dirname(__FILE__)."/includes/header.php"; ?>
         <div id="boxarea">
             <div id="griditem" style="display:none"><div id="flipcontainer" class="flip-container"><div class="flipper"><div class="front"><div id="boxitem"></div></div></div></div></div>
             <?php
@@ -653,6 +653,6 @@
             }
             ?>
         </div>
-        <?php include "./includes/footer.php"; ?>
+        <?php include dirname(__FILE__)."/includes/footer.php"; ?>
     </body>
 </html>

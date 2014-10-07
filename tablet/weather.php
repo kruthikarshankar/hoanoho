@@ -95,7 +95,7 @@
                                               '</div>'+
                                           '</div>';
                             $('#boxitem').before(content);
-                        } else if ($('#boxitem.alarm.weather').length > 0 && message.length == 0) {
+                        } elseif ($('#boxitem.alarm.weather').length > 0 && message.length == 0) {
                             // delete warning box
                             $('#boxitem.large.alarm.weather').remove();
                         }
@@ -105,7 +105,7 @@
         </script>
     </head>
     <body>
-        <?php include "./includes/header.php"; ?>
+        <?php include dirname(__FILE__)."/includes/header.php"; ?>
         <div id="boxarea">
             <?php
             print("<div id=\"boxitem\" class=\"block_ large wetter_aktuell\"></div>");
@@ -115,6 +115,6 @@
             print("<div id=\"boxitem\" class=\"large wetter_report\"></div>");
             ?>
         </div>
-        <?php include "./includes/footer.php"; ?>
+       <?php include dirname(__FILE__)."/includes/footer.php"; ?>
     </body>
 </html>

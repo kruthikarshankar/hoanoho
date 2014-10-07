@@ -1,7 +1,7 @@
 <?php
-    include dirname(__FILE__).'/../includes/simple_html_dom.php';
-    include dirname(__FILE__).'/../includes/dbconnection.php';
-    include dirname(__FILE__).'/../includes/getConfiguration.php';
+    include dirname(__FILE__).'/../../includes/simple_html_dom.php';
+    include dirname(__FILE__).'/../../includes/dbconnection.php';
+    include dirname(__FILE__).'/../../includes/getConfiguration.php';
 
     function getCurrentOpenWeatherMapData($in_arr)
     {
@@ -127,11 +127,7 @@
         $weather = array_merge($weather, getCurrentOpenWeatherMapData($weather));
         $weather = array_merge($weather, getCurrentWeatherDataFromLocalStation($weather));
 
-        $protocol = "http";
-        if($_SERVER["HTTPS"] == "on")
-            $protocol = "https";
-
-        echo "<img src=\"".$protocol."://".$_SERVER['HTTP_HOST']."/img/weather/openweathermap/".$weather['weather.0.icon'].".png\">".$weather['weather.0.description'].", ".$weather['main.temp']. "&deg;C";
+        echo "<img src=\"/img/weather/openweathermap/".$weather['weather.0.icon'].".png\">".$weather['weather.0.description'].", ".$weather['main.temp']. "&deg;C";
     }
 
     if ($_GET['cmd'] == 'refresh_current_weather') {

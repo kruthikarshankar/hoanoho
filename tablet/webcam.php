@@ -170,7 +170,7 @@
         </script>
     </head>
     <body>
-        <?php include "./includes/header.php"; ?>
+        <?php include dirname(__FILE__)."/includes/header.php"; ?>
         <div id="boxarea">
             <div id="boxitem" class="large webcam">
                 <?php
@@ -340,6 +340,6 @@
                 ?>
             </div>
         </div>
-        <?php include "./includes/footer.php"; ?>
+        <?php include dirname(__FILE__)."/includes/footer.php"; ?>
     </body>
 </html>
