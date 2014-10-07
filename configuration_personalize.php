@@ -339,12 +339,15 @@
                     <div id="text">Neues Kennwort:</div>
                     <div id="value"><input type="password" name="newpassword"></div>
                 </div>
-                <div id="listitem">
-                    <div id="errormsg"><center><?php echo $errormsg; ?></center></div>
-                </div>
-                <div id="listitem">
-                    <div id="successmsg"><center><?php echo $successmsg; ?></center></div>
-                </div>
+                <?php if (isset($errormsg) {?>
+                  <div id="listitem">
+                      <div id="errormsg"><center><?php echo $errormsg; ?></center></div>
+                  </div>
+                <?php } elseif (isset($successmsg) {?>
+                  <div id="listitem">
+                      <div id="successmsg"><center><?php echo $successmsg; ?></center></div>
+                  </div>
+                <?php } ?>
                 <input type="hidden" name="cmd" value="editpassword">
                 <div id="submit"><input id="greybutton" type="submit" value="Kennwort ändern"></div>
             </form>

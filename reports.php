@@ -3,17 +3,17 @@
     include dirname(__FILE__).'/includes/sessionhandler.php';
     include dirname(__FILE__).'/includes/getConfiguration.php';
 
-    if ($_POST['cmd'] == "deletereport" && strlen($_POST['rid']) > 0) {
+    if (isset($_POST['cmd']) && $_POST['cmd'] == "deletereport" && isset($_POST['rid']) && strlen($_POST['rid']) > 0) {
         $sql = "DELETE FROM reportdata where rid = " . $_POST['rid'];
         mysql_query($sql);
         $sql = "DELETE FROM reports where rid = " . $_POST['rid'];
         mysql_query($sql);
         $sql = "DELETE from report_configuration where rid = " . $_POST['rid'];
         $result = mysql_query($sql);
-    } elseif ($_POST['cmd'] == "newreport") {
+    } elseif (isset($_POST['cmd']) && $_POST['cmd'] == "newreport") {
         $sql = "INSERT INTO reports set name = '" . utf8_decode('Neue Auswertung') . "'";
         mysql_query($sql);
-    } elseif ($_POST['cmd'] == "updatereport" && strlen($_POST['rid']) > 0) {
+    } elseif (isset($_POST['cmd']) && $_POST['cmd'] == "updatereport" && isset($_POST['rid']) && strlen($_POST['rid']) > 0) {
         $sql = "UPDATE reports set name = '" . utf8_decode($_POST['reportname']) . "', type = '" . utf8_decode($_POST['reporttype']) . "', unit = '" . utf8_decode($_POST['unit']) . "', unitprice = '" . utf8_decode($_POST['unitprice']) . "', dev_id = " . $_POST['dev_id'] . " where rid = " . $_POST['rid'];
         mysql_query($sql);
 

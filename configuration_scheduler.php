@@ -1,3 +1,8 @@
+<?php
+  include dirname(__FILE__).'/includes/dbconnection.php';
+  include dirname(__FILE__).'/includes/sessionhandler.php';
+  include dirname(__FILE__).'/includes/getConfiguration.php';
+?>
 <script language="javascript">
     function displayDeviceStates(device, sch_id, value)
     {
@@ -124,10 +129,6 @@
 </script>
 
 <?php
-    include dirname(__FILE__).'/includes/dbconnection.php';
-    include dirname(__FILE__).'/includes/sessionhandler.php';
-    include dirname(__FILE__).'/includes/getConfiguration.php';
-
     function displayDevices($dev_id,$sch_id)
     {
         $selected = false;

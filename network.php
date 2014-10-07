@@ -3,24 +3,26 @@
     include dirname(__FILE__).'/includes/sessionhandler.php';
     include dirname(__FILE__).'/includes/getConfiguration.php';
 
-    if ($_POST['cmd'] == "deletedevice" && strlen($_POST['nd_id']) > 0) {
-        $sql = "DELETE FROM network_devices where nd_id = " . $_POST['nd_id'];
-        mysql_query($sql);
-    } elseif ($_POST['cmd'] == "deleterange" && strlen($_POST['nr_id']) > 0) {
-        $sql = "DELETE FROM network_ranges where nr_id = " . $_POST['nr_id'];
-        mysql_query($sql);
-    } elseif ($_POST['cmd'] == "newdevice") {
-        $sql = "INSERT INTO network_devices set name = '" . utf8_decode('Neues Netzwerkgerät') . "'";
-        mysql_query($sql);
-    } elseif ($_POST['cmd'] == "newrange") {
-        $sql = "INSERT INTO network_ranges set iprange = '" . utf8_decode('000.000.000.000-000') . "'";
-        mysql_query($sql);
-    } elseif ($_POST['cmd'] == "updaterange") {
-        $sql = "UPDATE network_ranges set iprange = '" . utf8_decode($_POST['iprange']) . "', subnet = '" . utf8_decode($_POST['subnet']) . "', infos = '" . utf8_decode($_POST['infos']) . "' where nr_id = " . $_POST['nr_id'];
-        mysql_query($sql);
-    } elseif ($_POST['cmd'] == "updatedevice" && strlen($_POST['nd_id']) > 0) {
-        $sql = "UPDATE network_devices set name = '" . utf8_decode($_POST['devicename']) . "', macaddr = '" . utf8_decode($_POST['macaddr']) . "', ip = '" . utf8_decode($_POST['ip']) . "', subnet = '" . utf8_decode($_POST['subnet']) . "', infos = '" . utf8_decode($_POST['infos']) . "', ndtype_id = " . $_POST['ndtype_id'] . ", os_id = " . $_POST['os_id'] . " where nd_id = " . $_POST['nd_id'];
-        mysql_query($sql);
+    if (isset($_POST['cmd'])) {
+      if ($_POST['cmd'] == "deletedevice" && isset($_POST['nd_id']) && strlen($_POST['nd_id']) > 0) {
+          $sql = "DELETE FROM network_devices where nd_id = " . $_POST['nd_id'];
+          mysql_query($sql);
+      } elseif ($_POST['cmd'] == "deleterange" && isset($_POST['nd_id']) && strlen($_POST['nr_id']) > 0) {
+          $sql = "DELETE FROM network_ranges where nr_id = " . $_POST['nr_id'];
+          mysql_query($sql);
+      } elseif ($_POST['cmd'] == "newdevice") {
+          $sql = "INSERT INTO network_devices set name = '" . utf8_decode('Neues Netzwerkgerät') . "'";
+          mysql_query($sql);
+      } elseif ($_POST['cmd'] == "newrange") {
+          $sql = "INSERT INTO network_ranges set iprange = '" . utf8_decode('000.000.000.000-000') . "'";
+          mysql_query($sql);
+      } elseif ($_POST['cmd'] == "updaterange") {
+          $sql = "UPDATE network_ranges set iprange = '" . utf8_decode($_POST['iprange']) . "', subnet = '" . utf8_decode($_POST['subnet']) . "', infos = '" . utf8_decode($_POST['infos']) . "' where nr_id = " . $_POST['nr_id'];
+          mysql_query($sql);
+      } elseif ($_POST['cmd'] == "updatedevice" && isset($_POST['nd_id']) && strlen($_POST['nd_id']) > 0) {
+          $sql = "UPDATE network_devices set name = '" . utf8_decode($_POST['devicename']) . "', macaddr = '" . utf8_decode($_POST['macaddr']) . "', ip = '" . utf8_decode($_POST['ip']) . "', subnet = '" . utf8_decode($_POST['subnet']) . "', infos = '" . utf8_decode($_POST['infos']) . "', ndtype_id = " . $_POST['ndtype_id'] . ", os_id = " . $_POST['os_id'] . " where nd_id = " . $_POST['nd_id'];
+          mysql_query($sql);
+      }
     }
 ?>
 

@@ -427,7 +427,7 @@ function displayDeviceData($dev_id, $dev_value)
                     <div id="title"><input type="text" id="notetitle" disabled></div>
                     <div id="content"><textarea id="notecontent" disabled></textarea></div>
                     <div id="footer"><?php generateNoteColors(); ?><div id="savenote" title="Notiz veröffentlichen">&nbsp;</div><div id="savingnote" title="Notiz veröffentlichen" style="display:none;">&nbsp;</div></div>
-                    <input type="hidden" name="papercolor" id="papercolor" value="<?php echo $current_notecolor; ?>">
+                    <input type="hidden" name="papercolor" id="papercolor" value="">
                 </div>
             </form>
         </div>

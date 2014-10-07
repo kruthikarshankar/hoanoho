@@ -53,7 +53,7 @@
 
     $MAX_FILE_SIZE = $maxsize_value[0]*$calcfactor;
 
-    if ($_POST['cmd'] == "uploadfile") {
+    if (isset($_POST['cmd']) && $_POST['cmd'] == "uploadfile") {
         if ($_FILES && $_FILES['file']['name']) {
             //make sure the file has a valid file extension
 
@@ -100,10 +100,10 @@
 
             header('Location: ./sharefile.php?r=0&h='.$hash);
         }
-    } elseif ($_POST['cmd'] == "deletefile" && isset($_POST['sid'])) {
+    } elseif (isset($_POST['cmd']) && $_POST['cmd'] == "deletefile" && isset($_POST['sid'])) {
         $sql = "DELETE FROM sharedfiles where sid = " . $_POST['sid'];
         mysql_query($sql);
-    } elseif ($_GET['cmd'] == "extendfile" && strlen($_GET['sid']) > 0) {
+    } elseif (isset($_GET['cmd']) && $_GET['cmd'] == "extendfile" && isset($_GET['sid']) && strlen($_GET['sid']) > 0) {
          $sql = "UPDATE sharedfiles SET File_ValidDate = NOW()+INTERVAL 1 WEEK WHERE sid = " . $_GET['sid'];
          mysql_query($sql);
     }
@@ -174,7 +174,7 @@
                     <div id="space">&nbsp;</div>
                     <?php if (!isset($_GET['r'])) { ?>
                         <div id="text">Datei auswählen:</div><div id="value"><input id="file" name="file" type="file"> (Max. <?php echo $maxsize_value[0]." ".$maxsize_unit_human; ?>)</div>
-                        <div id="text">Passwort für Zugriff:</div><div id="value"><input id="password" name="password" value="<?php echo utf8_encode($report->name); ?>"></div>
+                        <div id="text">Passwort für Zugriff:</div><div id="value"><input id="password" name="password" value="<?php if (isset($report->name)) { echo utf8_encode($report->name);} ?>"></div>
                         <div id="space">&nbsp;</div>
                         <div id="submit"><input type="submit" id="greenbutton" name="submit" value="Bereitstellen"></div>
                         <input type="hidden" id="cmd" name="cmd" value="uploadfile">
