@@ -112,7 +112,8 @@
 
             print("<div id=\"boxitem\" class=\"large wetter_prognose\"></div>");
 
-            print("<div id=\"boxitem\" class=\"large wetter_report\"></div>");
+            if(strlen($__CONFIG['dwd_url_bundesland']) > 0)
+                print("<div id=\"boxitem\" class=\"large wetter_report\"></div>");
             ?>
         </div>
        <?php include dirname(__FILE__)."/includes/footer.php"; ?>
