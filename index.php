@@ -24,10 +24,10 @@
         echo "<div id=\"colorchooser_purple\" onclick=\"javascript:setNoteColor('purple');\">&nbsp;</div>";
     }
 
-    if ($_POST['cmd'] == "closeNote" && strlen($_POST['no_id']) > 0) {
+    if (isset($_POST['cmd']) && $_POST['cmd'] == "closeNote" && isset($_POST['no_id']) && strlen($_POST['no_id']) > 0) {
         $sql = "UPDATE notes SET isActive = 0 where no_id = " . $_POST['no_id'];
         mysql_query($sql);
-    } elseif ($_POST['cmd'] == "savenote") {
+    } elseif (isset($_POST['cmd']) && $_POST['cmd'] == "savenote") {
         $title = $_POST['title'];
         $content = $_POST['content'];
 
