@@ -339,11 +339,11 @@
                     <div id="text">Neues Kennwort:</div>
                     <div id="value"><input type="password" name="newpassword"></div>
                 </div>
-                <?php if (isset($errormsg) {?>
+                <?php if (isset($errormsg)) {?>
                   <div id="listitem">
                       <div id="errormsg"><center><?php echo $errormsg; ?></center></div>
                   </div>
-                <?php } elseif (isset($successmsg) {?>
+                <?php } elseif (isset($successmsg)) {?>
                   <div id="listitem">
                       <div id="successmsg"><center><?php echo $successmsg; ?></center></div>
                   </div>
