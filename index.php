@@ -5,7 +5,7 @@
     include dirname(__FILE__).'/includes/getConfiguration.php';
 
     $protocol = "http";
-    if($_SERVER["HTTPS"] == "on")
+    if( (isset($_SERVER["HTTPS"] && $_SERVER["HTTPS"] == "on") ) || (isset($_SERVER["HTTP_X_FORWARDED_PROTO"]) && $_SERVER["HTTP_X_FORWARDED_PROTO"] == "https") )
       $protocol = "https";
 
     if (!isset($_GET['full'])) {

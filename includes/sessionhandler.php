@@ -29,10 +29,10 @@ if (isset($__CONFIG)) {
 session_start();
 
 $protocol = "http";
-if($_SERVER["HTTPS"] == "on")
+if( (isset($_SERVER["HTTPS"] && $_SERVER["HTTPS"] == "on") ) || (isset($_SERVER["HTTP_X_FORWARDED_PROTO"]) && $_SERVER["HTTP_X_FORWARDED_PROTO"] == "https") )
   $protocol = "https";
 
-$_SESSION['REAL_REFERER'] = $protocol . "://" . $_SERVER['HTTP_HOST'] . $_SERVER['PHP_SELF'] .'?'. $_SERVER['QUERY_STRING'];
+$_SESSION['REAL_REFERER'] = $protocol . "://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
 
 if (isset($_GET['login'])) {
   $result = mysql_query("SELECT users.uid, password, username, grpname, isAdmin from users left join usergroups on users.uid = usergroups.uid left join groups on groups.gid = usergroups.gid  where users.hash = '" . $_GET['login'] . "' limit 1");

@@ -3,10 +3,6 @@
     include dirname(__FILE__).'/../includes/sessionhandler.php';
     include dirname(__FILE__).'/../includes/getConfiguration.php';
     include dirname(__FILE__).'/../includes/dwd_parser.php';
-
-    $protocol = "http";
-    if($_SERVER["HTTPS"] == "on")
-      $protocol = "https";
 ?>
 
 <html>
