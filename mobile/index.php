@@ -227,7 +227,7 @@
     <body>
         <header class="bar-title">
             <h1 class="title">Übersicht</h1>
-            <a class="button" href="javascript:redirectToURL('<?php echo $protocol . "://" . $_SERVER['HTTP_HOST'] . "/index.php?full=yes"; ?>');" data-ignore="push">Desktop</a>
+            <a class="button" href="javascript:redirectToURL('<?php echo "/index.php?full=yes"; ?>');" data-ignore="push">Desktop</a>
         </header>
 
         <div class="content">

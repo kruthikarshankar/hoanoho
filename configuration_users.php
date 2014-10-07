@@ -148,14 +148,13 @@
         $sql = "SELECT * FROM users join usergroups on usergroups.uid = users.uid join groups on groups.gid = usergroups.gid ORDER BY username ASC";
         $result = mysql_query($sql);
         while ($user = mysql_fetch_object($result)) {
-            $pageURL = 'http'.(empty($_SERVER['HTTPS'])?'':'s').'://'.$_SERVER['SERVER_NAME'];
         ?>
             <div class="listitem" id="listitem-<?php echo $user->uid; ?>">
                 <div id="username"><input type="text" name="username" value="<?php echo $user->username; ?>"></div>
                 <div id="password"><input type="password" name="password"></div>
                 <div id="group"><?php displayUserGroup($user->gid); ?></div>
                 <div id="action">
-                    <a href="javascript:copyToClipboard('<?php echo $pageURL."/login.php?login=".$user->hash; ?>')" title="Quick Login"><img src="./img/quicklogin.png"></a>
+                    <a href="javascript:copyToClipboard('<?php echo "/login.php?login=".$user->hash; ?>')" title="Quick Login"><img src="./img/quicklogin.png"></a>
                     <a class="saveuserbutton" id="saveuserbutton-<?php echo $user->uid; ?>" href="#" title="Änderungen speichern"><img src="./img/save.png"></a>&nbsp;
                     <a class="deleteuserbutton" id="deleteuserbutton-<?php echo $user->uid; ?>" href="#" title="Benutzer löschen"><img src="./img/delete.png"></a>
                 </div>
