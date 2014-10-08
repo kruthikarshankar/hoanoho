@@ -17,7 +17,8 @@
 
     if (isset($_GET['dev_id']) && $_GET['dev_id'] != null) {
         $result = mysql_query("select identifier from devices where dev_id = " . $_GET['dev_id']);
-        while ($device_identifier = mysql_fetch_object($result)) {
+        if (is_object($result)) {
+          while ($device_identifier = mysql_fetch_object($result)) {
             $result2 = mysql_query("select distinct valuename, valueunit from device_data where deviceident = '".$device_identifier->identifier."' order by valuename");
 
             if (mysql_num_rows($result2) > 0) {
@@ -61,6 +62,7 @@
             } else {
                 print("<div id=\"value_row\"><div id=\"message\">Es wurden noch keine Werte in der Datenbank erfasst! Bitte einen Moment warten und <a href=\"javascript:showIdentifierListForDataCollector(".$_GET['rid'].",".$_GET['dev_id'].");\">aktualisieren</a> oder die Kennung in der <a href=\"configuration_automation.php\">Gerätekonfiguration</a> überprüfen.</div></div>");
             }
+        }
         }
     }
 ?>

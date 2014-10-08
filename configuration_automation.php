@@ -176,17 +176,19 @@
             $isHidden = $_POST['isHidden'];
 
         $nd_id = "null";
-        if($_POST['nd_id'] != "")
+        if(isset($_POST['nd_id']) && $_POST['nd_id'] != "")
             $nd_id = $_POST['nd_id'];
 
         $room_id = "null";
-        if($_POST['room_id'] != "")
+        if(isset($_POST['room_id']) && $_POST['room_id'] != "")
             $room_id = $_POST['room_id'];
 
-        $dtype_id = $_POST['dtype_id'];
-        if (strpos($dtype_id,";") !== FALSE) {
-            $tmp = explode(';', $dtype_id);
-            $dtype_id = $tmp[0];
+        if (isset($_POST['dtype_id'])) {
+          $dtype_id = $_POST['dtype_id'];
+          if (strpos($dtype_id,";") !== FALSE) {
+              $tmp = explode(';', $dtype_id);
+              $dtype_id = $tmp[0];
+          }
         }
 
         $url = "http://localhost/includes/sendMessageToSocketServer.php?command=\"update_device\"&message=\"".$_POST['dev_id']."\"";

@@ -329,7 +329,7 @@
             mysql_query($sql);
         }
     }
-    if ($_POST['cmd'] == "deleteuser") {
+    if (isset($_POST['cmd']) && $_POST['cmd'] == "deleteuser") {
         if ($_SESSION['uid'] != $_POST['uid']) {
             $sql = "delete from users where uid = ".$_POST['uid'];
             mysql_query($sql);
