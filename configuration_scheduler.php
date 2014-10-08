@@ -206,7 +206,7 @@
         $sql = "update scheduler set days = '" . $days . "', isActive = " . $isActive . ", dev_id = " . $device . ", dev_state = '" . $_POST['dev_state'] . "', interval_time = '".$_POST['interval_time']."' where sch_id = " . $_POST['sch_id'];
         mysql_query($sql);
     } elseif (isset($_POST['cmd']) && $_POST['cmd'] == "deleteplan") {
-        if ($_SESSION['uid'] != $_POST['uid']) {
+        if (isset($_POST['uid']) && $_SESSION['uid'] != $_POST['uid']) {
             $sql = "delete from scheduler where sch_id = ".$_POST['sch_id'];
             mysql_query($sql);
         }

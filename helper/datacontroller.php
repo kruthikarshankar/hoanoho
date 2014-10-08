@@ -17,10 +17,14 @@
     function getImage($id)
     {
         $sql = "select data from bindata where binid = ".$id;
+        $que = mysql_query($sql);
 
-        $obj = mysql_fetch_object(mysql_query($sql));
-
-        return $obj->data;
+        if (is_object($que)) {
+          $obj = mysql_fetch_object($que);
+          return $obj->data;
+        } else {
+          return NULL;
+        }
     }
 
     function deleteImage($id)
@@ -32,7 +36,7 @@
     /*
     * COMMON
     */
-    if ($_GET['cmd'] == "getimage" && isset($_GET['id'])) {
+    if (isset($_GET['cmd']) && $_GET['cmd'] == "getimage" && isset($_GET['id'])) {
         header("Content-Type: image/jpeg");
         echo getImage($_GET['id']);
     }
@@ -40,12 +44,12 @@
     /*
     * PINBOARD NOTES
     */
-    if ($_POST['cmd'] == "savenote") {
+    if (isset($_POST['cmd']) && $_POST['cmd'] == "savenote") {
         $title = $_POST['title'];
         $content = $_POST['content'];
 
         if (strlen($title) > 0 || strlen($content) > 0) {
-      // #FIXME - make this more dynamic as domains not always start with www ...
+            // #FIXME - make this more dynamic as domains not always start with www ...
             // set urls to real hyperlinks
             $content = preg_replace('@((https?://)?([-\w]+\.[-\w\.]+)+\w(:\d+)?(/([-\w/_\.]*(\?\S+)?)?)*)@', '<a href="$1" target="blank">$1</a>', $content);
             $content = str_replace("href=\"www.","href=\"http://www.",$content);
@@ -78,7 +82,7 @@
             }
         }
     }
-    if ($_POST['cmd'] == "closenote" && isset($_POST['id'])) {
+    if (isset($_POST['cmd']) && $_POST['cmd'] == "closenote" && isset($_POST['id'])) {
         $sql = "UPDATE notes SET isActive = 0 where no_id = " . $_POST['id'];
         mysql_query($sql);
     }
@@ -124,7 +128,7 @@
         return $return;
     }
 
-    if ($_POST['cmd'] == "pinboard_getmetainfo") {
+    if (isset($_POST['cmd']) && $_POST['cmd'] == "pinboard_getmetainfo") {
         if (isset($_POST['id'])) {
             $sql = "select meta from pinboard_configuration where id=".$_POST['id'];
             $result = mysql_fetch_object(mysql_query($sql));
@@ -132,7 +136,7 @@
             echo $result->meta;
         }
     }
-    if ($_POST['cmd'] == "pinboard_updateposition") {
+    if (isset($_POST['cmd']) && $_POST['cmd'] == "pinboard_updateposition") {
         if (isset($_POST['block'])) {
             $pos = 0;
             foreach ($_POST['block'] as $id) {
@@ -151,7 +155,7 @@
             }
         }
     }
-    if ($_POST['cmd'] == "pinboard_update") {
+    if (isset($_POST['cmd']) && $_POST['cmd'] == "pinboard_update") {
         if (isset($_POST['updateid']) && isset($_POST['updatekey']) && isset($_POST['updatevalue'])) {
             $sql = "select meta from pinboard_configuration where id = ".$_POST['updateid'];
             $obj = mysql_fetch_object(mysql_query($sql));
@@ -163,7 +167,7 @@
             mysql_query($sql);
         }
     }
-    if ($_POST['cmd'] == "pinboard_getdevicedata") {
+    if (isset($_POST['cmd']) && $_POST['cmd'] == "pinboard_getdevicedata") {
         if (isset($_POST['id'])) {
             $dev_value = "";
             if (isset($_POST['dev_value'])) {
@@ -183,7 +187,7 @@
         }
     }
 
-    if ($_POST['cmd'] == "pinboard_block_new") {
+    if (isset($_POST['cmd']) && $_POST['cmd'] == "pinboard_block_new") {
         if (isset($_POST['owner'])) {
             $meta = array(
                 'title' =>htmlentities('{Titel}'),
@@ -207,7 +211,7 @@
             }
         }
     }
-    if ($_POST['cmd'] == "pinboard_block_delete") {
+    if (isset($_POST['cmd']) && $_POST['cmd'] == "pinboard_block_delete") {
         if (isset($_POST['id'])) {
             // delete rows as well
             $sql = "delete from pinboard_configuration where parentid = ".$_POST['id'];
@@ -227,7 +231,7 @@
             mysql_query($sql);
         }
     }
-    if ($_POST['cmd'] == "pinboard_block_saveimage" && isset($_POST['assignid'])) {
+    if (isset($_POST['cmd']) && $_POST['cmd'] == "pinboard_block_saveimage" && isset($_POST['assignid'])) {
         $imageid = saveImage($_POST['data']);
 
         // assign imageid to block icon
@@ -247,7 +251,7 @@
         }
     }
 
-    if ($_POST['cmd'] == "pinboard_row_new") {
+    if (isset($_POST['cmd']) && $_POST['cmd'] == "pinboard_row_new") {
         if (isset($_POST['owner']) && isset($_POST['parentid'])) {
             $meta = array(
                 'title' => htmlentities('{Bezeichner}'),
@@ -267,7 +271,7 @@
             }
         }
     }
-    if ($_POST['cmd'] == "pinboard_row_delete") {
+    if (isset($_POST['cmd']) && $_POST['cmd'] == "pinboard_row_delete") {
         if (isset($_POST['id'])) {
             $sql = "delete from pinboard_configuration where id = ".$_POST['id'];
             mysql_query($sql);
@@ -289,7 +293,7 @@
         echo "</select>";
     }
 
-    if ($_POST['cmd'] == "addnewuser") {
+    if (isset($_POST['cmd']) && $_POST['cmd'] == "addnewuser") {
         $sql = "INSERT INTO users (username,password) values ('Neuer Benutzer','')";
         mysql_query($sql);
 
@@ -314,7 +318,7 @@
             print("</div>");
         print("</div>");
     }
-    if ($_POST['cmd'] == "saveuser") {
+    if (isset($_POST['cmd']) && $_POST['cmd'] == "saveuser") {
         if ($_SESSION['uid'] != $_POST['uid']) {
             $hash = md5($_POST['username'] + $_POST['password'] + time());
 

@@ -87,12 +87,14 @@
     {
         $sql = "select data from bindata where binid = ".$bindid;
         $result = mysql_query($sql);
-        while ($bindata = mysql_fetch_object($result)) {
-            if(stristr($bindata->data, "png") != false)
+        if (is_object($result)) {
+          while ($bindata = mysql_fetch_object($result)) {
+              if(stristr($bindata->data, "png") != false)
 
-                return ('data:image/png;base64,' . base64_encode($bindata->data));
-            else
-                return ('data:image/jpeg;base64,' . base64_encode($bindata->data));
+                  return ('data:image/png;base64,' . base64_encode($bindata->data));
+              else
+                  return ('data:image/jpeg;base64,' . base64_encode($bindata->data));
+          }
         }
     }
 
@@ -242,7 +244,7 @@
         $sql = "delete from device_types where dtype_id = ".$_POST['dtype_id'];
         $result = mysql_query($sql);
 
-        if (mysql_num_rows($result) > 0) {
+        if (is_object($result) && mysql_num_rows($result) > 0) {
             $sql = "DELETE FROM bindata where binid = (SELECT image_off_id from device_types where dtype_id = " . $_POST['dtype_id'] . ")";
             mysql_query($sql);
 
