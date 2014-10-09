@@ -5,18 +5,42 @@
 
     function displayValue($object)
     {
-            if ($object->type == "text") {
-                echo "<input type=\"text\" name=\"".$object->configstring."\" value=\"".utf8_encode($object->value)."\" placeholder=\"".utf8_encode($object->hint)."\" >";
-            } elseif ($object->type == "boolean") {
-                echo "<select name=\"".$object->configstring."\">";
-                echo "<option ".($object->value == "1" ? "selected" : "")." value=\"1\">Ja</option>";
-                echo "<option ".($object->value == "0" ? "selected" : "")." value=\"0\">Nein</option>";
-                echo "</select>";
-            } elseif ($object->type == "password") {
-                echo "<input type=\"password\" name=\"".$object->configstring."\" value=\"".utf8_encode($object->value)."\">";
-            } else {
-                echo "<input type=\"text\" name=\"".$object->configstring."\" value=\"".utf8_encode($object->value)."\" placeholder=\"".utf8_encode($object->hint)."\">";
-            }
+        	switch ($object->type )
+    		{
+    			default:
+    			case"text":
+    				echo "<input type=\"text\" name=\"".$object->configstring."\" value=\"".utf8_encode($object->value)."\" placeholder=\"".utf8_encode($object->hint)."\" >";
+    			break;
+    			case"boolean":
+    				echo "<select name=\"".$object->configstring."\">";
+    				echo "<option ".($object->value == "1" ? "selected" : "")." value=\"1\">Ja</option>";
+    				echo "<option ".($object->value == "0" ? "selected" : "")." value=\"0\">Nein</option>";
+    				echo "</select>";
+    			break;
+    			case"password":
+    				echo "<input type=\"password\" name=\"".$object->configstring."\" value=\"".utf8_encode($object->value)."\">";
+    			break;
+    			case"dwd_state":
+    				echo "<select name=\"".$object->configstring."\" style='width:200px'>";
+    				echo "<option ".($object->value == "SU" ? "selected" : "")." value=\"SU\">Baden-Württemberg</option>";
+    				echo "<option ".($object->value == "MS" ? "selected" : "")." value=\"MS\">Bayern</option>";
+    				echo "<option ".($object->value == "PD" ? "selected" : "")." value=\"PD\">Berlin</option>";
+    				echo "<option ".($object->value == "PD" ? "selected" : "")." value=\"PD\">Brandenburg</option>";
+    				echo "<option ".($object->value == "HN" ? "selected" : "")." value=\"HN\">Bremen</option>";
+    				echo "<option ".($object->value == "SG" ? "selected" : "")." value=\"SG\">Hamburg</option>";
+    				echo "<option ".($object->value == "OF" ? "selected" : "")." value=\"OF\">Hessen</option>";
+    				echo "<option ".($object->value == "RW" ? "selected" : "")." value=\"RW\">Mecklenburg-Vorpommern</option>";
+    				echo "<option ".($object->value == "HN" ? "selected" : "")." value=\"HN\">Niedersachsen</option>";
+    				echo "<option ".($object->value == "EM" ? "selected" : "")." value=\"EM\">Nordrhein-Westfalen</option>";
+    				echo "<option ".($object->value == "TR" ? "selected" : "")." value=\"TR\">Rheinland-Pfalz</option>";
+    				echo "<option ".($object->value == "TR" ? "selected" : "")." value=\"TR\">Saarland</option>";
+    				echo "<option ".($object->value == "LZ" ? "selected" : "")." value=\"LZ\">Sachsen</option>";
+    				echo "<option ".($object->value == "MB" ? "selected" : "")." value=\"MB\">Sachsen-Anhalt</option>";
+    				echo "<option ".($object->value == "SG" ? "selected" : "")." value=\"SG\">Schleswig-Holstein</option>";
+    				echo "<option ".($object->value == "EF" ? "selected" : "")." value=\"EF\">Thüringen</option>";
+    				echo "</select>";
+    			break;
+    		}
     }
 
     if (isset($_POST['cmd']) && $_POST['cmd'] == "savesettings") {
