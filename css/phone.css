@@ -138,6 +138,7 @@
 }
 
 .main_telephone #entry #line {
+	white-space:nowrap;
     width: 150px;
     float: left;
 }
@@ -147,7 +148,6 @@
     margin-right: 20px;
     float: left;
 }
-
 .main_telephone #entry #action {
     width: auto;
     margin-right: 20px;

@@ -5,8 +5,7 @@
     /* **************************
        DWD Wetterreport für das Bundesland
        ************************** */
-    //$html = file_get_html("http://www.dwd.de/dyn/app/ws/html/reports/SU_report_de.html");
-    $html = file_get_html($__CONFIG['dwd_url_bundesland']);
+    $html = file_get_html("http://www.dwd.de/dyn/app/ws/html/reports/".$__CONFIG['dwd_state']."_report_de.html");
 
     if (strlen($html) > 0) {
         foreach ($html->find('div') as $element) {
@@ -21,7 +20,7 @@
     /* **************************
        DWD Wetterwarnung für den Kreis
        ************************** */
-    //$html = file_get_html("http://www.dwd.de/dyn/app/ws/html/reports/TUT_warning_de.html");
+
     $html = file_get_html($__CONFIG['dwd_url_landkreis']);
 
     $dwd_warnung = "";
@@ -37,5 +36,3 @@
 
     if(strlen($dwd_warnung) == 0)
         $dwd_warnung = "Es liegt aktuell keine Warnung für den Landkreis ".$__CONFIG['dwd_name_landkreis']." vor!";
-
-?>
