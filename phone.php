@@ -65,7 +65,7 @@
             <div id="action">&nbsp;</div>
         </div>
         <?php
-        $sql = "SELECT typ,concat(lpad(day(date),2,0),'.',lpad(month(date),2,0),'.',year(date),' ', lpad(hour(date),2,0),':',lpad(minute(date),2,0)) date,name,rufnummer,nebenstelle,dauer from callerlist";
+        $sql = "SELECT typ,DATE_FORMAT(date, '%d.%m.%Y %H:%i') as date,name,rufnummer,nebenstelle,dauer from callerlist";
         $result = mysql_query($sql);
 
         $i=0;
