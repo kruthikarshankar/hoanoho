@@ -4,7 +4,7 @@
 nav {
 	width: 100%;
 	height: 95px;
-	background-image: url('/img/bg/bg-noise.jpg');
+	background-image: url('../img/bg/bg-noise.jpg');
 	background-repeat: repeat;
 
 	border-left-color:rgba(255, 255, 255, 0.0941176);

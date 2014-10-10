@@ -1,6 +1,6 @@
 @font-face {
     font-family: 'Handlee';
-    src: url('/font/Handlee-Regular.ttf')  format('truetype');
+    src: url('../font/Handlee-Regular.ttf')  format('truetype');
 }
 
 article {
@@ -23,7 +23,7 @@ article {
     z-index: 1; 
     width: 40px; 
     height: 40px; 
-    background-image: url('/img/close.png'); 
+    background-image: url('../img/close.png'); 
     margin-top: -15px;
     background-size: 100%; 
     background-repeat: no-repeat;
@@ -61,7 +61,7 @@ article {
         0 1px 5px rgba(0,0,0,0.2),        
         0 0 0 12px rgba(255,255,255,0.4); 
 
-    background-image: url('/img/bg/cork.png');
+    background-image: url('../img/bg/cork.png');
     background-repeat: repeat;
 
     overflow: hidden;
@@ -144,7 +144,7 @@ article {
     margin-top: 5px;
     margin-left: 5px;
 
-    background-image: url('/img/picture.png');
+    background-image: url('../img/picture.png');
     background-size: 90%;
     background-repeat: no-repeat;
     background-position: center;
@@ -464,7 +464,7 @@ article {
     width: 30px;
     height: 30px;
     
-    background-image: url('/img/pin1.png');
+    background-image: url('../img/pin1.png');
     background-position: center;
     background-repeat: no-repeat;
     background-size: 100% auto;
@@ -479,7 +479,7 @@ article {
     width: 30px;
     height: 30px;
     
-    background-image: url('/img/pin2.png');
+    background-image: url('../img/pin2.png');
     background-position: center;
     background-repeat: no-repeat;
     background-size: 100% auto;
@@ -494,7 +494,7 @@ article {
     width: 30px;
     height: 30px;
     
-    background-image: url('/img/pin3.png');
+    background-image: url('../img/pin3.png');
     background-position: center;
     background-repeat: no-repeat;
     background-size: 100% auto;
@@ -509,7 +509,7 @@ article {
     width: 30px;
     height: 30px;
     
-    background-image: url('/img/pin4.png');
+    background-image: url('../img/pin4.png');
     background-position: center;
     background-repeat: no-repeat;
     background-size: 100% auto;
@@ -524,7 +524,7 @@ article {
     width: 30px;
     height: 30px;
     
-    background-image: url('/img/pin5.png');
+    background-image: url('../img/pin5.png');
     background-position: center;
     background-repeat: no-repeat;
     background-size: 100% auto;
@@ -539,7 +539,7 @@ article {
     width: 30px;
     height: 30px;
     
-    background-image: url('/img/close.png');
+    background-image: url('../img/close.png');
     background-position: center;
     background-repeat: no-repeat;
     background-size: 100% auto;
@@ -658,7 +658,7 @@ article {
     margin-left: auto;
     margin-right: 5px;
 
-    background-image: url('/img/save.png');
+    background-image: url('../img/save.png');
 }
 
 
@@ -737,7 +737,7 @@ box-shadow:
     width: 30px;
     height: 30px;
     
-    background-image: url('/img/pin1.png');
+    background-image: url('../img/pin1.png');
     background-position: center;
     background-repeat: no-repeat;
     background-size: 100% auto;
@@ -756,7 +756,7 @@ box-shadow:
     width: 30px;
     height: 30px;
     
-    background-image: url('/img/pin2.png');
+    background-image: url('../img/pin2.png');
     background-position: center;
     background-repeat: no-repeat;
     background-size: 100% auto;
@@ -846,7 +846,7 @@ box-shadow:
 
     margin-right: 10px;
 
-    background-image: url('/img/dummy.png');
+    background-image: url('../img/dummy.png');
     background-size: 100% auto;
     background-position: center;
     background-repeat: no-repeat;
@@ -982,7 +982,7 @@ box-shadow:
     width: 30px;
     height: 30px;
     
-    background-image: url('/img/pin5.png');
+    background-image: url('../img/pin5.png');
     background-position: center;
     background-repeat: no-repeat;
     background-size: 100% auto;
@@ -1002,7 +1002,7 @@ box-shadow:
     width: 30px;
     height: 30px;
     
-    background-image: url('/img/pin4.png');
+    background-image: url('../img/pin4.png');
     background-position: center;
     background-repeat: no-repeat;
     background-size: 100% auto;
@@ -1053,7 +1053,7 @@ box-shadow:
     width: 18px;
     height: 18px;
 
-    background-image: url('/img/music.png');
+    background-image: url('../img/music.png');
     background-size: 100% auto;
     background-position: center;
     background-repeat: no-repeat;
@@ -1068,7 +1068,7 @@ box-shadow:
     width: 18px;
     height: 18px;
 
-    background-image: url('/img/magnifier.png');
+    background-image: url('../img/magnifier.png');
     background-size: 100% auto;
     background-position: center;
     background-repeat: no-repeat;
@@ -1083,7 +1083,7 @@ box-shadow:
     width: 18px;
     height: 18px;
 
-    background-image: url('/img/hyperlink.png');
+    background-image: url('../img/hyperlink.png');
     background-size: 100% auto;
     background-position: center;
     background-repeat: no-repeat;

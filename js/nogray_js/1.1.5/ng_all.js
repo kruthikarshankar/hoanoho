@@ -12,7 +12,7 @@
 		an assets folder which includes all the CSS, images and language files.
 */
 var ng_config_defaults = {
-	assets_dir: '/js/nogray_js/1.1.5/assets/',
+	assets_dir: './js/nogray_js/1.1.5/assets/',
 	
 	css_skin_prefix: 'ng_',
 	

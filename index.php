@@ -1,4 +1,10 @@
 <?php
+
+	// Look if DB Configuration is available. If not, redirect to install
+	if(!file_exists(__DIR__ . "/config/dbconfig.inc.php")) {
+		header("Location: ./install/index.php");
+	}
+
     include dirname(__FILE__).'/includes/dbconnection.php';
     include dirname(__FILE__).'/includes/sessionhandler.php';
     include dirname(__FILE__).'/includes/dwd_parser.php';

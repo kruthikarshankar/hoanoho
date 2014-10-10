@@ -59,7 +59,21 @@
 <body>
     <section class="install_main">
         <form class="install" action="index.php" method="post">
-            <h1><span class="log-in">Datenbankkonfiguration</span></h1>
+            <h1><span class="log-in">Voraussetzungen</span></h1>
+			<h2>PHP Module</h2>
+			<div class="value">php5-curl:    <?php if(extension_loaded('curl'))    { ?> OK <?php } else { ?> Nicht geladen <?php } ?></div>
+			<div class="value">php5-gd:      <?php if(extension_loaded('gd'))      { ?> OK <?php } else { ?> Nicht geladen <?php } ?></div>
+			<div class="value">php5-imagick: <?php if(extension_loaded('imagick')) { ?> OK <?php } else { ?> Nicht geladen <?php } ?></div>
+			<div class="value">php5-imap:    <?php if(extension_loaded('imap'))    { ?> OK <?php } else { ?> Nicht geladen <?php } ?></div>
+			<div class="value">php5-mysql:   <?php if(extension_loaded('mysql'))   { ?> OK <?php } else { ?> Nicht geladen <?php } ?></div>
+			
+			<p class="clearfix">&nbsp;</p>
+			<h2>Berechtigungen</h2>
+			<div class="value"><?php echo dirname(__DIR__); ?>: <?php if(is_writeable(dirname(__DIR__))) { ?> Beschreibbar <?php } else { ?> Nicht beschreibbar <?php } ?></div>
+			<div class="value"><?php echo dirname(__DIR__)."/config"; ?>: <?php if(is_writeable(dirname(__DIR__)."/config")) { ?> Beschreibbar <?php } else { ?> Nicht beschreibbar <?php } ?></div>
+			
+			<p class="clearfix">&nbsp;</p>
+			<h1><span class="log-in">Datenbankkonfiguration</span></h1>
             <?php if (!file_exists(dirname(__FILE__).'/../config/dbconfig.inc.php')) { ?>
                 <?php if (strlen($errormsg) > 0) { ?>
                     <div class="errormsg"><?php echo $errormsg; ?></div>

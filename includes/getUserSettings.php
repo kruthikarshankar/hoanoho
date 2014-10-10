@@ -11,6 +11,6 @@
     while ($row = mysql_fetch_assoc($result)) {
         // backgroundimage
         print("<style type=\"text/css\">");
-        print("body { background-image: url('" . $row['backgroundimage'] . "'); }");
+        print("body { background-image: url('./" . $row['backgroundimage'] . "'); }");
         print("</style>");
     }
