@@ -4,9 +4,9 @@
     include dirname(__FILE__).'/../includes/getConfiguration.php';
 
     if(!isset($_GET['device']) && isset($_GET['room']))
-        header('Location: ' . $protocol . '://' . $_SERVER['HTTP_HOST'] . '/mobile/room.php?room='.$_GET['room']);
+        header('Location: ./mobile/room.php?room='.$_GET['room']);
     else if(!isset($_GET['device']) && !isset($_GET['room']))
-        header('Location: ' . $protocol . '://' . $_SERVER['HTTP_HOST'] . '/mobile/index.php');
+        header('Location: ./mobile/');
 
     $sql = "SELECT rooms.name roomname, devices.dev_id, devices.name, devices.identifier, devices.isStructure, devices.isHidden, devices.nd_id, device_types.name typename, types.name basetype FROM devices join device_types on devices.dtype_id = device_types.dtype_id join types on device_types.type_id = types.type_id left outer join rooms on rooms.room_id = devices.room_id where dev_id = " . $_GET['device'];
     $result = mysql_query($sql);

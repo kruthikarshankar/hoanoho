@@ -4,7 +4,7 @@
     include dirname(__FILE__).'/../includes/getConfiguration.php';
 
     if(!isset($_GET['room']))
-        header('Location: ' . $protocol . '://' . $_SERVER['HTTP_HOST'] . '/mobile/index.php');
+        header('Location: ./mobile/');
 
     $sql = "SELECT * FROM rooms where room_id = " . $_GET['room'];
     $result = mysql_query($sql);
