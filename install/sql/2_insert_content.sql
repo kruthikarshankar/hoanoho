@@ -30,6 +30,7 @@ INSERT IGNORE INTO `network_os` (`os_id`, `name`, `icon`) VALUES
 
 INSERT IGNORE INTO `configuration` (`dev_id`, `configstring`, `value`, `title`, `hint`, `type`, `category`) VALUES
 (0, 'main_sitetitle', 'Hoanoho', 'Seitentitel', '', 'text', 'Allgemein'),
+(0, 'maintenance_msg', '', 'Systemnachricht', '', 'text', 'Allgemein'),
 (0, 'fbox_address', '', 'Fritzbox Adresse', '', 'text', 'Fritzbox'),
 (0, 'fbox_user', '', 'Fritzbox Benutzer', 'optional', 'text', 'Fritzbox'),
 (0, 'fbox_password', '', 'Fritzbox Passwort', '', 'password', 'Fritzbox'),

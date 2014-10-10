@@ -113,5 +113,14 @@
             <input type="hidden" name="referer" value="<?php echo $referer; ?>">
         </form>​​
     </section>
+
+    <?php if (isset($__CONFIG['maintenance_msg']) && $__CONFIG['maintenance_msg'] != "") { ?>
+    <section class="loginform_main loginform maintenance_msg">
+      <h2>Systemnachricht</h2>
+      <p>
+        <?php echo $__CONFIG['maintenance_msg'] ?>
+      </p>
+    </section>
+    <?php } ?>
 </body>
 </html>
