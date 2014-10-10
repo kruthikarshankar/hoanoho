@@ -1,5 +1,6 @@
 <?php
     include dirname(__FILE__).'/../includes/sessionhandler.php';
+    include dirname(__FILE__).'/../includes/getConfiguration.php';
 ?>
 
 <script type="text/javascript">
@@ -110,7 +111,9 @@
                 </div>
             </li>
 
+            <?php if ($__CONFIG['fbox_address'] != "") { ?>
             <li><a href="./phone.php"><img src="./img/phone.png">Telefon</a></li>
+            <?php } ?>
 
             <li class="drop">
                 <a href="#"><img src="./img/multimedia.png">Media</a>
