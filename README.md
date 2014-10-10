@@ -24,20 +24,25 @@ node.js needs the following modules to be installed:
 * socket.io
 * ws
 
+However, a copy of those 3 modules currently comes with the Hoanoho repository directly so there is no need to install them within your system environment.
+
 ## Installation
 Just put these files into your webserver root directory and go through the installer located under **http://yourhostname/install**.
 Installation in a subdirectory might not be fully supported at this stage.
-The installer will setup the initial database structure as well as store database credentials in `/config/dbconfig.inc.php`.
+The installer will setup the initial database structure as well as store database credentials in `config/dbconfig.inc.php`.
 
-You should also edit the Database credentials in file **js/socketserver.js**.
-Daemonize the Socketserver by using the template startup file in `/install/init.d/socketserver`.
+You should also edit the Database credentials in file 'js/socketserver.js'.
+Daemonize the Socketserver by using the template startup file in `install/init.d/socketserver`.
 The socketserver runs on port 8000, ensure this is accessible from external (e.g. open your firewall).
 
 Give write access to folders named **pupnp**.
 
-Cronjobs you should be activating can be found in `/install/cron.d`. Ideally you just copy the file to `/etc/cron.d`.
+Cronjobs you should be activating can be found in `install/cron.d`. Ideally you just copy the file to `/etc/cron.d`.
 
 Depending on your actual installation directory, you should add **HOANOHO_DIR="/var/www/hoanoho"** to `/etc/environment` to ensure all scripts can reliably find their home directory.
+
+FHEM needs to have DbLog module activated and configured properly. The DbLog database needs to be named **fhem**.
+Hoanoho and FHEM require to use the same MySQL server. The MySQL user for Hoanoho needs to have as least read-only access to the FHEM database as well as read+write access to it's own database.
 
 ## Compatibility List
 
