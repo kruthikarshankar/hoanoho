@@ -116,20 +116,6 @@
             <?php } ?>
 
             <li class="drop">
-                <a href="#"><img src="./img/multimedia.png">Media</a>
-
-                <div class="dropdownContain">
-                    <div class="dropOut">
-                        <div class="triangle"></div>
-                        <ul>
-                            <!-- <a href="#"><li><img src="./img/music_library.png">Musik</li></a> -->
-                            <!--<a href="tv.php"><li><img src="./img/television.png">Rekorder</li></a> -->
-                        </ul>
-                    </div>
-                </div>
-            </li>
-
-            <li class="drop">
                 <a href="#"><img src="./img/weather.png">Wetter</a>
 
                 <div class="dropdownContain">
