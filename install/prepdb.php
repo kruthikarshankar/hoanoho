@@ -32,9 +32,9 @@
 
         // add administrator user
         $randompw = substr(str_shuffle('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'), 0, 8);
-        $hash = md5("admin" + $randompw + time());
+        $hash = md5("manager" + $randompw + time());
         $_SESSION['adminpw'] = $randompw;
-        $result = mysql_query("INSERT INTO users (uid,username,password,hash) VALUES (1,'admin','".md5($randompw)."','".$hash."')");
+        $result = mysql_query("INSERT INTO users (uid,username,password,hash) VALUES (1,'manager','".md5($randompw)."','".$hash."')");
         if ($result) {
             $result = mysql_query("INSERT INTO usergroups (uid,gid) VALUES (1,2)");
             if (!$result) {

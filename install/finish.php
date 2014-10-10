@@ -21,7 +21,7 @@ if(!isset($_SESSION)){
                 <div class="value">Die Installation wurde erfolgreich abgeschlossen!</div>
                 <div class="value">&nbsp;</div>
                 <div class="value">Die Anmeldung ist nun möglich mittels:</div>
-                <div class="value"><b>Benutzername: admin</b></div>
+                <div class="value"><b>Benutzername: manager</b></div>
                 <div class="value"><b>Passwort: <?php echo $_SESSION['adminpw']; ?></b></div>
                 <input type="submit" name="submit" value="Anmelden">
         </form>​​
