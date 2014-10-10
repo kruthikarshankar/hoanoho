@@ -433,7 +433,11 @@
                                     if($callmissed->rufnummer != "")
                                         $rufnummer = $callmissed->rufnummer;
 
-                                    echo "<div id=\"text\">".$callmissed->date."</div><div id=\"value\">".$rufnummer."</div>";
+                                    if ($rufnummer != "unbekannt") {
+                                      echo "<div id=\"text\">".$callmissed->date."</div><div id=\"value\"><a href=\"tel:".$rufnummer."\">".$rufnummer."</a></div>";
+                                    } else {
+                                      echo "<div id=\"text\">".$callmissed->date."</div><div id=\"value\">".$rufnummer."</div>";
+                                    }
                                 }
 
                                 echo "</div>";
