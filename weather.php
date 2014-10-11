@@ -15,14 +15,39 @@ function getCurrentOpenWeatherMapData($in_arr)
 
           // add wind direction
           if ($row->weatherkey == 'wind.deg') {
-              if (($row->weathervalue <  22.5) and ($row->weathervalue >= 337.5)) $wdir = "Nord";
-              if (($row->weathervalue <  67.5) and ($row->weathervalue >= 22.5))  $wdir = "Nord-Ost";
-              if (($row->weathervalue < 125.5) and ($row->weathervalue >= 67.5))  $wdir = "Ost";
-              if (($row->weathervalue < 157.5) and ($row->weathervalue >= 125.5)) $wdir = "Süd-Ost";
-              if (($row->weathervalue < 202.5) and ($row->weathervalue >= 157.5)) $wdir = "Süd";
-              if (($row->weathervalue < 247.5) and ($row->weathervalue >= 202.5)) $wdir = "Süd-West";
-              if (($row->weathervalue < 292.5) and ($row->weathervalue >= 247.5)) $wdir = "West";
-              if (($row->weathervalue < 337.5) and ($row->weathervalue >= 292.5)) $wdir = "Nord-West";
+              if ($row->weatherkey < 22.5) {
+                $wdir = "Nord";
+              } elseif ($row->weatherkey < 45) {
+                $wdir = "Nord-Nordost";
+              } elseif ($row->weatherkey < 67.5) {
+                $wdir = "Nord-Ost";
+              } elseif ($row->weatherkey < 90) {
+                $wdir = "Ost";
+              } elseif ($row->weatherkey < 112.5) {
+                $wdir = "Ost-Südost";
+              } elseif ($row->weatherkey < 135) {
+                $wdir = "Südost";
+              } elseif ($row->weatherkey < 157.5) {
+                $wdir = "Süd-Südost";
+              } elseif ($row->weatherkey < 180) {
+                $wdir = "Süd";
+              } elseif ($row->weatherkey < 202.5) {
+                $wdir = "Süd-Südwest";
+              } elseif ($row->weatherkey < 225) {
+                $wdir = "Südwest";
+              } elseif ($row->weatherkey < 247.5) {
+                $wdir = "West-Südwest";
+              } elseif ($row->weatherkey < 270) {
+                $wdir = "West";
+              } elseif ($row->weatherkey < 292.5) {
+                $wdir = "West-Nordwest";
+              } elseif ($row->weatherkey < 315) {
+                $wdir = "Nordwest";
+              } elseif ($row->weatherkey < 337.5) {
+                $wdir = "Nord-Nordwest";
+              } elseif ($row->weatherkey < 361) {
+                $wdir = "Nord";
+              }
 
               $in_arr['wind.dir'] = $wdir;
           }
@@ -54,16 +79,41 @@ function getForecastOpenWeatherMapData($days)
               $explode = explode(".", $row->weatherkey);
               // add wind direction
               if ($explode[2] == 'deg') {
-                  if (($row->weathervalue-360) <  22.5 and $row->weathervalue >= 337.5) $wdir = "Nord";
-                  else if ($row->weathervalue <  67.5 and $row->weathervalue >= 22.5)  $wdir = "Nord-Ost";
-                  else if ($row->weathervalue < 125.5 and $row->weathervalue >= 67.5)  $wdir = "Ost";
-                  else if ($row->weathervalue < 157.5 and $row->weathervalue >= 125.5) $wdir = "Süd-Ost";
-                  else if ($row->weathervalue < 202.5 and $row->weathervalue >= 157.5) $wdir = "Süd";
-                  else if ($row->weathervalue < 247.5 and $row->weathervalue >= 202.5) $wdir = "Süd-West";
-                  else if ($row->weathervalue < 292.5 and $row->weathervalue >= 247.5) $wdir = "West";
-                  else if ($row->weathervalue < 337.5 and $row->weathervalue >= 292.5) $wdir = "Nord-West";
+                if ($row->weatherkey < 22.5) {
+                  $wdir = "Nord";
+                } elseif ($row->weatherkey < 45) {
+                  $wdir = "Nord-Nordost";
+                } elseif ($row->weatherkey < 67.5) {
+                  $wdir = "Nord-Ost";
+                } elseif ($row->weatherkey < 90) {
+                  $wdir = "Ost";
+                } elseif ($row->weatherkey < 112.5) {
+                  $wdir = "Ost-Südost";
+                } elseif ($row->weatherkey < 135) {
+                  $wdir = "Südost";
+                } elseif ($row->weatherkey < 157.5) {
+                  $wdir = "Süd-Südost";
+                } elseif ($row->weatherkey < 180) {
+                  $wdir = "Süd";
+                } elseif ($row->weatherkey < 202.5) {
+                  $wdir = "Süd-Südwest";
+                } elseif ($row->weatherkey < 225) {
+                  $wdir = "Südwest";
+                } elseif ($row->weatherkey < 247.5) {
+                  $wdir = "West-Südwest";
+                } elseif ($row->weatherkey < 270) {
+                  $wdir = "West";
+                } elseif ($row->weatherkey < 292.5) {
+                  $wdir = "West-Nordwest";
+                } elseif ($row->weatherkey < 315) {
+                  $wdir = "Nordwest";
+                } elseif ($row->weatherkey < 337.5) {
+                  $wdir = "Nord-Nordwest";
+                } elseif ($row->weatherkey < 361) {
+                  $wdir = "Nord";
+                }
 
-                  $forecast_day[$explode[0].".".$explode[1].'.dir'] = $wdir;
+                $forecast_day[$explode[0].".".$explode[1].'.dir'] = $wdir;
               }
 
               $forecast_day[$row->weatherkey] = $row->weathervalue;
