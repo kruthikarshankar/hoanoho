@@ -19,7 +19,7 @@
 # Do NOT "set -e"
 
 # Node.js specific user settings
-JSSOURCE_FILE=${HOANOHO_DIR}/js/socketserver.js
+JSSOURCE_FILE=${HOANOHO_DIR}/ws/socketserver.js
 JSLOGFILE=/var/log/socketserver.log
 
 
