@@ -27,7 +27,7 @@ function parseData($key,$in)
           $in = "-";
 
         if (isset($_key) && $_key != "")
-          return "insert into openweathermap_forecast set measuredate = ".$timestamp.", weatherkey = '".$_key."', weathervalue = '".$in."';";
+          return "insert into openweathermap set measuredate = ".$timestamp.", weatherkey = '".$_key."', weathervalue = '".$in."';";
     }
 
     return $sql;
