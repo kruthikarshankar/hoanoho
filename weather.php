@@ -240,7 +240,7 @@ switch ($day) {
                 <div><b>Luftfeuchtigkeit:</b> <?php echo $humidity." %"; ?></div>
                 <div><b>Luftdruck:</b> <?php echo $pressure." hPa"; ?></div>
                 <div>&nbsp;</div>
-                <div><b>Windgeschwindigkeit:</b> <?php $wspeed." km/h"; ?></div>
+                <div><b>Windgeschwindigkeit:</b> <?php echo $wspeed." km/h"; ?></div>
                 <div><b>Windrichtung:</b> <?php echo $wdir; ?></div>
                 <div>&nbsp;</div>
                 <div><b>Sonnenaufgang:</b> <?php echo $sunrise ." Uhr"; ?></div>
