@@ -16,6 +16,8 @@
 # INSTALL FOREVER: npm install forever --global
 #
 
+[ -r /etc/environment ] && . /etc/environment
+
 # Do NOT "set -e"
 
 # Node.js specific user settings
