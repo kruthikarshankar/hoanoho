@@ -1,6 +1,5 @@
 # Weather
-*/15 * * * * www-data php -f ${HOANOHO_DIR}/cron/datacollector_openweathermap.php &> /dev/null
-*/15 * * * * www-data php -f ${HOANOHO_DIR}/cron/datacollector_openweathermap_forecast.php &> /dev/null
+*/15 * * * * www-data php -f ${HOANOHO_DIR}/cron/datacollector_openweathermap.php &> /dev/null && php -f ${HOANOHO_DIR}/cron/datacollector_openweathermap_forecast.php &> /dev/null
 */5 * * * * www-data php -f ${HOANOHO_DIR}/cron/dwd_warning.php &> /dev/null
 
 # Fritzbox callerlist

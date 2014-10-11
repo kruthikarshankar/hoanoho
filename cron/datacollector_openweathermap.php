@@ -23,7 +23,11 @@ function parseData($key,$in)
         if(is_float($in))
             $in = round($in, 1);
 
-        return "insert into openweathermap set measuredate = ".$timestamp.", weatherkey = '".$_key."', weathervalue = '".$in."';";
+        if (!isset($in) || $in == "")
+          $in = "-";
+
+        if (isset($_key) && $_key != "")
+          return "insert into openweathermap_forecast set measuredate = ".$timestamp.", weatherkey = '".$_key."', weathervalue = '".$in."';";
     }
 
     return $sql;
@@ -48,7 +52,7 @@ $timestamp = time();
 
 // current weather
 
-$url = 'http://api.openweathermap.org/data/2.5/weather?lat='.$latitude.'&lon='.$longitude.'&lang=de&units=metric&rain&snow';
+$url = 'http://api.openweathermap.org/data/2.5/weather?lat='.$latitude.'&lon='.$longitude.'&lang=de&units=metric';
 $curl = curl_init();
 $headers = array();
 curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);

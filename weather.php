@@ -7,41 +7,32 @@ include dirname(__FILE__).'/includes/getConfiguration.php';
 
 function getCurrentOpenWeatherMapData($in_arr)
 {
-    // select which data should be returned
-    $weatherSelectKeys = array('sys.sunrise',
-                                'sys.sunset',
-                                'weather.0.icon',
-                                'weather.0.description',
-                                'main.temp',
-                                'main.temp_min',
-                                'main.temp_max',
-                                'main.humidity',
-                                'main.pressure',
-                                'wind.speed',
-                                'wind.deg',
-                                'clouds.all'
-                               );
-
     $sql = "select * from openweathermap where measuredate = (select measuredate from openweathermap group by measuredate order by measuredate desc limit 1)";
     $weather_result = mysql_query($sql);
     while ($row = mysql_fetch_object($weather_result)) {
-        if (in_array($row->weatherkey, $weatherSelectKeys)) {
-            // add wind direction
-            if ($row->weatherkey == 'wind.deg') {
-                if (($row->weathervalue <  22.5) and ($row->weathervalue >= 337.5)) $wdir = "Nord";
-                if (($row->weathervalue <  67.5) and ($row->weathervalue >= 22.5))  $wdir = "Nord-Ost";
-                if (($row->weathervalue < 125.5) and ($row->weathervalue >= 67.5))  $wdir = "Ost";
-                if (($row->weathervalue < 157.5) and ($row->weathervalue >= 125.5)) $wdir = "Süd-Ost";
-                if (($row->weathervalue < 202.5) and ($row->weathervalue >= 157.5)) $wdir = "Süd";
-                if (($row->weathervalue < 247.5) and ($row->weathervalue >= 202.5)) $wdir = "Süd-West";
-                if (($row->weathervalue < 292.5) and ($row->weathervalue >= 247.5)) $wdir = "West";
-                if (($row->weathervalue < 337.5) and ($row->weathervalue >= 292.5)) $wdir = "Nord-West";
+      if (isset($row->weatherkey) && $row->weatherkey != "") {
+        if (isset($row->weathervalue) && $row->weathervalue != "") {
 
-                $in_arr['wind.dir'] = $wdir;
-            }
+          // add wind direction
+          if ($row->weatherkey == 'wind.deg') {
+              if (($row->weathervalue <  22.5) and ($row->weathervalue >= 337.5)) $wdir = "Nord";
+              if (($row->weathervalue <  67.5) and ($row->weathervalue >= 22.5))  $wdir = "Nord-Ost";
+              if (($row->weathervalue < 125.5) and ($row->weathervalue >= 67.5))  $wdir = "Ost";
+              if (($row->weathervalue < 157.5) and ($row->weathervalue >= 125.5)) $wdir = "Süd-Ost";
+              if (($row->weathervalue < 202.5) and ($row->weathervalue >= 157.5)) $wdir = "Süd";
+              if (($row->weathervalue < 247.5) and ($row->weathervalue >= 202.5)) $wdir = "Süd-West";
+              if (($row->weathervalue < 292.5) and ($row->weathervalue >= 247.5)) $wdir = "West";
+              if (($row->weathervalue < 337.5) and ($row->weathervalue >= 292.5)) $wdir = "Nord-West";
 
-            $in_arr[$row->weatherkey] = $row->weathervalue;
+              $in_arr['wind.dir'] = $wdir;
+          }
+
+          $in_arr[$row->weatherkey] = $row->weathervalue;
+
+        } else {
+          $in_arr[$row->weatherkey] = "-";
         }
+      }
     }
 
     return $in_arr;
@@ -51,50 +42,36 @@ function getForecastOpenWeatherMapData($days)
 {
     $forecast = array();
 
-    // select which data should be returned
-    $weatherSelectKeys = array();
-    for ($i=0; $i < $days; $i++) {
-        $weatherSelectKeys[] = "list.".$i.".temp.day";
-        $weatherSelectKeys[] = "list.".$i.".temp.min";
-        $weatherSelectKeys[] = "list.".$i.".temp.max";
-        $weatherSelectKeys[] = "list.".$i.".temp.night";
-        $weatherSelectKeys[] = "list.".$i.".temp.eve";
-        $weatherSelectKeys[] = "list.".$i.".temp.morn";
-        $weatherSelectKeys[] = "list.".$i.".pressure";
-        $weatherSelectKeys[] = "list.".$i.".humidity";
-        $weatherSelectKeys[] = "list.".$i.".weather.0.description";
-        $weatherSelectKeys[] = "list.".$i.".weather.0.icon";
-        $weatherSelectKeys[] = "list.".$i.".speed";
-        $weatherSelectKeys[] = "list.".$i.".deg";
-        $weatherSelectKeys[] = "list.".$i.".clouds";
-        $weatherSelectKeys[] = "list.".$i.".rain";
-        $weatherSelectKeys[] = "list.".$i.".snow";
-    }
-
     for ($i=0; $i < $days; $i++) {
         $forecast_day = array();
 
         $sql = "select * from openweathermap_forecast where weatherkey like 'list.".$i.".%'";
         $weather_result = mysql_query($sql);
         while ($row = mysql_fetch_object($weather_result)) {
-            if (in_array($row->weatherkey, $weatherSelectKeys)) {
-                $explode = explode(".", $row->weatherkey);
-                // add wind direction
-                if ($explode[2] == 'deg') {
-                    if (($row->weathervalue-360) <  22.5 and $row->weathervalue >= 337.5) $wdir = "Nord";
-                    else if ($row->weathervalue <  67.5 and $row->weathervalue >= 22.5)  $wdir = "Nord-Ost";
-                    else if ($row->weathervalue < 125.5 and $row->weathervalue >= 67.5)  $wdir = "Ost";
-                    else if ($row->weathervalue < 157.5 and $row->weathervalue >= 125.5) $wdir = "Süd-Ost";
-                    else if ($row->weathervalue < 202.5 and $row->weathervalue >= 157.5) $wdir = "Süd";
-                    else if ($row->weathervalue < 247.5 and $row->weathervalue >= 202.5) $wdir = "Süd-West";
-                    else if ($row->weathervalue < 292.5 and $row->weathervalue >= 247.5) $wdir = "West";
-                    else if ($row->weathervalue < 337.5 and $row->weathervalue >= 292.5) $wdir = "Nord-West";
+          if (isset($row->weatherkey) && $row->weatherkey != "") {
+            if (isset($row->weathervalue) && $row->weathervalue != "") {
 
-                    $forecast_day[$explode[0].".".$explode[1].'.dir'] = $wdir;
-                }
+              $explode = explode(".", $row->weatherkey);
+              // add wind direction
+              if ($explode[2] == 'deg') {
+                  if (($row->weathervalue-360) <  22.5 and $row->weathervalue >= 337.5) $wdir = "Nord";
+                  else if ($row->weathervalue <  67.5 and $row->weathervalue >= 22.5)  $wdir = "Nord-Ost";
+                  else if ($row->weathervalue < 125.5 and $row->weathervalue >= 67.5)  $wdir = "Ost";
+                  else if ($row->weathervalue < 157.5 and $row->weathervalue >= 125.5) $wdir = "Süd-Ost";
+                  else if ($row->weathervalue < 202.5 and $row->weathervalue >= 157.5) $wdir = "Süd";
+                  else if ($row->weathervalue < 247.5 and $row->weathervalue >= 202.5) $wdir = "Süd-West";
+                  else if ($row->weathervalue < 292.5 and $row->weathervalue >= 247.5) $wdir = "West";
+                  else if ($row->weathervalue < 337.5 and $row->weathervalue >= 292.5) $wdir = "Nord-West";
 
-                $forecast_day[$row->weatherkey] = $row->weathervalue;
+                  $forecast_day[$explode[0].".".$explode[1].'.dir'] = $wdir;
+              }
+
+              $forecast_day[$row->weatherkey] = $row->weathervalue;
+
+            } else {
+              $forecast_day[$row->weatherkey] = "-";
             }
+          }
         }
 
         $forecast[] = $forecast_day;
@@ -107,9 +84,6 @@ function getCurrentWeatherDataFromLocalStation($in_arr)
 {
     $sql = "select timestamp_unix, valuename, value, valueunit from device_data where timestamp = (select max(timestamp) from device_data where deviceident = 'wslogger') and deviceident = 'wslogger'";
     $result = mysql_query($sql);
-
-    if(mysql_num_rows($result) > 0)
-        $in_arr['ws_available'] = true;
 
     while ($item = mysql_fetch_object($result)) {
         $in_arr['ws_'.$item->valuename] = $item->value;
@@ -176,13 +150,29 @@ switch ($day) {
 
     <?php
         $weather = array();
-        $weather['ws_available'] = false;
-
         $weather = array_merge($weather, getCurrentOpenWeatherMapData($weather));
         $weather = array_merge($weather, getCurrentWeatherDataFromLocalStation($weather));
 
         $sunrise = date('H:i',$weather['sys.sunrise']);
         $sunset = date('H:i',$weather['sys.sunset']);
+
+        // Temperature
+        $temp = (isset($weather['ws_OT']) ? $weather['ws_OT']." °C  (gefühlt ".$weather['ws_WC']." °C)" : $weather['main.temp']." °C");
+          
+        // Rain
+        $rain = (isset($weather['ws_Rain1h']) ? $weather['ws_Rain1h']." l/qm pro h&nbsp;&nbsp;&nbsp;&nbsp;(".$weather['ws_Rain24h']." l/qm pro 24h)" : (isset($weather['rain']) ? $weather['rain']." mm" : "- mm"));
+
+        // humidity
+        $humidity = (isset($weather['ws_OH']) ? $weather['ws_OH'] : $weather['main.humidity']);
+
+        // pressure
+        $pressure = (isset($weather['ws_P']) ? $weather['ws_P'] : $weather['main.pressure']);
+
+        // wspeed
+        $wspeed = (isset($weather['ws_Wind']) ? $weather['ws_Wind'] : $weather['wind.speed']);
+
+        // wdir
+        $wdir = (isset($weather['ws_WindDir']) ? $weather['ws_WindDir'] : $weather['wind.dir']);
     ?>
 
     <section class="main_weather">
@@ -191,17 +181,17 @@ switch ($day) {
             <div id="details">
                 <div><b>Beschreibung:</b> <?php echo $weather['weather.0.description']; ?></div>
                 <div>&nbsp;</div>
-                <div><b>Temperatur:</b> <?php echo ($weather['ws_available'] == true ? $weather['ws_OT']."°C  (".$weather['ws_WC']."°C gefühlt)" : $weather['main_temp']."°C"); ?></div>
-                <div><b>Tages Temperatur Min.:</b> <?php echo $weather['main.temp_min']."°C"; ?></div>
-                <div><b>Tages Temperatur Max.:</b> <?php echo $weather['main.temp_max']."°C"; ?></div>
+                <div><b>Temperatur:</b> <?php echo $temp; ?></div>
+                <div><b>Tages Temperatur Min.:</b> <?php echo $weather['main.temp_min']." °C"; ?></div>
+                <div><b>Tages Temperatur Max.:</b> <?php echo $weather['main.temp_max']." °C"; ?></div>
                 <div>&nbsp;</div>
-                <div><b>Regenmenge:</b> <?php echo ($weather['ws_available'] == true ? $weather['ws_Rain1h']." l/qm pro h&nbsp;&nbsp;&nbsp;&nbsp;(".$weather['ws_Rain24h']." l/qm pro 24h)" : (isset($weather['ws_rain1h'])." l/qm/h" ? $weather['rain'] : "0")." l/qm"); ?></div>
-                <div><b>Bewölkung:</b> <?php echo $weather['clouds.all']."%"; ?></div>
-                <div><b>Luftfeuchtigkeit:</b> <?php echo ($weather['ws_available'] == true ? $weather['ws_OH'] : $weather['main.humidity'])."%"; ?></div>
-                <div><b>Luftdruck:</b> <?php echo ($weather['ws_available'] == true ? $weather['ws_P'] : $weather['main.pressure'])." hPa"; ?></div>
+                <div><b>Regenmenge:</b> <?php echo $rain; ?></div>
+                <div><b>Bewölkung:</b> <?php echo $weather['clouds.all']." %"; ?></div>
+                <div><b>Luftfeuchtigkeit:</b> <?php echo $humidity." %"; ?></div>
+                <div><b>Luftdruck:</b> <?php echo $pressure." hPa"; ?></div>
                 <div>&nbsp;</div>
-                <div><b>Windgeschwindigkeit:</b> <?php echo ($weather['ws_available'] == true ? $weather['ws_Wind'] : $weather['wind.speed'])." km/h"; ?></div>
-                <div><b>Windrichtung:</b> <?php echo ($weather['ws_available'] == true ? $weather['ws_WindDir'] : $weather['wind.dir']." (".$weather['wind.deg']."°)"); ?></div>
+                <div><b>Windgeschwindigkeit:</b> <?php $wspeed." km/h"; ?></div>
+                <div><b>Windrichtung:</b> <?php echo $wdir; ?></div>
                 <div>&nbsp;</div>
                 <div><b>Sonnenaufgang:</b> <?php echo $sunrise ." Uhr"; ?></div>
                 <div><b>Sonnenuntergang:</b> <?php echo $sunset." Uhr"; ?></div>
@@ -229,13 +219,13 @@ switch ($day) {
             echo "<div id=\"details\">";
                 echo "<div>Beschreibung: ".$forecast[$i]['list.'.$i.'.weather.0.description']."</div>";
                 echo "<div>&nbsp;</div>";
-                echo "<div>Temperatur Morgens: ".$forecast[$i]['list.'.$i.'.temp.morn']."°C</div>";
-                echo "<div>Temperatur Tagsüber: ".$forecast[$i]['list.'.$i.'.temp.day']."°C</div>";
-                echo "<div>Temperatur Abends: ".$forecast[$i]['list.'.$i.'.temp.eve']."°C</div>";
-                echo "<div>Temperatur Nachts: ".$forecast[$i]['list.'.$i.'.temp.night']."°C</div>";
+                echo "<div>Temperatur Morgens: ".$forecast[$i]['list.'.$i.'.temp.morn']." °C</div>";
+                echo "<div>Temperatur Tagsüber: ".$forecast[$i]['list.'.$i.'.temp.day']." °C</div>";
+                echo "<div>Temperatur Abends: ".$forecast[$i]['list.'.$i.'.temp.eve']." °C</div>";
+                echo "<div>Temperatur Nachts: ".$forecast[$i]['list.'.$i.'.temp.night']." °C</div>";
                 echo "<div>&nbsp;</div>";
-                echo "<div>Temperatur Minimum: ".$forecast[$i]['list.'.$i.'.temp.min']."°C</div>";
-                echo "<div>Temperatur Maximum: ".$forecast[$i]['list.'.$i.'.temp.max']."°C</div>";
+                echo "<div>Temperatur Minimum: ".$forecast[$i]['list.'.$i.'.temp.min']." °C</div>";
+                echo "<div>Temperatur Maximum: ".$forecast[$i]['list.'.$i.'.temp.max']." °C</div>";
                 echo "<div>&nbsp;</div>";
                 echo "<div>Regenmenge: ".(isset($forecast[$i]['list.'.$i.'.rain']) ? $forecast[$i]['list.'.$i.'.rain'] : "0")." l/qm.</div>";
                 print("<div>Bewölkung: ".$forecast[$i]['list.'.$i.'.clouds']."%</div>");
@@ -243,7 +233,7 @@ switch ($day) {
                 print("<div>Luftdruck: ".$forecast[$i]['list.'.$i.'.pressure']." hPa</div>");
                 print("<div>&nbsp;</div>");
                 print("<div>Windgeschwindigkeit: ".$forecast[$i]['list.'.$i.'.speed']." km/h</div>");
-                print("<div>Windrichtung: ".$forecast[$i]['list.'.$i.'.dir']." (".$forecast[$i]['list.'.$i.'.deg']."°)</div>");
+                print("<div>Windrichtung: ".$forecast[$i]['list.'.$i.'.dir']."</div>");
                 print("<div>&nbsp;</div>");
             echo "</div>";
         echo "</section>";
