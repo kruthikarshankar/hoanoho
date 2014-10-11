@@ -10,7 +10,7 @@ INSERT IGNORE INTO `types` (`type_id`, `name`) VALUES
 (6, 'Dimmer'),
 (7, 'Tür/Fenster-Kontakt'),
 (8, 'Philips Hue'),
-(9, 'Rauch- / Feuermelder'),
+(9, 'Brandmelder'),
 (10, 'Netzwerkgerät'),
 (11, 'Datensammler'),
 (12, 'Raspberry Pi GPIO'),

@@ -763,7 +763,7 @@
                     print("</div>");
                 } else if($device->typename == "Wertanzeige")
                     print("<div id=\"device".$device->dev_id."\"><div class=\"type".$device->dtype_id."\" id=\"image\"></div><div id=\"value\" name=\"temp_value_floorplan".$device->dev_id."\">---</div></div>");
-                else if($device->typename == "Rauch- / Feuermelder")
+                else if($device->typename == "Brandmelder")
                     print("<div id=\"device".$device->dev_id."\" class=\"type".$device->dtype_id."\"></div>");
                 else
                     print("<div onclick='javascript:toggleModal(" . $device->dev_id . ",\"" . $device->typename . "\");' id=\"device".$device->dev_id."\" class=\"type".$device->dtype_id."\"></div>");
