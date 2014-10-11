@@ -4,7 +4,7 @@
 */5 * * * * www-data php -f ${HOANOHO_DIR}/cron/dwd_warning.php &> /dev/null
 
 # Fritzbox callerlist
-*/10 * * * * www-data bash ${HOANOHO_DIR}/cron/getCallerlistFromFritzbox.sh &> /dev/null
+*/5 * * * * www-data php -f ${HOANOHO_DIR}/includes/fritzbox_api/fritzbox_get_foncallslist.php &> /dev/null && php -f ${HOANOHO_DIR}/includes/import_anruferliste.php &> /dev/null
 
 # Garbage
 0 18,20 * * * www-data php -f ${HOANOHO_DIR}/cron/check_garbageplan.php &> /dev/null

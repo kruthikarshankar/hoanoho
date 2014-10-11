@@ -53,7 +53,12 @@
 
     mysql_query("TRUNCATE TABLE callerlist");
 
-    $callerlistfile = $__CONFIG['temp_path']."/foncallsdaten.csv";
+    if (isset(ini_get(upload_tmp_dir))) {
+      $tmp_path = ini_get(upload_tmp_dir);
+    } else {
+      $tmp_path = sys_get_temp_dir();
+    }
+    $callerlistfile = $tmp_path."/foncallsdaten.csv";
 
     $file_array = file($callerlistfile);
 
