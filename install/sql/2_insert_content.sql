@@ -1,3 +1,6 @@
+SET NAMES utf8 COLLATE utf8_unicode_ci;
+SET CHARACTER SET utf8;
+
 INSERT IGNORE INTO `types` (`type_id`, `name`) VALUES
 (1, 'Ein/Aus-Schalter'),
 (2, 'Temperaturregelung'),
@@ -5,7 +8,7 @@ INSERT IGNORE INTO `types` (`type_id`, `name`) VALUES
 (4, 'Jalousie'),
 (5, 'Wertanzeige'),
 (6, 'Dimmer'),
-(7, 'Tuer/Fenster-Kontakt'),
+(7, 'Tür/Fenster-Kontakt'),
 (8, 'Philips Hue'),
 (9, 'Rauch- / Feuermelder'),
 (10, 'Netzwerkgerät'),
