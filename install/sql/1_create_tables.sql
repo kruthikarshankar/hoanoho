@@ -7,7 +7,7 @@ CREATE TABLE IF NOT EXISTS `bindata` (
   `binid` int(11) NOT NULL AUTO_INCREMENT,
   `data` longblob NOT NULL,
   PRIMARY KEY (`binid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8  DEFAULT COLLATE utf8_general_ci;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8  DEFAULT COLLATE utf8_unicode_ci;
 
 CREATE TABLE IF NOT EXISTS `callerlist` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -20,7 +20,7 @@ CREATE TABLE IF NOT EXISTS `callerlist` (
   `eigenerufnummer` varchar(255) NOT NULL,
   `dauer` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8  DEFAULT COLLATE utf8_general_ci;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8  DEFAULT COLLATE utf8_unicode_ci;
 
 CREATE TABLE IF NOT EXISTS `configuration` (
   `dev_id` int(11) NOT NULL,
@@ -32,14 +32,14 @@ CREATE TABLE IF NOT EXISTS `configuration` (
   `category` varchar(255) DEFAULT NULL,
   UNIQUE KEY `conf_id` (`dev_id`,`configstring`),
   KEY `dev_id` (`dev_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8  DEFAULT COLLATE utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8  DEFAULT COLLATE utf8_unicode_ci;
 
 CREATE TABLE IF NOT EXISTS `cron_data` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL DEFAULT '',
   `data` longtext NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8  DEFAULT COLLATE utf8_general_ci;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8  DEFAULT COLLATE utf8_unicode_ci;
 
 CREATE TABLE IF NOT EXISTS `devices` (
   `dev_id` int(11) NOT NULL AUTO_INCREMENT,
@@ -61,7 +61,7 @@ CREATE TABLE IF NOT EXISTS `devices` (
   KEY `room_id` (`room_id`),
   CONSTRAINT `devices_ibfk_2` FOREIGN KEY (`floor_id`) REFERENCES `device_floors` (`floor_id`),
   CONSTRAINT `devices_ibfk_3` FOREIGN KEY (`dtype_id`) REFERENCES `device_types` (`dtype_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8  DEFAULT COLLATE utf8_general_ci;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8  DEFAULT COLLATE utf8_unicode_ci;
 
 CREATE TABLE IF NOT EXISTS `device_data` (
   `ddid` int(11) unsigned NOT NULL AUTO_INCREMENT,
@@ -75,7 +75,7 @@ CREATE TABLE IF NOT EXISTS `device_data` (
   `month` int(2) NOT NULL,
   `day` int(2) NOT NULL,
   PRIMARY KEY (`ddid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8  DEFAULT COLLATE utf8_general_ci;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8  DEFAULT COLLATE utf8_unicode_ci;
 
 CREATE TABLE IF NOT EXISTS `device_floors` (
   `floor_id` int(11) NOT NULL AUTO_INCREMENT,
@@ -84,7 +84,7 @@ CREATE TABLE IF NOT EXISTS `device_floors` (
   `position` int(11) NOT NULL,
   PRIMARY KEY (`floor_id`),
   KEY `image_id` (`image_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8  DEFAULT COLLATE utf8_general_ci;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8  DEFAULT COLLATE utf8_unicode_ci;
 
 CREATE TABLE IF NOT EXISTS `device_types` (
   `dtype_id` int(11) NOT NULL AUTO_INCREMENT,
@@ -94,21 +94,21 @@ CREATE TABLE IF NOT EXISTS `device_types` (
   `image_on_id` int(11) DEFAULT NULL,
   `imagesize` varchar(255) DEFAULT '70%',
   PRIMARY KEY (`dtype_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8  DEFAULT COLLATE utf8_general_ci;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8  DEFAULT COLLATE utf8_unicode_ci;
 
 CREATE TABLE IF NOT EXISTS `garbageplan` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `pickupdate` datetime NOT NULL,
   `text` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8  DEFAULT COLLATE utf8_general_ci;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8  DEFAULT COLLATE utf8_unicode_ci;
 
 CREATE TABLE IF NOT EXISTS `groups` (
   `gid` int(11) NOT NULL AUTO_INCREMENT,
   `isAdmin` tinyint(1) NOT NULL,
   `grpname` varchar(255) NOT NULL,
   PRIMARY KEY (`gid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8  DEFAULT COLLATE utf8_general_ci;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8  DEFAULT COLLATE utf8_unicode_ci;
 
 CREATE TABLE IF NOT EXISTS `network_devices` (
   `nd_id` int(11) NOT NULL AUTO_INCREMENT,
@@ -122,21 +122,21 @@ CREATE TABLE IF NOT EXISTS `network_devices` (
   `state` int(1) NOT NULL DEFAULT '0',
   `ip_dhcp` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`nd_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8  DEFAULT COLLATE utf8_general_ci;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8  DEFAULT COLLATE utf8_unicode_ci;
 
 CREATE TABLE IF NOT EXISTS `network_device_types` (
   `ndtype_id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
   `icon` varchar(255) NOT NULL,
   PRIMARY KEY (`ndtype_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8  DEFAULT COLLATE utf8_general_ci;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8  DEFAULT COLLATE utf8_unicode_ci;
 
 CREATE TABLE IF NOT EXISTS `network_os` (
   `os_id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
   `icon` varchar(255) NOT NULL,
   PRIMARY KEY (`os_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8  DEFAULT COLLATE utf8_general_ci;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8  DEFAULT COLLATE utf8_unicode_ci;
 
 CREATE TABLE IF NOT EXISTS `network_ranges` (
   `nr_id` int(11) NOT NULL AUTO_INCREMENT,
@@ -144,7 +144,7 @@ CREATE TABLE IF NOT EXISTS `network_ranges` (
   `subnet` varchar(15) NOT NULL DEFAULT '255.255.255.0',
   `infos` varchar(255) DEFAULT '-',
   PRIMARY KEY (`nr_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8  DEFAULT COLLATE utf8_general_ci;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8  DEFAULT COLLATE utf8_unicode_ci;
 
 CREATE TABLE IF NOT EXISTS `notes` (
   `no_id` int(11) NOT NULL AUTO_INCREMENT,
@@ -157,7 +157,7 @@ CREATE TABLE IF NOT EXISTS `notes` (
   `isActive` int(1) NOT NULL DEFAULT '1',
   `papercolor` varchar(255) NOT NULL DEFAULT 'yellow',
   PRIMARY KEY (`no_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8  DEFAULT COLLATE utf8_general_ci;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8  DEFAULT COLLATE utf8_unicode_ci;
 
 CREATE TABLE IF NOT EXISTS `openweathermap` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
@@ -165,7 +165,7 @@ CREATE TABLE IF NOT EXISTS `openweathermap` (
   `weatherkey` varchar(255) NOT NULL DEFAULT '',
   `weathervalue` varchar(4000) NOT NULL DEFAULT '',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8  DEFAULT COLLATE utf8_general_ci;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8  DEFAULT COLLATE utf8_unicode_ci;
 
 CREATE TABLE IF NOT EXISTS `openweathermap_forecast` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
@@ -173,7 +173,7 @@ CREATE TABLE IF NOT EXISTS `openweathermap_forecast` (
   `weatherkey` varchar(255) NOT NULL DEFAULT '',
   `weathervalue` varchar(4000) NOT NULL DEFAULT '',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8  DEFAULT COLLATE utf8_general_ci;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8  DEFAULT COLLATE utf8_unicode_ci;
 
 CREATE TABLE IF NOT EXISTS `pinboard_configuration` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -182,7 +182,7 @@ CREATE TABLE IF NOT EXISTS `pinboard_configuration` (
   `meta` varchar(4000) NOT NULL,
   `position` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8  DEFAULT COLLATE utf8_general_ci;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8  DEFAULT COLLATE utf8_unicode_ci;
 
 CREATE TABLE IF NOT EXISTS `pinboard_links` (
   `link_id` int(11) NOT NULL AUTO_INCREMENT,
@@ -190,7 +190,7 @@ CREATE TABLE IF NOT EXISTS `pinboard_links` (
   `url` varchar(255) DEFAULT NULL,
   `uid` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`link_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8  DEFAULT COLLATE utf8_general_ci;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8  DEFAULT COLLATE utf8_unicode_ci;
 
 
 CREATE TABLE IF NOT EXISTS `reportdata` (
@@ -200,7 +200,7 @@ CREATE TABLE IF NOT EXISTS `reportdata` (
   `rid` int(11) DEFAULT NULL,
   `startval` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`rd_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8  DEFAULT COLLATE utf8_general_ci;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8  DEFAULT COLLATE utf8_unicode_ci;
 
 CREATE TABLE IF NOT EXISTS `reports` (
   `rid` int(11) NOT NULL AUTO_INCREMENT,
@@ -210,14 +210,14 @@ CREATE TABLE IF NOT EXISTS `reports` (
   `unitprice` varchar(255) DEFAULT '0',
   `dev_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`rid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8  DEFAULT COLLATE utf8_general_ci;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8  DEFAULT COLLATE utf8_unicode_ci;
 
 CREATE TABLE IF NOT EXISTS `report_configuration` (
   `rid` int(11) NOT NULL,
   `configstring` varchar(255) NOT NULL DEFAULT '',
   `value` varchar(4000) NOT NULL DEFAULT '',
   KEY `dev_id` (`rid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8  DEFAULT COLLATE utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8  DEFAULT COLLATE utf8_unicode_ci;
 
 CREATE TABLE IF NOT EXISTS `rooms` (
   `room_id` int(11) NOT NULL AUTO_INCREMENT,
@@ -225,7 +225,7 @@ CREATE TABLE IF NOT EXISTS `rooms` (
   `position` int(11) NOT NULL DEFAULT '0',
   `floor_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`room_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8  DEFAULT COLLATE utf8_general_ci;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8  DEFAULT COLLATE utf8_unicode_ci;
 
 CREATE TABLE IF NOT EXISTS `scheduler` (
   `sch_id` int(11) NOT NULL AUTO_INCREMENT,
@@ -236,7 +236,7 @@ CREATE TABLE IF NOT EXISTS `scheduler` (
   `dev_id` int(11) DEFAULT NULL,
   `dev_state` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`sch_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8  DEFAULT COLLATE utf8_general_ci;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8  DEFAULT COLLATE utf8_unicode_ci;
 
 CREATE TABLE IF NOT EXISTS `sharedfiles` (
   `SID` int(25) NOT NULL AUTO_INCREMENT,
@@ -256,7 +256,7 @@ CREATE TABLE IF NOT EXISTS `sharedfiles` (
   `File_AccessPasswordPlain` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`SID`),
   KEY `File_Date` (`File_Date`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8  DEFAULT COLLATE utf8_general_ci;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8  DEFAULT COLLATE utf8_unicode_ci;
 
 CREATE TABLE IF NOT EXISTS `sharedfiles_accesslog` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -265,13 +265,13 @@ CREATE TABLE IF NOT EXISTS `sharedfiles_accesslog` (
   `sid` int(11) NOT NULL,
   `useragent` varchar(255) NOT NULL DEFAULT '',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8  DEFAULT COLLATE utf8_general_ci;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8  DEFAULT COLLATE utf8_unicode_ci;
 
 CREATE TABLE IF NOT EXISTS `types` (
   `type_id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
   PRIMARY KEY (`type_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8  DEFAULT COLLATE utf8_general_ci;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8  DEFAULT COLLATE utf8_unicode_ci;
 
 CREATE TABLE IF NOT EXISTS `usergroups` (
   `uid` int(11) NOT NULL,
@@ -281,7 +281,7 @@ CREATE TABLE IF NOT EXISTS `usergroups` (
   KEY `gid` (`gid`),
   CONSTRAINT `usergroups_ibfk_1` FOREIGN KEY (`uid`) REFERENCES `users` (`uid`) ON DELETE CASCADE,
   CONSTRAINT `usergroups_ibfk_2` FOREIGN KEY (`gid`) REFERENCES `groups` (`gid`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8  DEFAULT COLLATE utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8  DEFAULT COLLATE utf8_unicode_ci;
 
 CREATE TABLE IF NOT EXISTS `users` (
   `uid` int(11) NOT NULL AUTO_INCREMENT,
@@ -292,7 +292,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `lastlogin` datetime DEFAULT NULL,
   PRIMARY KEY (`uid`),
   KEY `username` (`username`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8  DEFAULT COLLATE utf8_general_ci;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8  DEFAULT COLLATE utf8_unicode_ci;
 
 CREATE TABLE IF NOT EXISTS `usersettings` (
   `uid` int(11) NOT NULL,
@@ -306,7 +306,7 @@ CREATE TABLE IF NOT EXISTS `usersettings` (
   `mailserver_encryption` varchar(255) DEFAULT NULL,
   `pushover_usertoken` varchar(255) DEFAULT NULL,
   `pushover_apptoken` varchar(255) DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8  DEFAULT COLLATE utf8_general_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8  DEFAULT COLLATE utf8_unicode_ci;
 
 
 SET FOREIGN_KEY_CHECKS = 1;
