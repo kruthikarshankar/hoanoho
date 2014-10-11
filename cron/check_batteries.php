@@ -3,7 +3,7 @@ $HOANOHO_DIR = exec('. /etc/environment; echo $HOANOHO_DIR');
 require($HOANOHO_DIR."/config/dbconfig.inc.php");
 include($HOANOHO_DIR."/includes/pushover.php");
 
-$dbh = mysql_connect($dbhostname,$dbusername,$dbpassword) or die("There was a problem with the database connection.");
+$dbh = mysql_connect($dbhostname,$dbusername,$dbpassword) or die("Could not connect to database server, please check servername and credentials.");
 
 $sql = "select configstring, value from ".$dbname.".configuration where dev_id = 0 order by configstring asc";
 $result = mysql_query($sql);

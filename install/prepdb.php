@@ -15,8 +15,8 @@
 
                 $sqlcommands = explode(';', $data);
 
-                $dbh = mysql_connect($_SESSION['dbhostname'],$_SESSION['dbusername'],$_SESSION['dbpassword']) or die("There was a problem with the database connection.");
-                $dbs = mysql_select_db($_SESSION['dbname'], $dbh) or die("There was a problem selecting the categories.");
+                $dbh = mysql_connect($_SESSION['dbhostname'],$_SESSION['dbusername'],$_SESSION['dbpassword']) or die("Could not connect to database server, please check servername and credentials.");
+                $dbs = mysql_select_db($_SESSION['dbname'], $dbh) or die("There was a problem selecting the database, please check database name.");
 
                 // insert table contents
                 for ($j=0; $j < sizeof($sqlcommands); $j++) {
