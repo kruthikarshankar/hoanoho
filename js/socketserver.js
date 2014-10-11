@@ -129,9 +129,9 @@ var loop_weatherwarning = function () {
 	    query_weatherwarning
 		.on('result',function(result)
 		{
-			if(!devices['weatherwarn_'+result.id] || devices['weatherwarn_'+result.id].value != utf8_decode(result.data))
+			if(!devices['weatherwarn_'+result.id] || devices['weatherwarn_'+result.id].value != result.data)
 			{
-				devices['weatherwarn_'+result.id] = {device:result.name, typename:result.name, value:utf8_decode(result.data), dev_id:result.id, image:null};
+				devices['weatherwarn_'+result.id] = {device:result.name, typename:result.name, value:result.data, dev_id:result.id, image:null};
 
 				connectionsArray.forEach(function(tmpSocket){
 					if(tmpSocket != null)
@@ -346,9 +346,9 @@ var dbConnChecker = setInterval(function(){
 			query_weatherwarning
 			.on('result',function(result)
 			{	
-				if(!devices['weatherwarn_'+result.id] || devices['weatherwarn_'+result.id].value != utf8_decode(result.data))
+				if(!devices['weatherwarn_'+result.id] || devices['weatherwarn_'+result.id].value != result.data)
 				{
-					devices['weatherwarn_'+result.id] = {device:result.name, typename:result.name, value:utf8_decode(result.data), dev_id:result.id, image:null};
+					devices['weatherwarn_'+result.id] = {device:result.name, typename:result.name, value:result.data, dev_id:result.id, image:null};
 
 					connectionsArray.forEach(function(tmpSocket){
 						if(tmpSocket != null)
