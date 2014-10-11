@@ -154,7 +154,7 @@
                                 default:
                                     break;
                             }
-                        } else if (messageObj['typename'] == "Tuer/Fenster-Kontakt") {
+                        } else if (messageObj['typename'] == "Tür/Fenster-Kontakt") {
                             switch (messageObj['reading']) {
                                 case 'state':
                                     var translated_value = "";

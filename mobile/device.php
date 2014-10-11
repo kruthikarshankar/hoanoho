@@ -569,7 +569,7 @@
                     echo "<a class=\"button-main button-block\" href=\"#\" onclick=\"javascript:toggleDevice('".$device->dev_id."','".$device->identifier."','".$device->basetype."', 'off');\">komplett schließen</a>";
                     echo "<br>";
                     echo "<a class=\"button-negative button-block\" href=\"#\" name=\"stopbutton\" onclick=\"javascript: toggleDevice('".$device->dev_id."','".$device->identifier."','".$device->basetype."', 'stop');\">STOP!</a>";
-                } elseif ($device->basetype == "Tuer/Fenster-Kontakt") {
+                } elseif ($device->basetype == "Tür/Fenster-Kontakt") {
                     echo "<ul class=\"list inset\">";
                         echo "<li>Zustand: <b id=\"value_".$device->dev_id."\">---</b></li>";
                         echo "<li>Batterie Status: <b id=\"value_battery_".$device->dev_id."\">---</b></li>";

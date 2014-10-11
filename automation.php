@@ -754,7 +754,7 @@
                     print("<div id=\"tooltip-device".$device->dev_id."\">");
                         print("<div name=\"tooltip-value1".$device->dev_id."\">---% geöffnet</div>");
                     print("</div>");
-                } elseif ($device->typename == "Tuer/Fenster-Kontakt") {
+                } elseif ($device->typename == "Tür/Fenster-Kontakt") {
                     print("<div id=\"device".$device->dev_id."\" class=\"type".$device->dtype_id."\"></div>");
 
                     print("<div id=\"tooltip-device".$device->dev_id."\">");

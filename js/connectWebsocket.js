@@ -109,7 +109,7 @@ function connectWebSocket(address) {
     		var slider = document.getElementById("slider"+messageObj['dev_id']).value = value
     		var slider_value = document.getElementById("slider_value"+messageObj['dev_id']).value = value;	
     	}
-        else if(messageObj['typename'] == 'Tuer/Fenster-Kontakt')
+        else if(messageObj['typename'] == 'Tür/Fenster-Kontakt')
         {
             switch(messageObj['reading']) {
                 case 'state':
