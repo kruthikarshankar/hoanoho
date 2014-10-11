@@ -84,8 +84,8 @@
                     //$record = QueryKlickTelDe("0800123123");
                 }
 
-                //$insert .= "'" . utf8_decode($record['Name']) . "',";
-                //$insert .= "'" . utf8_decode($record['StrasseHausnummer']) . " / " . utf8_decode($record['PLZOrt']) . "',";
+                //$insert .= "'" . $record['Name'] . "',";
+                //$insert .= "'" . $record['StrasseHausnummer'] . " / " . $record['PLZOrt'] . "',";
                 $insert .= "'','',";
 
                 continue;
@@ -104,7 +104,7 @@
 
     $result = mysql_query("select rufnummer,date from callerlist where date >= date_sub(NOW(), interval 10 MINUTE) and typ = 2");
     while ($caller = mysql_fetch_object($result)) {
-        $message = utf8_encode($caller->rufnummer);
+        $message = $caller->rufnummer;
 
         pushMessageToUsers("Neuer verpasster Anruf", $message, 0);
     }

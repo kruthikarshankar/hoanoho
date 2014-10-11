@@ -22,19 +22,19 @@ else if (basename($_SERVER['SCRIPT_NAME']) == "floor.php") {
     if (isset($_GET['floor'])) {
         $sql = "select name from device_floors where floor_id = ".$_GET['floor'];
         $headerresult = mysql_fetch_object(mysql_query($sql));
-        $title = utf8_encode($headerresult->name);
+        $title = $headerresult->name;
     }
 } elseif (basename($_SERVER['SCRIPT_NAME']) == "room.php") {
     if (isset($_GET['room'])) {
         $sql = "select name from rooms where room_id = ".$_GET['room'];
         $headerresult = mysql_fetch_object(mysql_query($sql));
-        $title = utf8_encode($headerresult->name);
+        $title = $headerresult->name;
     }
 } elseif (basename($_SERVER['SCRIPT_NAME']) == "dtype.php") {
     if (isset($_GET['dtype'])) {
         $sql = "select name from device_types where dtype_id = ".$_GET['dtype'];
         $headerresult = mysql_fetch_object(mysql_query($sql));
-        $title = utf8_encode($headerresult->name);
+        $title = $headerresult->name;
     }
 } elseif (basename($_SERVER['SCRIPT_NAME']) == "webcam.php") {
     $connstate = "disconnected";
@@ -42,7 +42,7 @@ else if (basename($_SERVER['SCRIPT_NAME']) == "floor.php") {
     if (isset($_GET['dev_id'])) {
         $sql = "select devices.name devicename, device_floors.name floorname, rooms.name roomname from devices join rooms on rooms.room_id = devices.room_id join device_floors on device_floors.floor_id = devices.floor_id where dev_id = ".$_GET['dev_id'];
         $headerresult = mysql_fetch_object(mysql_query($sql));
-        $title = utf8_encode($headerresult->roomname).": ".utf8_encode($headerresult->devicename);
+        $title = $headerresult->roomname.": ".$headerresult->devicename;
     }
 }
 

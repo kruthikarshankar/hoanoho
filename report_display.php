@@ -119,7 +119,7 @@
         if($_POST['startval'] == "on")
             $startval = 1;
 
-        $sql = "insert into reportdata (savedate,data,rid,startval) values ('".$date." ".$time."', '".str_replace(",", ".", utf8_decode($_POST['data']))."', ".$_POST['rid'].", ".$startval.")";
+        $sql = "insert into reportdata (savedate,data,rid,startval) values ('".$date." ".$time."', '".str_replace(",", ".", $_POST['data'])."', ".$_POST['rid'].", ".$startval.")";
         mysql_query($sql);
     } elseif ($_POST['cmd'] == "editdata" && isset($_POST['rd_id'])) {
         $temp = explode(" ", $_POST['savedate']);
@@ -133,7 +133,7 @@
             $startval = 1;
         $sql = "update reportdata set startval = 0 where rid = ".$_POST['rid'];
         mysql_query($sql);
-        $sql = "update reportdata set savedate = '".$date." ".$time."', data = '".str_replace(",", ".", utf8_decode($_POST['data']))."', startval = ".$startval." where rd_id = ".$_POST['rd_id'];
+        $sql = "update reportdata set savedate = '".$date." ".$time."', data = '".str_replace(",", ".", $_POST['data'])."', startval = ".$startval." where rd_id = ".$_POST['rd_id'];
         mysql_query($sql);
     } elseif ($_POST['cmd'] == "deletedata" && isset($_POST['rd_id'])) {
         $sql = "delete from reportdata where rd_id = ".$_POST['rd_id'];
@@ -152,9 +152,9 @@
     $sql = "select * from reports where rid = " . $_GET['rid'];
     $result = mysql_query($sql);
     while ($row = mysql_fetch_object($result)) {
-        $reporttype = utf8_encode($row->type);
-        $reportname = utf8_encode($row->name);
-        $reportunit = utf8_encode($row->unit);
+        $reporttype = $row->type;
+        $reportname = $row->name;
+        $reportunit = $row->unit;
         $reportunitprice = doubleval($row->unitprice);
     }
 
@@ -246,28 +246,28 @@
             $data_series_labels[$i] = array();
 
             // get value translation
-            $translation = utf8_encode($enabled_values->name);
-            $sql = "select value name from configuration where configstring = '@".utf8_encode($enabled_values->name)."' and dev_id = (select report_configuration.value from report_configuration where rid = ".$_GET['rid']." and configstring = 'dev_id')";
+            $translation = $enabled_values->name;
+            $sql = "select value name from configuration where configstring = '@".$enabled_values->name."' and dev_id = (select report_configuration.value from report_configuration where rid = ".$_GET['rid']." and configstring = 'dev_id')";
             $result2 = mysql_query($sql);
             while ($trans = mysql_fetch_object($result2)) {
-                $translation = utf8_encode($trans->name);
+                $translation = $trans->name;
             }
             $graph_labels[$i] = $translation;
 
             // get value unit
             $unit = "";
-            $sql = "select distinct valueunit from device_data where deviceident = (select identifier from report_configuration join devices on devices.dev_id = report_configuration.value where rid = ".$_GET['rid']." and configstring = 'dev_id') and valuename = '".utf8_encode($enabled_values->name)."'";
+            $sql = "select distinct valueunit from device_data where deviceident = (select identifier from report_configuration join devices on devices.dev_id = report_configuration.value where rid = ".$_GET['rid']." and configstring = 'dev_id') and valuename = '".$enabled_values->name."'";
             $result2 = mysql_query($sql);
             while ($valunit = mysql_fetch_object($result2)) {
-                $unit = " [".utf8_encode($valunit->valueunit)."]";
+                $unit = " [".$valunit->valueunit."]";
             }
             $graph_labels[$i] = $graph_labels[$i].$unit;
 
             // get graph color
             $selected_color = "#FFFFFF";
-            $result2 = mysql_query("select value from report_configuration where rid = ".$_GET['rid']." and configstring = '".utf8_encode($enabled_values->name)."_color'");
+            $result2 = mysql_query("select value from report_configuration where rid = ".$_GET['rid']." and configstring = '".$enabled_values->name."_color'");
             while ($color = mysql_fetch_object($result2)) {
-                $selected_color = utf8_encode($color->value);
+                $selected_color = $color->value;
             }
             $graph_colors[$i] = $selected_color;
 
@@ -552,7 +552,7 @@
                         echo "<div id=\"number\">".$i."</div>";
                         echo "<form method=\"POST\" enctype=\"multipart/form-data\" name=\"editDataForm".$row->rd_id."\" id=\"editDataForm\">";
                             echo "<div id=\"date\"><input name=\"savedate\" value=\"".$date." ".$time."\" ".($reporttype == "auto" ? "readonly" : "")."></div>";
-                            echo "<div id=\"data\"><input name=\"data\" value=\"".utf8_encode($row->data)."\" ".($reporttype == "auto" ? "readonly" : "")."></div>";
+                            echo "<div id=\"data\"><input name=\"data\" value=\"".$row->data."\" ".($reporttype == "auto" ? "readonly" : "")."></div>";
                             echo "<div id=\"datadiff\"><input value=\"".$data_diff."\" readonly></div>";
                             echo "<div id=\"startval\"><input name=\"startval\" type=\"checkbox\" ".($row->startval == 1 ? "checked" : "")."></div>";
                             echo "<input type=\"hidden\" name=\"cmd\" value=\"editdata\">";

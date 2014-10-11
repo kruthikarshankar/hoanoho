@@ -436,7 +436,7 @@
         <script src="./js/ratchet.js"></script>
         <script src="./js/standalone.js"></script>
 
-        <title><?php echo $__CONFIG['main_sitetitle'] . " - " . utf8_encode($device->name); ?></title>
+        <title><?php echo $__CONFIG['main_sitetitle'] . " - " . $device->name; ?></title>
     </head>
     <body>
         <header class="bar-title">
@@ -448,24 +448,24 @@
                 else
                     echo "<a class=\"button-prev\" href=\"room.php?room=".$_GET['room']."\">Zurück</a>";
             ?>
-            <a href="#devicedetails"><h1 class="title"><?php echo utf8_encode($device->name); ?></h1></a>
+            <a href="#devicedetails"><h1 class="title"><?php echo $device->name; ?></h1></a>
         </header>
 
         <div class="content">
             <br>
             <?php
-                if (utf8_encode($device->basetype) == "Ein/Aus-Schalter" || utf8_encode($device->basetype) == "Raspberry Pi GPIO") {
+                if ($device->basetype == "Ein/Aus-Schalter" || $device->basetype == "Raspberry Pi GPIO") {
                     echo "<ul class=\"list inset\">";
                         echo "<li>Zustand:<div id=\"value_".$device->dev_id."\" class=\"toggle\"><div class=\"toggle-handle\"></div></div></li>";
                     echo "</ul>";
 
-                    if (utf8_encode($device->basetype) == "Raspberry Pi GPIO") {
+                    if ($device->basetype == "Raspberry Pi GPIO") {
                         $configResult = mysql_fetch_assoc(mysql_query("SELECT value from configuration where configstring = 'gpio_raspi_address' and dev_id = " . $device->dev_id));
                         print("<input type=\"hidden\" id=\"gpio_raspi_address".$device->dev_id."\" value=\"".$configResult['value']."\">");
                         $configResult = mysql_fetch_assoc(mysql_query("SELECT value from configuration where configstring = 'gpio_outputpin' and dev_id = " . $device->dev_id));
                         print("<input type=\"hidden\" id=\"gpio_outputpin".$device->dev_id."\" value=\"".$configResult['value']."\">");
                     }
-                } elseif (utf8_encode($device->basetype) == "Temperaturregelung") {
+                } elseif ($device->basetype == "Temperaturregelung") {
                     echo "<ul class=\"list inset\">";
                         echo "<li>rel. Luftfeuchte: <b id=\"value_hum_".$device->dev_id."\">--- %</b></li>";
                         echo "<li>Raumtemperatur: <b id=\"value_".$device->dev_id."\">--- &deg;C</b></li>";
@@ -481,7 +481,7 @@
                     echo "<ul class=\"list inset\">";
                         echo "<li>Batterie Status: <b id=\"value_battery_".$device->dev_id."\">---</b></li>";
                     echo "</ul>";
-                } elseif (utf8_encode($device->basetype) == "Webcam") {
+                } elseif ($device->basetype == "Webcam") {
                     echo "<ul class=\"list inset\">";
                         $sql = "SELECT value from configuration where configstring = 'vendor' and dev_id = " . $device->dev_id;
                         $result2 = mysql_query($sql);
@@ -552,7 +552,7 @@
                             }
                         }
                     echo "</ul>";
-                } elseif (utf8_encode($device->basetype) == "Jalousie") {
+                } elseif ($device->basetype == "Jalousie") {
                     echo "<ul class=\"list inset\">";
                         echo "<input hidden id=\"value_cur".$device->dev_id."\">";
                         echo "<li>Zustand: <b id=\"value_".$device->dev_id."\">---%</b> geöffnet</li>";
@@ -569,7 +569,7 @@
                     echo "<a class=\"button-main button-block\" href=\"#\" onclick=\"javascript:toggleDevice('".$device->dev_id."','".$device->identifier."','".$device->basetype."', 'off');\">komplett schließen</a>";
                     echo "<br>";
                     echo "<a class=\"button-negative button-block\" href=\"#\" name=\"stopbutton\" onclick=\"javascript: toggleDevice('".$device->dev_id."','".$device->identifier."','".$device->basetype."', 'stop');\">STOP!</a>";
-                } elseif (utf8_encode($device->basetype) == "Tuer/Fenster-Kontakt") {
+                } elseif ($device->basetype == "Tuer/Fenster-Kontakt") {
                     echo "<ul class=\"list inset\">";
                         echo "<li>Zustand: <b id=\"value_".$device->dev_id."\">---</b></li>";
                         echo "<li>Batterie Status: <b id=\"value_battery_".$device->dev_id."\">---</b></li>";
@@ -586,10 +586,10 @@
                         echo "<h3 class=\"title\">Informationen</h3>";
                     echo "</header>";
                     echo "<ul class=\"list\">";
-                        echo "<li><b>Raum:</b> ".utf8_encode($device->roomname)."</li>";
-                        echo "<li><b>Identifier:</b> ".utf8_encode($device->identifier)."</li>";
-                        echo "<li><b>Typ:</b> ".utf8_encode($device->typename)."</li>";
-                        echo "<li><b>Basistyp:</b> ".utf8_encode($device->basetype)."</li>";
+                        echo "<li><b>Raum:</b> ".$device->roomname."</li>";
+                        echo "<li><b>Identifier:</b> ".$device->identifier."</li>";
+                        echo "<li><b>Typ:</b> ".$device->typename."</li>";
+                        echo "<li><b>Basistyp:</b> ".$device->basetype."</li>";
                     echo "</ul>";
                 echo "</div>";
             ?>

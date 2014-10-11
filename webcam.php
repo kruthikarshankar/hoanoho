@@ -290,7 +290,7 @@
             print("<div id=\"modal-webcam".$webcam->dev_id."\">");
                 print("<div id=\"section0\">");
                     print("<div id=\"closebutton\" onclick='javascript:toggleModal(" . $webcam->dev_id . ");'></div>");
-                    print("<h1><span>".utf8_encode($webcam->name)."</span></h1>");
+                    print("<h1><span>".$webcam->name."</span></h1>");
 
                     $sql = "SELECT value from configuration where configstring = 'vendor' and dev_id = " . $webcam->dev_id;
                     $result2 = mysql_query($sql);
@@ -391,7 +391,7 @@
             if (mysql_num_rows($result) > 0) {
                 while ($webcam = mysql_fetch_object($result)) {
                     echo "<div onclick='javascript:toggleModal(" . $webcam->dev_id . ");' id=\"webcam_wrapper\">";
-                        echo "<div id=\"webcam_headline\">".utf8_encode($webcam->name)."</div>";
+                        echo "<div id=\"webcam_headline\">".$webcam->name."</div>";
                         $sql = "SELECT value from configuration where configstring = 'vendor' and dev_id = " . $webcam->dev_id;
                         $result2 = mysql_query($sql);
                         $resultArr = mysql_fetch_assoc($result2);

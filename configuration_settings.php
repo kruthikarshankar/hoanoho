@@ -9,7 +9,7 @@
     		{
     			default:
     			case"text":
-    				echo "<input type=\"text\" name=\"".$object->configstring."\" value=\"".utf8_encode($object->value)."\" placeholder=\"".utf8_encode($object->hint)."\" >";
+    				echo "<input type=\"text\" name=\"".$object->configstring."\" value=\"".$object->value."\" placeholder=\"".$object->hint."\" >";
     			break;
     			case"boolean":
     				echo "<select name=\"".$object->configstring."\">";
@@ -18,7 +18,7 @@
     				echo "</select>";
     			break;
     			case"password":
-    				echo "<input type=\"password\" name=\"".$object->configstring."\" value=\"".utf8_encode($object->value)."\">";
+    				echo "<input type=\"password\" name=\"".$object->configstring."\" value=\"".$object->value."\">";
     			break;
     			case"dwd_state":
     				echo "<select name=\"".$object->configstring."\" style='width:200px'>";
@@ -91,7 +91,7 @@
             while ($config = mysql_fetch_object($result)) {
             ?>
                     <div id="listitem">
-                        <div id="text"><?php echo utf8_encode($config->title); ?>:</div>
+                        <div id="text"><?php echo $config->title; ?>:</div>
                         <div id="value"><?php displayValue($config); ?></div>
                     </div>
             <?php

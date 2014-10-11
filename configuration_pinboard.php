@@ -43,9 +43,9 @@ function displayDevices($dev_id)
         }
 
         if(strlen($device->identifier) > 0)
-            $return .= "<option ".($dev_id == $device->dev_id ? "selected" : "")." value=\"".$device->dev_id.";".utf8_encode($device->typename)."\">".utf8_encode($device->devicename)."&emsp;[".$device->identifier."]</option>";
+            $return .= "<option ".($dev_id == $device->dev_id ? "selected" : "")." value=\"".$device->dev_id.";".$device->typename."\">".$device->devicename."&emsp;[".$device->identifier."]</option>";
         else
-            $return .= "<option ".($dev_id == $device->dev_id ? "selected" : "")." value=\"".$device->dev_id.";".utf8_encode($device->typename)."\">".utf8_encode($device->devicename)."</option>";
+            $return .= "<option ".($dev_id == $device->dev_id ? "selected" : "")." value=\"".$device->dev_id.";".$device->typename."\">".$device->devicename."</option>";
     }
 
     $return .= "</select>";
@@ -60,9 +60,9 @@ function displayDeviceData($dev_id, $dev_value)
     while ($device_identifier = mysql_fetch_object($result)) {
         $result2 = mysql_query("select distinct valuename from device_data where deviceident = '".$device_identifier->identifier."' order by valuename");
         while ($identifier = mysql_fetch_object($result2)) {
-            $sql = "select value name from configuration where configstring = '@".utf8_encode($identifier->valuename)."' and dev_id = ".$dev_id;
+            $sql = "select value name from configuration where configstring = '@".$identifier->valuename."' and dev_id = ".$dev_id;
             $translation = mysql_fetch_object(mysql_query($sql));
-            $return .= "<option value=\"".$identifier->valuename."\" ".($dev_value == $identifier->valuename ? "selected" : "").">".(strlen($translation->name) > 0 ? "".utf8_encode($translation->name)."" : $identifier->valuename)."</option>";
+            $return .= "<option value=\"".$identifier->valuename."\" ".($dev_value == $identifier->valuename ? "selected" : "").">".(strlen($translation->name) > 0 ? "".$translation->name."" : $identifier->valuename)."</option>";
         }
     }
 

@@ -408,7 +408,7 @@
                                     print("<div id=\"headline_icon\"></div><div id=\"headline\">".$block_meta->title."</div>");
 
                                 while ($item = mysql_fetch_object($result2)) {
-                                    echo "<div id=\"value_oneline_normal\">Am ".$item->pickupdate." wird ".explode(":",utf8_encode($item->text))[0]." abgeholt!</div>";
+                                    echo "<div id=\"value_oneline_normal\">Am ".$item->pickupdate." wird ".explode(":",$item->text)[0]." abgeholt!</div>";
                                 }
 
                                 echo "</div>";

@@ -142,9 +142,9 @@
             }
 
             if(strlen($device->identifier) > 0)
-                echo "<option ".($dev_id == $device->dev_id ? "selected" : "")." value=\"".$device->dev_id.";".utf8_encode($device->typename)."\">".utf8_encode($device->devicename)."&emsp;[".$device->identifier."]</option>";
+                echo "<option ".($dev_id == $device->dev_id ? "selected" : "")." value=\"".$device->dev_id.";".$device->typename."\">".$device->devicename."&emsp;[".$device->identifier."]</option>";
             else
-                echo "<option ".($dev_id == $device->dev_id ? "selected" : "")." value=\"".$device->dev_id.";".utf8_encode($device->typename)."\">".utf8_encode($device->devicename)."</option>";
+                echo "<option ".($dev_id == $device->dev_id ? "selected" : "")." value=\"".$device->dev_id.";".$device->typename."\">".$device->devicename."</option>";
 
             if($dev_id == $device->dev_id)
                 $selected = true;

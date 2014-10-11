@@ -13,12 +13,12 @@
                 print("<div id=\"headline\"><div id=\"text\">&nbsp;</div><div id=\"value_ident\">Kennung</div><div id=\"value_label\">Bezeichnung</div></div>");
                 while ($valuerow = mysql_fetch_object($result2)) {
                     $translation = "";
-                    $translation_result = mysql_query("select value from configuration where dev_id = ".$_GET['dev_id']." and configstring = '@".utf8_encode($valuerow->valuename)."'");
+                    $translation_result = mysql_query("select value from configuration where dev_id = ".$_GET['dev_id']." and configstring = '@".$valuerow->valuename."'");
                     while ($trans = mysql_fetch_object($translation_result)) {
-                        $translation = utf8_encode($trans->value);
+                        $translation = $trans->value;
                     }
 
-                    print("<div id=\"row\"><div id=\"text\">Wert ".$i.":</div><div id=\"value_ident\"><input name=\"datacollector_value\" value=\"".utf8_encode($valuerow->valuename)."\" readonly></div><div id=\"value_label\"><input name=\"@".utf8_encode($valuerow->valuename)."\" value=\"".$translation."\"></div></div>");
+                    print("<div id=\"row\"><div id=\"text\">Wert ".$i.":</div><div id=\"value_ident\"><input name=\"datacollector_value\" value=\"".$valuerow->valuename."\" readonly></div><div id=\"value_label\"><input name=\"@".$valuerow->valuename."\" value=\"".$translation."\"></div></div>");
                     $i++;
                 }
             } else {

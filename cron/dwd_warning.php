@@ -38,7 +38,7 @@ if(mysql_num_rows($result2) > 0)
 
 // nur wenn sich die warnung geändert hat
 if ($resultObj2 != null && strlen($resultObj2->data) != strlen($dwd_warnung)) {
-    if (strlen(utf8_encode($dwd_warnung)) > 0) {
+    if (strlen($dwd_warnung) > 0) {
         pushMessageToUsers("Neue Wetterwarnung", $dwd_warnung, 1);
     } else {
         pushMessageToUsers("Entwarnung", "Es liegt keine Wetterwarnung mehr vor.", 0);
@@ -54,7 +54,7 @@ if ($resultObj2 != null && strlen($resultObj2->data) != strlen($dwd_warnung)) {
     $sql = "INSERT INTO cron_data (name, data) values ('dwd_warning','".$dwd_warnung."')";
     mysql_query($sql);
 
-    if (strlen(utf8_encode($dwd_warnung)) > 0) {
+    if (strlen($dwd_warnung) > 0) {
         pushMessageToUsers("Neue Wetterwarnung", $dwd_warnung, 1);
     }
 }

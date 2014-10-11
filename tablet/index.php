@@ -368,7 +368,7 @@
                             //$sql = "select date_format(pickupdate, '%d.%m.%Y') pickupdate,text from garbageplan where '16.07.2014' = date_format(pickupdate, '%d.%m.%Y')";
                             $result_item = mysql_query($sql);
                             while ($item = mysql_fetch_object($result_item)) {
-                                print("<div id=\"message\">Am ".$item->pickupdate." wird ".explode(":",utf8_encode($item->text))[0]." abgeholt!</div>");
+                                print("<div id=\"message\">Am ".$item->pickupdate." wird ".explode(":",$item->text)[0]." abgeholt!</div>");
                             }
                         print("</div>");
                     print("</div>");

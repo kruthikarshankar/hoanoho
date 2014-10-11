@@ -51,7 +51,7 @@
                 $sql = "select devices.dev_id, device_types.dtype_id, devices.isStructure, devices.identifier d_identifier, devices.name name, device_floors.name floorname, types.name typename from devices join device_floors on device_floors.floor_id = devices.floor_id join device_types on device_types.dtype_id = devices.dtype_id join types on types.type_id = device_types.type_id";
                 $result = mysql_query($sql);
                 while ($device = mysql_fetch_object($result)) {
-                    if (utf8_encode($device->typename) == "Philips Hue") {
+                    if ($device->typename == "Philips Hue") {
                         echo "var clrpk".$device->dev_id." = new ng.ColorPicker({ input: 'color_picker".$device->dev_id."' });";
                     }
                 }
@@ -518,17 +518,17 @@
         $result = mysql_query($sql);
 
         while ($device = mysql_fetch_object($result)) {
-            if (utf8_encode($device->typename) == "Ein/Aus-Schalter" || utf8_encode($device->typename) == "Raspberry Pi GPIO") {
+            if ($device->typename == "Ein/Aus-Schalter" || $device->typename == "Raspberry Pi GPIO") {
                 print("<div id=\"modal-device".$device->dev_id."\" class=\"draggable\">");
                     print("<div id=\"section1\">");
                         print("<div id=\"closebutton\" onclick='javascript:toggleModal(" . $device->dev_id . ",\"" . $device->typename . "\");'></div>");
-                        print("<h1><span>".utf8_encode($device->roomname)." ".utf8_encode($device->name)."</span></h1>");
+                        print("<h1><span>".$device->roomname." ".$device->name."</span></h1>");
                         print("<div id=\"buttons1\">");
                             print("<button id=\"poweronbutton\" onclick='javascript:toggleDevice(\"".$device->dev_id."\",\"".$device->d_identifier."\",\"".$device->typename."\",\"on\");'>Einschalten</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;");
                             print("<button id=\"poweroffbutton\" onclick='javascript:toggleDevice(\"".$device->dev_id."\",\"".$device->d_identifier."\",\"".$device->typename."\",\"off\");'>Ausschalten</button>");
                         print("</div>");
                     print("</div>");
-                    if (utf8_encode($device->typename) == "Raspberry Pi GPIO") {
+                    if ($device->typename == "Raspberry Pi GPIO") {
                         $configResult = mysql_fetch_assoc(mysql_query("SELECT value from configuration where configstring = 'gpio_raspi_protocol' and dev_id = " . $device->dev_id));
                         print("<input type=\"hidden\" id=\"gpio_raspi_protocol".$device->dev_id."\" value=\"".$configResult['value']."\">");
                         $configResult = mysql_fetch_assoc(mysql_query("SELECT value from configuration where configstring = 'gpio_raspi_address' and dev_id = " . $device->dev_id));
@@ -537,11 +537,11 @@
                         print("<input type=\"hidden\" id=\"gpio_outputpin".$device->dev_id."\" value=\"".$configResult['value']."\">");
                     }
                 print("</div>");
-            } elseif (utf8_encode($device->typename) == "Temperaturregelung") {
+            } elseif ($device->typename == "Temperaturregelung") {
                 print("<div id=\"modal-device".$device->dev_id."\" class=\"draggable\">");
                     print("<div id=\"section2\">");
                         print("<div id=\"closebutton\" onclick='javascript:toggleModal(" . $device->dev_id . ",\"" . $device->typename . "\");'></div>");
-                        print("<h1><span>".utf8_encode($device->roomname)." ".utf8_encode($device->name)."</span></h1>");
+                        print("<h1><span>".$device->roomname." ".$device->name."</span></h1>");
                         print("<div id=\"display2\">");
                             print("<label id=\"solltemplabelv\">Soll Temperatur:</label><input id=\"solltemp\" name=\"solltemp".$device->dev_id."\" readonly value=\"---\">&nbsp;<label id=\"solltemplabelh\">°C</label><br>");
                             print("<label id=\"isttemplabel\">Ist Temperatur:</label><input id=\"isttemp\" name=\"isttemp".$device->dev_id."\" readonly value=\"---\"\">&nbsp;<label id=\"isttemplabel\">°C</label>");
@@ -552,11 +552,11 @@
                         print("</div>");
                     print("</div>");
                 print("</div>");
-            } elseif (utf8_encode($device->typename) == "Jalousie") {
+            } elseif ($device->typename == "Jalousie") {
                 print("<div id=\"modal-device".$device->dev_id."\" class=\"draggable\">");
                     print("<div id=\"section3\">");
                         print("<div id=\"closebutton\" onclick='javascript:toggleModal(" . $device->dev_id . ",\"" . $device->typename . "\");'></div>");
-                        print("<h1><span>".utf8_encode($device->roomname)." ".utf8_encode($device->name)."</span></h1>");
+                        print("<h1><span>".$device->roomname." ".$device->name."</span></h1>");
                         print("<div id=\"display3\">");
                             print("<label id=\"jalousielabel\">Jalousie ist zu</label><input id=\"jalousiecurvalue\" name=\"jalousiecurvalue".$device->dev_id."\" hidden><input id=\"jalousievalue\" name=\"jalousievalue".$device->dev_id."\" readonly value=\"---\">&nbsp;<label id=\"jalousielabel\">% geöffnet</label>");
                         print("</div>");
@@ -579,11 +579,11 @@
                         print("</div>");
                     print("</div>");
                 print("</div>");
-            } elseif (utf8_encode($device->typename) == "Webcam") {
+            } elseif ($device->typename == "Webcam") {
                 print("<div id=\"modal-device".$device->dev_id."\" class=\"draggable\">");
                     print("<div id=\"section0\">");
                         print("<div id=\"closebutton\" onclick='javascript:toggleModal(" . $device->dev_id . ",\"" . $device->typename . "\");'></div>");
-                        print("<h1><span>".utf8_encode($device->roomname)." ".utf8_encode($device->name)."</span></h1>");
+                        print("<h1><span>".$device->roomname." ".$device->name."</span></h1>");
                         $cam_vendor = "";
 
                         $sql = "SELECT value from configuration where configstring = 'vendor' and dev_id = " . $device->dev_id;
@@ -672,22 +672,22 @@
                         }
                     print("</div>");
                 print("</div>");
-            } elseif (utf8_encode($device->typename) == "Dimmer") {
+            } elseif ($device->typename == "Dimmer") {
                 print("<div id=\"modal-device".$device->dev_id."\" class=\"draggable\">");
                     print("<div id=\"section1\">");
                         print("<div id=\"closebutton\" onclick='javascript:toggleModal(" . $device->dev_id . ",\"" . $device->typename . "\");'></div>");
-                        print("<h1><span>".utf8_encode($device->roomname)." ".utf8_encode($device->name)."</span></h1>");
+                        print("<h1><span>".$device->roomname." ".$device->name."</span></h1>");
                         print("<div id=\"slider\">");
                             print("<input type=\"range\" id=\"slider".$device->dev_id."\" min=\"0\" max=\"100\" step=\"5\" onchange='javascript:toggleDevice(\"".$device->dev_id."\",\"".$device->d_identifier."\",\"".$device->typename."\",this.value);'>");
                             print("<input type=\"text\" id=\"slider_value".$device->dev_id."\" readonly value=\"---\">&nbsp;%");
                         print("</div>");
                     print("</div>");
                 print("</div>");
-            } elseif (utf8_encode($device->typename) == "Philips Hue") {
+            } elseif ($device->typename == "Philips Hue") {
                 print("<div id=\"modal-device".$device->dev_id."\">");
                     print("<div id=\"section1\">");
                         print("<div id=\"closebutton\" onclick='javascript:toggleModal(" . $device->dev_id . ",\"" . $device->typename . "\");'></div>");
-                        print("<h1><span>".utf8_encode($device->roomname)." ".utf8_encode($device->name)."</span></h1>");
+                        print("<h1><span>".$device->roomname." ".$device->name."</span></h1>");
                         print("<div id=\"slider\">");
                             print("<input type=\"range\" id=\"slider".$device->dev_id."\" min=\"0\" max=\"100\" step=\"5\" onchange='javascript:toggleDevice(\"".$device->dev_id."\",\"".$device->d_identifier."\",\"".$device->typename."\",this.value);'>");
                             print("<input type=\"text\" id=\"slider_value".$device->dev_id."\" readonly value=\"---\">&nbsp;%");
@@ -700,7 +700,7 @@
                 print("<div id=\"modal-device".$device->dev_id."\" class=\"draggable\">");
                     print("<div id=\"section0\">");
                         print("<div id=\"closebutton\" onclick='javascript:toggleModal(" . $device->dev_id . ",\"" . $device->typename . "\");'></div>");
-                        print("<h1><span>".utf8_encode($device->roomname)." ".utf8_encode($device->name)."</span></h1>");
+                        print("<h1><span>".$device->roomname." ".$device->name."</span></h1>");
                     print("</div>");
                 print("</div>");
             }
@@ -716,7 +716,7 @@
     while ($floor = mysql_fetch_object($result)) {
         // floor
         print("<section class=\"main_automation\">");
-        print("<h1><span>".utf8_encode($floor->name)."</span></h1>");
+        print("<h1><span>".$floor->name."</span></h1>");
         print("<div id=\"floor".$floor->floor_id."\"></div>");
 
         $sql2 = "select devices.dev_id, device_types.dtype_id, devices.isStructure, devices.isHidden, devices.identifier d_identifier, devices.name name, device_floors.name floorname, types.name typename from devices join device_floors on device_floors.floor_id = devices.floor_id join device_types on device_types.dtype_id = devices.dtype_id join types on types.type_id = device_types.type_id";
@@ -733,12 +733,12 @@
                     $firstloop = false;
                 }
 
-                print("<button id=\"structurebutton\" onclick='javascript:toggleModal(" . $device->dev_id . ",\"" . $device->typename . "\");'>".utf8_encode($device->name)."</button>");
+                print("<button id=\"structurebutton\" onclick='javascript:toggleModal(" . $device->dev_id . ",\"" . $device->typename . "\");'>".$device->name."</button>");
             } else {
                 if($device->isHidden == "on")
                     continue;
 
-                if (utf8_encode($device->typename) == "Temperaturregelung") {
+                if ($device->typename == "Temperaturregelung") {
                     print("<div onclick='javascript:toggleModal(" . $device->dev_id . ",\"" . $device->typename . "\");' id=\"device".$device->dev_id."\" class=\"type".$device->dtype_id."\"></div>");
 
                     print("<div id=\"tooltip-device".$device->dev_id."\">");
@@ -748,22 +748,22 @@
                         print("<div name=\"tooltip-value4".$device->dev_id."\">Betriebsmodus: ---</div>");
                         print("<div name=\"tooltip-value5".$device->dev_id."\">Batterie Status: ---</div>");
                     print("</div>");
-                } elseif (utf8_encode($device->typename) == "Jalousie") {
+                } elseif ($device->typename == "Jalousie") {
                     print("<div onclick='javascript:toggleModal(" . $device->dev_id . ",\"" . $device->typename . "\");' id=\"device".$device->dev_id."\" class=\"type".$device->dtype_id."\"></div>");
 
                     print("<div id=\"tooltip-device".$device->dev_id."\">");
                         print("<div name=\"tooltip-value1".$device->dev_id."\">---% geöffnet</div>");
                     print("</div>");
-                } elseif (utf8_encode($device->typename) == "Tuer/Fenster-Kontakt") {
+                } elseif ($device->typename == "Tuer/Fenster-Kontakt") {
                     print("<div id=\"device".$device->dev_id."\" class=\"type".$device->dtype_id."\"></div>");
 
                     print("<div id=\"tooltip-device".$device->dev_id."\">");
                         print("<div name=\"tooltip-value1".$device->dev_id."\">Zustand: ---</div>");
                         print("<div name=\"tooltip-value2".$device->dev_id."\">Batterie Status: ---</div>");
                     print("</div>");
-                } else if(utf8_encode($device->typename) == "Wertanzeige")
+                } else if($device->typename == "Wertanzeige")
                     print("<div id=\"device".$device->dev_id."\"><div class=\"type".$device->dtype_id."\" id=\"image\"></div><div id=\"value\" name=\"temp_value_floorplan".$device->dev_id."\">---</div></div>");
-                else if(utf8_encode($device->typename) == "Rauch- / Feuermelder")
+                else if($device->typename == "Rauch- / Feuermelder")
                     print("<div id=\"device".$device->dev_id."\" class=\"type".$device->dtype_id."\"></div>");
                 else
                     print("<div onclick='javascript:toggleModal(" . $device->dev_id . ",\"" . $device->typename . "\");' id=\"device".$device->dev_id."\" class=\"type".$device->dtype_id."\"></div>");

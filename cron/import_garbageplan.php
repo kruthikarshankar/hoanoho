@@ -49,7 +49,7 @@ if ($filetype == "ics") {
         mysql_query("TRUNCATE TABLE garbageplan");
 
         foreach ($icalc as $event) {
-            mysql_query("INSERT INTO garbageplan (pickupdate, text) VALUES ('".$event->getDateStart('Y-m-d H:i:s')."','".utf8_decode($event->getSummary())."')");
+            mysql_query("INSERT INTO garbageplan (pickupdate, text) VALUES ('".$event->getDateStart('Y-m-d H:i:s')."','".$event->getSummary()."')");
         }
     }
 }

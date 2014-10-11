@@ -27,8 +27,8 @@ while ($row = mysql_fetch_array($result)) {
 
 $result = mysql_query("select pickupdate,text from garbageplan where date(NOW()) = pickupdate -INTERVAL 1 DAY");
 while ($pickup = mysql_fetch_object($result)) {
-    $message = utf8_encode($pickup->text);
-    $message = explode(":",utf8_encode($pickup->text))[0];
+    $message = $pickup->text;
+    $message = explode(":",$pickup->text)[0];
 
     pushMessageToUsers("Erinnerung: Abfall bereitstellen", $message, 0);
 }

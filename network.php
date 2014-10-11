@@ -11,16 +11,16 @@
           $sql = "DELETE FROM network_ranges where nr_id = " . $_POST['nr_id'];
           mysql_query($sql);
       } elseif ($_POST['cmd'] == "newdevice") {
-          $sql = "INSERT INTO network_devices set name = '" . utf8_decode('Neues Netzwerkgerät') . "'";
+          $sql = "INSERT INTO network_devices set name = 'Neues Netzwerkgerät'";
           mysql_query($sql);
       } elseif ($_POST['cmd'] == "newrange") {
-          $sql = "INSERT INTO network_ranges set iprange = '" . utf8_decode('000.000.000.000-000') . "'";
+          $sql = "INSERT INTO network_ranges set iprange = '000.000.000.000-000'";
           mysql_query($sql);
       } elseif ($_POST['cmd'] == "updaterange") {
-          $sql = "UPDATE network_ranges set iprange = '" . utf8_decode($_POST['iprange']) . "', subnet = '" . utf8_decode($_POST['subnet']) . "', infos = '" . utf8_decode($_POST['infos']) . "' where nr_id = " . $_POST['nr_id'];
+          $sql = "UPDATE network_ranges set iprange = '" . $_POST['iprange'] . "', subnet = '" . $_POST['subnet'] . "', infos = '" . $_POST['infos'] . "' where nr_id = " . $_POST['nr_id'];
           mysql_query($sql);
       } elseif ($_POST['cmd'] == "updatedevice" && isset($_POST['nd_id']) && strlen($_POST['nd_id']) > 0) {
-          $sql = "UPDATE network_devices set name = '" . utf8_decode($_POST['devicename']) . "', macaddr = '" . utf8_decode($_POST['macaddr']) . "', ip = '" . utf8_decode($_POST['ip']) . "', subnet = '" . utf8_decode($_POST['subnet']) . "', infos = '" . utf8_decode($_POST['infos']) . "', ndtype_id = " . $_POST['ndtype_id'] . ", os_id = " . $_POST['os_id'] . " where nd_id = " . $_POST['nd_id'];
+          $sql = "UPDATE network_devices set name = '" . $_POST['devicename'] . "', macaddr = '" . $_POST['macaddr'] . "', ip = '" . $_POST['ip'] . "', subnet = '" . $_POST['subnet'] . "', infos = '" . $_POST['infos'] . "', ndtype_id = " . $_POST['ndtype_id'] . ", os_id = " . $_POST['os_id'] . " where nd_id = " . $_POST['nd_id'];
           mysql_query($sql);
       }
     }
@@ -117,15 +117,15 @@
                 <form method="POST" enctype="multipart/form-data" name="editDeviceForm" id="editForm">
                 <div id="edit">
                     <div id="space">&nbsp;</div>
-                    <div id="text">Gerätename:</div><div id="value"><input id="devicename" name="devicename" value="<?php echo utf8_encode($device->devicename); ?>"></div>
+                    <div id="text">Gerätename:</div><div id="value"><input id="devicename" name="devicename" value="<?php echo $device->devicename; ?>"></div>
                     <div id="text">Gerätetyp:</div><div id="value"><?php displayDeviceTypes($device->ndtype_id); ?></div>
                     <div id="text">Betriebsystem:</div><div id="value"><?php displayOS($device->os_id); ?></div>
-                    <div id="text">MAC Adresse:</div><div id="value"><input id="macaddr" name="macaddr" value="<?php echo utf8_encode($device->macaddr); ?>"></div>
+                    <div id="text">MAC Adresse:</div><div id="value"><input id="macaddr" name="macaddr" value="<?php echo $device->macaddr; ?>"></div>
                     <div id="space">&nbsp;</div>
-                    <div id="text">IP-Adresse:</div><div id="value"><input id="ip" name="ip" value="<?php echo utf8_encode($device->ip); ?>"></div>
-                    <div id="text">Subnetz:</div><div id="value"><input id="subnet" name="subnet" value="<?php echo utf8_encode($device->subnet); ?>"></div>
+                    <div id="text">IP-Adresse:</div><div id="value"><input id="ip" name="ip" value="<?php echo $device->ip; ?>"></div>
+                    <div id="text">Subnetz:</div><div id="value"><input id="subnet" name="subnet" value="<?php echo $device->subnet; ?>"></div>
                     <div id="space">&nbsp;</div>
-                    <div id="text">Bemerkungen:</div><div id="value"><input id="infos" name="infos" value="<?php echo utf8_encode($device->infos); ?>"></div>
+                    <div id="text">Bemerkungen:</div><div id="value"><input id="infos" name="infos" value="<?php echo $device->infos; ?>"></div>
                     <div id="space">&nbsp;</div>
                     <div id="submit"><input type="button" id="greybutton" name="backbtn" value="Zurück" onclick="self.location.href='network.php'">&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" id="greybutton" name="resetbtn" value="Zurücksetzen" onclick="editDeviceForm.reset(); prepareAdditionalFields(document.getElementById('ndtype_id'));">&nbsp;&nbsp;&nbsp;&nbsp;<input type="submit" id="greenbutton" name="submit" value="Speichern"></div>
                     <input type="hidden" id="nd_id" name="nd_id" value="<?php echo $device->nd_id; ?>"><input type="hidden" id="cmd" name="cmd" value="updatedevice">
@@ -155,10 +155,10 @@
                 <form method="POST" enctype="multipart/form-data" name="editRangeForm" id="editForm">
                 <div id="edit">
                     <div id="space">&nbsp;</div>
-                    <div id="text">IP-Adresse:</div><div id="value"><input id="iprange" name="iprange" value="<?php echo utf8_encode($range->iprange); ?>"></div>
-                    <div id="text">Subnetz:</div><div id="value"><input id="subnet" name="subnet" value="<?php echo utf8_encode($range->subnet); ?>"></div>
+                    <div id="text">IP-Adresse:</div><div id="value"><input id="iprange" name="iprange" value="<?php echo $range->iprange; ?>"></div>
+                    <div id="text">Subnetz:</div><div id="value"><input id="subnet" name="subnet" value="<?php echo $range->subnet; ?>"></div>
                     <div id="space">&nbsp;</div>
-                    <div id="text">Bemerkungen:</div><div id="value"><input id="infos" name="infos" value="<?php echo utf8_encode($range->infos); ?>"></div>
+                    <div id="text">Bemerkungen:</div><div id="value"><input id="infos" name="infos" value="<?php echo $range->infos; ?>"></div>
                     <div id="space">&nbsp;</div>
                     <div id="submit"><input type="button" id="greybutton" name="backbtn" value="Zurück" onclick="self.location.href='network.php'">&nbsp;&nbsp;&nbsp;&nbsp;<input type="reset" id="greybutton" name="resetbtn" value="Zurücksetzen">&nbsp;&nbsp;&nbsp;&nbsp;<input type="submit" id="greenbutton" name="submit" value="Speichern"></div>
                     <input type="hidden" id="nr_id" name="nr_id" value="<?php echo $range->nr_id; ?>"><input type="hidden" id="cmd" name="cmd" value="updaterange">
@@ -194,9 +194,9 @@
             while ($range = mysql_fetch_object($result)) {
             ?>
             <div id="listitem">
-                <div id="ipbereich"><?php echo utf8_encode($range->iprange); ?></div>
-                <div id="subnet"><?php echo utf8_encode($range->subnet); ?></div>
-                <div id="infos"><?php echo utf8_encode($range->infos); ?></div>
+                <div id="ipbereich"><?php echo $range->iprange; ?></div>
+                <div id="subnet"><?php echo $range->subnet; ?></div>
+                <div id="infos"><?php echo $range->infos; ?></div>
                 <div id="action">
                         <form method="POST" enctype="multipart/form-data" name="editRangeForm<?php echo $range->nr_id; ?>" id="editRangeform">
                             <a href="#" onclick="javascript:document.editRangeForm<?php echo $range->nr_id; ?>.submit()" title="Bereich editieren"><img src="./img/edit.png"></a>
@@ -204,7 +204,7 @@
                             <input type="hidden" name="nr_id" value="<?php echo $range->nr_id; ?>">
                         </form>
                         <form method="POST" enctype="multipart/form-data" name="deleteRangeForm<?php echo $range->nr_id; ?>" id="deleteRangeForm">
-                            <a href="javascript:document.deleteRangeForm<?php echo $range->nr_id; ?>.submit()" title="Bereich löschen" onclick="javascript:return confirm('Soll der Bereich \'<?php echo utf8_encode($range->iprange."/".$range->subnet); ?>\' wirklich gelöscht werden ?');"><img src="./img/delete.png"></a>
+                            <a href="javascript:document.deleteRangeForm<?php echo $range->nr_id; ?>.submit()" title="Bereich löschen" onclick="javascript:return confirm('Soll der Bereich \'<?php echo $range->iprange."/".$range->subnet; ?>\' wirklich gelöscht werden ?');"><img src="./img/delete.png"></a>
                             <input type="hidden" name="cmd" value="deleterange">
                             <input type="hidden" name="nr_id" value="<?php echo $range->nr_id; ?>">
                         </form>
@@ -252,11 +252,11 @@
             ?>
             <div id="listitem">
                 <div id="state"><img src="./img/network/state<?php echo $device->state; ?>.png" title="<?php if ($device->state == 0) { echo "Ausgeschaltet"; } else { echo "Eingeschaltet"; }?>"></div>
-                <div id="ip"><?php if ($device->ip != "DHCP" || $device->ip_dhcp == "") { echo utf8_encode($device->ip); } elseif ($device->ip_dhcp != "") { echo $device->ip_dhcp; } ?></div>
-                <div id="name"><?php echo utf8_encode($device->devicename); ?></div>
+                <div id="ip"><?php if ($device->ip != "DHCP" || $device->ip_dhcp == "") { echo $device->ip; } elseif ($device->ip_dhcp != "") { echo $device->ip_dhcp; } ?></div>
+                <div id="name"><?php echo $device->devicename; ?></div>
                 <div id="type"><?php if (strlen($device->devicetypeicon) > 0) { echo "<img src=\"./img/network/".$device->devicetypeicon."\" title=\"".$device->devicetypename."\">"; } else { echo "&nbsp;"; } ?></div>
                 <div id="os"><?php if (strlen($device->osicon) > 0) { echo "<img src=\"./img/network/".$device->osicon."\" title=\"".$device->osname."\">"; } else { echo "&nbsp;"; } ?></div>
-                <div id="infos"><?php echo utf8_encode($device->infos); ?></div>
+                <div id="infos"><?php echo $device->infos; ?></div>
                 <div id="action">
                         <form method="POST" enctype="multipart/form-data" name="editForm<?php echo $device->nd_id; ?>" id="editForm">
                             <a href="#" onclick="javascript:document.editForm<?php echo $device->nd_id; ?>.submit()" title="Gerät editieren"><img src="./img/edit.png"></a>
@@ -264,7 +264,7 @@
                             <input type="hidden" name="nd_id" value="<?php echo $device->nd_id; ?>">
                         </form>
                         <form method="POST" enctype="multipart/form-data" name="deleteForm<?php echo $device->nd_id; ?>" id="deleteForm">
-                            <a href="javascript:document.deleteForm<?php echo $device->nd_id; ?>.submit()" title="Gerät löschen" onclick="javascript:return confirm('Soll das Gerät \'<?php echo utf8_encode($device->devicename); ?>\' wirklich gelöscht werden ?');"><img src="./img/delete.png"></a>
+                            <a href="javascript:document.deleteForm<?php echo $device->nd_id; ?>.submit()" title="Gerät löschen" onclick="javascript:return confirm('Soll das Gerät \'<?php echo $device->devicename; ?>\' wirklich gelöscht werden ?');"><img src="./img/delete.png"></a>
                             <input type="hidden" name="cmd" value="deletedevice">
                             <input type="hidden" name="nd_id" value="<?php echo $device->nd_id; ?>">
                         </form>

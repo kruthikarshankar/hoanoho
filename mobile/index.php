@@ -264,7 +264,7 @@
                             echo "<li class=\"list-divider\">".$block_meta->title."</li>";
 
                             while ($item = mysql_fetch_object($result2)) {
-                                echo "<li><div class=\"full-length\">Am ".$item->pickupdate." wird ".explode(":",utf8_encode($item->text))[0]." abgeholt!</div></li>";
+                                echo "<li><div class=\"full-length\">Am ".$item->pickupdate." wird ".explode(":",$item->text)[0]." abgeholt!</div></li>";
                             }
                         }
                     }

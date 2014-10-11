@@ -64,8 +64,8 @@
                 header('Location: ./sharefile.php?r=1');
             }
 
-            $hash = md5(utf8_encode($_FILES['file']['name']).time());
-            $fileName = utf8_encode($_FILES['file']['name']);
+            $hash = md5($_FILES['file']['name'].time());
+            $fileName = $_FILES['file']['name'];
             $tmpName  = $_FILES['file']['tmp_name'];
             $fileSize = $_FILES['file']['size'];
             $fileType = $_FILES['file']['type'];
@@ -174,7 +174,7 @@
                     <div id="space">&nbsp;</div>
                     <?php if (!isset($_GET['r'])) { ?>
                         <div id="text">Datei auswählen:</div><div id="value"><input id="file" name="file" type="file"> (Max. <?php echo $maxsize_value[0]." ".$maxsize_unit_human; ?>)</div>
-                        <div id="text">Passwort für Zugriff:</div><div id="value"><input id="password" name="password" value="<?php if (isset($report->name)) { echo utf8_encode($report->name);} ?>"></div>
+                        <div id="text">Passwort für Zugriff:</div><div id="value"><input id="password" name="password" value="<?php if (isset($report->name)) { echo $report->name;} ?>"></div>
                         <div id="space">&nbsp;</div>
                         <div id="submit"><input type="submit" id="greenbutton" name="submit" value="Bereitstellen"></div>
                         <input type="hidden" id="cmd" name="cmd" value="uploadfile">
@@ -224,7 +224,7 @@
                         $protected = "";
                 ?>
                     <div id="listitem">
-                        <div id="name"><a href="<?php echo "http://".$__CONFIG['sharefile_remoteaddress']."/?f=".$file->Hash; ?>" target="_blank" title="<?php echo "Dateityp: ".$file->File_Type."\nDateigröße: ".$file->File_Size." Byte"; ?>"><?php echo utf8_decode($file->File_Name); ?></a></div>
+                        <div id="name"><a href="<?php echo "http://".$__CONFIG['sharefile_remoteaddress']."/?f=".$file->Hash; ?>" target="_blank" title="<?php echo "Dateityp: ".$file->File_Type."\nDateigröße: ".$file->File_Size." Byte"; ?>"><?php echo $file->File_Name; ?></a></div>
                         <div id="status"><?php echo $status.$protected; ?></div>
                         <div id="counter"><?php echo $file->accesscounter; ?></div>
                         <div id="lastaccess"><?php echo $LastAccessDate; ?></div>
@@ -236,7 +236,7 @@
                                 <a href="javascript:copyToClipboard('<?php echo "http://".$__CONFIG['sharefile_remoteaddress']."/?f=".$file->Hash; ?>')" title="Link kopieren"><img src="./img/link.png"></a>&nbsp;&nbsp;&nbsp;
                                 <a href="sharefile.php?sid=<?php echo $file->SID; ?>" title="Zugriffsübersicht"><img src="./img/log.png"></a>&nbsp;&nbsp;&nbsp;
                                 <a href="sharefile.php?cmd=extendfile&sid=<?php echo $file->SID; ?>" title="Zugriff verlängern"><img src="./img/extend_file.png"></a>&nbsp;&nbsp;&nbsp;
-                                <a href="javascript:document.deleteFileForm<?php echo $file->SID; ?>.submit()" title="Bereitstellung aufheben" onclick="javascript:return confirm('Soll die Bereitstellung für die Datei \'<?php echo utf8_encode($file->File_Name); ?>\' wirklich aufgehoben werden ?');"><img src="./img/delete.png"></a>
+                                <a href="javascript:document.deleteFileForm<?php echo $file->SID; ?>.submit()" title="Bereitstellung aufheben" onclick="javascript:return confirm('Soll die Bereitstellung für die Datei \'<?php echo $file->File_Name; ?>\' wirklich aufgehoben werden ?');"><img src="./img/delete.png"></a>
                         </div>
                     </div>
                 <?php

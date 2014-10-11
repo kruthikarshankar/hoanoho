@@ -26,36 +26,36 @@
                 print("<div id=\"headline\"><div id=\"value_label\">Übermittelter Wert</div><div id=\"value_unit\">Einheit</div><div id=\"value_color\">Farbe</div><div id=\"value_status\">Verw.</div></div>");
 
                 while ($valuerow = mysql_fetch_object($result2)) {
-                    $translation = utf8_encode($valuerow->valuename);
-                    $result3 = mysql_query("select value from configuration where dev_id = ".$_GET['dev_id']." and configstring = '@".utf8_encode($valuerow->valuename)."'");
+                    $translation = $valuerow->valuename;
+                    $result3 = mysql_query("select value from configuration where dev_id = ".$_GET['dev_id']." and configstring = '@".$valuerow->valuename."'");
                     while ($trans = mysql_fetch_object($result3)) {
-                        $translation = utf8_encode($trans->value);
+                        $translation = $trans->value;
                     }
 
                     $enabled = "";
-                    $result3 = mysql_query("select value from report_configuration where rid = ".$_GET['rid']." and configstring = '".utf8_encode($valuerow->valuename)."'");
+                    $result3 = mysql_query("select value from report_configuration where rid = ".$_GET['rid']." and configstring = '".$valuerow->valuename."'");
                     while ($en = mysql_fetch_object($result3)) {
-                        $enabled = utf8_encode($en->value);
+                        $enabled = $en->value;
                     }
 
                     $selected_color = "#FFFFFF";
-                    $result3 = mysql_query("select value from report_configuration where rid = ".$_GET['rid']." and configstring = '".utf8_encode($valuerow->valuename)."_color'");
+                    $result3 = mysql_query("select value from report_configuration where rid = ".$_GET['rid']." and configstring = '".$valuerow->valuename."_color'");
                     while ($color = mysql_fetch_object($result3)) {
-                        $selected_color = utf8_encode($color->value);
+                        $selected_color = $color->value;
                     }
 
                     /*$selected_color = "5m";
-                    $result3 = mysql_query("select value from report_configuration where rid = ".$_GET['rid']." and configstring = '".utf8_encode($valuerow->valuename)."_color'");
+                    $result3 = mysql_query("select value from report_configuration where rid = ".$_GET['rid']." and configstring = '".$valuerow->valuename."_color'");
                     while ($color = mysql_fetch_object($result3)) {
-                        $selected_color = utf8_encode($color->value);
+                        $selected_color = $color->value;
                     }*/
 
                     print("<div id=\"value_row\">
                             <div id=\"value_label\">".$translation."</div>
-                            <div id=\"value_unit\">".utf8_encode($valuerow->valueunit)."</div>
-                            <div id=\"value_color\"><input class=\"color {hash:true}\" name=\"".utf8_encode($valuerow->valuename)."_color\" value=\"".$selected_color."\"></div>
+                            <div id=\"value_unit\">".$valuerow->valueunit."</div>
+                            <div id=\"value_color\"><input class=\"color {hash:true}\" name=\"".$valuerow->valuename."_color\" value=\"".$selected_color."\"></div>
                             <div id=\"value_interval\"></div>
-                            <div id=\"status\"><input title=\"In diesem Bericht verwenden\" type=\"checkbox\" name=\"".utf8_encode($valuerow->valuename)."\" ".($enabled == "on" ? "checked" : "")."></div>
+                            <div id=\"status\"><input title=\"In diesem Bericht verwenden\" type=\"checkbox\" name=\"".$valuerow->valuename."\" ".($enabled == "on" ? "checked" : "")."></div>
                         </div>");
                     $i++;
                 }

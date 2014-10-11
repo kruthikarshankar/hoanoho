@@ -21,7 +21,7 @@
                 // insert table contents
                 for ($j=0; $j < sizeof($sqlcommands); $j++) {
                     if (strlen(trim($sqlcommands[$j])) > 0) {
-                        $result = mysql_query(utf8_decode(trim($sqlcommands[$j])));
+                        $result = mysql_query(trim($sqlcommands[$j]));
                         if (!$result) {
                             die('Invalid query: ' . mysql_error());
                         }

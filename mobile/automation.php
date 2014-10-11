@@ -31,11 +31,11 @@
                     $sql = "SELECT * FROM device_floors WHERE position = 0 order by position asc";
                     $result = mysql_query($sql);
                     while ($floor = mysql_fetch_object($result)) {
-                        echo "<li class=\"list-divider\">".utf8_encode($floor->name)."</li>";
+                        echo "<li class=\"list-divider\">".$floor->name."</li>";
                         $sql2 = "SELECT * FROM devices where floor_id = ".$floor->floor_id." and isHidden != 'on' order by name asc";
                         $result2 = mysql_query($sql2);
                         while ($device = mysql_fetch_object($result2)) {
-                            echo "<li><a href=\"device.php?device=".$device->dev_id."\" data-transition=\"slide-in\" data-ignore=\"push\">".utf8_encode($device->name)."</a>";
+                            echo "<li><a href=\"device.php?device=".$device->dev_id."\" data-transition=\"slide-in\" data-ignore=\"push\">".$device->name."</a>";
                               echo "<span class=\"chevron\"></span></li>";
                         }
                     }
@@ -43,11 +43,11 @@
                     $sql = "SELECT *, (select count(room_id) from rooms where rooms.floor_id = device_floors.floor_id) as roomcount FROM device_floors WHERE position > 0 order by position asc";
                     $result = mysql_query($sql);
                     while ($floor = mysql_fetch_object($result)) {
-                        echo "<li class=\"list-divider\">".utf8_encode($floor->name)."</li>";
+                        echo "<li class=\"list-divider\">".$floor->name."</li>";
                         $sql2 = "SELECT * FROM rooms where floor_id = ".$floor->floor_id." order by name asc";
                         $result2 = mysql_query($sql2);
                         while ($room = mysql_fetch_object($result2)) {
-                            echo "<li><a href=\"room.php?room=".$room->room_id."\" data-transition=\"slide-in\">".utf8_encode($room->name)."</a>";
+                            echo "<li><a href=\"room.php?room=".$room->room_id."\" data-transition=\"slide-in\">".$room->name."</a>";
                               echo "<span class=\"chevron\"></span></li>";
                         }
                     }

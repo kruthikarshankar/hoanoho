@@ -25,12 +25,12 @@
         <script src="./js/ratchet.js"></script>
         <script src="./js/standalone.js"></script>
 
-        <title><?php echo $__CONFIG['main_sitetitle'] . " - " . utf8_encode($room->name); ?></title>
+        <title><?php echo $__CONFIG['main_sitetitle'] . " - " . $room->name; ?></title>
     </head>
     <body>
         <header class="bar-title">
             <a class="button-prev" href="automation.php" data-transition="slide-out">Zurück</a>
-            <h1 class="title"><?php echo utf8_encode($room->name); ?></h1>
+            <h1 class="title"><?php echo $room->name; ?></h1>
         </header>
 
         <div class="content">
@@ -39,7 +39,7 @@
                     $sql = "SELECT * FROM devices where room_id = " . $_GET['room'] . " and devices.isHidden != 'on'";
                     $result = mysql_query($sql);
                     while ($device = mysql_fetch_object($result)) {
-                        echo "<li><a href=\"device.php?room=".$room->room_id."&device=".$device->dev_id."\" data-transition=\"slide-in\" data-ignore=\"push\">".utf8_encode($device->name)."</a>";
+                        echo "<li><a href=\"device.php?room=".$room->room_id."&device=".$device->dev_id."\" data-transition=\"slide-in\" data-ignore=\"push\">".$device->name."</a>";
                           echo "<span class=\"chevron\"></span></li>";
                     }
                 ?>

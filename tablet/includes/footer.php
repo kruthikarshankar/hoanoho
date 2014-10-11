@@ -34,8 +34,8 @@ if (!isset($_GET['floor'])) {
                 $sql = "select floor_id, name from device_floors order by position asc";
                 $result = mysql_query($sql);
                 while ($floor = mysql_fetch_object($result)) {
-                    //echo "<li><a href=\"#\" onclick=\"navigate('floor',".$floor->floor_id.",null)\">".utf8_encode($floor->name)."</a></li>";
-                    echo "<li><a href=\"/tablet/floor.php?floor=".$floor->floor_id."\">".utf8_encode($floor->name)."</a></li>";
+                    //echo "<li><a href=\"#\" onclick=\"navigate('floor',".$floor->floor_id.",null)\">".$floor->name."</a></li>";
+                    echo "<li><a href=\"/tablet/floor.php?floor=".$floor->floor_id."\">".$floor->name."</a></li>";
                 }
                 ?>
             </ul>
@@ -47,8 +47,8 @@ if (!isset($_GET['floor'])) {
                 $sql = "select room_id, name from rooms order by name asc";
                 $result = mysql_query($sql);
                 while ($room = mysql_fetch_object($result)) {
-                    //echo "<li><a href=\"#\" onclick=\"navigate('room',".$floor_id.",".$room->room_id.")\">".utf8_encode($room->name)."</a></li>";
-                    echo "<li><a href=\"/tablet/room.php?room=".$room->room_id."\">".utf8_encode($room->name)."</a></li>";
+                    //echo "<li><a href=\"#\" onclick=\"navigate('room',".$floor_id.",".$room->room_id.")\">".$room->name."</a></li>";
+                    echo "<li><a href=\"/tablet/room.php?room=".$room->room_id."\">".$room->name."</a></li>";
                 }
                 ?>
             </ul>
@@ -60,8 +60,8 @@ if (!isset($_GET['floor'])) {
                 $sql = "select dtype_id, name from device_types order by name asc";
                 $result = mysql_query($sql);
                 while ($type = mysql_fetch_object($result)) {
-                    //echo "<li><a href=\"#\" onclick=\"navigate('dtype',null,null,".$type->dtype_id.")\">".utf8_encode($type->name)."</a></li>";
-                    echo "<li><a href=\"/tablet/dtype.php?dtype=".$type->dtype_id."\">".utf8_encode($type->name)."</a></li>";
+                    //echo "<li><a href=\"#\" onclick=\"navigate('dtype',null,null,".$type->dtype_id.")\">".$type->name."</a></li>";
+                    echo "<li><a href=\"/tablet/dtype.php?dtype=".$type->dtype_id."\">".$type->name."</a></li>";
                 }
                 ?>
             </ul>

@@ -31,7 +31,7 @@
                     $sql = "SELECT devices.dev_id, devices.name, rooms.name roomname, rooms.room_id FROM devices join device_types on device_types.dtype_id = devices.dtype_id join types on types.type_id = device_types.type_id left join rooms on rooms.room_id = devices.room_id where types.name = 'Webcam'";
                     $result = mysql_query($sql);
                     while ($device = mysql_fetch_object($result)) {
-                        echo "<li><a href=\"device.php?room=".$device->room_id."&device=".$device->dev_id."&prevsite=webcam\" data-transition=\"slide-in\">".utf8_encode($device->name)." [".utf8_encode($device->roomname)."]</a>";
+                        echo "<li><a href=\"device.php?room=".$device->room_id."&device=".$device->dev_id."&prevsite=webcam\" data-transition=\"slide-in\">".$device->name." [".$device->roomname."]</a>";
                           echo "<span class=\"chevron\"></span></li>";
                     }
                 ?>

@@ -448,7 +448,7 @@
             $result = mysql_query($sql);
             while ($device = mysql_fetch_object($result)) {
 
-                $basetype = utf8_encode(str_replace(array(" ", "_", "-", "/"), "", strtolower($device->basetype)));
+                $basetype = str_replace(array(" ", "_", "-", "/"), "", strtolower($device->basetype));
                 $class = $basetype;
 
                 if ($class == "einausschalter") {
@@ -478,7 +478,7 @@
                     <div class="flipper">
                         <div class="front">
                             <div id="boxitem" class="<?php echo $class;?>">
-                                <div id="title"><?php echo (strlen($device->roomname) > 0 ? utf8_encode($device->roomname)." : ".utf8_encode($device->name) : utf8_encode($device->name)); ?></div><div id="pages"><?php echo ($hasbackside == true ? "1/2" : "&nbsp;"); ?></div>
+                                <div id="title"><?php echo (strlen($device->roomname) > 0 ? $device->roomname." : ".$device->name : $device->name); ?></div><div id="pages"><?php echo ($hasbackside == true ? "1/2" : "&nbsp;"); ?></div>
                                 <div id="icon"  <?php echo ($hasbackside == true ? "onclick=\"document.querySelector('div[id=flipcontainer".$device->dev_id."]').classList.toggle('flip')\"":""); ?>></div>
                                 <div id="controls">
                                     <?php if ($basetype == "temperaturregelung") {
@@ -583,7 +583,7 @@
                         </div>
                         <div class="back">
                             <div id="boxitem" class="<?php echo $class; ?>">
-                                <div id="title"><?php echo (strlen($device->roomname) > 0 ? utf8_encode($device->roomname)." : ".utf8_encode($device->name) : utf8_encode($device->name)); ?></div><div id="pages"><?php echo ($hasbackside == true ? "2/2" : "&nbsp;"); ?></div>
+                                <div id="title"><?php echo (strlen($device->roomname) > 0 ? $device->roomname." : ".$device->name : $device->name); ?></div><div id="pages"><?php echo ($hasbackside == true ? "2/2" : "&nbsp;"); ?></div>
                                 <div id="icon"  onclick="document.querySelector('div[id=flipcontainer<?php echo $device->dev_id; ?>]').classList.toggle('flip')"></div>
                                 <div id="rows">
                                     <?php if ($basetype == "temperaturregelung") {

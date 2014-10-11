@@ -16,7 +16,7 @@
                 $empty = 1;
             }
 
-            print("<option ".($type_id == $type->type_id ? "selected" : "")." value=\"".$type->type_id."\">".utf8_encode($type->name)."</option>");
+            print("<option ".($type_id == $type->type_id ? "selected" : "")." value=\"".$type->type_id."\">".$type->name."</option>");
         }
         print("</select>");
     }
@@ -35,7 +35,7 @@
                 $empty = 1;
             }
 
-            print("<option ".($dtype_id == $type->dtype_id ? "selected" : "")." value=\"".$type->dtype_id.";".$type->basetype_name."\">".utf8_encode($type->device_type_name)."</option>");
+            print("<option ".($dtype_id == $type->dtype_id ? "selected" : "")." value=\"".$type->dtype_id.";".$type->basetype_name."\">".$type->device_type_name."</option>");
         }
         print("</select>");
     }
@@ -109,7 +109,7 @@
             print("<option value=\"\"></option>");
 
         while ($device = mysql_fetch_object($result)) {
-            print("<option ".($nd_id == $device->nd_id ? "selected" : "")." value=\"".$device->nd_id."\">".utf8_encode($device->name)."</option>");
+            print("<option ".($nd_id == $device->nd_id ? "selected" : "")." value=\"".$device->nd_id."\">".$device->name."</option>");
         }
 
         print("</select>");
@@ -134,7 +134,7 @@
             print("<option value=\"\"></option>");
 
         while ($room = mysql_fetch_object($result)) {
-            print("<option ".($room_id == $room->room_id ? "selected" : "")." value=\"".$room->room_id."\">".utf8_encode($room->floor_name)." - ".utf8_encode($room->room_name)."</option>");
+            print("<option ".($room_id == $room->room_id ? "selected" : "")." value=\"".$room->room_id."\">".$room->floor_name." - ".$room->room_name."</option>");
         }
 
         print("</select>");
@@ -152,7 +152,7 @@
             print("<option value=\"null\"></option>");
 
         while ($floor = mysql_fetch_object($result)) {
-            print("<option ".($floor_id == $floor->floor_id ? "selected" : "")." value=\"".$floor->floor_id."\">".utf8_encode($floor->name)."</option>");
+            print("<option ".($floor_id == $floor->floor_id ? "selected" : "")." value=\"".$floor->floor_id."\">".$floor->name."</option>");
         }
 
         print("</select>");
@@ -162,7 +162,7 @@
         $sql = "select dtype_id from device_types order by name asc limit 1";
         $result = mysql_query($sql);
         while ($devicetype = mysql_fetch_object($result)) {
-            $sql = "INSERT INTO devices (name,identifier,dtype_id,floor_id) values ('".utf8_decode("Neues Gerät")."','',".$devicetype->dtype_id.",".$_POST['floor_id'].")";
+            $sql = "INSERT INTO devices (name,identifier,dtype_id,floor_id) values ('Neues Gerät','',".$devicetype->dtype_id.",".$_POST['floor_id'].")";
             mysql_query($sql);
         }
     } elseif (isset($_POST['cmd']) && $_POST['cmd'] == "editdevice") {
@@ -199,7 +199,7 @@
         curl_exec($curl);
         curl_close($curl);
 
-        $sql = "update devices set name = '" . utf8_decode($_POST['name']) . "', identifier = '" . utf8_decode($_POST['identifier']) . "', room_id = " . $room_id . ", dtype_id = " . $dtype_id . ", isStructure = '" . $isStructure . "', isHidden = '" . $isHidden . "', nd_id = " . $nd_id . " where dev_id = ".$_POST['dev_id'];
+        $sql = "update devices set name = '" . $_POST['name'] . "', identifier = '" . $_POST['identifier'] . "', room_id = " . $room_id . ", dtype_id = " . $dtype_id . ", isStructure = '" . $isStructure . "', isHidden = '" . $isHidden . "', nd_id = " . $nd_id . " where dev_id = ".$_POST['dev_id'];
         mysql_query($sql);
 
         // save device configurations
@@ -212,10 +212,10 @@
                 continue;
 
             if (strlen(trim($value)) > 0) {
-                $sql = "INSERT INTO configuration (dev_id, configstring, value) VALUES (".$_POST['dev_id'].",'".utf8_decode($key)."','".utf8_decode($value)."')";
+                $sql = "INSERT INTO configuration (dev_id, configstring, value) VALUES (".$_POST['dev_id'].",'".$key."','".$value."')";
                 mysql_query($sql);
             } else {
-                $sql = "DELETE FROM configuration where dev_id = ".$_POST['dev_id']." and configstring = '".utf8_decode($key)."'";
+                $sql = "DELETE FROM configuration where dev_id = ".$_POST['dev_id']." and configstring = '".$key."'";
                 mysql_query($sql);
             }
         }
@@ -230,14 +230,14 @@
         $sql = "select type_id from types order by type_id asc limit 1";
         $result = mysql_query($sql);
         while ($type = mysql_fetch_object($result)) {
-            $sql = "INSERT INTO device_types (name, type_id) values ('".utf8_decode("Neuer Gerätetyp")."', " . $type->type_id . ")";
+            $sql = "INSERT INTO device_types (name, type_id) values ('Neuer Gerätetyp', " . $type->type_id . ")";
             mysql_query($sql);
         }
     } elseif (isset($_POST['cmd']) && $_POST['cmd'] == "edittype") {
         $off_imageid = 0;
         $on_imageid = 0;
 
-        $sql = "update device_types set name = '" . utf8_decode($_POST['name']) . "', type_id = " . $_POST['type_id'] . ", imagesize = '" . utf8_decode($_POST['imagesize']) . "'";
+        $sql = "update device_types set name = '" . $_POST['name'] . "', type_id = " . $_POST['type_id'] . ", imagesize = '" . $_POST['imagesize'] . "'";
 
         $sql .= " where dtype_id = ".$_POST['dtype_id'];
 
@@ -254,10 +254,10 @@
             mysql_query($sql);
         }
     } elseif (isset($_POST['cmd']) && $_POST['cmd'] == "addroom") {
-        $sql = "INSERT INTO rooms (name) values ('".utf8_decode("Neuer Raum")."')";
+        $sql = "INSERT INTO rooms (name) values ('Neuer Raum')";
         mysql_query($sql);
     } elseif (isset($_POST['cmd']) && $_POST['cmd'] == "editroom") {
-        $sql = "update rooms set name = '" . utf8_decode($_POST['name']) . "', floor_id = ".$_POST['floor_id'].", position = " . $_POST['position'];
+        $sql = "update rooms set name = '" . $_POST['name'] . "', floor_id = ".$_POST['floor_id'].", position = " . $_POST['position'];
 
         $sql .= " where room_id = ".$_POST['room_id'];
 
@@ -269,10 +269,10 @@
         $sql = "DELETE FROM rooms where room_id = " . $_POST['room_id'];
         mysql_query($sql);
     } elseif (isset($_POST['cmd']) && $_POST['cmd'] == "addfloor") {
-        $sql = "INSERT INTO device_floors (name,position) values ('".utf8_decode("Neue Ebene")."',0)";
+        $sql = "INSERT INTO device_floors (name,position) values ('Neue Ebene',0)";
         mysql_query($sql);
     } elseif (isset($_POST['cmd']) && $_POST['cmd'] == "editfloor") {
-        $sql = "update device_floors set name = '" . utf8_decode($_POST['name']) . "', position = '" . utf8_decode($_POST['position']) . "'";
+        $sql = "update device_floors set name = '" . $_POST['name'] . "', position = '" . $_POST['position'] . "'";
 
         $sql .= " where floor_id = ".$_POST['floor_id'];
 
@@ -780,9 +780,9 @@
             print("<form method=\"POST\" enctype=\"multipart/form-data\" name=\"editDeviceForm".$device->dev_id."\" id=\"editDeviceForm".$device->dev_id."\">");
             print("<div id=\"section0\">");
                 print("<div id=\"closebutton\" onclick='javascript:editDeviceForm".$device->dev_id.".reset(); toggleModal(\"modal-device\",\"device\",".$device->dev_id.",\"\",null,null);'></div>");
-                print("<h1><span>".utf8_encode($device->name)."</span></h1>");
-                print("<div id=\"text\">Gerätename:</div><div id=\"value\"><input type=\"text\" name=\"name\" value=\"".utf8_encode($device->name)."\"></div>");
-                print("<div id=\"text\">Kennung:</div><div id=\"value\"><input type=\"text\" name=\"identifier\" value=\"".utf8_encode($device->identifier)."\"></div>");
+                print("<h1><span>".$device->name."</span></h1>");
+                print("<div id=\"text\">Gerätename:</div><div id=\"value\"><input type=\"text\" name=\"name\" value=\"".$device->name."\"></div>");
+                print("<div id=\"text\">Kennung:</div><div id=\"value\"><input type=\"text\" name=\"identifier\" value=\"".$device->identifier."\"></div>");
                 print("<div id=\"text\">Gerätetyp:</div><div id=\"value\">");
                     displayTypes($device->dev_id, $device->dtype_id);
                 print("</div>");
@@ -908,9 +908,9 @@
         while ($floor = mysql_fetch_object($result)) {
             print("<form method=\"POST\" enctype=\"multipart/form-data\" name=\"editFloorForm".$floor->floor_id."\" id=\"editFloorForm".$floor->floor_id."\">");
             print("<div id=\"listitem\">");
-                print("<div id=\"name\"><input type=\"text\" name=\"name\" value=\"".utf8_encode($floor->name)."\"></div>");
+                print("<div id=\"name\"><input type=\"text\" name=\"name\" value=\"".$floor->name."\"></div>");
                 print("<div id=\"floor_image_button\"><input type=\"button\" id=\"button\" onclick='javascript:var image_ids = [".$floor->image_id."]; toggleModal(\"modal-image\",\"floor\",null,".$floor->floor_id.",image_ids);' value='Verwalten'></div>");
-                print("<div id=\"floor_position\"><input type=\"text\" name=\"position\" value=\"".utf8_encode($floor->position)."\"></div>");
+                print("<div id=\"floor_position\"><input type=\"text\" name=\"position\" value=\"".$floor->position."\"></div>");
                 print("<input type=\"hidden\" name=\"cmd\" value=\"editfloor\">");
                 print("<input type=\"hidden\" name=\"floor_id\" value=\"".$floor->floor_id."\">");
             print("</form>");
@@ -920,7 +920,7 @@
                     print("<input type=\"hidden\" name=\"floor_id\" value=\"".$floor->floor_id."\">");
                 print("</form>");
                 print("<a href=\"#\" onclick=\"javascript:document.editFloorForm".$floor->floor_id.".submit()\" title=\"Änderungen speichern\"><img src=\"./img/save.png\"></a>&nbsp;&nbsp;&nbsp;&nbsp;");
-                print("<a href=\"javascript:document.deleteFloorForm".$floor->floor_id.".submit()\" title=\"Ebene löschen\" onclick=\"javascript:return confirm('Soll die Ebene \'".utf8_encode($floor->name)."\' wirklich gelöscht werden ?');\"><img src=\"./img/delete.png\"></a>");
+                print("<a href=\"javascript:document.deleteFloorForm".$floor->floor_id.".submit()\" title=\"Ebene löschen\" onclick=\"javascript:return confirm('Soll die Ebene \'".$floor->name."\' wirklich gelöscht werden ?');\"><img src=\"./img/delete.png\"></a>");
                 print("</div>");
             print("</div>");
         }
@@ -954,11 +954,11 @@
         while ($room = mysql_fetch_object($result)) {
             print("<form method=\"POST\" enctype=\"multipart/form-data\" name=\"editRoomForm".$room->room_id."\" id=\"editRoomForm".$room->room_id."\">");
             print("<div id=\"listitem\">");
-                print("<div id=\"room_name\"><input type=\"text\" name=\"name\" value=\"".utf8_encode($room->name)."\"></div>");
+                print("<div id=\"room_name\"><input type=\"text\" name=\"name\" value=\"".$room->name."\"></div>");
                 print("<div id=\"room_floor\">");
                     displayFloors($room->floor_id);
                 print("</div>");
-                print("<div id=\"room_position\"><input type=\"text\" name=\"position\" value=\"".utf8_encode($room->position)."\"></div>");
+                print("<div id=\"room_position\"><input type=\"text\" name=\"position\" value=\"".$room->position."\"></div>");
                 print("<input type=\"hidden\" name=\"cmd\" value=\"editroom\">");
                 print("<input type=\"hidden\" name=\"room_id\" value=\"".$room->room_id."\">");
             print("</form>");
@@ -968,7 +968,7 @@
                     print("<input type=\"hidden\" name=\"room_id\" value=\"".$room->room_id."\">");
                 print("</form>");
                 print("<a href=\"#\" onclick=\"javascript:document.editRoomForm".$room->room_id.".submit()\" title=\"Änderungen speichern\"><img src=\"./img/save.png\"></a>&nbsp;&nbsp;&nbsp;&nbsp;");
-                print("<a href=\"javascript:document.deleteRoomForm".$room->room_id.".submit()\" title=\"Raum löschen\" onclick=\"javascript:return confirm('Soll der Raum \'".utf8_encode($room->name)."\' wirklich gelöscht werden ?');\"><img src=\"./img/delete.png\"></a>");
+                print("<a href=\"javascript:document.deleteRoomForm".$room->room_id.".submit()\" title=\"Raum löschen\" onclick=\"javascript:return confirm('Soll der Raum \'".$room->name."\' wirklich gelöscht werden ?');\"><img src=\"./img/delete.png\"></a>");
                 print("</div>");
             print("</div>");
         }
@@ -1003,12 +1003,12 @@
         while ($type = mysql_fetch_object($result)) {
             print("<form method=\"POST\" enctype=\"multipart/form-data\" name=\"editTypeForm".$type->dtype_id."\" id=\"editTypeForm".$type->dtype_id."\">");
             print("<div id=\"listitem\">");
-                print("<div id=\"name\"><input type=\"text\" name=\"name\" value=\"".utf8_encode($type->name)."\"></div>");
+                print("<div id=\"name\"><input type=\"text\" name=\"name\" value=\"".$type->name."\"></div>");
                 print("<div id=\"basetype\">");
                     displayBaseTypes($type->type_id);
                 print("</div>");
                 print("<div id=\"image\"><input type=\"button\" id=\"button\" onclick='javascript: var image_ids = [".$type->image_on_id.",".$type->image_off_id."]; toggleModal(\"modal-image\",\"type\",null,".$type->dtype_id.",image_ids);' value='Verwalten'></div>");
-                print("<div id=\"imagesize\"><input type=\"text\" name=\"imagesize\" value=\"".utf8_encode($type->imagesize)."\"></div>");
+                print("<div id=\"imagesize\"><input type=\"text\" name=\"imagesize\" value=\"".$type->imagesize."\"></div>");
                 print("<input type=\"hidden\" name=\"cmd\" value=\"edittype\">");
                 print("<input type=\"hidden\" name=\"dtype_id\" value=\"".$type->dtype_id."\">");
             print("</form>");
@@ -1018,7 +1018,7 @@
                     print("<input type=\"hidden\" name=\"dtype_id\" value=\"".$type->dtype_id."\">");
                 print("</form>");
                 print("<a href=\"#\" onclick=\"javascript:document.editTypeForm".$type->dtype_id.".submit()\" title=\"Änderungen speichern\"><img src=\"./img/save.png\"></a>&nbsp;&nbsp;&nbsp;&nbsp;");
-                print("<a href=\"javascript:document.deleteTypeForm".$type->dtype_id.".submit()\" title=\"Gerätetyp löschen\" onclick=\"javascript:return confirm('Soll der Gerätetyp \'".utf8_encode($type->name)."\' wirklich gelöscht werden ?');\"><img src=\"./img/delete.png\"></a>");
+                print("<a href=\"javascript:document.deleteTypeForm".$type->dtype_id.".submit()\" title=\"Gerätetyp löschen\" onclick=\"javascript:return confirm('Soll der Gerätetyp \'".$type->name."\' wirklich gelöscht werden ?');\"><img src=\"./img/delete.png\"></a>");
                 print("</div>");
             print("</div>");
         }
@@ -1034,7 +1034,7 @@
     while ($floor = mysql_fetch_object($result)) {
         // floor
         print("<section class=\"main_configuration_automation\">");
-        print("<h1><span>".utf8_encode($floor->name)."</span></h1>");
+        print("<h1><span>".$floor->name."</span></h1>");
         if($floor->position > 0)
             print("<div id=\"floor".$floor->floor_id."\"></div>");
 
@@ -1061,7 +1061,7 @@
             print("<form method=\"POST\" enctype=\"multipart/form-data\" name=\"addDeviceForm".$floor->floor_id."\" id=\"addDeviceForm".$floor->floor_id."\">");
                 print("<input type=\"hidden\" name=\"floor_id\" value=\"".$floor->floor_id."\">");
                 print("<input type=\"hidden\" name=\"cmd\" value=\"adddevice\">");
-                print("<div id=\"left\"><a onclick=\"javascript:document.addDeviceForm".$floor->floor_id.".submit();\" href=\"#".utf8_encode($floor->name)."\"><img src=\"./img/add.png\">&nbsp;&nbsp;Gerät hinzufügen</a></div>");
+                print("<div id=\"left\"><a onclick=\"javascript:document.addDeviceForm".$floor->floor_id.".submit();\" href=\"#".$floor->name."\"><img src=\"./img/add.png\">&nbsp;&nbsp;Gerät hinzufügen</a></div>");
             print("</form>");
         print("</div>");
 
@@ -1080,9 +1080,9 @@
             while ($device = mysql_fetch_object($result2)) {
                 print("<div id=\"device_listitem".$device->dev_id."\">");
                     print("<div id=\"device_icon\"><img src='".getBinData($device->image_off_id)."'></div>");
-                    print("<div id=\"device_room\">".utf8_encode($device->roomname)."</div>");
-                    print("<div id=\"device_name\">".utf8_encode($device->name)."</div>");
-                    print("<div id=\"device_identifier\">".utf8_encode($device->identifier)."</div>");
+                    print("<div id=\"device_room\">".$device->roomname."</div>");
+                    print("<div id=\"device_name\">".$device->name."</div>");
+                    print("<div id=\"device_identifier\">".$device->identifier."</div>");
                     print("<input type=\"hidden\" name=\"cmd\" value=\"editdevice\">");
                     print("<input type=\"hidden\" name=\"dev_id\" value=\"".$device->dev_id."\">");
                     print("<form method=\"POST\" enctype=\"multipart/form-data\" name=\"deleteDeviceForm".$device->dev_id."\" id=\"deleteDeviceForm\">");
@@ -1090,8 +1090,8 @@
                             print("<input type=\"hidden\" name=\"dev_id\" value=\"".$device->dev_id."\">");
                     print("</form>");
                     print("<div id=\"action\">");
-                    print("<a href=\"#".utf8_encode($floor->name)."\" onclick='javascript:displayFieldsForDeviceModal(".$device->dev_id.",\"".$device->basetypename."\");toggleModal(\"modal-device\",\"device\",".$device->dev_id.",null,null);' title=\"Gerät bearbeiten\"><img src=\"./img/edit.png\"></a>&nbsp;&nbsp;&nbsp;&nbsp;");
-                    print("<a href=\"javascript:document.deleteDeviceForm".$device->dev_id.".submit()\" title=\"Gerät löschen\" onclick=\"javascript:return confirm('Soll das Gerät \'".utf8_encode($device->name)."\' mit der Kennung \'".utf8_encode($device->identifier)."\' wirklich gelöscht werden ?');\"><img src=\"./img/delete.png\"></a>");
+                    print("<a href=\"#".$floor->name."\" onclick='javascript:displayFieldsForDeviceModal(".$device->dev_id.",\"".$device->basetypename."\");toggleModal(\"modal-device\",\"device\",".$device->dev_id.",null,null);' title=\"Gerät bearbeiten\"><img src=\"./img/edit.png\"></a>&nbsp;&nbsp;&nbsp;&nbsp;");
+                    print("<a href=\"javascript:document.deleteDeviceForm".$device->dev_id.".submit()\" title=\"Gerät löschen\" onclick=\"javascript:return confirm('Soll das Gerät \'".$device->name."\' mit der Kennung \'".$device->identifier."\' wirklich gelöscht werden ?');\"><img src=\"./img/delete.png\"></a>");
                     print("</div>");
                 print("</div>");
             }
