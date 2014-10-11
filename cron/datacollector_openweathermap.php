@@ -67,9 +67,12 @@ print_r($data);
 
 // parse and insert data
 $parsedData = parseData(null,$data);
-$parsedData = explode(';', $parsedData);
-foreach ($parsedData as $query) {
-    mysql_query($query);
+if ($parsedData != "") {
+  $parsedData = explode(';', $parsedData);
+
+  foreach ($parsedData as $query) {
+      mysql_query($query);
+  }
 }
 
 ?>

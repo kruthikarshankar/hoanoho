@@ -67,11 +67,15 @@ print_r($data);
 
 // parse and insert data
 $parsedData = parseData(null,$data);
-$parsedData = explode(';', $parsedData);
-// delete old data
-mysql_query("truncate table openweathermap_forecast");
-foreach ($parsedData as $query) {
-    mysql_query($query);
+if ($parsedData != "") {
+  $parsedData = explode(';', $parsedData);
+
+  // delete old data
+  mysql_query("truncate table openweathermap_forecast");
+
+  foreach ($parsedData as $query) {
+      mysql_query($query);
+  }
 }
 
 ?>
