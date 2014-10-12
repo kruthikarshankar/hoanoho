@@ -55,9 +55,9 @@ $this->config->setItem('newline', (PHP_OS == 'WINNT') ? "\r\n" : "\n");
 ############## module specific config ###############
 
 # set the path for the call list for the foncalls module
-if (isset(ini_get(upload_tmp_dir))) {
-  $tmp_path = ini_get(upload_tmp_dir);
-} else {
+$tmp_path = ini_get('upload_tmp_dir');
+if (empty($tmp_path)) {
   $tmp_path = sys_get_temp_dir();
 }
+
 $this->config->setItem('foncallslist_path', $tmp_path . '/foncallsdaten.csv');
