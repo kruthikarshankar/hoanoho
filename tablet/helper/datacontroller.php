@@ -156,7 +156,7 @@
             print("</div>");
             print("<div id=\"row_\">&nbsp;</div>");
             print("<div id=\"row_\">");
-                print("<div id=\"text\">Temperatur:</div><div id=\"value\">".($weather['ws_available'] == true ? $weather['ws_OT']."°C" : $weather['main_temp']."°C")."</div>");
+                print("<div id=\"text\">Temperatur:</div><div id=\"value\">".($weather['ws_available'] == true ? $weather['ws_OT']."°C" : $weather['main.temp']."°C")."</div>");
             print("</div>");
             print("<div id=\"row_\">");
                 print("<div id=\"text\">Temperatur Minimum:</div><div id=\"value\">".$weather['main.temp_min']."°C</div>");

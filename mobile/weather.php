@@ -154,7 +154,7 @@ function getCurrentWeatherDataFromLocalStation($in_arr)
                 ?>
                 <li class="list-divider">Aktuelle Wetterlage</li>
                 <li>Beschreibung: <?php echo $weather['weather.0.description']; ?></li>
-                <li>Temperatur: <?php echo ($weather['ws_available'] == true ? $weather['ws_OT']."°C  (".$weather['ws_WC']."°C gefühlt)" : $weather['main_temp']."°C"); ?></li>
+                <li>Temperatur: <?php echo ($weather['ws_available'] == true ? $weather['ws_OT']."°C  (".$weather['ws_WC']."°C gefühlt)" : $weather['main.temp']."°C"); ?></li>
                 <li>Temperatur Minimum: <?php echo $weather['main.temp_min']."°C"; ?></li>
                 <li>Temperatur Maximum: <?php echo $weather['main.temp_max']."°C"; ?></li>
                 <?php
