@@ -2,9 +2,7 @@
     include dirname(__FILE__).'/includes/dbconnection.php';
     include dirname(__FILE__).'/includes/sessionhandler.php';
     include dirname(__FILE__).'/includes/getConfiguration.php';
-?>
 
-<?php
     function displayNoteColors($notecolor)
     {
         echo "<select id=\"notecolor\" name=\"notecolor\">";
@@ -203,6 +201,15 @@
                 </div>
                 <div id="listitem_container_right">
                     <input class="pushover_testbutton" id="greybutton" type="submit" value="Testnachricht">
+                </div>
+                <div id="listitem_container_left">
+                <br>
+                   <a id="android_market_link" class="market_link" href="https://play.google.com/store/apps/details?id=net.superblock.pushover&ts=1413148670">
+			          <img alt="Available on Google Play" height="60" src="/img/android_market.png" width="172">
+		          </a>
+		          <a id="apple_market_link" class="market_link" href="https://itunes.apple.com/us/app/pushover-notifications/id506088175?ls=1&mt=8">
+			          <img alt="Available on Apple Itunes" height="60" src="/img/apple_app_store.png" width="172">
+		          </a>
                 </div>
                 <div style="clear:both;"></div>
                 <input type="hidden" name="cmd" value="saveusersettings">
