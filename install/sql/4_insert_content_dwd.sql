@@ -115,7 +115,7 @@ VALUES
 
 INSERT INTO `dwd_erscheinung` (`erscheinung_id`, `erscheinung_name`)
 VALUES
-	(19,'XXX');
+	(19,'Testwarnung');
 
 INSERT INTO `dwd_erscheinung` (`erscheinung_id`, `erscheinung_name`)
 VALUES
