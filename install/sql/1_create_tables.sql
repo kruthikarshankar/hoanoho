@@ -14,7 +14,6 @@ CREATE TABLE IF NOT EXISTS `callerlist` (
   `typ` varchar(255) NOT NULL,
   `date` datetime NOT NULL,
   `name` varchar(255) NOT NULL,
-  `adresse` varchar(255) NOT NULL,
   `rufnummer` varchar(255) NOT NULL,
   `nebenstelle` varchar(255) NOT NULL,
   `eigenerufnummer` varchar(255) NOT NULL,
