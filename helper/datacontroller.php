@@ -19,13 +19,14 @@
         $sql = "select data from bindata where binid = ".$id;
         $que = mysql_query($sql);
 
-        if (is_object($que)) {
+        if ($que) {
           $obj = mysql_fetch_object($que);
           return $obj->data;
         } else {
           return NULL;
         }
     }
+    
 
     function deleteImage($id)
     {
