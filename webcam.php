@@ -334,7 +334,7 @@
                         $positionslots = $resultArr['value'];
 
                         //print("<div id=\"webcamstream".$webcam->dev_id."\"><img src='http://".$cam_ipaddress.":".$cam_port."/videostream.cgi?user=".$cam_username."&pwd=".$cam_password."&resolution=32&rate=0'></div>");
-                        print("<div id=\"webcamstream".$webcam->dev_id."\"><img id=\"webcamstream_img".$webcam->dev_id."\" src='/img/blank.png'></div>");
+                        print("<div id=\"webcamstream".$webcam->dev_id."\"><img id=\"webcamstream_img".$webcam->dev_id."\" src='.//blank.png'></div>");
                         if ($positionslots > 0) {
                             print("<br><div id=\"controlpad\">");
                                 print("Gehe zu: <select id=\"position".$webcam->dev_id."\" onchange=\"javascript:moveCameraPosition(this.value, '".$cam_ipaddress."', '".$cam_port."', '".$cam_username."', '".$cam_password."', '".$cam_vendor."', ".$webcam->dev_id.")\">");

@@ -295,7 +295,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 
 CREATE TABLE IF NOT EXISTS `usersettings` (
   `uid` int(11) NOT NULL,
-  `backgroundimage` varchar(255) NOT NULL DEFAULT '/img/bg/default.png',
+  `backgroundimage` varchar(255) NOT NULL DEFAULT './img/bg/default.png',
   `notecolor` varchar(255) NOT NULL DEFAULT 'yellow',
   `mailserver_type` varchar(255) DEFAULT NULL,
   `mailserver_login` varchar(255) DEFAULT NULL,

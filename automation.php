@@ -483,7 +483,7 @@
                 else if ($device->typename == "Webcam") {
                     print("#modal-device".$device->dev_id." #section0 { width:500px; margin: 0 auto; background: #fffaf6; border-radius: 4px; color: #7e7975; box-shadow: 0 2px 2px rgba(0,0,0,0.2), 0 1px 5px rgba(0,0,0,0.2), 0 0 0 12px rgba(255,255,255,0.4); padding: 10px; z-index: 1000; }");
                     print("#modal-device".$device->dev_id." #section0 div[id*=stream] { width:460px; height: 345px; margin-left: auto; margin-right: auto; margin-top: 25px; margin-bottom: 20px; background-color: #fff; background-repeat: no-repeat; background-position: center; background-size: 98% auto; border: 1px solid #EBE6E2;  text-shadow: 0 2px 0 rgba(255,255,255,0.8); box-shadow: 0 1px 0 rgba(255,255,255,0.8); }");
-                    print("#modal-device".$device->dev_id." #section0 div[id*=stream] img { width:450px; height: 335px; margin-left: 5px; margin-top: 5px; background-image: url('/img/testimage.gif'); background-repeat: no-repeat; background-size: 100% auto; background-position: center;}");
+                    print("#modal-device".$device->dev_id." #section0 div[id*=stream] img { width:450px; height: 335px; margin-left: 5px; margin-top: 5px; background-image: url('./img/testimage.gif'); background-repeat: no-repeat; background-size: 100% auto; background-position: center;}");
 
                     print("#modal-device".$device->dev_id." #section0 #controlpad { width: auto; text-align: center; margin-top: -25px; }");
                     print("#modal-device".$device->dev_id." #section0 #controlpad #controlbutton { width: 45px; height: 45px; margin-right: 15px; position: relative; box-shadow: inset 0 1px rgba(255,255,255,0.3); border-radius: 3px; cursor: pointer; font-size: 12px; line-height: 28px; text-align: center; font-weight: bold; margin-top:20px; margin-left: 1%; background: #8f8a86; background: -moz-linear-gradient(#6c6865, #8f8a86); background: -ms-linear-gradient(#b0aca9, #8f8a86); background: -o-linear-gradient(#b0aca9, #8f8a86); background: -webkit-gradient(linear, 0 0, 0 100%, from(#b0aca9), to(#8f8a86)); background: -webkit-linear-gradient(#b0aca9, #8f8a86); background: linear-gradient(#b0aca9, #8f8a86); border: 1px solid #7e7975; color: #262423; text-shadow: 0 1px rgba(255,255,255,0.3); }");
@@ -627,7 +627,7 @@
                             $resultArr = mysql_fetch_assoc($result2);
                             $positionslots = $resultArr['value'];
 
-                            print("<div id=\"stream".$device->dev_id."\"><img id=\"webcamstream_img".$device->dev_id."\" src='/img/blank.png'></div>");
+                            print("<div id=\"stream".$device->dev_id."\"><img id=\"webcamstream_img".$device->dev_id."\" src='.//blank.png'></div>");
                             if ($positionslots > 0) {
                                 print("<br><div id=\"controlpad\">");
                                     print("Gehe zu: <select id=\"position".$device->dev_id."\" onchange=\"javascript:moveCameraPosition(this.value, '".$cam_ipaddress."', '".$cam_port."', '".$cam_username."', '".$cam_password."', '".$cam_vendor."', ".$device->dev_id.")\">");

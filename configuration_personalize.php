@@ -232,9 +232,9 @@
                     for ($i=0; $i < sizeof($filelist) ; $i++) {
                         if ($filelist[$i] != "." && $filelist[$i] != "..") {
                             if($current_backgroundimage == "./img/bg/".$filelist[$i])
-                                echo "<div class=\"backgroundimage_selected".$i."\" id=\"backgroundimage".$i."\" name=\"backgroundimage\" onclick=\"javascript:setBackground(".$_SESSION['uid'].",'/img/bg/" . $filelist[$i] . "'," . $i . ");\"><img src=\"./img/bg/".$filelist[$i]."\" title=\"".$filelist[$i]."\"></div>";
+                                echo "<div class=\"backgroundimage_selected".$i."\" id=\"backgroundimage".$i."\" name=\"backgroundimage\" onclick=\"javascript:setBackground(".$_SESSION['uid'].",'./img/bg/" . $filelist[$i] . "'," . $i . ");\"><img src=\"./img/bg/".$filelist[$i]."\" title=\"".$filelist[$i]."\"></div>";
                             else
-                                echo "<div class=\"backgroundimage".$i."\" id=\"backgroundimage".$i."\" name=\"backgroundimage\" onclick=\"javascript:setBackground(".$_SESSION['uid'].",'/img/bg/" . $filelist[$i] . "'," . $i . ");\"><img src=\"./img/bg/".$filelist[$i]."\" title=\"".$filelist[$i]."\"></div>";
+                                echo "<div class=\"backgroundimage".$i."\" id=\"backgroundimage".$i."\" name=\"backgroundimage\" onclick=\"javascript:setBackground(".$_SESSION['uid'].",'./img/bg/" . $filelist[$i] . "'," . $i . ");\"><img src=\"./img/bg/".$filelist[$i]."\" title=\"".$filelist[$i]."\"></div>";
                         }
                     }
                     echo "<div class=\"backgroundimage\"></div>";

@@ -40,7 +40,7 @@
             if (!$result) {
                 die('Invalid query: ' . mysql_error());
             } else {
-                $result = mysql_query("INSERT INTO usersettings (uid, backgroundimage, notecolor) VALUES (1, '/img/bg/default.png', 'yellow')");
+                $result = mysql_query("INSERT INTO usersettings (uid, backgroundimage, notecolor) VALUES (1, './img/bg/default.png', 'yellow')");
                 if (!$result) {
                     die('Invalid query: ' . mysql_error());
                 } else {

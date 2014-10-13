@@ -11,7 +11,7 @@ body {
 
 	min-width: 1080px;
 
-	background-image: url('/img/bg/default.png');
+	background-image: url('./img/bg/default.png');
 	background-repeat: repeat;
 
 	-webkit-font-smoothing: antialiased;

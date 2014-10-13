@@ -11,7 +11,7 @@ body {
 
 	min-width: 880px;
 
-	background-image: url('/img/bg/default.png');
+	background-image: url('./img/bg/default.png');
 	background-repeat: repeat;
 
 	-webkit-font-smoothing: antialiased;
@@ -149,13 +149,13 @@ a {
     border-radius: 3px; cursor: pointer; font-size: 12px;
     line-height: 18px; 
     text-align: center; 
-    background: #c0bebb url('/img/download.png') no-repeat top left; 
-    background: -moz-linear-gradient(#e1e0de, #c0bebb) url('/img/download.png') no-repeat top left; 
-    background: -ms-linear-gradient(#e1e0de, #c0bebb) url('/img/download.png') no-repeat top left; 
-    background: -o-linear-gradient(#e1e0de, #c0bebb) url('/img/download.png') no-repeat top left; 
-    background: -webkit-gradient(linear, 0 0, 0 100%, from(#e1e0de), to(#c0bebb)) url('/img/download.png') no-repeat top left;
-    background: -webkit-linear-gradient(#e1e0de, #c0bebb) url('/img/download.png') no-repeat top left;
-    background: linear-gradient(#e1e0de, #c0bebb) url('/img/download.png') no-repeat top left; 
+    background: #c0bebb url('./img/download.png') no-repeat top left; 
+    background: -moz-linear-gradient(#e1e0de, #c0bebb) url('./img/download.png') no-repeat top left; 
+    background: -ms-linear-gradient(#e1e0de, #c0bebb) url('./img/download.png') no-repeat top left; 
+    background: -o-linear-gradient(#e1e0de, #c0bebb) url('./img/download.png') no-repeat top left; 
+    background: -webkit-gradient(linear, 0 0, 0 100%, from(#e1e0de), to(#c0bebb)) url('./img/download.png') no-repeat top left;
+    background: -webkit-linear-gradient(#e1e0de, #c0bebb) url('./img/download.png') no-repeat top left;
+    background: linear-gradient(#e1e0de, #c0bebb) url('./img/download.png') no-repeat top left; 
     border: 1px solid #7e7975; 
     color: #262423; 
     text-shadow: 0 1px rgba(255,255,255,0.3); 
