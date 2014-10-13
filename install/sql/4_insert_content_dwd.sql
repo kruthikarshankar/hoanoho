@@ -2766,30 +2766,30 @@ VALUES
 	('WWFG49',18,'Hitzewarnung heute und morgen',NULL,'Hitzeperioden mit gefühlter Temperatur > 32 °C bzw. > 38 °C (extreme Hitze)');
 
 
-# Dump of table dwd_warnungsart
+# Dump of table dwd_warnart
 # ------------------------------------------------------------
 
-INSERT IGNORE INTO `dwd_warnungsart` (`warnart_id`, `warnart_name`)
+INSERT IGNORE INTO `dwd_warnart` (`warnart_id`, `warnart_name`)
 VALUES
 	('HP','Vorabinformation Unwetter für SMS');
 
-INSERT IGNORE INTO `dwd_warnungsart` (`warnart_id`, `warnart_name`)
+INSERT IGNORE INTO `dwd_warnart` (`warnart_id`, `warnart_name`)
 VALUES
 	('HU','Unwetterwarnung für SMS');
 
-INSERT IGNORE INTO `dwd_warnungsart` (`warnart_id`, `warnart_name`)
+INSERT IGNORE INTO `dwd_warnart` (`warnart_id`, `warnart_name`)
 VALUES
 	('HW','Wetterwarnung für SMS');
 
-INSERT IGNORE INTO `dwd_warnungsart` (`warnart_id`, `warnart_name`)
+INSERT IGNORE INTO `dwd_warnart` (`warnart_id`, `warnart_name`)
 VALUES
 	('WP','Vorabinformation Unwetter');
 
-INSERT IGNORE INTO `dwd_warnungsart` (`warnart_id`, `warnart_name`)
+INSERT IGNORE INTO `dwd_warnart` (`warnart_id`, `warnart_name`)
 VALUES
 	('WU','Unwetterwarnung');
 
-INSERT IGNORE INTO `dwd_warnungsart` (`warnart_id`, `warnart_name`)
+INSERT IGNORE INTO `dwd_warnart` (`warnart_id`, `warnart_name`)
 VALUES
 	('WW','Wetterwarnung');
 

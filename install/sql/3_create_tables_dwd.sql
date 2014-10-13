@@ -115,10 +115,10 @@ CREATE TABLE IF NOT EXISTS `dwd_warntyp` (
 
 
 
-# Dump of table dwd_warnungsart
+# Dump of table dwd_warnart
 # ------------------------------------------------------------
 
-CREATE TABLE IF NOT EXISTS `dwd_warnungsart` (
+CREATE TABLE IF NOT EXISTS `dwd_warnart` (
   `warnart_id` char(2) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   `warnart_name` varchar(40) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   PRIMARY KEY (`warnart_id`)
