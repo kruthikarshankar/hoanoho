@@ -254,33 +254,26 @@ switch ($day) {
     <?php
     if (in_array($__CONFIG['dwd_state'], array("SG", "HN"))) {
       $region="Nordwest";
-      $dwd_url="http://www.dwd.de/bvbw/appmanager/bvbw/dwdwwwDesktop?_nfpb=true&_state=maximized&_windowLabel=T1400087811143553398307&T1400087811143553398307gsbDocumentPath=Content/Oeffentlichkeit/WV/WV11/Warnungen/Wetter__Aktuell/Regionenwetter/Region__Nordwest__Teaser.html&_pageLabel=_dwdwww_wetter_warnungen_regionenwetter&switchLang=de";
     } elseif (in_array($__CONFIG['dwd_state'], array("PD", "RW"))) {
       $region="Nordost";
-      $dwd_url="http://www.dwd.de/bvbw/appmanager/bvbw/dwdwwwDesktop?_nfpb=true&_state=maximized&_windowLabel=T1400077811143553394835&T1400077811143553394835gsbDocumentPath=Content/Oeffentlichkeit/WV/WV11/Warnungen/Wetter__Aktuell/Regionenwetter/Region__Nordost__Teaser.html&_pageLabel=_dwdwww_wetter_warnungen_regionenwetter&switchLang=de";
     } elseif ($__CONFIG['dwd_state'] == "EM") {
       $region="West";
-      $dwd_url="http://www.dwd.de/bvbw/appmanager/bvbw/dwdwwwDesktop?_nfpb=true&_state=maximized&_windowLabel=T1400067811143553390355&T1400067811143553390355gsbDocumentPath=Content/Oeffentlichkeit/WV/WV11/Warnungen/Wetter__Aktuell/Regionenwetter/Region__West__Teaser.html&_pageLabel=_dwdwww_wetter_warnungen_regionenwetter&switchLang=de";
     } elseif (in_array($__CONFIG['dwd_state'], array("EF", "LZ", "MB"))) {
       $region="Ost";
-      $dwd_url="http://www.dwd.de/bvbw/appmanager/bvbw/dwdwwwDesktop?_nfpb=true&_state=maximized&_windowLabel=T1400047811143552884230&T1400047811143552884230gsbDocumentPath=Content/Oeffentlichkeit/WV/WV11/Warnungen/Wetter__Aktuell/Regionenwetter/Region__Ost__Teaser.html&_pageLabel=_dwdwww_wetter_warnungen_regionenwetter&switchLang=de";
     } elseif (in_array($__CONFIG['dwd_state'], array("OF", "TR"))) {
       $region="Mitte";
-      $dwd_url="http://www.dwd.de/bvbw/appmanager/bvbw/dwdwwwDesktop?_nfpb=true&_state=maximized&_windowLabel=T1400057811143553386521&T1400057811143553386521gsbDocumentPath=Content/Oeffentlichkeit/WV/WV11/Warnungen/Wetter__Aktuell/Regionenwetter/Region__Mitte__Teaser.html&_pageLabel=_dwdwww_wetter_warnungen_regionenwetter&switchLang=de";
     } elseif ($__CONFIG['dwd_state'] == "MS") {
       $region="Suedost";
-      $dwd_url="http://www.dwd.de/bvbw/appmanager/bvbw/dwdwwwDesktop?_nfpb=true&_state=maximized&_windowLabel=T1400097811143553774885&T1400097811143553774885gsbDocumentPath=Content/Oeffentlichkeit/WV/WV11/Warnungen/Wetter__Aktuell/Regionenwetter/Region__Suedost__Teaser.html&_pageLabel=_dwdwww_wetter_warnungen_regionenwetter&switchLang=de";
     } elseif ($__CONFIG['dwd_state'] == "SU") {
       $region="Suedwest";
-      $dwd_url="http://www.dwd.de/bvbw/appmanager/bvbw/dwdwwwDesktop?_nfpb=true&_state=maximized&_windowLabel=T1400107811143553778074&T1400107811143553778074gsbDocumentPath=Content/Oeffentlichkeit/WV/WV11/Warnungen/Wetter__Aktuell/Regionenwetter/Region__Suedwest__Teaser.html&_pageLabel=_dwdwww_wetter_warnungen_regionenwetter&switchLang=de";
     }
 
     if (isset($region)) {
     ?>
 
     <section class="main_weather">
-        <h1><span>Regional Wetter</span></h1>
-        <div id="dwdimage"><a href="<?php echo $dwd_url ?>" target="_blank"><img src="http://www.dwd.de/wundk/wetter/de/<?php echo $region ?>.jpg"></a></div>
+        <h1><span><?php echo $region ?> Region</span></h1>
+        <div id="dwdimage"><a href="http://www.dwd.de/wetter-<?php echo strtolower($region) ?>" target="_blank"><img src="http://www.dwd.de/wundk/wetter/de/<?php echo $region ?>.jpg"></a></div>
     </section>
 
     <?php
@@ -288,7 +281,7 @@ switch ($day) {
     ?>
 
     <section class="main_weather">
-        <h1><span>Deutschland Wetter</span></h1>
+        <h1><span>Deutschland</span></h1>
         <div id="dwdimage"><a href="http://www.dwd.de/deutschlandwetter" target="_blank"><img src="http://www.dwd.de/wundk/wetter/de/Deutschland.jpg"></a></div>
     </section>
 
