@@ -2527,23 +2527,23 @@ VALUES
 
 INSERT IGNORE INTO `dwd_warntyp` (`warntyp_id`, `erscheinung_id`, `warntyp_ereignis`, `warntyp_anmerkung`, `warntyp_schwelle`)
 VALUES
-	('21',12,'Bodenfrost','ganzjährig; spezielle Wetterwarnung, keine Grundversorgung',NULL);
+	('21',12,'Bodenfrost','ganzjährig, spezielle Wetterwarnung, keine Grundversorgung',NULL);
 
 INSERT IGNORE INTO `dwd_warntyp` (`warntyp_id`, `erscheinung_id`, `warntyp_ereignis`, `warntyp_anmerkung`, `warntyp_schwelle`)
 VALUES
-	('22',12,'Frost','ganzjährig; spezielle Wetterwarnung, zusätzlich Warnung zur Grundversorgung, Basis für WW..81 (im DWD-Internet)','Lufttemperratur unter dem Gefrierpunkt bis -9 °C');
+	('22',12,'Frost','ganzjährig spezielle Wetterwarnung, zusätzlich Warnung zur Grundversorgung, Basis für WW..81 (im DWD-Internet)','Lufttemperratur unter dem Gefrierpunkt bis -9 °C');
 
 INSERT IGNORE INTO `dwd_warntyp` (`warntyp_id`, `erscheinung_id`, `warntyp_ereignis`, `warntyp_anmerkung`, `warntyp_schwelle`)
 VALUES
-	('23',7,'Glätte durch überfrierende Nässe, Schneeregen, durch sehr starke Reifablagerungen','vom 01.11. bis 31.03., für Glätte gem. ww84; spezielle Wetterwarnung, keine Grundversorgung',NULL);
+	('23',7,'Glätte durch überfrierende Nässe, Schneeregen, durch sehr starke Reifablagerungen','vom 01.11. bis 31.03., für Glätte gem. ww84, spezielle Wetterwarnung, keine Grundversorgung',NULL);
 
 INSERT IGNORE INTO `dwd_warntyp` (`warntyp_id`, `erscheinung_id`, `warntyp_ereignis`, `warntyp_anmerkung`, `warntyp_schwelle`)
 VALUES
-	('24',7,'Glätte durch Reif, überfrierende Nässe, Schneematsch','ganzjährig; spezielle Wetterwarnung, keine Grundversorgung',NULL);
+	('24',7,'Glätte durch Reif, überfrierende Nässe, Schneematsch','ganzjährig spezielle Wetterwarnung, keine Grundversorgung',NULL);
 
 INSERT IGNORE INTO `dwd_warntyp` (`warntyp_id`, `erscheinung_id`, `warntyp_ereignis`, `warntyp_anmerkung`, `warntyp_schwelle`)
 VALUES
-	('25',7,'Glätte durch Reif, überfrierende Nässe, Schneematsch','für Kombiwarnungen mit Glätte gem. ww24, ganzjährig; spezielle Wetterwarnung, keine Grundversorgung',NULL);
+	('25',7,'Glätte durch Reif, überfrierende Nässe, Schneematsch','für Kombiwarnungen mit Glätte gem. ww24, ganzjährig, spezielle Wetterwarnung, keine Grundversorgung',NULL);
 
 INSERT IGNORE INTO `dwd_warntyp` (`warntyp_id`, `erscheinung_id`, `warntyp_ereignis`, `warntyp_anmerkung`, `warntyp_schwelle`)
 VALUES
@@ -2719,7 +2719,7 @@ VALUES
 
 INSERT IGNORE INTO `dwd_warntyp` (`warntyp_id`, `erscheinung_id`, `warntyp_ereignis`, `warntyp_anmerkung`, `warntyp_schwelle`)
 VALUES
-	('85',8,'verbreitet Glatteis am Boden oder an Gegenständen bei gefrierendem Regen; erhebliche Verkehrsbehinderungen','im Einzelfall auch bei verbreitetem Auftreten von überfrierender Nässe','verbreitet Glatteisbildung am Boden oder an Gegenständen bei gefrierendem Regen, in Einzelfallentscheidung auch bei verbreitetem Auftreten von überfrierender Nässe mit erheblichen Verkehrsbehinderungen');
+	('85',8,'verbreitet Glatteis am Boden oder an Gegenständen bei gefrierendem Regen, erhebliche Verkehrsbehinderungen','im Einzelfall auch bei verbreitetem Auftreten von überfrierender Nässe','verbreitet Glatteisbildung am Boden oder an Gegenständen bei gefrierendem Regen, in Einzelfallentscheidung auch bei verbreitetem Auftreten von überfrierender Nässe mit erheblichen Verkehrsbehinderungen');
 
 INSERT IGNORE INTO `dwd_warntyp` (`warntyp_id`, `erscheinung_id`, `warntyp_ereignis`, `warntyp_anmerkung`, `warntyp_schwelle`)
 VALUES
