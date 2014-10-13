@@ -79,12 +79,12 @@ $css = array(
     <link rel="stylesheet" href="../../css/bootstrap-theme.min.css" type="text/css" media="screen" title="no title" charset="UTF-8">
     <link rel="stylesheet" href="../../css/bootstrap-custom.css" type="text/css" media="screen" title="no title" charset="UTF-8">
     
-    <script src="./tablet/js/jquery.min.js"></script>
-    <script src="./tablet/js/jquery-ui.min.js"></script>
-    <script src="./tablet/js/bootstrap.min.js"></script>
-    <script src="./tablet/js/clock.js"></script>
-    <script src="./tablet/js/jquery-scrolltofixed.js"></script>
-    <script src="./tablet/js/standalone.js"></script>
+    <script src="/tablet/js/jquery.min.js"></script>
+    <script src="/tablet/js/jquery-ui.min.js"></script>
+    <script src="/tablet/js/bootstrap.min.js"></script>
+    <script src="/tablet/js/clock.js"></script>
+    <script src="/tablet/js/jquery-scrolltofixed.js"></script>
+    <script src="/tablet/js/standalone.js"></script>
     <script>
         $(document).ready(function() {
             $('.dropdown-toggle').dropdown();
@@ -98,7 +98,7 @@ $css = array(
 
         <? foreach($javascript as $jsfile): ?>
 
-            <script type="text/javascript" src="./tablet/includes/pupnp/res/js/<?= $jsfile ?>"></script>
+            <script type="text/javascript" src="/tablet/includes/pupnp/res/js/<?= $jsfile ?>"></script>
         <? endforeach ?>
 
 </head>
