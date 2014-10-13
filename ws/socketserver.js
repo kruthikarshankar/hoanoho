@@ -267,11 +267,16 @@ function disconnectAllConnectedClients() {
 /* Database stuff */
 
 function connectDatabase() {
+
+	var nconf = require('nconf');
+	nconf.use('file', {file: '/etc/hoanoho'});
+	nconf.load();
+
 	connection  = mysql.createConnection({
-        host        : 'localhost',
-        user        : '',
-        password    : '',
-        database    : 'fhem'
+        host        : nconf.get('db:host'),
+        user        : nconf.get('db:user'),
+        password    : nconf.get('db:password'),
+        database    : nconf.get('db:name')
     });
 
     connection.on('close', function (err) {
