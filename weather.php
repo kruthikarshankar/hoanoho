@@ -227,7 +227,7 @@ switch ($day) {
 
     <section class="main_weather">
         <h1><span>Aktuelle Wetterlage</span></h1>
-            <div id="weathericon"><img src="<?php echo "/img/weather/openweathermap/".$weather['weather.0.icon'].".png"; ?>"></div>
+            <div id="weathericon"><img src="<?php echo "./img/weather/openweathermap/".$weather['weather.0.icon'].".png"; ?>"></div>
             <div id="details">
                 <div><b>Beschreibung:</b> <?php echo $weather['weather.0.description']; ?></div>
                 <div>&nbsp;</div>
@@ -265,7 +265,7 @@ switch ($day) {
         echo "<section class=\"main_weather\">";
             echo "<h1><span>Vorhersage für " . $days_relative[$i] . " (".$days[$i].")</span></h1>";
 
-            echo "<div id=\"weathericon\"><img src=\"/img/weather/openweathermap/".$forecast[$i]['list.'.$i.'.weather.0.icon'].".png\"></div>";
+            echo "<div id=\"weathericon\"><img src=\"./img/weather/openweathermap/".$forecast[$i]['list.'.$i.'.weather.0.icon'].".png\"></div>";
             echo "<div id=\"details\">";
                 echo "<div>Beschreibung: ".$forecast[$i]['list.'.$i.'.weather.0.description']."</div>";
                 echo "<div>&nbsp;</div>";

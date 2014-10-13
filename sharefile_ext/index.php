@@ -51,31 +51,31 @@ function showFile()
         <head>
             <meta charset="UTF-8" />
 
-            <link rel="stylesheet" href="/css/style.css" type="text/css" media="screen" title="no title" charset="UTF-8">
-            <link rel="apple-touch-icon" href="/img/favicon.ico"/>
-            <link rel="shortcut icon" type="image/x-icon" href="/img/favicon.ico" />
-            <link rel="stylesheet" href="/css/lightbox.css" media="screen"/>
+            <link rel="stylesheet" href="./css/style.css" type="text/css" media="screen" title="no title" charset="UTF-8">
+            <link rel="apple-touch-icon" href="./img/favicon.ico"/>
+            <link rel="shortcut icon" type="image/x-icon" href="./img/favicon.ico" />
+            <link rel="stylesheet" href="./css/lightbox.css" media="screen"/>
 
-            <script src="/js/jquery-1.10.2.min.js"></script>
-            <script src="/js/lightbox-2.6.min.js"></script>
+            <script src="./js/jquery-1.10.2.min.js"></script>
+            <script src="./js/lightbox-2.6.min.js"></script>
 
-            <script type="text/javascript" src="/syntaxhighlighter/scripts/shCore.js"></script>
-            <script type="text/javascript" src="/syntaxhighlighter/scripts/shBrushJScript.js"></script>
-            <script type="text/javascript" src="/syntaxhighlighter/scripts/shBrushAppleScript.js"></script>
-            <script type="text/javascript" src="/syntaxhighlighter/scripts/shBrushBash.js"></script>
-            <script type="text/javascript" src="/syntaxhighlighter/scripts/shBrushCpp.js"></script>
-            <script type="text/javascript" src="/syntaxhighlighter/scripts/shBrushCSharp.js"></script>
-            <script type="text/javascript" src="/syntaxhighlighter/scripts/shBrushCss.js"></script>
-            <script type="text/javascript" src="/syntaxhighlighter/scripts/shBrushJava.js"></script>
-            <script type="text/javascript" src="/syntaxhighlighter/scripts/shBrushJScript.js"></script>
-            <script type="text/javascript" src="/syntaxhighlighter/scripts/shBrushPerl.js"></script>
-            <script type="text/javascript" src="/syntaxhighlighter/scripts/shBrushPhp.js"></script>
-            <script type="text/javascript" src="/syntaxhighlighter/scripts/shBrushPlain.js"></script>
-            <script type="text/javascript" src="/syntaxhighlighter/scripts/shBrushPython.js"></script>
-            <script type="text/javascript" src="/syntaxhighlighter/scripts/shBrushRuby.js"></script>
-            <script type="text/javascript" src="/syntaxhighlighter/scripts/shBrushSql.js"></script>
-            <script type="text/javascript" src="/syntaxhighlighter/scripts/shBrushVb.js"></script>
-            <script type="text/javascript" src="/syntaxhighlighter/scripts/shBrushXml.js"></script>
+            <script type="text/javascript" src="./syntaxhighlighter/scripts/shCore.js"></script>
+            <script type="text/javascript" src="./syntaxhighlighter/scripts/shBrushJScript.js"></script>
+            <script type="text/javascript" src="./syntaxhighlighter/scripts/shBrushAppleScript.js"></script>
+            <script type="text/javascript" src="./syntaxhighlighter/scripts/shBrushBash.js"></script>
+            <script type="text/javascript" src="./syntaxhighlighter/scripts/shBrushCpp.js"></script>
+            <script type="text/javascript" src="./syntaxhighlighter/scripts/shBrushCSharp.js"></script>
+            <script type="text/javascript" src="./syntaxhighlighter/scripts/shBrushCss.js"></script>
+            <script type="text/javascript" src="./syntaxhighlighter/scripts/shBrushJava.js"></script>
+            <script type="text/javascript" src="./syntaxhighlighter/scripts/shBrushJScript.js"></script>
+            <script type="text/javascript" src="./syntaxhighlighter/scripts/shBrushPerl.js"></script>
+            <script type="text/javascript" src="./syntaxhighlighter/scripts/shBrushPhp.js"></script>
+            <script type="text/javascript" src="./syntaxhighlighter/scripts/shBrushPlain.js"></script>
+            <script type="text/javascript" src="./syntaxhighlighter/scripts/shBrushPython.js"></script>
+            <script type="text/javascript" src="./syntaxhighlighter/scripts/shBrushRuby.js"></script>
+            <script type="text/javascript" src="./syntaxhighlighter/scripts/shBrushSql.js"></script>
+            <script type="text/javascript" src="./syntaxhighlighter/scripts/shBrushVb.js"></script>
+            <script type="text/javascript" src="./syntaxhighlighter/scripts/shBrushXml.js"></script>
             <link href="syntaxhighlighter/styles/shCore.css" rel="stylesheet" type="text/css"/>
             <link href="syntaxhighlighter/styles/shThemeDefault.css" rel="stylesheet" type="text/css"/>
 
@@ -175,10 +175,10 @@ if (isset($_GET['f'])) {
         <head>
             <meta charset="UTF-8" />
 
-            <link rel="stylesheet" href="/css/style.css" type="text/css" media="screen" title="no title" charset="UTF-8">
-            <link rel="apple-touch-icon" href="/img/favicon.ico"/>
-            <link rel="shortcut icon" type="image/x-icon" href="/img/favicon.ico" />
-            <link rel="stylesheet" href="/css/lightbox.css" media="screen"/>
+            <link rel="stylesheet" href="./css/style.css" type="text/css" media="screen" title="no title" charset="UTF-8">
+            <link rel="apple-touch-icon" href="./img/favicon.ico"/>
+            <link rel="shortcut icon" type="image/x-icon" href="./img/favicon.ico" />
+            <link rel="stylesheet" href="./css/lightbox.css" media="screen"/>
 
             <title>Bereitstellung von '<?php echo $curr_file['File_Name']; ?>'</title>
         </head>

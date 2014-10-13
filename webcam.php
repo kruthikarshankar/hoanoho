@@ -136,7 +136,7 @@
                 if (activeModalIsWebcamLiveStream == "yes") {
                     var imagebox = document.getElementById("webcamstream_img"+device_id);
                     if (imagebox != null) {
-                        imagebox.src = "/img/blank.png";
+                        imagebox.src = "./img/blank.png";
                         activeModalIsWebcamLiveStream = "";
                     }
                 }
