@@ -46,33 +46,34 @@ while ($row = mysql_fetch_array($result)) {
     $__CONFIG[$row[0]] = $row[1];
 }
 
-$longitude = $__CONFIG['position_latitude'];
-$latitude = $__CONFIG['position_longitude'];
-$timestamp = time();
-
 // current weather
+if ($__CONFIG['position_latitude'] != "" && $__CONFIG['position_longitude'] != "") {
+  $latitude = $__CONFIG['position_latitude'];
+  $longitude = $__CONFIG['position_longitude'];
+  $timestamp = time();
 
-$url = 'http://api.openweathermap.org/data/2.5/weather?lat='.$latitude.'&lon='.$longitude.'&lang=de&units=metric';
-$curl = curl_init();
-$headers = array();
-curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
-curl_setopt($curl, CURLOPT_HEADER, 0);
-curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-curl_setopt($curl, CURLOPT_URL, $url);
-curl_setopt($curl, CURLOPT_TIMEOUT, 30);
-$json = curl_exec($curl);
-curl_close($curl);
-$data = json_decode($json);
-print_r($data);
+  $url = 'http://api.openweathermap.org/data/2.5/weather?lat='.$latitude.'&lon='.$longitude.'&lang=de&units=metric';
+  $curl = curl_init();
+  $headers = array();
+  curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
+  curl_setopt($curl, CURLOPT_HEADER, 0);
+  curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+  curl_setopt($curl, CURLOPT_URL, $url);
+  curl_setopt($curl, CURLOPT_TIMEOUT, 30);
+  $json = curl_exec($curl);
+  curl_close($curl);
+  $data = json_decode($json);
+  print_r($data);
 
-// parse and insert data
-$parsedData = parseData(null,$data);
-if ($parsedData != "") {
-  $parsedData = explode(';', $parsedData);
+  // parse and insert data
+  $parsedData = parseData(null,$data);
+  if ($parsedData != "") {
+    $parsedData = explode(';', $parsedData);
 
-  foreach ($parsedData as $query) {
-      mysql_query($query);
+    foreach ($parsedData as $query) {
+        mysql_query($query);
+    }
   }
-}
 
+}
 ?>

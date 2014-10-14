@@ -28,31 +28,34 @@
     </section>
 
     <?php
-    if (in_array($__CONFIG['dwd_state'], array("SG", "HN"))) {
-      $region="Nordwest";
-    } elseif (in_array($__CONFIG['dwd_state'], array("PD", "RW"))) {
-      $region="Nordost";
-    } elseif ($__CONFIG['dwd_state'] == "EM") {
-      $region="West";
-    } elseif (in_array($__CONFIG['dwd_state'], array("EF", "LZ", "MB"))) {
-      $region="Ost";
-    } elseif (in_array($__CONFIG['dwd_state'], array("OF", "TR"))) {
-      $region="Mitte";
-    } elseif ($__CONFIG['dwd_state'] == "MS") {
-      $region="Suedost";
-    } elseif ($__CONFIG['dwd_state'] == "SU") {
-      $region="Suedwest";
-    }
+    if ($__CONFIG['dwd_state'] != "") {
 
-    if (isset($region)) {
-    ?>
+      if (in_array($__CONFIG['dwd_state'], array("SG", "HN"))) {
+        $region="Nordwest";
+      } elseif (in_array($__CONFIG['dwd_state'], array("PD", "RW"))) {
+        $region="Nordost";
+      } elseif ($__CONFIG['dwd_state'] == "EM") {
+        $region="West";
+      } elseif (in_array($__CONFIG['dwd_state'], array("EF", "LZ", "MB"))) {
+        $region="Ost";
+      } elseif (in_array($__CONFIG['dwd_state'], array("OF", "TR"))) {
+        $region="Mitte";
+      } elseif ($__CONFIG['dwd_state'] == "MS") {
+        $region="Suedost";
+      } elseif ($__CONFIG['dwd_state'] == "SU") {
+        $region="Suedwest";
+      }
 
-    <section class="main_weather">
-        <h1><span><?php echo $region ?> Region</span></h1>
-        <div id="radar"><img src="http://www.dwd.de/wundk/radar/Webradar_<?php echo $region ?>.jpg"></div>
-    </section>
+      if (isset($region)) {
+      ?>
+
+      <section class="main_weather">
+          <h1><span><?php echo $region ?> Region</span></h1>
+          <div id="radar"><img src="http://www.dwd.de/wundk/radar/Webradar_<?php echo $region ?>.jpg"></div>
+      </section>
 
     <?php
+      }
     }
     ?>
 

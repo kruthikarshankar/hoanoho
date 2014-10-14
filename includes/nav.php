@@ -124,7 +124,9 @@
                         <ul>
                             <a href="./weather.php"><li><img src="./img/magnifier.png">Übersicht</li></a>
                             <a href="./weather_rainradar.php"><li><img src="./img/radar.png">Regenradar</li></a>
+                            <?php if ($__CONFIG['dwd_state'] != "" || $__CONFIG['dwd_url_landkreis'] != "" ) { ?>
                             <a href="./weather_warning.php"><li><img src="./img/warning.png">Warnungen</li></a>
+                            <?php } ?>
                         </ul>
                     </div>
                 </div>

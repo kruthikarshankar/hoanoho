@@ -199,16 +199,17 @@ switch ($day) {
     <?php require(dirname(__FILE__).'/includes/nav.php'); ?>
 
     <?php
-        $weather = array();
-        $weather = array_merge($weather, getCurrentOpenWeatherMapData($weather));
-        $weather = array_merge($weather, getCurrentWeatherDataFromLocalStation($weather));
+    $weather = array();
+    $weather = array_merge($weather, getCurrentOpenWeatherMapData($weather));
+    $weather = array_merge($weather, getCurrentWeatherDataFromLocalStation($weather));
 
+    if (count($weather) > 0) {
         $sunrise = date('H:i',$weather['sys.sunrise']);
         $sunset = date('H:i',$weather['sys.sunset']);
 
         // Temperature
         $temp = (isset($weather['ws_OT']) ? $weather['ws_OT']." °C  (gefühlt ".$weather['ws_WC']." °C)" : $weather['main.temp']." °C");
-          
+
         // Rain
         $rain = (isset($weather['ws_Rain1h']) ? $weather['ws_Rain1h']." l/qm pro h&nbsp;&nbsp;&nbsp;&nbsp;(".$weather['ws_Rain24h']." l/qm pro 24h)" : (isset($weather['rain']) ? $weather['rain']." mm" : "- mm"));
 
@@ -247,36 +248,47 @@ switch ($day) {
                 <div><b>Sonnenuntergang:</b> <?php echo $sunset." Uhr"; ?></div>
                 <div>&nbsp;</div>
             </div>
-            <div id="warnung"><?php echo $dwd_warnung; ?></div>
+            <?php
+            if (isset($dwd_warnung) && $dwd_warnung != "") {
+            ?>
+              <div id="warnung"><?php echo $dwd_warnung; ?></div>
+            <?php
+            }
+            ?>
             <div id="footer"></div>
     </section>
 
     <?php
-    if (in_array($__CONFIG['dwd_state'], array("SG", "HN"))) {
-      $region="Nordwest";
-    } elseif (in_array($__CONFIG['dwd_state'], array("PD", "RW"))) {
-      $region="Nordost";
-    } elseif ($__CONFIG['dwd_state'] == "EM") {
-      $region="West";
-    } elseif (in_array($__CONFIG['dwd_state'], array("EF", "LZ", "MB"))) {
-      $region="Ost";
-    } elseif (in_array($__CONFIG['dwd_state'], array("OF", "TR"))) {
-      $region="Mitte";
-    } elseif ($__CONFIG['dwd_state'] == "MS") {
-      $region="Suedost";
-    } elseif ($__CONFIG['dwd_state'] == "SU") {
-      $region="Suedwest";
     }
 
-    if (isset($region)) {
+    if ($__CONFIG['dwd_state'] != "") {
+
+      if (in_array($__CONFIG['dwd_state'], array("SG", "HN"))) {
+        $region="Nordwest";
+      } elseif (in_array($__CONFIG['dwd_state'], array("PD", "RW"))) {
+        $region="Nordost";
+      } elseif ($__CONFIG['dwd_state'] == "EM") {
+        $region="West";
+      } elseif (in_array($__CONFIG['dwd_state'], array("EF", "LZ", "MB"))) {
+        $region="Ost";
+      } elseif (in_array($__CONFIG['dwd_state'], array("OF", "TR"))) {
+        $region="Mitte";
+      } elseif ($__CONFIG['dwd_state'] == "MS") {
+        $region="Suedost";
+      } elseif ($__CONFIG['dwd_state'] == "SU") {
+        $region="Suedwest";
+      }
+
+      if (isset($region)) {
     ?>
 
-    <section class="main_weather">
-        <h1><span><?php echo $region ?> Region</span></h1>
-        <div id="dwdimage"><a href="http://www.dwd.de/wetter-<?php echo strtolower($region) ?>" target="_blank"><img src="http://www.dwd.de/wundk/wetter/de/<?php echo $region ?>.jpg"></a></div>
-    </section>
+      <section class="main_weather">
+          <h1><span><?php echo $region ?> Region</span></h1>
+          <div id="dwdimage"><a href="http://www.dwd.de/wetter-<?php echo strtolower($region) ?>" target="_blank"><img src="http://www.dwd.de/wundk/wetter/de/<?php echo $region ?>.jpg"></a></div>
+      </section>
 
     <?php
+      }
     }
     ?>
 
@@ -291,6 +303,7 @@ switch ($day) {
     $i = 0;
 
     for ($i=0; $i < $forecast_days; $i++) {
+      if (is_array($forecast[$i]) && count($forecast[$i]) > 0) {
         echo "<section class=\"main_weather\">";
             echo "<h1><span>Vorhersage für " . $days_relative[$i] . " (".$days[$i].")</span></h1>";
 
@@ -316,6 +329,7 @@ switch ($day) {
                 print("<div>&nbsp;</div>");
             echo "</div>";
         echo "</section>";
+      }
     }
     ?>
 </body>

@@ -22,6 +22,7 @@
     			break;
     			case"dwd_state":
     				echo "<select name=\"".$object->configstring."\" style='width:200px'>";
+    				echo "<option ".($object->value == "" ? "selected" : "")." value=\"\">-</option>";
     				echo "<option ".($object->value == "SU" ? "selected" : "")." value=\"SU\">Baden-Württemberg</option>";
     				echo "<option ".($object->value == "MS" ? "selected" : "")." value=\"MS\">Bayern</option>";
     				echo "<option ".($object->value == "PD" ? "selected" : "")." value=\"PD\">Berlin</option>";
