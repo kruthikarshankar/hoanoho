@@ -27,7 +27,7 @@ function parseData($key,$in)
           $in = "-";
 
         if (isset($_key) && $_key != "")
-          return "insert into openweathermap_forecast set measuredate = ".$timestamp.", weatherkey = '".$_key."', weathervalue = '".$in."';";
+          return "insert into openweathermap_forecast set measuredate = ".$timestamp.", weatherkey = '".utf8_decode($_key)."', weathervalue = '".utf8_decode($in)."';";
     }
 
     return $sql;
@@ -62,7 +62,7 @@ curl_setopt($curl, CURLOPT_URL, $url);
 curl_setopt($curl, CURLOPT_TIMEOUT, 30);
 $json = curl_exec($curl);
 curl_close($curl);
-$data = json_decode($json);
+$data = json_decode(utf8_decode($json));
 print_r($data);
 
 // parse and insert data
