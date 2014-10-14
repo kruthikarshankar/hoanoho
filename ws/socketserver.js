@@ -269,7 +269,7 @@ function disconnectAllConnectedClients() {
 function connectDatabase() {
 
 	var nconf = require('nconf');
-	nconf.use('file', {file: '/etc/hoanoho'});
+	nconf.use('file', {file: '/etc/hoanoho/socketserver.inc.js'});
 	nconf.load();
 
 	connection  = mysql.createConnection({
