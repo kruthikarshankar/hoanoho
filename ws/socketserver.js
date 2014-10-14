@@ -16,34 +16,38 @@ var connectionsArray = [];
 
 var devices = { };
 
+// Build SQL Querys with configuration
+var dbConf = require('nconf');
+dbConf.use('file', {file: '/etc/hoanoho/socketserver.inc.js'});
+dbConf.load();
+
 //var sqlquery_fhem = 'SELECT hoanoho.devices.dev_id, hoanoho.bindata.data image, hoanoho.types.name typename, fhem.current.DEVICE, fhem.current.VALUE, fhem.current.UNIT FROM fhem.current JOIN hoanoho.devices ON hoanoho.devices.identifier = fhem.current.DEVICE JOIN hoanoho.device_types ON hoanoho.device_types.dtype_id = hoanoho.devices.dtype_id JOIN hoanoho.bindata ON hoanoho.bindata.binid = CASE WHEN (fhem.current.VALUE = \'on\' or fhem.current.VALUE > 0) AND hoanoho.device_types.image_on_id is not null THEN hoanoho.device_types.image_on_id ELSE hoanoho.device_types.image_off_id END JOIN hoanoho.types on hoanoho.types.type_id = hoanoho.device_types.type_id WHERE fhem.current.TYPE !=  "GLOBAL" and fhem.current.READING = "state"';
-var sqlquery_fhem = 'SELECT distinct fhem.current.DEVICE FHEMDEVICE, hoanoho.devices.dev_id, hoanoho.bindata.data image, hoanoho.types.name typename, fhem.current.timestamp, hoanoho.devices.identifier, hoanoho.devices.identifier DEVICE, fhem.current.READING, fhem.current.VALUE, fhem.current.UNIT '+
-					'FROM fhem.current ' +
-						'JOIN hoanoho.devices ON fhem.current.DEVICE like concat(hoanoho.devices.identifier,\'%\') '+
-						'JOIN hoanoho.device_types ON hoanoho.device_types.dtype_id = hoanoho.devices.dtype_id '+
-						'LEFT OUTER JOIN hoanoho.bindata ON hoanoho.bindata.binid = '+
-							'CASE WHEN (fhem.current.VALUE = \'on\' or fhem.current.VALUE = \'closed\') AND hoanoho.device_types.image_on_id is not null and fhem.current.READING = \'state\' THEN '+
-								'hoanoho.device_types.image_on_id '+
-							'WHEN (fhem.current.VALUE = \'off\' or fhem.current.VALUE = \'open\') AND hoanoho.device_types.image_on_id is not null and fhem.current.READING = \'state\' THEN '+
-								'hoanoho.device_types.image_off_id '+
+var sqlquery_fhem = 'SELECT distinct ' + dbConf.get('db:fhemDB') + '.current.DEVICE FHEMDEVICE, ' + dbConf.get('db:hoanohoDB') + '.devices.dev_id, ' + dbConf.get('db:hoanohoDB') + '.bindata.data image, ' + dbConf.get('db:hoanohoDB') + '.types.name typename, ' + dbConf.get('db:fhemDB') + '.current.timestamp, ' + dbConf.get('db:hoanohoDB') + '.devices.identifier, ' + dbConf.get('db:hoanohoDB') + '.devices.identifier DEVICE, ' + dbConf.get('db:fhemDB') + '.current.READING, ' + dbConf.get('db:fhemDB') + '.current.VALUE, ' + dbConf.get('db:fhemDB') + '.current.UNIT '+
+					'FROM ' + dbConf.get('db:fhemDB') + '.current ' +
+						'JOIN ' + dbConf.get('db:hoanohoDB') + '.devices ON ' + dbConf.get('db:fhemDB') + '.current.DEVICE like concat(' + dbConf.get('db:hoanohoDB') + '.devices.identifier,\'%\') '+
+						'JOIN ' + dbConf.get('db:hoanohoDB') + '.device_types ON ' + dbConf.get('db:hoanohoDB') + '.device_types.dtype_id = ' + dbConf.get('db:hoanohoDB') + '.devices.dtype_id '+
+						'LEFT OUTER JOIN ' + dbConf.get('db:hoanohoDB') + '.bindata ON ' + dbConf.get('db:hoanohoDB') + '.bindata.binid = '+
+							'CASE WHEN (' + dbConf.get('db:fhemDB') + '.current.VALUE = \'on\' or ' + dbConf.get('db:fhemDB') + '.current.VALUE = \'closed\') AND ' + dbConf.get('db:hoanohoDB') + '.device_types.image_on_id is not null and ' + dbConf.get('db:fhemDB') + '.current.READING = \'state\' THEN '+
+								'' + dbConf.get('db:hoanohoDB') + '.device_types.image_on_id '+
+							'WHEN (' + dbConf.get('db:fhemDB') + '.current.VALUE = \'off\' or ' + dbConf.get('db:fhemDB') + '.current.VALUE = \'open\') AND ' + dbConf.get('db:hoanohoDB') + '.device_types.image_on_id is not null and ' + dbConf.get('db:fhemDB') + '.current.READING = \'state\' THEN '+
+								'' + dbConf.get('db:hoanohoDB') + '.device_types.image_off_id '+
 							'ELSE '+
 								'null '+
 							'END '+
-						'JOIN hoanoho.types on hoanoho.types.type_id = hoanoho.device_types.type_id '+
-					'WHERE fhem.current.READING in (SELECT DISTINCT fhem.current.READING FROM fhem.current WHERE fhem.current.type != "GLOBAL")';
+						'JOIN ' + dbConf.get('db:hoanohoDB') + '.types on ' + dbConf.get('db:hoanohoDB') + '.types.type_id = ' + dbConf.get('db:hoanohoDB') + '.device_types.type_id '+
+					'WHERE ' + dbConf.get('db:fhemDB') + '.current.READING in (SELECT DISTINCT ' + dbConf.get('db:fhemDB') + '.current.READING FROM ' + dbConf.get('db:fhemDB') + '.current WHERE ' + dbConf.get('db:fhemDB') + '.current.type != "GLOBAL")';
 
-var sqlquery_gpio = 'select hoanoho.device_data.VALUE, t1.deviceident DEVICE, hoanoho.types.name typename, hoanoho.bindata.data image, hoanoho.devices.dev_id  from hoanoho.device_data ' +
+var sqlquery_gpio = 'select ' + dbConf.get('db:hoanohoDB') + '.device_data.VALUE, t1.deviceident DEVICE, ' + dbConf.get('db:hoanohoDB') + '.types.name typename, ' + dbConf.get('db:hoanohoDB') + '.bindata.data image, ' + dbConf.get('db:hoanohoDB') + '.devices.dev_id  from ' + dbConf.get('db:hoanohoDB') + '.device_data ' +
 						'join ( ' +
-								'select max(ddid) ddid, deviceident, max(timestamp) from hoanoho.device_data group by deviceident ' +
+								'select max(ddid) ddid, deviceident, max(timestamp) from ' + dbConf.get('db:hoanohoDB') + '.device_data group by deviceident ' +
 							  ') t1 on t1.ddid = device_data.ddid ' +
-						'join hoanoho.devices on devices.identifier = t1.deviceident ' +
-						'join hoanoho.device_types on devices.dtype_id = device_types.dtype_id ' +
-						'join hoanoho.types on device_types.type_id = types.type_id ' +
-						'join hoanoho.bindata ON hoanoho.bindata.binid = CASE WHEN (VALUE = \'on\' or VALUE > 0) AND hoanoho.device_types.image_on_id is not null THEN hoanoho.device_types.image_on_id ELSE hoanoho.device_types.image_off_id END ' +
+						'join ' + dbConf.get('db:hoanohoDB') + '.devices on devices.identifier = t1.deviceident ' +
+						'join ' + dbConf.get('db:hoanohoDB') + '.device_types on devices.dtype_id = device_types.dtype_id ' +
+						'join ' + dbConf.get('db:hoanohoDB') + '.types on device_types.type_id = types.type_id ' +
+						'join ' + dbConf.get('db:hoanohoDB') + '.bindata ON ' + dbConf.get('db:hoanohoDB') + '.bindata.binid = CASE WHEN (VALUE = \'on\' or VALUE > 0) AND ' + dbConf.get('db:hoanohoDB') + '.device_types.image_on_id is not null THEN ' + dbConf.get('db:hoanohoDB') + '.device_types.image_on_id ELSE ' + dbConf.get('db:hoanohoDB') + '.device_types.image_off_id END ' +
 						'where types.name = "Raspberry Pi GPIO"';
-var sqlquery_weatherwarning = 'select id, name, data from hoanoho.cron_data where name = \'dwd_warning\'';
-var sqlquery_garbage = 'select id, date_format(pickupdate, \'%d.%m.%Y\') pickupdate,text from hoanoho.garbageplan where date(NOW()) = pickupdate -INTERVAL 1 DAY';
-
+var sqlquery_weatherwarning = 'select id, name, data from ' + dbConf.get('db:hoanohoDB') + '.cron_data where name = \'dwd_warning\'';
+var sqlquery_garbage = 'select id, date_format(pickupdate, \'%d.%m.%Y\') pickupdate,text from ' + dbConf.get('db:hoanohoDB') + '.garbageplan where date(NOW()) = pickupdate -INTERVAL 1 DAY';
 
 // helper to count nested objects
 Object.prototype.count = function() {
