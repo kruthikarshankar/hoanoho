@@ -4,13 +4,16 @@
     include dirname(__FILE__).'/../includes/dbconnection.php';
     include dirname(__FILE__).'/../includes/sessionhandler.php';
 
-    $sql = "select * from usersettings where uid = " . $_SESSION['uid'];
-    $result = mysql_query($sql);
-
     $__USERCONFIG = array();
-    while ($row = mysql_fetch_assoc($result)) {
-        // backgroundimage
-        print("<style type=\"text/css\">");
-        print("body { background-image: url('./" . $row['backgroundimage'] . "'); }");
-        print("</style>");
+
+    if (isset($_SESSION['uid'])) {
+      $sql = "select * from usersettings where uid = " . $_SESSION['uid'];
+      $result = mysql_query($sql);
+
+      while ($row = mysql_fetch_assoc($result)) {
+          // backgroundimage
+          print("<style type=\"text/css\">");
+          print("body { background-image: url('./" . $row['backgroundimage'] . "'); }");
+          print("</style>");
+      }
     }

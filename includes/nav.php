@@ -93,7 +93,7 @@
 </script>
 
 <nav>
-        <p class="infoline_clockicon" id="navclockicon"></p><p class="infoline_clock" id="navclock"></p><p class="infoline_r">Angemeldet als: <b><?php echo $_SESSION['username'] ?></b> <a href="./login.php?cmd=logout"><img alt="Abmelden" title="Abmelden" src="./img/logout.png" style="margin-top:-3px;"></a></p>
+        <p class="infoline_clockicon" id="navclockicon"></p><p class="infoline_clock" id="navclock"></p><p class="infoline_r">Angemeldet als: <b><?php if (isset($_SESSION['username'])) { echo $_SESSION['username']; } ?></b> <a href="./login.php?cmd=logout"><img alt="Abmelden" title="Abmelden" src="./img/logout.png" style="margin-top:-3px;"></a></p>
         <ul>
             <li class="drop">
                 <a href="#"><img src="./img/home.png">Haussteuerung</a>
@@ -144,7 +144,7 @@
                 </div>
             </li>
 
-            <?php if ($_SESSION['isAdmin'] == 1) { ?>
+            <?php if (isset($_SESSION['isAdmin']) && $_SESSION['isAdmin'] == 1) { ?>
             <li class="drop">
                 <a href="#"><img src="./img/network.png">Netzwerk</a>
 
@@ -166,7 +166,7 @@
                     <div class="dropOut">
                         <div class="triangle"></div>
                         <ul>
-                            <?php if ($_SESSION['isAdmin'] == 1) { ?>
+                            <?php if (isset($_SESSION['isAdmin']) && $_SESSION['isAdmin'] == 1) { ?>
                             <a href="configuration_users.php"><li><img src="./img/user.png">Benutzer</li></a>
                             <a href="configuration_settings.php"><li><img src="./img/gear.png">Allgemein</li></a>
                             <a href="configuration_automation.php"><li><img src="./img/home.png">Steuerung</li></a>

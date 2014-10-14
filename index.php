@@ -318,10 +318,12 @@
         <div id="notes">
         <?php
         $current_notecolor = "";
-        $sql = "SELECT notecolor FROM usersettings where uid = " . $_SESSION['uid'];
-        $result = mysql_query($sql);
-        while ($row = mysql_fetch_object($result)) {
-            $current_notecolor = $row->notecolor;
+        if (isset($_SESSION['uid'])) {
+          $sql = "SELECT notecolor FROM usersettings where uid = " . $_SESSION['uid'];
+          $result = mysql_query($sql);
+          while ($row = mysql_fetch_object($result)) {
+              $current_notecolor = $row->notecolor;
+          }
         }
         ?>
 
@@ -336,17 +338,18 @@
         </form>
 
         <?php
-        $sql = "SELECT no_id, title, content, DATE_FORMAT(create_date , '%d.%m.%Y') create_date, DATE_FORMAT(create_date , '%H:%i') create_time, papercolor, users.username from notes join users on users.uid = notes.created_by where notes.isActive = 1 and (notes.visible_to = 'public' or notes.visible_to like '%".$_SESSION['uid']."%') order by no_id asc";
-        $result = mysql_query($sql);
-        while ($note = mysql_fetch_object($result)) {
-            // random pin cap
-            $pin = rand(1,5);
-            // random pin rotation
-            $rotation_pin = rand(-45,0);
-            // random note rotation
-            $rotation_note = rand(-3,3);
-            // random note margin-top;
-            $margin_note = rand(-1,20);
+        if (isset($_SESSION['uid'])) {
+          $sql = "SELECT no_id, title, content, DATE_FORMAT(create_date , '%d.%m.%Y') create_date, DATE_FORMAT(create_date , '%H:%i') create_time, papercolor, users.username from notes join users on users.uid = notes.created_by where notes.isActive = 1 and (notes.visible_to = 'public' or notes.visible_to like '%".$_SESSION['uid']."%') order by no_id asc";
+          $result = mysql_query($sql);
+          while ($note = mysql_fetch_object($result)) {
+              // random pin cap
+              $pin = rand(1,5);
+              // random pin rotation
+              $rotation_pin = rand(-45,0);
+              // random note rotation
+              $rotation_note = rand(-3,3);
+              // random note margin-top;
+              $margin_note = rand(-1,20);
         ?>
                 <div class="note_<?php echo $note->papercolor; ?>" style="-webkit-transform:rotate(<?php echo $rotation_note; ?>deg); margin-top:<?php echo $margin_note; ?>px" id="note-<?php echo $note->no_id; ?>">
                     <div id="pin<?php echo $pin; ?>" style="-webkit-transform:rotate(<?php echo $rotation_pin; ?>deg);"></div>
@@ -356,6 +359,7 @@
                     <div id="footer"><?php echo $note->username . " am " . $note->create_date . " um " . $note->create_time; ?></div>
                 </div>
         <?php
+          }
         }
         ?>
         </div>
@@ -522,12 +526,16 @@
                 <div id="block">
                     <div id="headline_hyperlink"></div><div id="headline">Links</div>
                     <?php
-                    $sql = "SELECT name, url from pinboard_links where (uid = 0 or uid = " . $_SESSION['uid'] . ") order by name asc";
-                    $result = mysql_query($sql);
-                    while ($link = mysql_fetch_object($result)) {
+                    if (isset($_SESSION['uid'])) {
+                      $sql = "SELECT name, url from pinboard_links where (uid = 0 or uid = " . $_SESSION['uid'] . ") order by name asc";
+                      $result = mysql_query($sql);
+                      while ($link = mysql_fetch_object($result)) {
                     ?>
-                    <div id="text"><a href="<?php echo $link->url; ?>" target="_blank"><?php echo $link->name; ?></a></div>
-                    <?php } ?>
+                      <div id="text"><a href="<?php echo $link->url; ?>" target="_blank"><?php echo $link->name; ?></a></div>
+                    <?php
+                      }
+                    }
+                    ?>
                 </div>
                 <div id="block_last">&nbsp;</div>
             </div>
