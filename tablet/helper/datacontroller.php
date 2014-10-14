@@ -131,7 +131,7 @@
         if(strlen($weather['weather.0.icon']) > 0)
             $weathericon = $weather['weather.0.icon'];
 
-        echo "<img src=\"/img/weather/openweathermap/".$weathericon.".png\">".$weather['weather.0.description'].", ".$weather['main.temp']. "&deg;C";
+        echo "<img src=\"../img/weather/openweathermap/".$weathericon.".png\">".$weather['weather.0.description'].", ".$weather['main.temp']. "&deg;C";
     }
 
     if ($_GET['cmd'] == 'refresh_current_weather') {

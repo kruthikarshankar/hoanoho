@@ -89,8 +89,8 @@
 
         <link rel="stylesheet" href="./css/ratchet.css" type="text/css" media="screen" title="no title" charset="UTF-8">
 
-        <link rel="apple-touch-icon" href="./img/favicon.ico"/>
-        <link rel="shortcut icon" type="image/x-icon" href="./img/favicon.ico" />
+        <link rel="apple-touch-icon" href="../img/favicon.ico"/>
+        <link rel="shortcut icon" type="image/x-icon" href="../img/favicon.ico" />
 
         <script src="./js/ratchet.js"></script>
         <script src="./js/standalone.js"></script>
