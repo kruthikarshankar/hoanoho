@@ -17,7 +17,7 @@
 
     if (isset($_GET['dev_id']) && $_GET['dev_id'] != null) {
         $result = mysql_query("select identifier from devices where dev_id = " . $_GET['dev_id']);
-        if (is_object($result)) {
+        if ($result) {
           while ($device_identifier = mysql_fetch_object($result)) {
             $result2 = mysql_query("select distinct valuename, valueunit from device_data where deviceident = '".$device_identifier->identifier."' order by valuename");
 
