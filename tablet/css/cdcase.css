@@ -167,7 +167,7 @@
         border: 1px solid rgba(0, 0, 0, 0.6);
         background-color: #54544f;
         
-        background-image: url('./img/compactdisc.png');
+        background-image: url('../../img/compactdisc.png');
         background-size: 95% auto;
         background-position: center;
         background-repeat: no-repeat;

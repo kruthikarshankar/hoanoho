@@ -510,7 +510,7 @@ a:hover {
     width: 140px;
     height: 105px;
 
-    background-image: url('./img/testimage.gif');
+    background-image: url('../../img/testimage.gif');
     background-repeat: no-repeat;
     background-size: 100% auto;
     background-position: center;
@@ -542,7 +542,7 @@ a:hover {
     width: auto;
     height: auto;
 
-    background-image: url('./img/testimage.gif');
+    background-image: url('../../img/testimage.gif');
     background-repeat: no-repeat;
     background-size: 100% auto;
     background-position: center;
