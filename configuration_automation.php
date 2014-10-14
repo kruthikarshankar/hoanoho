@@ -650,7 +650,7 @@
             print("</style>");
 
             // dynamically generate css code for floors
-            $sql = "select floor_id, image_id from device_floors order by position asc";
+            $sql = "select floor_id, image_id from device_floors where image_id is not null order by position asc";
             $result = mysql_query($sql);
 
             print("<style type=\"text/css\">");
