@@ -225,10 +225,10 @@
                 <div id="listitem_container_left">
                 <br>
                    <a id="android_market_link" class="market_link" href="https://play.google.com/store/apps/details?id=net.superblock.pushover&ts=1413148670">
-			          <img alt="Available on the Google Play Store" height="60" src="./img/android_market.png" width="172">
+			          <img alt="Get it on Google Play" height="65px" src="./img/android_market.png" width="65px">
 		          </a>
-		          <a id="apple_market_link" class="market_link" href="https://itunes.apple.com/us/app/pushover-notifications/id506088175?ls=1&mt=8">
-			          <img alt="Available on the Apple App Store" height="60" src="./img/apple_app_store.png" width="172">
+		          <a id="apple_market_link" class="market_link" href="https://itunes.apple.com/de/app/pushover-notifications/id506088175?l=de&mt=8">
+			          <img alt="Available on the Apple App Store" height="65px" src="./img/apple_app_store.png" width="65px">
 		          </a>
                 </div>
                 <div style="clear:both;"></div>
