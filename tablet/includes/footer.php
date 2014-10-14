@@ -8,6 +8,14 @@ if (!isset($_GET['floor'])) {
       $floor_id = $result->floor_id;
 } else
     $floor_id = $_GET['floor'];
+
+$relativePath = "";
+$musicPath = "includes/pupnp/index.php";
+if ($title == "Musik") {
+  $relativePath = "../../";
+  $musicPath = "/";
+}
+
 ?>
 
 <script lang="text/javascript">
@@ -23,7 +31,7 @@ if (!isset($_GET['floor'])) {
 <div id="footer">
     <div id="left">
         <div class="btn-group" style="margin-left: 20px; margin-right: 20px">
-            <?php echo "<a href=\"index.php\"><button type=\"button\" class=\"btn btn-custom\">"; ?>
+            <?php echo "<a href=\"".$relativePath."index.php\"><button type=\"button\" class=\"btn btn-custom\">"; ?>
                 &nbsp;<span class="glyphicon glyphicon-home"></span>&nbsp;
             </button></a>
         </div>
@@ -35,7 +43,7 @@ if (!isset($_GET['floor'])) {
                 $result = mysql_query($sql);
                 while ($floor = mysql_fetch_object($result)) {
                     //echo "<li><a href=\"#\" onclick=\"navigate('floor',".$floor->floor_id.",null)\">".$floor->name."</a></li>";
-                    echo "<li><a href=\"floor.php?floor=".$floor->floor_id."\">".$floor->name."</a></li>";
+                    echo "<li><a href=\"".$relativePath."floor.php?floor=".$floor->floor_id."\">".$floor->name."</a></li>";
                 }
                 ?>
             </ul>
@@ -48,7 +56,7 @@ if (!isset($_GET['floor'])) {
                 $result = mysql_query($sql);
                 while ($room = mysql_fetch_object($result)) {
                     //echo "<li><a href=\"#\" onclick=\"navigate('room',".$floor_id.",".$room->room_id.")\">".$room->name."</a></li>";
-                    echo "<li><a href=\"room.php?room=".$room->room_id."\">".$room->name."</a></li>";
+                    echo "<li><a href=\"".$relativePath."room.php?room=".$room->room_id."\">".$room->name."</a></li>";
                 }
                 ?>
             </ul>
@@ -61,7 +69,7 @@ if (!isset($_GET['floor'])) {
                 $result = mysql_query($sql);
                 while ($type = mysql_fetch_object($result)) {
                     //echo "<li><a href=\"#\" onclick=\"navigate('dtype',null,null,".$type->dtype_id.")\">".$type->name."</a></li>";
-                    echo "<li><a href=\"dtype.php?dtype=".$type->dtype_id."\">".$type->name."</a></li>";
+                    echo "<li><a href=\"".$relativePath."dtype.php?dtype=".$type->dtype_id."\">".$type->name."</a></li>";
                 }
                 ?>
             </ul>
@@ -69,12 +77,12 @@ if (!isset($_GET['floor'])) {
     </div>
     <div id="right">
         <div class="btn-group" style="margin-right: 20px;">
-            <?php echo "<a href=\"includes/pupnp/index.php\"><button type=\"button\" class=\"btn btn-custom\">"; ?>
+            <?php echo "<a href=\"".$musicPath."\"><button type=\"button\" class=\"btn btn-custom\">"; ?>
                 Musik
             </button></a>
         </div>
         <div class="btn-group" style="margin-right: 20px">
-            <?php echo "<a href=\"weather.php\"><button type=\"button\" class=\"btn btn-custom\">"; ?>
+            <?php echo "<a href=\"".$relativePath."weather.php\"><button type=\"button\" class=\"btn btn-custom\">"; ?>
                 Wetter
             </button></a>
         </div>

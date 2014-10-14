@@ -55,15 +55,15 @@ $css = array(
 
     <title><? echo $__CONFIG['main_sitetitle']; ?></title>
 
-	<link href="res/jqueryui/css/custom-theme/jquery-ui-1.8.16.custom.css" rel="stylesheet" type="text/css"/>
+	<link href="./res/jqueryui/css/custom-theme/jquery-ui-1.8.16.custom.css" rel="stylesheet" type="text/css"/>
     <? if(Config::read('minify_css')): ?>
 
-        <link rel="stylesheet" type="text/css" href="resources.php?css=<?= join('|', $css) ?>" />
+        <link rel="stylesheet" type="text/css" href="./resources.php?css=<?= join('|', $css) ?>" />
     <? else: ?>
 
         <? foreach($css as $cssfile): ?>
 
-            <link rel="stylesheet" type="text/css" href="res/css/<?= $cssfile ?>" />
+            <link rel="stylesheet" type="text/css" href="./res/css/<?= $cssfile ?>" />
         <? endforeach ?>
     <? endif ?>
 
@@ -97,12 +97,12 @@ $css = array(
     <link rel="stylesheet" href="../../css/bootstrap-theme.min.css" type="text/css" media="screen" title="no title" charset="UTF-8">
     <link rel="stylesheet" href="../../css/bootstrap-custom.css" type="text/css" media="screen" title="no title" charset="UTF-8">
     
-    <script src="/tablet/js/jquery.min.js"></script>
-    <script src="/tablet/js/jquery-ui.min.js"></script>
-    <script src="/tablet/js/bootstrap.min.js"></script>
-    <script src="/tablet/js/clock.js"></script>
-    <script src="/tablet/js/jquery-scrolltofixed.js"></script>
-    <script src="/tablet/js/standalone.js"></script>
+    <script src="../../js/jquery.min.js"></script>
+    <script src="../../js/jquery-ui.min.js"></script>
+    <script src="../../js/bootstrap.min.js"></script>
+    <script src="../../js/clock.js"></script>
+    <script src="../../js/jquery-scrolltofixed.js"></script>
+    <script src="../../js/standalone.js"></script>
     <script>
         $(document).ready(function() {
             $('.dropdown-toggle').dropdown();
@@ -116,7 +116,7 @@ $css = array(
 
         <? foreach($javascript as $jsfile): ?>
 
-            <script type="text/javascript" src="/tablet/includes/pupnp/res/js/<?= $jsfile ?>"></script>
+            <script type="text/javascript" src="./res/js/<?= $jsfile ?>"></script>
         <? endforeach ?>
 
 </head>
