@@ -276,7 +276,7 @@ function connectDatabase() {
         host        : nconf.get('db:host'),
         user        : nconf.get('db:user'),
         password    : nconf.get('db:password'),
-        database    : nconf.get('db:name')
+        database    : nconf.get('db:hoanohoDB')
     });
 
     connection.on('close', function (err) {

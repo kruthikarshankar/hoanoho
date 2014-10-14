@@ -1,8 +1,9 @@
 {
   "db": {
-    "host": "",
+    "host": "localhost",
     "user": "",
     "password": "",
-    "name": "fhem"
+    "hoanohoDB": "hoanoho",
+    "fhemDB": "fhem"
   }
 }
