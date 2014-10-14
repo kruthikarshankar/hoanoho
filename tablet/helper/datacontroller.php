@@ -65,6 +65,8 @@
                 }
 
                 $in_arr[$row->weatherkey] = $row->weathervalue;
+            } else {
+                $in_arr[$row->weatherkey] = "-";
             }
         }
 
@@ -143,6 +145,8 @@
                     }
 
                     $forecast_day[$row->weatherkey] = $row->weathervalue;
+                } else {
+                    $forecast_day[$row->weatherkey] = "-";
                 }
             }
 

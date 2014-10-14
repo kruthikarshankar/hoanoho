@@ -66,6 +66,8 @@ function getCurrentOpenWeatherMapData($in_arr)
             }
 
             $in_arr[$row->weatherkey] = $row->weathervalue;
+        } else {
+            $in_arr[$row->weatherkey] = "-";
         }
     }
 
@@ -144,6 +146,8 @@ function getForecastOpenWeatherMapData($days)
                 }
 
                 $forecast_day[$row->weatherkey] = $row->weathervalue;
+            } else {
+                $forecast_day[$row->weatherkey] = "-";
             }
         }
 
