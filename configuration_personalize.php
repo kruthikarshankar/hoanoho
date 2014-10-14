@@ -163,7 +163,7 @@
 
         <?php include dirname(__FILE__).'/includes/getUserSettings.php'; ?>
 
-        <link rel="shortcut icon" href="./img/favicons/favicon.ico">
+        <link rel="shortcut icon" type="image/x-icon" href="./img/favicons/favicon.ico">
         <link rel="apple-touch-icon" sizes="57x57" href="./img/favicons/apple-touch-icon-57x57.png">
         <link rel="apple-touch-icon" sizes="114x114" href="./img/favicons/apple-touch-icon-114x114.png">
         <link rel="apple-touch-icon" sizes="72x72" href="./img/favicons/apple-touch-icon-72x72.png">
