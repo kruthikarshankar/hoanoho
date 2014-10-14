@@ -1142,9 +1142,8 @@
     "use strict";
     var evt         = new Event(),
         dragdrop    = new Dragdrop(evt)
-        <?php if (isset($jsdragdevices_def) && $jsdragdevices_def != "") { print(",".$jsdragdevices_def); } ?>
-        <?php if (isset($jsdragdevices_act) && $jsdragdevices_act != "") { print(",".$jsdragdevices_act); } ?>
-        ;
+        <?php if (isset($jsdragdevices_def) && $jsdragdevices_def != "") { print(",".$jsdragdevices_def.";"); } else { print ";"; } ?>
+        <?php if (isset($jsdragdevices_act) && $jsdragdevices_act != "") { print($jsdragdevices_act); } ?>
     </script>
 </body>
 </html>
