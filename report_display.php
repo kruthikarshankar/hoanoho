@@ -79,13 +79,15 @@
                 where rid = ".$_GET['rid']." and year(savedate) = ".$year." group by dayofyear(savedate) order by savedate asc";
 
         $result = mysql_query($sql);
-        while ($row = mysql_fetch_object($result)) {
-            $avgPerDay += $row->avgdata;
+
+        if ($result) {
+          while ($row = mysql_fetch_object($result)) {
+              $avgPerDay += $row->avgdata;
+          }
+
+          $avgPerDay = $avgPerDay / mysql_num_rows($result);
+          $retVal = array($avgPerDay,($avgPerDay*$unitprice));
         }
-
-        $avgPerDay = $avgPerDay / mysql_num_rows($result);
-
-        $retVal = array($avgPerDay,($avgPerDay*$unitprice));
 
         return $retVal;
     }
@@ -94,21 +96,23 @@
     {
         $retVal = calcAveragePerDayForYear($year);
 
-        $retVal[0] = $retVal[0]*30;
+        if (isset($retVal[0])) {
+          $retVal[0] = $retVal[0]*30;
 
-        $unitprice = 0;
-        $sql = "select unitprice from reports where rid = ".$_GET['rid'];
-        $result = mysql_query($sql);
-        while ($row = mysql_fetch_object($result)) {
-            $unitprice = doubleval($row->unitprice);
+          $unitprice = 0;
+          $sql = "select unitprice from reports where rid = ".$_GET['rid'];
+          $result = mysql_query($sql);
+          while ($row = mysql_fetch_object($result)) {
+              $unitprice = doubleval($row->unitprice);
+          }
+
+          $retVal[1] = round($retVal[0]*$unitprice,2);
         }
-
-        $retVal[1] = round($retVal[0]*$unitprice,2);
 
         return $retVal;
     }
 
-    if ($_POST['cmd'] == "savedata" && !isset($_POST['rd_id']) && isset($_POST['rid'])) {
+    if (isset($_POST['cmd']) && $_POST['cmd'] == "savedata" && !isset($_POST['rd_id']) && isset($_POST['rid'])) {
         $temp = explode(" ", $_POST['savedate']);
         $date = $temp[0];
         $time = $temp[1];
@@ -121,7 +125,7 @@
 
         $sql = "insert into reportdata (savedate,data,rid,startval) values ('".$date." ".$time."', '".str_replace(",", ".", $_POST['data'])."', ".$_POST['rid'].", ".$startval.")";
         mysql_query($sql);
-    } elseif ($_POST['cmd'] == "editdata" && isset($_POST['rd_id'])) {
+    } elseif (isset($_POST['cmd']) && $_POST['cmd'] == "editdata" && isset($_POST['rd_id'])) {
         $temp = explode(" ", $_POST['savedate']);
         $date = $temp[0];
         $time = $temp[1];
@@ -135,7 +139,7 @@
         mysql_query($sql);
         $sql = "update reportdata set savedate = '".$date." ".$time."', data = '".str_replace(",", ".", $_POST['data'])."', startval = ".$startval." where rd_id = ".$_POST['rd_id'];
         mysql_query($sql);
-    } elseif ($_POST['cmd'] == "deletedata" && isset($_POST['rd_id'])) {
+    } elseif (isset($_POST['cmd']) && $_POST['cmd'] == "deletedata" && isset($_POST['rd_id'])) {
         $sql = "delete from reportdata where rd_id = ".$_POST['rd_id'];
         mysql_query($sql);
     }
@@ -287,8 +291,6 @@
         }
 
     }
-
-    print_r($data_)
 ?>
 
 <html>
@@ -340,8 +342,8 @@
                 if ($reporttype == "manual") {
                 ?>
                     // get data
-                    var valueset_data = { "label": "", "data": <?php echo json_encode($valueset_data); ?>, "color": "#888888" };
-                    var diffset_data = { "label": "", "data": <?php echo json_encode($diffset_data); ?>, "color": "#d97c00" };
+                    var valueset_data = { "label": "", "data": <?php if (isset($valueset_data) { echo json_encode($valueset_data); } ?>, "color": "#888888" };
+                    var diffset_data = { "label": "", "data": <?php if (isset($diffset_data) { echo json_encode($diffset_data); } ?>, "color": "#d97c00" };
 
                     // define options
                     var valueset_options = {
@@ -350,7 +352,7 @@
                                                     points: { show: true, radius: 2 }
                                                 },
                                     xaxis: 		{
-                                                    ticks: <?php echo json_encode($valueset_labels); ?>
+                                                    ticks: <?php if(isset($valueset_labels) { echo json_encode($valueset_labels); } ?>
                                                 },
                                     yaxis: 		{
                                                     tickDecimals: 2,
@@ -369,7 +371,7 @@
                                                     points: { show: true, radius: 2 }
                                                 },
                                     xaxis: 		{
-                                                    ticks: <?php echo json_encode($diffset_labels); ?>
+                                                    ticks: <?php if(isset($diffset_labels)) { echo json_encode($diffset_labels); } ?>
                                                 },
                                     yaxis: 		{
                                                     tickDecimals: 2,
