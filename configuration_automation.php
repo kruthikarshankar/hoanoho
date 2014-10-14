@@ -650,7 +650,7 @@
             print("</style>");
 
             // dynamically generate css code for floors
-            $sql = "select floor_id, image_id from device_floors order by position asc";
+            $sql = "select floor_id, image_id from device_floors where image_id is not null order by position asc";
             $result = mysql_query($sql);
 
             print("<style type=\"text/css\">");
@@ -718,7 +718,7 @@
 
         <?php include dirname(__FILE__).'/includes/getUserSettings.php'; ?>
 
-        <link rel="shortcut icon" href="./img/favicons/favicon.ico">
+        <link rel="shortcut icon" type="image/x-icon" href="./img/favicon.ico" />
         <link rel="apple-touch-icon" sizes="57x57" href="./img/favicons/apple-touch-icon-57x57.png">
         <link rel="apple-touch-icon" sizes="114x114" href="./img/favicons/apple-touch-icon-114x114.png">
         <link rel="apple-touch-icon" sizes="72x72" href="./img/favicons/apple-touch-icon-72x72.png">
