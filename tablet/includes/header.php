@@ -51,16 +51,26 @@ $date = $weekday[date('w')]." ".date('d.m.Y');
 $clock = date('H:i');
 $week = date('W');
 
+if ($title == "Musik") {
 ?>
-
 <script language="javascript">
     $(document).ready(function () {
-        $("#weather").load("/tablet/helper/datacontroller.php?cmd=refresh_weather_for_header");
+        $("#weather").load("../../helper/datacontroller.php?cmd=refresh_weather_for_header");
         var refreshId = setInterval(function () {
-            $("#weather").load('/tablet/helper/datacontroller.php?cmd=refresh_weather_for_header&' + 1*new Date());
+            $("#weather").load('../../helper/datacontroller.php?cmd=refresh_weather_for_header&' + 1*new Date());
         }, 200000);
     });
 </script>
+<?php } else {?>
+<script language="javascript">
+    $(document).ready(function () {
+        $("#weather").load("./helper/datacontroller.php?cmd=refresh_weather_for_header");
+        var refreshId = setInterval(function () {
+            $("#weather").load('./helper/datacontroller.php?cmd=refresh_weather_for_header&' + 1*new Date());
+        }, 200000);
+    });
+</script>
+<?php } ?>
 <div id="titlebar">
     <div id="left">
         <div id="status" class="<?php echo $connstate; ?>">&nbsp;</div>
