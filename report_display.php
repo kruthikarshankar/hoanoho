@@ -85,8 +85,13 @@
               $avgPerDay += $row->avgdata;
           }
 
-          $avgPerDay = $avgPerDay / mysql_num_rows($result);
-          $retVal = array($avgPerDay,($avgPerDay*$unitprice));
+          if(mysql_num_rows($result) > 0) {
+            $avgPerDay = $avgPerDay / mysql_num_rows($result);
+            $retVal = array($avgPerDay,($avgPerDay*$unitprice));
+          } else {
+            $retVal = 0.0;
+          }
+
         }
 
         return $retVal;
@@ -342,8 +347,8 @@
                 if ($reporttype == "manual") {
                 ?>
                     // get data
-                    var valueset_data = { "label": "", "data": <?php if (isset($valueset_data) { echo json_encode($valueset_data); } ?>, "color": "#888888" };
-                    var diffset_data = { "label": "", "data": <?php if (isset($diffset_data) { echo json_encode($diffset_data); } ?>, "color": "#d97c00" };
+                    var valueset_data = { "label": "", "data": <?php if (isset($valueset_data)) { echo json_encode($valueset_data); } ?>, "color": "#888888" };
+                    var diffset_data = { "label": "", "data": <?php if (isset($diffset_data)) { echo json_encode($diffset_data); } ?>, "color": "#d97c00" };
 
                     // define options
                     var valueset_options = {
@@ -352,7 +357,7 @@
                                                     points: { show: true, radius: 2 }
                                                 },
                                     xaxis: 		{
-                                                    ticks: <?php if(isset($valueset_labels) { echo json_encode($valueset_labels); } ?>
+                                                    ticks: <?php if(isset($valueset_labels)) { echo json_encode($valueset_labels); } ?>
                                                 },
                                     yaxis: 		{
                                                     tickDecimals: 2,
