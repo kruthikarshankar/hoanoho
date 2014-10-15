@@ -95,6 +95,8 @@
 <nav>
         <p class="infoline_clockicon" id="navclockicon"></p><p class="infoline_clock" id="navclock"></p><p class="infoline_r">Angemeldet als: <b><?php if (isset($_SESSION['username'])) { echo $_SESSION['username']; } ?></b> <a href="./login.php?cmd=logout"><img alt="Abmelden" title="Abmelden" src="./img/logout.png" style="margin-top:-3px;"></a></p>
         <ul>
+            <li><a href="./index.php"><img src="./img/pinboard.png">Pinnwand</a></li>
+
             <li class="drop">
                 <a href="#"><img src="./img/home.png">Haussteuerung</a>
                 <div class="dropdownContain">
@@ -139,7 +141,6 @@
                     <div class="dropOut">
                         <div class="triangle"></div>
                         <ul>
-                            <a href="index.php"><li><img src="./img/pinboard.png">Pinnwand</li></a>
                             <a href="./sharefile.php"><li><img src="./img/upload.png">Bereitstellen</li></a>
                         </ul>
                     </div>
