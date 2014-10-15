@@ -46,7 +46,7 @@
 
         <script language="javascript">
             window.onload = function () {
-                connectWebSocket(<?php echo "\"".$__CONFIG['main_socketaddress']."\""; ?>);
+                connectWebSocket(<?php echo "\"".$__CONFIG['main_socketport']."\""; ?>);
             }
 
             function encode(input)
@@ -98,15 +98,24 @@
 
             var disableValueRefreshForDeviceID = null;
             var devicesWithLowBattery = [];
-            function connectWebSocket(address)
+            function connectWebSocket(port)
             {
+				var protocol = "";
+				if (window.location.protocol == "http:") {
+					protocol = "ws";
+				} else if(window.location.protocol == "https:") {
+					protocol = "wss";
+				}	
+				var host = window.location.hostname;
+				var address = protocol + "://" + host +  ":" + port + "/ws";
+			
                 // Connect to Socketserver
                 var socket = new WebSocket(address);
                 socket.binaryType = 'arraybuffer';
 
                 socket.onclose = function () {
                     //try to reconnect to socketserver in 5 seconds
-                    setTimeout(function () {connectWebSocket(address)}, 5000);
+                    setTimeout(function () {connectWebSocket(port)}, 5000);
                 };
 
                 socket.onmessage = function (message) {

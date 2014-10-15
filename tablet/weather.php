@@ -52,7 +52,7 @@
             $(document).ready(function () {
                 $('.dropdown-toggle').dropdown();
 
-                connectWebSocket(<?php echo "\"".$__CONFIG['main_socketaddress']."\""; ?>);
+                connectWebSocket(<?php echo "\"".$__CONFIG['main_socketport']."\""; ?>);
 
                 // responsive
                 $("#boxitem.wetter_aktuell").load("helper/datacontroller.php?cmd=refresh_current_weather").fadeIn('500');
@@ -74,8 +74,17 @@
                 $('#footer').scrollToFixed({bottom: 0});
             });
 
-            function connectWebSocket(address)
+            function connectWebSocket(port)
             {
+				var protocol = "";
+				if (window.location.protocol == "http:") {
+					protocol = "ws";
+				} else if(window.location.protocol == "https:") {
+					protocol = "wss";
+				}	
+				var host = window.location.hostname;
+				var address = protocol + "://" + host +  ":" + port + "/ws";
+				
                 // Connect to Socketserver
                 var socket = new WebSocket(address);
                 socket.binaryType = 'arraybuffer';
@@ -90,7 +99,7 @@
                     if($('#titlebar #left #status').attr('class') == "connected")
                         $('#titlebar #left #status').switchClass("connected", "disconnected", 500, "easeInOutQuad");
 
-                    setTimeout(function () {connectWebSocket(address)}, 5000);
+                    setTimeout(function () {connectWebSocket(port)}, 5000);
                 };
 
                 socket.onmessage = function (message) {

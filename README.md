@@ -23,6 +23,8 @@ node.js needs the following modules to be installed:
 * mysql
 * socket.io
 * ws
+* nconf
+* forever
 
 However, a copy of those 3 modules currently comes with the Hoanoho repository directly so there is no need to install them within your system environment.
 

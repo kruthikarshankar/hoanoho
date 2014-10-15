@@ -31,7 +31,7 @@ DESC="Hoanoho Node.js socket server"
 NAME=socketserver
 PIDFILE=/var/run/$NAME.pid
 SCRIPTNAME=/etc/init.d/$NAME
-DAEMON=`/usr/bin/whereis forever | cut -d":" -f2 | sed 's/ //g'`
+DAEMON=`/usr/bin/whereis forever | cut -d":" -f2 | sed 's/^[ ]*//' | sed -e 's/ .*$//'`
 DAEMON_ARGS="-l ${JSLOGFILE} -s --pidfile ${PIDFILE} --minUptime 1000 --spinSleepTime 1000 -a -d ${JSSOURCE_FILE}"
 
 
