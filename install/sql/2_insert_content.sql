@@ -16,21 +16,6 @@ INSERT IGNORE INTO `types` (`type_id`, `name`) VALUES
 (12, 'Raspberry Pi GPIO'),
 (13, 'PVServer');
 
-
-INSERT IGNORE INTO `network_os` (`os_id`, `name`, `icon`) VALUES
-(1, 'Windows', 'windows.png'),
-(2, 'Mac OS X', 'osx.png'),
-(3, 'Linux', 'linux.png'),
-(4, 'Debian Linux', 'debian.png'),
-(5, 'Arch Linux', 'arch.png'),
-(6, 'Suse Linux', 'suse.png'),
-(7, 'Gentoo Linux', 'gentoo.png'),
-(8, 'Fedora Linux', 'fedora.png'),
-(9, 'Ubuntu Linux', 'ubuntu.png'),
-(10, 'VMware ESX/ESXi', 'esx.png'),
-(11, 'Android', 'android.png');
-
-
 INSERT IGNORE INTO `configuration` (`dev_id`, `configstring`, `value`, `title`, `hint`, `type`, `category`) VALUES
 (0, 'main_sitetitle', 'Hoanoho', 'Seitentitel', '', 'text', 'Allgemein'),
 (0, 'maintenance_msg', '', 'Systemnachricht', 'Nachricht an Benutzer', 'text', 'Allgemein'),
@@ -40,7 +25,6 @@ INSERT IGNORE INTO `configuration` (`dev_id`, `configstring`, `value`, `title`, 
 (0, 'main_socketaddress', '', 'Websocket Addresse', 'ws://192.168.0.1:8000/ws', 'text', 'Allgemein'),
 (0, 'dwd_region', '', 'Region', '', 'dwd_region', 'Wetter'),
 (0, 'fhem_url', 'http://localhost:8083/fhem', 'FHEM Webinterface URL', 'http://localhost:8083/fhem', 'text', 'Allgemein'),
-(0, 'dhcp_lease_file', '', 'DHCP Lease Datei', 'Absoluter Pfad zur DHCP Lease Datei', 'text', 'Netzwerk'),
 (0, 'position_longitude', '', 'Ortsangabe Längengrad', '13.406091199999992000', 'text', 'Wetter'),
 (0, 'position_latitude', '', 'Ortsangabe Breitengrad', '52.519171000000000000', 'text', 'Wetter'),
 (0, 'garbageplan_url', '', 'URL zum CSV Abfallkalender', '', 'text', 'Kalender'),

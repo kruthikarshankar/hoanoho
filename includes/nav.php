@@ -146,22 +146,6 @@
                 </div>
             </li>
 
-            <?php if (isset($_SESSION['isAdmin']) && $_SESSION['isAdmin'] == 1) { ?>
-            <li class="drop">
-                <a href="#"><img src="./img/network.png">Netzwerk</a>
-
-                <div class="dropdownContain">
-                    <div class="dropOut">
-                        <div class="triangle"></div>
-                        <ul>
-                            <a href="network.php"><li><img src="./img/ipnetwork.png">Übersicht</li></a>
-                            <!-- <li><img src="./img/monitoring.png">Monitoring</li> -->
-                        </ul>
-                    </div>
-                </div>
-            </li>
-            <?php } ?>
-
             <li class="drop">
                 <a href="#"><img src="./img/tools.png">Einstellungen</a>
                 <div class="dropdownContain">

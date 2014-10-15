@@ -98,23 +98,6 @@
         }
     }
 
-    /*function displayNetworkDevices($nd_id) {
-        $sql = "select * from network_devices order by name asc";
-        $result = mysql_query($sql);
-
-        print("<select name=\"nd_id\">");
-        if($nd_id == "")
-            print("<option selected value=\"\"></option>");
-        else
-            print("<option value=\"\"></option>");
-
-        while ($device = mysql_fetch_object($result)) {
-            print("<option ".($nd_id == $device->nd_id ? "selected" : "")." value=\"".$device->nd_id."\">".$device->name."</option>");
-        }
-
-        print("</select>");
-    }*/
-
     /*function displayPinboardCategories($pcat) {
         print("<select name=\"pcat\">");
             print("<option ".($pcat == "Hausüberblick"? "selected" : "")." value=\"Hausüberblick\">Hausüberblick</option>");
