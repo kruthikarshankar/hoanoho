@@ -23,11 +23,8 @@ function parseData($key,$in)
         if(is_float($in))
             $in = round($in, 1);
 
-        if (!isset($in) || $in == "")
-          $in = "-";
-
         if (isset($_key) && $_key != "")
-          return "insert into openweathermap set measuredate = ".$timestamp.", weatherkey = '".utf8_decode($_key)."', weathervalue = '".utf8_decode($in)."';";
+          return "insert into openweathermap set measuredate = ".$timestamp.", weatherkey = '".$_key."', weathervalue = '".$in."';";
     }
 
     return $sql;

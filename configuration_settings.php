@@ -20,25 +20,14 @@
     			case"password":
     				echo "<input type=\"password\" name=\"".$object->configstring."\" value=\"".$object->value."\">";
     			break;
-    			case"dwd_state":
+          case"dwd_region":
     				echo "<select name=\"".$object->configstring."\" style='width:200px'>";
     				echo "<option ".($object->value == "" ? "selected" : "")." value=\"\">-</option>";
-    				echo "<option ".($object->value == "SU" ? "selected" : "")." value=\"SU\">Baden-Württemberg</option>";
-    				echo "<option ".($object->value == "MS" ? "selected" : "")." value=\"MS\">Bayern</option>";
-    				echo "<option ".($object->value == "PD" ? "selected" : "")." value=\"PD\">Berlin</option>";
-    				echo "<option ".($object->value == "PD" ? "selected" : "")." value=\"PD\">Brandenburg</option>";
-    				echo "<option ".($object->value == "HN" ? "selected" : "")." value=\"HN\">Bremen</option>";
-    				echo "<option ".($object->value == "SG" ? "selected" : "")." value=\"SG\">Hamburg</option>";
-    				echo "<option ".($object->value == "OF" ? "selected" : "")." value=\"OF\">Hessen</option>";
-    				echo "<option ".($object->value == "RW" ? "selected" : "")." value=\"RW\">Mecklenburg-Vorpommern</option>";
-    				echo "<option ".($object->value == "HN" ? "selected" : "")." value=\"HN\">Niedersachsen</option>";
-    				echo "<option ".($object->value == "EM" ? "selected" : "")." value=\"EM\">Nordrhein-Westfalen</option>";
-    				echo "<option ".($object->value == "TR" ? "selected" : "")." value=\"TR\">Rheinland-Pfalz</option>";
-    				echo "<option ".($object->value == "TR" ? "selected" : "")." value=\"TR\">Saarland</option>";
-    				echo "<option ".($object->value == "LZ" ? "selected" : "")." value=\"LZ\">Sachsen</option>";
-    				echo "<option ".($object->value == "MB" ? "selected" : "")." value=\"MB\">Sachsen-Anhalt</option>";
-    				echo "<option ".($object->value == "SG" ? "selected" : "")." value=\"SG\">Schleswig-Holstein</option>";
-    				echo "<option ".($object->value == "EF" ? "selected" : "")." value=\"EF\">Thüringen</option>";
+            $dwd = "SELECT warngebiet_kurz,warngebiet_dwd_kennung FROM dwd_warngebiet WHERE typ_id != '3' ORDER BY warngebiet_kreis_stadt_name ASC, warngebiet_dwd_kennung DESC;";
+            $dwdresult = mysql_query($dwd);
+            while ($dwd_regions = mysql_fetch_object($dwdresult)) {
+    				  echo "<option ".($object->value == $dwd_regions->warngebiet_dwd_kennung ? "selected" : "")." value=\"".$dwd_regions->warngebiet_dwd_kennung."\">".$dwd_regions->warngebiet_kurz." (".$dwd_regions->warngebiet_dwd_kennung.")</option>";
+            }
     				echo "</select>";
     			break;
     		}
@@ -66,7 +55,7 @@
 
         <?php include dirname(__FILE__).'/includes/getUserSettings.php'; ?>
 
-        <link rel="shortcut icon" href="./img/favicons/favicon.ico">
+        <link rel="shortcut icon" type="image/x-icon" href="./img/favicons/favicon.ico">
         <link rel="apple-touch-icon" sizes="57x57" href="./img/favicons/apple-touch-icon-57x57.png">
         <link rel="apple-touch-icon" sizes="114x114" href="./img/favicons/apple-touch-icon-114x114.png">
         <link rel="apple-touch-icon" sizes="72x72" href="./img/favicons/apple-touch-icon-72x72.png">

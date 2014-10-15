@@ -98,23 +98,6 @@
         }
     }
 
-    /*function displayNetworkDevices($nd_id) {
-        $sql = "select * from network_devices order by name asc";
-        $result = mysql_query($sql);
-
-        print("<select name=\"nd_id\">");
-        if($nd_id == "")
-            print("<option selected value=\"\"></option>");
-        else
-            print("<option value=\"\"></option>");
-
-        while ($device = mysql_fetch_object($result)) {
-            print("<option ".($nd_id == $device->nd_id ? "selected" : "")." value=\"".$device->nd_id."\">".$device->name."</option>");
-        }
-
-        print("</select>");
-    }*/
-
     /*function displayPinboardCategories($pcat) {
         print("<select name=\"pcat\">");
             print("<option ".($pcat == "Hausüberblick"? "selected" : "")." value=\"Hausüberblick\">Hausüberblick</option>");
@@ -650,7 +633,7 @@
             print("</style>");
 
             // dynamically generate css code for floors
-            $sql = "select floor_id, image_id from device_floors order by position asc";
+            $sql = "select floor_id, image_id from device_floors where image_id is not null order by position asc";
             $result = mysql_query($sql);
 
             print("<style type=\"text/css\">");
@@ -718,7 +701,7 @@
 
         <?php include dirname(__FILE__).'/includes/getUserSettings.php'; ?>
 
-        <link rel="shortcut icon" href="./img/favicons/favicon.ico">
+        <link rel="shortcut icon" type="image/x-icon" href="./img/favicon.ico" />
         <link rel="apple-touch-icon" sizes="57x57" href="./img/favicons/apple-touch-icon-57x57.png">
         <link rel="apple-touch-icon" sizes="114x114" href="./img/favicons/apple-touch-icon-114x114.png">
         <link rel="apple-touch-icon" sizes="72x72" href="./img/favicons/apple-touch-icon-72x72.png">
@@ -802,7 +785,7 @@
                 print("<div id=\"closebutton\" onclick='javascript:editDeviceForm".$device->dev_id.".reset(); toggleModal(\"modal-device\",\"device\",".$device->dev_id.",\"\",null,null);'></div>");
                 print("<h1><span>".$device->name."</span></h1>");
                 print("<div id=\"text\">Gerätename:</div><div id=\"value\"><input type=\"text\" name=\"name\" value=\"".$device->name."\"></div>");
-                print("<div id=\"text\">Kennung:</div><div id=\"value\"><input type=\"text\" name=\"identifier\" value=\"".$device->identifier."\"></div>");
+                print("<div id=\"text\">FHEM Gerätename:</div><div id=\"value\"><input type=\"text\" name=\"identifier\" value=\"".$device->identifier."\"></div>");
                 print("<div id=\"text\">Gerätetyp:</div><div id=\"value\">");
                     displayTypes($device->dev_id, $device->dtype_id);
                 print("</div>");
@@ -1089,7 +1072,7 @@
             print("<div id=\"device_icon\">&nbsp;</div>");
             print("<div id=\"device_room\">Raum</div>");
             print("<div id=\"device_name\">Gerätename</div>");
-            print("<div id=\"device_identifier\">Kennung</div>");
+            print("<div id=\"device_identifier\">FHEM Gerätename</div>");
             print("<div id=\"action\">&nbsp;</div>");
         print("</div>");
 
@@ -1111,7 +1094,7 @@
                     print("</form>");
                     print("<div id=\"action\">");
                     print("<a href=\"#".$floor->name."\" onclick='javascript:displayFieldsForDeviceModal(".$device->dev_id.",\"".$device->basetypename."\");toggleModal(\"modal-device\",\"device\",".$device->dev_id.",null,null);' title=\"Gerät bearbeiten\"><img src=\"./img/edit.png\"></a>&nbsp;&nbsp;&nbsp;&nbsp;");
-                    print("<a href=\"javascript:document.deleteDeviceForm".$device->dev_id.".submit()\" title=\"Gerät löschen\" onclick=\"javascript:return confirm('Soll das Gerät \'".$device->name."\' mit der Kennung \'".$device->identifier."\' wirklich gelöscht werden ?');\"><img src=\"./img/delete.png\"></a>");
+                    print("<a href=\"javascript:document.deleteDeviceForm".$device->dev_id.".submit()\" title=\"Gerät löschen\" onclick=\"javascript:return confirm('Soll das Gerät \'".$device->name."\' mit der FHEM Gerätename \'".$device->identifier."\' wirklich gelöscht werden ?');\"><img src=\"./img/delete.png\"></a>");
                     print("</div>");
                 print("</div>");
             }
@@ -1142,9 +1125,8 @@
     "use strict";
     var evt         = new Event(),
         dragdrop    = new Dragdrop(evt)
-        <?php if (isset($jsdragdevices_def) && $jsdragdevices_def != "") { print(",".$jsdragdevices_def); } ?>
-        <?php if (isset($jsdragdevices_act) && $jsdragdevices_act != "") { print(",".$jsdragdevices_act); } ?>
-        ;
+        <?php if (isset($jsdragdevices_def) && $jsdragdevices_def != "") { print(",".$jsdragdevices_def.";"); } else { print ";"; } ?>
+        <?php if (isset($jsdragdevices_act) && $jsdragdevices_act != "") { print($jsdragdevices_act); } ?>
     </script>
 </body>
 </html>

@@ -14,7 +14,7 @@
 
         <?php include dirname(__FILE__).'/includes/getUserSettings.php'; ?>
 
-        <link rel="shortcut icon" href="./img/favicons/favicon.ico">
+        <link rel="shortcut icon" type="image/x-icon" href="./img/favicons/favicon.ico">
         <link rel="apple-touch-icon" sizes="57x57" href="./img/favicons/apple-touch-icon-57x57.png">
         <link rel="apple-touch-icon" sizes="114x114" href="./img/favicons/apple-touch-icon-114x114.png">
         <link rel="apple-touch-icon" sizes="72x72" href="./img/favicons/apple-touch-icon-72x72.png">
@@ -48,30 +48,21 @@
     </section>
 
     <?php
-    if ($__CONFIG['dwd_state'] != "") {
+    if ($__CONFIG['dwd_region'] != "") {
+      $dwd = "SELECT dwd_warngebiet.region_id, dwd_region.region_name, dwd_region.karten_region
+              FROM dwd_warngebiet
+              INNER JOIN dwd_region
+              ON dwd_warngebiet.region_id=dwd_region.region_id
+              WHERE dwd_warngebiet.warngebiet_dwd_kennung = '".$__CONFIG['dwd_region']."' LIMIT 1;";
+      $dwdresult = mysql_query($dwd);
+      $dwdregion = mysql_fetch_object($dwdresult);
 
-      if (in_array($__CONFIG['dwd_state'], array("SG", "HN"))) {
-        $region="Nordwest";
-      } elseif (in_array($__CONFIG['dwd_state'], array("PD", "RW"))) {
-        $region="Nordost";
-      } elseif ($__CONFIG['dwd_state'] == "EM") {
-        $region="West";
-      } elseif (in_array($__CONFIG['dwd_state'], array("EF", "LZ", "MB"))) {
-        $region="Ost";
-      } elseif (in_array($__CONFIG['dwd_state'], array("OF", "TR"))) {
-        $region="Mitte";
-      } elseif ($__CONFIG['dwd_state'] == "MS") {
-        $region="Suedost";
-      } elseif ($__CONFIG['dwd_state'] == "SU") {
-        $region="Suedwest";
-      }
-
-      if (isset($region)) {
+      if (isset($dwdregion->karten_region)) {
       ?>
 
       <section class="main_weather">
-          <h1><span><?php echo $region ?> Region</span></h1>
-          <div id="radar"><img src="http://www.dwd.de/wundk/radar/Webradar_<?php echo $region ?>.jpg"></div>
+          <h1><span><?php echo $dwdregion->region_name ?></span></h1>
+          <div id="radar"><img src="http://www.dwd.de/wundk/radar/Webradar_<?php echo $dwdregion->karten_region ?>.jpg"></div>
       </section>
 
     <?php

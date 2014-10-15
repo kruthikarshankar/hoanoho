@@ -95,6 +95,8 @@
 <nav>
         <p class="infoline_clockicon" id="navclockicon"></p><p class="infoline_clock" id="navclock"></p><p class="infoline_r">Angemeldet als: <b><?php if (isset($_SESSION['username'])) { echo $_SESSION['username']; } ?></b> <a href="./login.php?cmd=logout"><img alt="Abmelden" title="Abmelden" src="./img/logout.png" style="margin-top:-3px;"></a></p>
         <ul>
+            <li><a href="./index.php"><img src="./img/pinboard.png">Pinnwand</a></li>
+
             <li class="drop">
                 <a href="#"><img src="./img/home.png">Haussteuerung</a>
                 <div class="dropdownContain">
@@ -124,7 +126,7 @@
                         <ul>
                             <a href="./weather.php"><li><img src="./img/magnifier.png">Übersicht</li></a>
                             <a href="./weather_rainradar.php"><li><img src="./img/radar.png">Regenradar</li></a>
-                            <?php if ($__CONFIG['dwd_state'] != "" || $__CONFIG['dwd_url_landkreis'] != "" ) { ?>
+                            <?php if ($__CONFIG['dwd_region'] != "") { ?>
                             <a href="./weather_warning.php"><li><img src="./img/warning.png">Warnungen</li></a>
                             <?php } ?>
                         </ul>
@@ -139,28 +141,11 @@
                     <div class="dropOut">
                         <div class="triangle"></div>
                         <ul>
-                            <a href="index.php"><li><img src="./img/pinboard.png">Pinnwand</li></a>
                             <a href="./sharefile.php"><li><img src="./img/upload.png">Bereitstellen</li></a>
                         </ul>
                     </div>
                 </div>
             </li>
-
-            <?php if (isset($_SESSION['isAdmin']) && $_SESSION['isAdmin'] == 1) { ?>
-            <li class="drop">
-                <a href="#"><img src="./img/network.png">Netzwerk</a>
-
-                <div class="dropdownContain">
-                    <div class="dropOut">
-                        <div class="triangle"></div>
-                        <ul>
-                            <a href="network.php"><li><img src="./img/ipnetwork.png">Übersicht</li></a>
-                            <!-- <li><img src="./img/monitoring.png">Monitoring</li> -->
-                        </ul>
-                    </div>
-                </div>
-            </li>
-            <?php } ?>
 
             <li class="drop">
                 <a href="#"><img src="./img/tools.png">Einstellungen</a>

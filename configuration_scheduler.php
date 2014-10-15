@@ -206,7 +206,7 @@
         $sql = "update scheduler set days = '" . $days . "', isActive = " . $isActive . ", dev_id = " . $device . ", dev_state = '" . $_POST['dev_state'] . "', interval_time = '".$_POST['interval_time']."' where sch_id = " . $_POST['sch_id'];
         mysql_query($sql);
     } elseif (isset($_POST['cmd']) && $_POST['cmd'] == "deleteplan") {
-        if (isset($_POST['uid']) && $_SESSION['uid'] != $_POST['uid']) {
+        if ($_SESSION['uid']) {
             $sql = "delete from scheduler where sch_id = ".$_POST['sch_id'];
             mysql_query($sql);
         }
@@ -231,7 +231,7 @@
 
         <?php include dirname(__FILE__).'/includes/getUserSettings.php'; ?>
 
-        <link rel="shortcut icon" href="./img/favicons/favicon.ico">
+        <link rel="shortcut icon" type="image/x-icon" href="./img/favicons/favicon.ico">
         <link rel="apple-touch-icon" sizes="57x57" href="./img/favicons/apple-touch-icon-57x57.png">
         <link rel="apple-touch-icon" sizes="114x114" href="./img/favicons/apple-touch-icon-114x114.png">
         <link rel="apple-touch-icon" sizes="72x72" href="./img/favicons/apple-touch-icon-72x72.png">
