@@ -47,7 +47,7 @@
             $dwd = "SELECT warngebiet_name,warngebiet_dwd_kennung FROM dwd_warngebiet WHERE typ_id != '3' ORDER BY warngebiet_kreis_stadt_name ASC, warngebiet_dwd_kennung DESC;";
             $dwdresult = mysql_query($dwd);
             while ($dwd_regions = mysql_fetch_object($dwdresult)) {
-    				  echo "<option ".($object->value == $dwd_regions->warngebiet_dwd_kennung ? "selected" : "")." value=\"".$dwd_regions->warngebiet_dwd_kennung."\">".$dwd_regions->warngebiet_name."</option>";
+    				  echo "<option ".($object->value == $dwd_regions->warngebiet_dwd_kennung ? "selected" : "")." value=\"".$dwd_regions->warngebiet_dwd_kennung."\">".$dwd_regions->warngebiet_name."(".$dwd_regions->warngebiet_dwd_kennung.")</option>";
             }
     				echo "</select>";
     			break;
