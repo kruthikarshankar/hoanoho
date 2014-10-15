@@ -342,7 +342,7 @@ VALUES
 
 INSERT IGNORE INTO `dwd_warngebiet` (`warngebiet_id`, `dwd_id`, `land_id`, `warngebiet_dwd_kennung`, `warngebiet_name`, `dienststelle_id`, `region_id`, `warngebiet_kfz`, `typ_id`, `warngebiet_kreis_stadt_name`, `warngebiet_zusatz`, `warngebiet_kurz`, `warngebiet_anmerkung`, `warngebiet_cellID`, `warngebiet_warnCellID`)
 VALUES
-	(1,'1','NRW','ACX','StädteRegion Aachen','EM','EM','AC',2,'StädteRegion Aachen','','StädteRegion Aachen','Umbenennung Kreis 2009',5354,105354000);
+	(1,'1','NRW','ACX','StädteRegion Aachen','EM','EM','AC',2,'Aachen','','Aachen','Umbenennung Kreis 2009',5354,105354000);
 
 INSERT IGNORE INTO `dwd_warngebiet` (`warngebiet_id`, `dwd_id`, `land_id`, `warngebiet_dwd_kennung`, `warngebiet_name`, `dienststelle_id`, `region_id`, `warngebiet_kfz`, `typ_id`, `warngebiet_kreis_stadt_name`, `warngebiet_zusatz`, `warngebiet_kurz`, `warngebiet_anmerkung`, `warngebiet_cellID`, `warngebiet_warnCellID`)
 VALUES
@@ -354,7 +354,7 @@ VALUES
 
 INSERT IGNORE INTO `dwd_warngebiet` (`warngebiet_id`, `dwd_id`, `land_id`, `warngebiet_dwd_kennung`, `warngebiet_name`, `dienststelle_id`, `region_id`, `warngebiet_kfz`, `typ_id`, `warngebiet_kreis_stadt_name`, `warngebiet_zusatz`, `warngebiet_kurz`, `warngebiet_anmerkung`, `warngebiet_cellID`, `warngebiet_warnCellID`)
 VALUES
-	(4,'4','NRW','BNX','Bundesstadt Bonn','EM','EM','BN',2,'Bundesstadt Bonn','','Bundesstadt Bonn',NULL,5314,105314000);
+	(4,'4','NRW','BNX','Bonn','EM','EM','BN',2,'Bonn','','Bonn',NULL,5314,105314000);
 
 INSERT IGNORE INTO `dwd_warngebiet` (`warngebiet_id`, `dwd_id`, `land_id`, `warngebiet_dwd_kennung`, `warngebiet_name`, `dienststelle_id`, `region_id`, `warngebiet_kfz`, `typ_id`, `warngebiet_kreis_stadt_name`, `warngebiet_zusatz`, `warngebiet_kurz`, `warngebiet_anmerkung`, `warngebiet_cellID`, `warngebiet_warnCellID`)
 VALUES
@@ -554,7 +554,7 @@ VALUES
 
 INSERT IGNORE INTO `dwd_warngebiet` (`warngebiet_id`, `dwd_id`, `land_id`, `warngebiet_dwd_kennung`, `warngebiet_name`, `dienststelle_id`, `region_id`, `warngebiet_kfz`, `typ_id`, `warngebiet_kreis_stadt_name`, `warngebiet_zusatz`, `warngebiet_kurz`, `warngebiet_anmerkung`, `warngebiet_cellID`, `warngebiet_warnCellID`)
 VALUES
-	(54,'54','HB','HBX','Hansestadt Bremen','HA','HN','HB',1,'Hansestadt Bremen','','Hansestadt Bremen',NULL,4011,104011000);
+	(54,'54','HB','HBX','Hansestadt Bremen','HA','HN','HB',1,'Bremen','','Bremen',NULL,4011,104011000);
 
 INSERT IGNORE INTO `dwd_warngebiet` (`warngebiet_id`, `dwd_id`, `land_id`, `warngebiet_dwd_kennung`, `warngebiet_name`, `dienststelle_id`, `region_id`, `warngebiet_kfz`, `typ_id`, `warngebiet_kreis_stadt_name`, `warngebiet_zusatz`, `warngebiet_kurz`, `warngebiet_anmerkung`, `warngebiet_cellID`, `warngebiet_warnCellID`)
 VALUES
@@ -562,7 +562,7 @@ VALUES
 
 INSERT IGNORE INTO `dwd_warngebiet` (`warngebiet_id`, `dwd_id`, `land_id`, `warngebiet_dwd_kennung`, `warngebiet_name`, `dienststelle_id`, `region_id`, `warngebiet_kfz`, `typ_id`, `warngebiet_kreis_stadt_name`, `warngebiet_zusatz`, `warngebiet_kurz`, `warngebiet_anmerkung`, `warngebiet_cellID`, `warngebiet_warnCellID`)
 VALUES
-	(56,'56','HH','HHX','Hansestadt Hamburg','HA','SG','HH',1,'Hansestadt Hamburg','','Hansestadt Hamburg',NULL,2000,102000000);
+	(56,'56','HH','HHX','Hansestadt Hamburg','HA','SG','HH',1,'Hamburg','','Hamburg',NULL,2000,102000000);
 
 INSERT IGNORE INTO `dwd_warngebiet` (`warngebiet_id`, `dwd_id`, `land_id`, `warngebiet_dwd_kennung`, `warngebiet_name`, `dienststelle_id`, `region_id`, `warngebiet_kfz`, `typ_id`, `warngebiet_kreis_stadt_name`, `warngebiet_zusatz`, `warngebiet_kurz`, `warngebiet_anmerkung`, `warngebiet_cellID`, `warngebiet_warnCellID`)
 VALUES
@@ -778,7 +778,7 @@ VALUES
 
 INSERT IGNORE INTO `dwd_warngebiet` (`warngebiet_id`, `dwd_id`, `land_id`, `warngebiet_dwd_kennung`, `warngebiet_name`, `dienststelle_id`, `region_id`, `warngebiet_kfz`, `typ_id`, `warngebiet_kreis_stadt_name`, `warngebiet_zusatz`, `warngebiet_kurz`, `warngebiet_anmerkung`, `warngebiet_cellID`, `warngebiet_warnCellID`)
 VALUES
-	(110,'110','SH','HLX','Hansestadt Lübeck','HA','SG','HL',2,'Hansestadt Lübeck','','Hansestadt Lübeck',NULL,1003,101003000);
+	(110,'110','SH','HLX','Hansestadt Lübeck','HA','SG','HL',2,'Lübeck','','Lübeck',NULL,1003,101003000);
 
 INSERT IGNORE INTO `dwd_warngebiet` (`warngebiet_id`, `dwd_id`, `land_id`, `warngebiet_dwd_kennung`, `warngebiet_name`, `dienststelle_id`, `region_id`, `warngebiet_kfz`, `typ_id`, `warngebiet_kreis_stadt_name`, `warngebiet_zusatz`, `warngebiet_kurz`, `warngebiet_anmerkung`, `warngebiet_cellID`, `warngebiet_warnCellID`)
 VALUES
@@ -1722,7 +1722,7 @@ VALUES
 
 INSERT IGNORE INTO `dwd_warngebiet` (`warngebiet_id`, `dwd_id`, `land_id`, `warngebiet_dwd_kennung`, `warngebiet_name`, `dienststelle_id`, `region_id`, `warngebiet_kfz`, `typ_id`, `warngebiet_kreis_stadt_name`, `warngebiet_zusatz`, `warngebiet_kurz`, `warngebiet_anmerkung`, `warngebiet_cellID`, `warngebiet_warnCellID`)
 VALUES
-	(346,'346','BL','BXX','Land Berlin','PD','PD','B',1,'Land Berlin','','Land Berlin',NULL,11000,111000000);
+	(346,'346','BL','BXX','Land Berlin','PD','PD','B',1,'Berlin','','Berlin',NULL,11000,111000000);
 
 INSERT IGNORE INTO `dwd_warngebiet` (`warngebiet_id`, `dwd_id`, `land_id`, `warngebiet_dwd_kennung`, `warngebiet_name`, `dienststelle_id`, `region_id`, `warngebiet_kfz`, `typ_id`, `warngebiet_kreis_stadt_name`, `warngebiet_zusatz`, `warngebiet_kurz`, `warngebiet_anmerkung`, `warngebiet_cellID`, `warngebiet_warnCellID`)
 VALUES
@@ -1738,7 +1738,7 @@ VALUES
 
 INSERT IGNORE INTO `dwd_warngebiet` (`warngebiet_id`, `dwd_id`, `land_id`, `warngebiet_dwd_kennung`, `warngebiet_name`, `dienststelle_id`, `region_id`, `warngebiet_kfz`, `typ_id`, `warngebiet_kreis_stadt_name`, `warngebiet_zusatz`, `warngebiet_kurz`, `warngebiet_anmerkung`, `warngebiet_cellID`, `warngebiet_warnCellID`)
 VALUES
-	(350,'350','MV','HRO','Hansestadt Rostock','PD','RW','HRO',2,'Hansestadt Rostock','','Hansestadt Rostock',NULL,13003,113003000);
+	(350,'350','MV','HRO','Hansestadt Rostock','PD','RW','HRO',2,'Rostock','','Rostock',NULL,13003,113003000);
 
 INSERT IGNORE INTO `dwd_warngebiet` (`warngebiet_id`, `dwd_id`, `land_id`, `warngebiet_dwd_kennung`, `warngebiet_name`, `dienststelle_id`, `region_id`, `warngebiet_kfz`, `typ_id`, `warngebiet_kreis_stadt_name`, `warngebiet_zusatz`, `warngebiet_kurz`, `warngebiet_anmerkung`, `warngebiet_cellID`, `warngebiet_warnCellID`)
 VALUES
