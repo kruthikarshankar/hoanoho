@@ -31,7 +31,7 @@ UNLOCK TABLES;
 
 LOCK TABLES `configuration` WRITE;
 /*!40000 ALTER TABLE `configuration` DISABLE KEYS */;
-REPLACE INTO `configuration` VALUES (0,'accessable_ipranges','','IP-Bereiche mit Zufriffserlaubnis','192.168.1*, 10.0.0.*','text','Allgemein'),(0,'dwd_region','BXX','Region für Warnungen','','dwd_region','Wetter'),(0,'fbox_address','','Fritzbox Adresse','','text','Fritzbox'),(0,'fbox_password','','Fritzbox Passwort','optional','password','Fritzbox'),(0,'fbox_user','','Fritzbox Benutzer','optional','text','Fritzbox'),(0,'fhem_url','http://localhost:8083/fhem','FHEM Webinterface URL','http://localhost:8083/fhem','text','Allgemein'),(0,'garbageplan_url','','URL zum CSV Abfallkalender','','text','Kalender'),(0,'main_sitetitle','Hoanoho','Seitentitel','','text','Allgemein'),(0,'main_socketaddress','ws://192.168.6.135/ws','Websocket Addresse','ws://192.168.0.1:8000/ws','text','Allgemein'),(0,'position_latitude','52.519171000000000000','Ortsangabe Breitengrad','52.519171000000000000','text','Wetter'),(0,'position_longitude','13.406091199999992000','Ortsangabe Längengrad','13.406091199999992000','text','Wetter'),(0,'sharefile_remoteaddress','','Hostname/IP für Dateibereitstellung','z.B. cloud.dyndns.org','text','Allgemein'),(6,'isStructure','on','','','text',NULL);
+REPLACE INTO `configuration` VALUES (0,'dwd_region','BXX','Region für Warnungen','','dwd_region','Wetter'),(0,'position_latitude','52.519171000000000000','Ortsangabe Breitengrad','52.519171000000000000','text','Wetter'),(0,'position_longitude','13.406091199999992000','Ortsangabe Längengrad','13.406091199999992000','text','Wetter'),(6,'isStructure','on','','','text',NULL);
 /*!40000 ALTER TABLE `configuration` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -133,16 +133,6 @@ LOCK TABLES `scheduler` WRITE;
 /*!40000 ALTER TABLE `scheduler` DISABLE KEYS */;
 REPLACE INTO `scheduler` VALUES (1,'mo,di,mi,do,fr,sa,so,',1,1,'08:00',3,'off'),(2,'mo,di,mi,do,fr,sa,so,',1,1,'18:00',3,'on');
 /*!40000 ALTER TABLE `scheduler` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Dumping data for table `types`
---
-
-LOCK TABLES `types` WRITE;
-/*!40000 ALTER TABLE `types` DISABLE KEYS */;
-REPLACE INTO `types` VALUES (1,'Ein/Aus-Schalter'),(2,'Temperaturregelung'),(3,'Webcam'),(4,'Jalousie'),(5,'Wertanzeige'),(6,'Dimmer'),(7,'Tür/Fenster-Kontakt'),(8,'Philips Hue'),(9,'Brandmelder'),(10,'Netzwerkgerät'),(11,'Datensammler'),(12,'Raspberry Pi GPIO'),(13,'PVServer');
-/*!40000 ALTER TABLE `types` ENABLE KEYS */;
 UNLOCK TABLES;
 
 -- Dump completed on 2014-10-15 16:21:19
