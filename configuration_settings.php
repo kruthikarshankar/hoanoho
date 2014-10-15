@@ -40,6 +40,16 @@
     				echo "<option ".($object->value == "SG" ? "selected" : "")." value=\"SG\">Schleswig-Holstein</option>";
     				echo "<option ".($object->value == "EF" ? "selected" : "")." value=\"EF\">Thüringen</option>";
     				echo "</select>";
+          break;
+          case"dwd_region":
+    				echo "<select name=\"".$object->configstring."\" style='width:200px'>";
+    				echo "<option ".($object->value == "" ? "selected" : "")." value=\"\">-</option>";
+            $dwd = "SELECT warngebiet_name,warngebiet_dwd_kennung FROM dwd_warngebiet ORDER BY warngebiet_kreis_stadt_name ASC, warngebiet_dwd_kennung DESC;";
+            $dwdresult = mysql_query($dwd);
+            while ($dwd_regions = mysql_fetch_object($dwdresult)) {
+    				  echo "<option ".($object->value == $dwd_regions->warngebiet_dwd_kennung ? "selected" : "")." value=\"".$dwd_regions->warngebiet_dwd_kennung."\">".$dwd_regions->warngebiet_name."</option>";
+            }
+    				echo "</select>";
     			break;
     		}
     }

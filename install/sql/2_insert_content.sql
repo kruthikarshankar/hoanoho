@@ -33,14 +33,13 @@ INSERT IGNORE INTO `network_os` (`os_id`, `name`, `icon`) VALUES
 
 INSERT IGNORE INTO `configuration` (`dev_id`, `configstring`, `value`, `title`, `hint`, `type`, `category`) VALUES
 (0, 'main_sitetitle', 'Hoanoho', 'Seitentitel', '', 'text', 'Allgemein'),
-(0, 'maintenance_msg', '', 'Systemnachricht', '', 'text', 'Allgemein'),
+(0, 'maintenance_msg', '', 'Systemnachricht', 'Nachricht an Benutzer', 'text', 'Allgemein'),
 (0, 'fbox_address', '', 'Fritzbox Adresse', '', 'text', 'Fritzbox'),
 (0, 'fbox_user', '', 'Fritzbox Benutzer', 'optional', 'text', 'Fritzbox'),
-(0, 'fbox_password', '', 'Fritzbox Passwort', '', 'password', 'Fritzbox'),
+(0, 'fbox_password', '', 'Fritzbox Passwort', 'optional', 'password', 'Fritzbox'),
 (0, 'main_socketaddress', '', 'Websocket Addresse', 'ws://192.168.0.1:8000/ws', 'text', 'Allgemein'),
-(0, 'dwd_state', '', 'DWD Bundesland', '', 'dwd_state', 'Wetter'),
-(0, 'dwd_url_landkreis', '', 'DWD Warnung URL für den Landkreis', 'http://www.dwd.de/dyn/app/ws/html/reports/TUT_warning_de.html', 'text', 'Wetter'),
-(0, 'dwd_name_landkreis', '', 'Name des Landkreises', '', 'text', 'Wetter'),
+(0, 'dwd_state', '', 'Bundesland', '', 'dwd_state', 'Wetter'),
+(0, 'dwd_region', '', 'Region für Warnungen', '', 'dwd_region', 'Wetter'),
 (0, 'fhem_url', 'http://localhost:8083/fhem', 'FHEM Webinterface URL', 'http://localhost:8083/fhem', 'text', 'Allgemein'),
 (0, 'dhcp_lease_file', '', 'DHCP Lease Datei', 'Absoluter Pfad zur DHCP Lease Datei', 'text', 'Netzwerk'),
 (0, 'position_longitude', '', 'Ortsangabe Längengrad', '13.406091199999992000', 'text', 'Wetter'),
