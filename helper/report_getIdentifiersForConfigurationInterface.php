@@ -60,7 +60,7 @@
                     $i++;
                 }
             } else {
-                print("<div id=\"value_row\"><div id=\"message\">Es wurden noch keine Werte in der Datenbank erfasst! Bitte einen Moment warten und <a href=\"javascript:showIdentifierListForDataCollector(".$_GET['rid'].",".$_GET['dev_id'].");\">aktualisieren</a> oder die Kennung in der <a href=\"configuration_automation.php\">Gerätekonfiguration</a> überprüfen.</div></div>");
+                print("<div id=\"value_row\"><div id=\"message\">Es wurden noch keine Werte in der Datenbank erfasst! Bitte einen Moment warten und <a href=\"javascript:showIdentifierListForDataCollector(".$_GET['rid'].",".$_GET['dev_id'].");\">aktualisieren</a> oder die FHEM Gerätename in der <a href=\"configuration_automation.php\">Gerätekonfiguration</a> überprüfen.</div></div>");
             }
         }
         }

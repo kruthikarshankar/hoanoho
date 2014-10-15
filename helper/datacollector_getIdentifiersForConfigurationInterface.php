@@ -10,7 +10,7 @@
 
             if (mysql_num_rows($result2) > 0) {
                 $i=1;
-                print("<div id=\"headline\"><div id=\"text\">&nbsp;</div><div id=\"value_ident\">Kennung</div><div id=\"value_label\">Bezeichnung</div></div>");
+                print("<div id=\"headline\"><div id=\"text\">&nbsp;</div><div id=\"value_ident\">FHEM Gerätename</div><div id=\"value_label\">Bezeichnung</div></div>");
                 while ($valuerow = mysql_fetch_object($result2)) {
                     $translation = "";
                     $translation_result = mysql_query("select value from configuration where dev_id = ".$_GET['dev_id']." and configstring = '@".$valuerow->valuename."'");
@@ -22,7 +22,7 @@
                     $i++;
                 }
             } else {
-                print("<div id=\"row\"><div id=\"message\">Es wurden noch keine Werte in der Datenbank erfasst! Bitte einen Moment warten und <a href=\"javascript:showDataCollectorIdentifierList(".$_GET['dev_id'].");\">aktualisieren</a> oder die eingegebene Kennung überprüfen.</div></div>");
+                print("<div id=\"row\"><div id=\"message\">Es wurden noch keine Werte in der Datenbank erfasst! Bitte einen Moment warten und <a href=\"javascript:showDataCollectorIdentifierList(".$_GET['dev_id'].");\">aktualisieren</a> oder die eingegebene FHEM Gerätename überprüfen.</div></div>");
             }
         }
     }
