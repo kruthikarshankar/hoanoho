@@ -55,7 +55,7 @@ function displayDevices($dev_id)
 
 function displayDeviceData($dev_id, $dev_value)
 {
-    $return .= "<option value=\"\" ".($selection == "" ? "selected" : "")."></option>";
+    $return = "<option value=\"\"></option>";
     $result = mysql_query("select identifier from devices where dev_id = ".$dev_id);
     while ($device_identifier = mysql_fetch_object($result)) {
         $result2 = mysql_query("select distinct valuename from device_data where deviceident = '".$device_identifier->identifier."' order by valuename");
