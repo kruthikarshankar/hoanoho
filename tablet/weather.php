@@ -130,7 +130,7 @@
 
             print("<div id=\"boxitem\" class=\"large wetter_prognose\"></div>");
 
-            if(strlen($__CONFIG['dwd_state']) > 0)
+            if(strlen($__CONFIG['dwd_region']) > 0)
                 print("<div id=\"boxitem\" class=\"large wetter_report\"></div>");
             ?>
         </div>

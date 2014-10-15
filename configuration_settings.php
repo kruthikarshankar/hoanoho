@@ -20,27 +20,6 @@
     			case"password":
     				echo "<input type=\"password\" name=\"".$object->configstring."\" value=\"".$object->value."\">";
     			break;
-    			case"dwd_state":
-    				echo "<select name=\"".$object->configstring."\" style='width:200px'>";
-    				echo "<option ".($object->value == "" ? "selected" : "")." value=\"\">-</option>";
-    				echo "<option ".($object->value == "SU" ? "selected" : "")." value=\"SU\">Baden-Württemberg</option>";
-    				echo "<option ".($object->value == "MS" ? "selected" : "")." value=\"MS\">Bayern</option>";
-    				echo "<option ".($object->value == "PD" ? "selected" : "")." value=\"PD\">Berlin</option>";
-    				echo "<option ".($object->value == "PD" ? "selected" : "")." value=\"PD\">Brandenburg</option>";
-    				echo "<option ".($object->value == "HN" ? "selected" : "")." value=\"HN\">Bremen</option>";
-    				echo "<option ".($object->value == "SG" ? "selected" : "")." value=\"SG\">Hamburg</option>";
-    				echo "<option ".($object->value == "OF" ? "selected" : "")." value=\"OF\">Hessen</option>";
-    				echo "<option ".($object->value == "RW" ? "selected" : "")." value=\"RW\">Mecklenburg-Vorpommern</option>";
-    				echo "<option ".($object->value == "HN" ? "selected" : "")." value=\"HN\">Niedersachsen</option>";
-    				echo "<option ".($object->value == "EM" ? "selected" : "")." value=\"EM\">Nordrhein-Westfalen</option>";
-    				echo "<option ".($object->value == "TR" ? "selected" : "")." value=\"TR\">Rheinland-Pfalz</option>";
-    				echo "<option ".($object->value == "TR" ? "selected" : "")." value=\"TR\">Saarland</option>";
-    				echo "<option ".($object->value == "LZ" ? "selected" : "")." value=\"LZ\">Sachsen</option>";
-    				echo "<option ".($object->value == "MB" ? "selected" : "")." value=\"MB\">Sachsen-Anhalt</option>";
-    				echo "<option ".($object->value == "SG" ? "selected" : "")." value=\"SG\">Schleswig-Holstein</option>";
-    				echo "<option ".($object->value == "EF" ? "selected" : "")." value=\"EF\">Thüringen</option>";
-    				echo "</select>";
-          break;
           case"dwd_region":
     				echo "<select name=\"".$object->configstring."\" style='width:200px'>";
     				echo "<option ".($object->value == "" ? "selected" : "")." value=\"\">-</option>";

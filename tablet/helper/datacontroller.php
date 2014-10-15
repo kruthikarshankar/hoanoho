@@ -272,26 +272,17 @@
 
         print("<div id=\"rows_right\">");
 
-        if ($__CONFIG['dwd_state'] != "") {
+        if ($__CONFIG['dwd_region'] != "") {
+            $dwd = "SELECT dwd_warngebiet.region_id, dwd_region.region_name, dwd_region.karten_region
+                    FROM dwd_warngebiet
+                    INNER JOIN dwd_region
+                    ON dwd_warngebiet.region_id=dwd_region.region_id
+                    WHERE dwd_warngebiet.warngebiet_dwd_kennung = '".$__CONFIG['dwd_region']."' LIMIT 1;";
+            $dwdresult = mysql_query($dwd);
+            $dwdregion = mysql_fetch_object($dwdresult);
 
-          if (in_array($__CONFIG['dwd_state'], array("SG", "HN"))) {
-            $region="Nordwest";
-          } elseif (in_array($__CONFIG['dwd_state'], array("PD", "RW"))) {
-            $region="Nordost";
-          } elseif ($__CONFIG['dwd_state'] == "EM") {
-            $region="West";
-          } elseif (in_array($__CONFIG['dwd_state'], array("EF", "LZ", "MB"))) {
-            $region="Ost";
-          } elseif (in_array($__CONFIG['dwd_state'], array("OF", "TR"))) {
-            $region="Mitte";
-          } elseif ($__CONFIG['dwd_state'] == "MS") {
-            $region="Suedost";
-          } elseif ($__CONFIG['dwd_state'] == "SU") {
-            $region="Suedwest";
-          }
-
-          if (isset($region)) {
-            print("<div id=\"image\"><img src=\"http://www.dwd.de/wundk/wetter/de/".$region.".jpg\"></div>");
+          if (isset($dwdregion->karten_region)) {
+            print("<div id=\"image\"><img src=\"http://www.dwd.de/wundk/wetter/de/".$dwdregion->karten_region.".jpg\"></div>");
           } else {
             print("<div id=\"image\"><img src=\"http://www.dwd.de/wundk/wetter/de/Deutschland.jpg\"></div>");
           }
@@ -383,12 +374,20 @@
     }
 
     if ($_GET['cmd'] == 'refresh_weather_report') {
-      if ($__CONFIG['dwd_state'] != "") {
-        print("<div id=\"title\">Report</div>");
+      if ($__CONFIG['dwd_region'] != "") {
+            print("<div id=\"title\">Report</div>");
             print("<div style=\"position: absolute; width: 98%;\"><div id=\"icon\"></div></div>");
             print("<div id=\"rows\">");
 
-            $html = file_get_html("http://www.dwd.de/dyn/app/ws/html/reports/".$__CONFIG['dwd_state']."_report_de.html");
+            $dwd = "SELECT dwd_warngebiet.region_id, dwd_region.region_name, dwd_region.karten_region
+                    FROM dwd_warngebiet
+                    INNER JOIN dwd_region
+                    ON dwd_warngebiet.region_id=dwd_region.region_id
+                    WHERE dwd_warngebiet.warngebiet_dwd_kennung = '".$__CONFIG['dwd_region']."' LIMIT 1;";
+            $dwdresult = mysql_query($dwd);
+            $dwdregion = mysql_fetch_object($dwdresult);
+
+            $html = file_get_html("http://www.dwd.de/dyn/app/ws/html/reports/".$dwdregion->region_id."_report_de.html");
             $dwd_report = "";
 
             if (strlen($html) > 0) {

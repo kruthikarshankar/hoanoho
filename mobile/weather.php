@@ -251,26 +251,19 @@ function getCurrentWeatherDataFromLocalStation($in_arr)
 
                 <li class="list-divider">Wetterkarte</li>
 
-          <?php if ($__CONFIG['dwd_state'] != "") {
-                  if (in_array($__CONFIG['dwd_state'], array("SG", "HN"))) {
-                    $region="Nordwest";
-                  } elseif (in_array($__CONFIG['dwd_state'], array("PD", "RW"))) {
-                    $region="Nordost";
-                  } elseif ($__CONFIG['dwd_state'] == "EM") {
-                    $region="West";
-                  } elseif (in_array($__CONFIG['dwd_state'], array("EF", "LZ", "MB"))) {
-                    $region="Ost";
-                  } elseif (in_array($__CONFIG['dwd_state'], array("OF", "TR"))) {
-                    $region="Mitte";
-                  } elseif ($__CONFIG['dwd_state'] == "MS") {
-                    $region="Suedost";
-                  } elseif ($__CONFIG['dwd_state'] == "SU") {
-                    $region="Suedwest";
-                  }
+          <?php
+          if ($__CONFIG['dwd_region'] != "") {
+            $dwd = "SELECT dwd_warngebiet.region_id, dwd_region.region_name, dwd_region.karten_region
+                    FROM dwd_warngebiet
+                    INNER JOIN dwd_region
+                    ON dwd_warngebiet.region_id=dwd_region.region_id
+                    WHERE dwd_warngebiet.warngebiet_dwd_kennung = '".$__CONFIG['dwd_region']."' LIMIT 1;";
+            $dwdresult = mysql_query($dwd);
+            $dwdregion = mysql_fetch_object($dwdresult);
 
-                if (isset($region)) {
+            if (isset($dwdregion->karten_region)) {
           ?>
-                <li class="weather"><img src="http://www.dwd.de/wundk/wetter/de/<?php echo $region; ?>.jpg"></li>
+                <li class="weather"><img src="http://www.dwd.de/wundk/wetter/de/<?php echo $dwdregion->karten_region; ?>.jpg"></li>
           <?php } else { ?>
                 <li class="weather"><img src="http://www.dwd.de/wundk/wetter/de/Deutschland.jpg"></li>
           <?php } } else { ?>
