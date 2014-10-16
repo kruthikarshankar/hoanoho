@@ -55,9 +55,9 @@ if ($title == "Musik") {
 ?>
 <script language="javascript">
     $(document).ready(function () {
-        $("#weather").load("../../helper/datacontroller.php?cmd=refresh_weather_for_header");
+        $("#weather").load("../../helper/datacontroller.php?cmd=refresh_weather_for_header&relPath=../../../");
         var refreshId = setInterval(function () {
-            $("#weather").load('../../helper/datacontroller.php?cmd=refresh_weather_for_header&' + 1*new Date());
+            $("#weather").load('../../helper/datacontroller.php?cmd=refresh_weather_for_header&relPath=../../../&' + 1*new Date());
         }, 200000);
     });
 </script>

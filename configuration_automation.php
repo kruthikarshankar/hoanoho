@@ -98,23 +98,6 @@
         }
     }
 
-    /*function displayNetworkDevices($nd_id) {
-        $sql = "select * from network_devices order by name asc";
-        $result = mysql_query($sql);
-
-        print("<select name=\"nd_id\">");
-        if($nd_id == "")
-            print("<option selected value=\"\"></option>");
-        else
-            print("<option value=\"\"></option>");
-
-        while ($device = mysql_fetch_object($result)) {
-            print("<option ".($nd_id == $device->nd_id ? "selected" : "")." value=\"".$device->nd_id."\">".$device->name."</option>");
-        }
-
-        print("</select>");
-    }*/
-
     /*function displayPinboardCategories($pcat) {
         print("<select name=\"pcat\">");
             print("<option ".($pcat == "Hausüberblick"? "selected" : "")." value=\"Hausüberblick\">Hausüberblick</option>");
@@ -802,7 +785,7 @@
                 print("<div id=\"closebutton\" onclick='javascript:editDeviceForm".$device->dev_id.".reset(); toggleModal(\"modal-device\",\"device\",".$device->dev_id.",\"\",null,null);'></div>");
                 print("<h1><span>".$device->name."</span></h1>");
                 print("<div id=\"text\">Gerätename:</div><div id=\"value\"><input type=\"text\" name=\"name\" value=\"".$device->name."\"></div>");
-                print("<div id=\"text\">Kennung:</div><div id=\"value\"><input type=\"text\" name=\"identifier\" value=\"".$device->identifier."\"></div>");
+                print("<div id=\"text\">FHEM Gerätename:</div><div id=\"value\"><input type=\"text\" name=\"identifier\" value=\"".$device->identifier."\"></div>");
                 print("<div id=\"text\">Gerätetyp:</div><div id=\"value\">");
                     displayTypes($device->dev_id, $device->dtype_id);
                 print("</div>");
@@ -1089,7 +1072,7 @@
             print("<div id=\"device_icon\">&nbsp;</div>");
             print("<div id=\"device_room\">Raum</div>");
             print("<div id=\"device_name\">Gerätename</div>");
-            print("<div id=\"device_identifier\">Kennung</div>");
+            print("<div id=\"device_identifier\">FHEM Gerätename</div>");
             print("<div id=\"action\">&nbsp;</div>");
         print("</div>");
 
@@ -1111,7 +1094,7 @@
                     print("</form>");
                     print("<div id=\"action\">");
                     print("<a href=\"#".$floor->name."\" onclick='javascript:displayFieldsForDeviceModal(".$device->dev_id.",\"".$device->basetypename."\");toggleModal(\"modal-device\",\"device\",".$device->dev_id.",null,null);' title=\"Gerät bearbeiten\"><img src=\"./img/edit.png\"></a>&nbsp;&nbsp;&nbsp;&nbsp;");
-                    print("<a href=\"javascript:document.deleteDeviceForm".$device->dev_id.".submit()\" title=\"Gerät löschen\" onclick=\"javascript:return confirm('Soll das Gerät \'".$device->name."\' mit der Kennung \'".$device->identifier."\' wirklich gelöscht werden ?');\"><img src=\"./img/delete.png\"></a>");
+                    print("<a href=\"javascript:document.deleteDeviceForm".$device->dev_id.".submit()\" title=\"Gerät löschen\" onclick=\"javascript:return confirm('Soll das Gerät \'".$device->name."\' mit der FHEM Gerätename \'".$device->identifier."\' wirklich gelöscht werden ?');\"><img src=\"./img/delete.png\"></a>");
                     print("</div>");
                 print("</div>");
             }

@@ -45,10 +45,19 @@
     <section class="main_weather">
         <h1><span>Wetter (Unwetter-) Warnungen</span></h1>
             <?php
-            if ($__CONFIG['dwd_state'] != "") {
+            if ($__CONFIG['dwd_region'] != "") {
+
+              $dwd = "SELECT dwd_warngebiet.region_id, dwd_region.region_name, dwd_region.karten_region
+                      FROM dwd_warngebiet
+                      INNER JOIN dwd_region
+                      ON dwd_warngebiet.region_id=dwd_region.region_id
+                      WHERE dwd_warngebiet.warngebiet_dwd_kennung = '".$__CONFIG['dwd_region']."' LIMIT 1;";
+              $dwdresult = mysql_query($dwd);
+              $dwdregion = mysql_fetch_object($dwdresult);
+
             ?>
 
-            <div id="radar"><a href="http://www.dwd.de/bvbw/appmanager/bvbw/dwdwwwDesktop?_nfpb=true&_windowLabel=T14600649251144330032285&_urlType=action&_pageLabel=_dwdwww_wetter_warnungen_warnungen&WEEKLY_REPORT_VIEW=false&TIME=x&SHOW_HEIGHT_SEL=true&MAP_VIEW=true&MOVIE_VIEW=false&TABLE_VIEW=false&HEIGHT=x&SHOW_TIME_SEL=true&STATIC_CONTENT_VIEW=false&WARNING_TYPE=0&_state=maximized&LAND_CODE=<?= $__CONFIG['dwd_state'] ?>" target="_blank"><img src="http://www.dwd.de/dyn/app/ws/maps/<?= $__CONFIG['dwd_state'] ?>_x_x_0.gif"></a></div>
+            <div id="radar"><a href="http://www.dwd.de/bvbw/appmanager/bvbw/dwdwwwDesktop?_nfpb=true&_windowLabel=T14600649251144330032285&_urlType=action&_pageLabel=_dwdwww_wetter_warnungen_warnungen&WEEKLY_REPORT_VIEW=false&TIME=x&SHOW_HEIGHT_SEL=true&MAP_VIEW=true&MOVIE_VIEW=false&TABLE_VIEW=false&HEIGHT=x&SHOW_TIME_SEL=true&STATIC_CONTENT_VIEW=false&WARNING_TYPE=0&_state=maximized&LAND_CODE=<?= $dwdregion->region_id ?>" target="_blank"><img src="http://www.dwd.de/dyn/app/ws/maps/<?= $dwdregion->region_id ?>_x_x_0.gif"></a></div>
 
             <?php
             }

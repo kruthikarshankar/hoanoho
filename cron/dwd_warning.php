@@ -19,14 +19,22 @@ while ($row = mysql_fetch_array($result)) {
 /* **************************
    DWD Wetterwarnung für den Kreis
    ************************** */
-//$html = file_get_html("http://www.dwd.de/dyn/app/ws/html/reports/TUT_warning_de.html");
-$html = file_get_html($__CONFIG['dwd_url_landkreis']);
+$html = file_get_html("http://www.dwd.de/dyn/app/ws/html/reports/".$__CONFIG['dwd_region']."_warning_de.html");
 
 $dwd_warnung = "";
+$dwd_name_landkreis = " ";
+
 if (strlen($html) > 0) {
     foreach ($html->find('div') as $element) {
         if($element->id == "ebp_ws_warning_content")
             $dwd_warnung .= strip_tags(trim($element));
+    }
+
+    foreach ($html->find('h1') as $element) {
+        if($element->class == "app_ws_headline") {
+          $tmp = strip_tags(trim($element));
+          $dwd_name_landkreis = " für ".trim(explode("-", $tmp)[1], 1);
+        }
     }
 }
 
@@ -39,9 +47,9 @@ if(mysql_num_rows($result2) > 0)
 // nur wenn sich die warnung geändert hat
 if ($resultObj2 != null && strlen($resultObj2->data) != strlen($dwd_warnung)) {
     if (strlen($dwd_warnung) > 0) {
-        pushMessageToUsers("Neue Wetterwarnung", $dwd_warnung, 1);
+        pushMessageToUsers("Geänderte Wetterwarnung".$dwd_name_landkreis, $dwd_warnung, 1);
     } else {
-        pushMessageToUsers("Entwarnung", "Es liegt keine Wetterwarnung mehr vor.", 0);
+        pushMessageToUsers("Entwarnung", "Es liegt keine Wetterwarnung mehr".$dwd_name_landkreis." vor.", 0);
     }
 
     $sql = "DELETE FROM cron_data where name = 'dwd_warning'";
@@ -55,7 +63,7 @@ if ($resultObj2 != null && strlen($resultObj2->data) != strlen($dwd_warnung)) {
     mysql_query($sql);
 
     if (strlen($dwd_warnung) > 0) {
-        pushMessageToUsers("Neue Wetterwarnung", $dwd_warnung, 1);
+        pushMessageToUsers("Neue Wetterwarnung".$dwd_name_landkreis, $dwd_warnung, 1);
     }
 }
 

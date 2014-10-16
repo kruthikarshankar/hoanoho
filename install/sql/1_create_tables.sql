@@ -109,42 +109,6 @@ CREATE TABLE IF NOT EXISTS `groups` (
   PRIMARY KEY (`gid`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
-CREATE TABLE IF NOT EXISTS `network_devices` (
-  `nd_id` int(11) NOT NULL AUTO_INCREMENT,
-  `ip` varchar(15) NOT NULL DEFAULT 'DHCP',
-  `subnet` varchar(15) NOT NULL DEFAULT '255.255.255.0',
-  `macaddr` varchar(255) DEFAULT NULL,
-  `name` varchar(255) NOT NULL,
-  `ndtype_id` int(11) DEFAULT NULL,
-  `os_id` int(11) DEFAULT NULL,
-  `infos` varchar(255) NOT NULL DEFAULT '-',
-  `state` int(1) NOT NULL DEFAULT '0',
-  `ip_dhcp` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`nd_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
-CREATE TABLE IF NOT EXISTS `network_device_types` (
-  `ndtype_id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) NOT NULL,
-  `icon` varchar(255) NOT NULL,
-  PRIMARY KEY (`ndtype_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
-CREATE TABLE IF NOT EXISTS `network_os` (
-  `os_id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) NOT NULL,
-  `icon` varchar(255) NOT NULL,
-  PRIMARY KEY (`os_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
-CREATE TABLE IF NOT EXISTS `network_ranges` (
-  `nr_id` int(11) NOT NULL AUTO_INCREMENT,
-  `iprange` varchar(19) NOT NULL DEFAULT '192.168.0.0/24',
-  `subnet` varchar(15) NOT NULL DEFAULT '255.255.255.0',
-  `infos` varchar(255) DEFAULT '-',
-  PRIMARY KEY (`nr_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
 CREATE TABLE IF NOT EXISTS `notes` (
   `no_id` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(255) NOT NULL,
