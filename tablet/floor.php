@@ -486,11 +486,11 @@
                 $class = $basetype;
 
                 if ($class == "einausschalter") {
-                    if(stristr($device->name, "licht"))
+                    if(stristr($device->typename, "licht"))
                         $class = "licht";
-                    else if(stristr($device->name, "beleuchtung"))
+                    else if(stristr($device->typename, "beleuchtung"))
                         $class = "licht";
-                    else if(stristr($device->name, "lampe"))
+                    else if(stristr($device->typename, "lampe"))
                         $class = "licht";
                 }
 
