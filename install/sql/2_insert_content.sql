@@ -31,6 +31,29 @@ INSERT IGNORE INTO `network_os` (`os_id`, `name`, `icon`) VALUES
 (11, 'Android', 'android.png');
 
 
+INSERT INTO `network_device_types` (`ndtype_id`, `name`, `icon`) VALUES
+(1, 'Server', 'server.png'),
+(2, 'Apple iMac', 'imac.png'),
+(3, 'Gateway', 'gateway.png'),
+(4, 'Apple MacBook', 'macbook.png'),
+(5, 'Desktop', 'desktop.png'),
+(6, 'Raspberry Pi', 'raspi.png'),
+(7, 'Notebook', 'notebook.png'),
+(8, 'Accesspoint', 'accesspoint.png'),
+(9, 'Firewall', 'firewall.png'),
+(10, 'Switch', 'switch.png'),
+(11, 'Virtuelle Maschine', 'virtualmachine.png'),
+(12, 'Apple iPad', 'ipad.png'),
+(13, 'Apple iPhone', 'iphone.png'),
+(14, 'Smartphone', 'smartphone.png'),
+(15, 'Airport Express', 'airportexpress.png'),
+(16, 'Drucker', 'printer.png'),
+(17, 'IPMI', 'ipmi.png'),
+(18, 'Webcam', 'webcam.png'),
+(19, 'Fernseher', 'television.png'),
+(20, 'Tablet', 'tablet.png');
+
+
 INSERT IGNORE INTO `configuration` (`dev_id`, `configstring`, `value`, `title`, `hint`, `type`, `category`) VALUES
 (0, 'main_sitetitle', 'Hoanoho', 'Seitentitel', '', 'text', 'Allgemein'),
 (0, 'maintenance_msg', '', 'Systemnachricht', '', 'text', 'Allgemein'),
