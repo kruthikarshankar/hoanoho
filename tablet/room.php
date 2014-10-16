@@ -493,6 +493,12 @@
                         $class = "licht";
                     else if(stristr($device->typename, "lampe"))
                         $class = "licht";
+                    else if(stristr($device->typename, "leuchte"))
+                        $class = "licht";
+                    else if(stristr($device->typename, "light"))
+                        $class = "licht";
+                    else if(stristr($device->typename, "lamp"))
+                        $class = "licht";
                 }
 
                 $hasbackside = false;
