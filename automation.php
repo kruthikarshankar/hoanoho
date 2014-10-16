@@ -36,7 +36,7 @@
             //adding the event listerner for Mozilla
             if (window.addEventListener) {
                 document.addEventListener('DOMMouseScroll', preventScrolling, false);
-                //document.addEventListener('touchmove',preventScrolling, false); // 07.08.2013: Auskommentiert, da sonst der Slider für die Dimmer nicht funktioniert.
+                document.addEventListener('touchmove',preventScrolling, false);
             }
 
             //for IE/OPERA etc
@@ -469,7 +469,7 @@
                     print("#modal-device".$device->dev_id." #section1 #slider input[type='text'] { font: 20px Verdana, 'Lucida Grande'; color: #494644; height: 45px; width: 70px; margin-top: 20px; margin-left: 20px; border-color: #EBE6E2; border-width: 1px; border-style: solid; padding-left: 5px; padding-right: 5px; text-align: center; }");
                 }
 
-                /* Dimmer */
+                /* Philips Hue */
                 else if ($device->typename == "Philips Hue") {
                     print("#modal-device".$device->dev_id." #section1 { width:500px; margin: 0 auto; background: #fffaf6; border-radius: 4px; color: #7e7975; box-shadow: 0 2px 2px rgba(0,0,0,0.2), 0 1px 5px rgba(0,0,0,0.2), 0 0 0 12px rgba(255,255,255,0.4); padding: 10px; z-index: 1000; }");
                     print("#modal-device".$device->dev_id." #section1 #slider { width: 400px; margin-bottom: 15px; font: 20px Verdana, 'Lucida Grande'; color: #494644; float: left; }");

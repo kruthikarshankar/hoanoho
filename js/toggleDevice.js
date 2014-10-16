@@ -122,16 +122,16 @@ function toggleDevice(device_id, d_identifier, type, value) {
 	}
 	else if(type == "Dimmer") 
 	{
+		if(timeout) window.clearTimeout(timeout);
+
 		var el_soll = document.getElementById("slider_value" + device_id);
 
 		el_soll.value = value;
 
-		if(timeout) window.clearTimeout(timeout);
+		value = "dim"+value+"%";
 
-		timeout = setTimeout(function() {
-			mygetrequest.open("GET", cmdurl+value, true);
-        	mygetrequest.send(null);
-        }, 2000);	
+		mygetrequest.open("GET", cmdurl+"&device="+d_identifier+"&value="+value, true);
+		mygetrequest.send(null);
 	}
 	else if(type == "Raspberry Pi GPIO") 
 	{

@@ -109,15 +109,24 @@ function connectWebSocket(port) {
     	}
     	else if(messageObj['typename'] == "Dimmer")
     	{
-    		var value = messageObj['value'];
+            console.warn(messageObj);
 
-    		if(value == "on")
-    			value = "100";
-    		else if(value == "off")
-    			value = "0";
+            switch (messageObj['reading']) {
+                case 'state':
+                    var value = messageObj['value'].replace('dim','').replace('%','');
 
-    		var slider = document.getElementById("slider"+messageObj['dev_id']).value = value
-    		var slider_value = document.getElementById("slider_value"+messageObj['dev_id']).value = value;	
+                    if(value == "on")
+                        value = "100";
+                    else if(value == "off")
+                        value = "0";
+
+                    var slider = document.getElementById("slider"+messageObj['dev_id']).value = value
+                    var slider_value = document.getElementById("slider_value"+messageObj['dev_id']).value = value;  
+
+                    break;
+                default:
+                    break;
+            }
     	}
         else if(messageObj['typename'] == 'Tür/Fenster-Kontakt')
         {
