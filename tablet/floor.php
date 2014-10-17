@@ -57,6 +57,7 @@
         <script src="./js/clock.js"></script>
         <script src="./js/jquery-scrolltofixed.js"></script>
         <script src="./js/standalone.js"></script>
+		<script type="text/javascript" src="../js/cookie.js"></script>
         <script>
             $(document).ready(function () {
                 $('.dropdown-toggle').dropdown();
@@ -89,14 +90,22 @@
             var devicesWithLowBattery = [];
             function connectWebSocket(port)
             {
-				var protocol = "";
-				if (window.location.protocol == "http:") {
-					protocol = "ws";
-				} else if(window.location.protocol == "https:") {
-					protocol = "wss";
-				}	
+				if (typeof connectWebSocket.connectCnt == 'undefined') {
+					connectWebSocket.connectCnt = 0;
+				}
+				if (typeof connectWebSocket.connectProt == 'undefined') {
+					connectWebSocket.connectProt = getCookie("websocketProtocol");
+			
+					if (connectWebSocket.connectProt == null) {
+						if (window.location.protocol == "http:") {
+							connectWebSocket.connectProt = "wss";
+						} else if(window.location.protocol == "https:") {
+							connectWebSocket.connectProt = "wss";
+						}
+					}
+				}
 				var host = window.location.hostname;
-				var address = protocol + "://" + host +  ":" + port + "/ws";
+				var address = connectWebSocket.connectProt + "://" + host +  ":" + port + "/ws";
 				
                 // Connect to Socketserver
                 var socket = new WebSocket(address);
@@ -105,9 +114,20 @@
                 var last_weatherwarning = null;
 
                 socket.onopen = function () {
+					// set cookie
+					setCookie("websocketProtocol", connectWebSocket.connectProt);
+					
                     if($('#titlebar #left #status').attr('class') == "disconnected")
                         $('#titlebar #left #status').switchClass("disconnected", "connected", 500, "easeInOutQuad");
                 };
+				
+				socket.onerror = function () {
+					connectWebSocket.connectCnt++;
+					if(connectWebSocket.connectCnt >= 4 && connectWebSocket.connectProt == "wss") {
+						connectWebSocket.connectProt = "ws";
+						connectWebSocket.connectCnt = 0;
+					}
+				};
 
                 socket.onclose = function () {
                     if($('#titlebar #left #status').attr('class') == "connected")

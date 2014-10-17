@@ -12,6 +12,7 @@
         <script type="text/javascript" src="./js/nogray_js/1.1.5/ng_all.js"></script>
         <script type="text/javascript" src="./js/nogray_js/1.1.5/components/slider.js"></script>
         <script type="text/javascript" src="./js/nogray_js/1.1.5/components/colorpicker.js"></script>
+		<script type="text/javascript" src="./js/cookie.js"></script>
         <script type="text/javascript" src="./js/connectWebsocket.js"></script>
         <script type="text/javascript" src="./js/toggleDevice.js"></script>
 
