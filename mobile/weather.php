@@ -243,7 +243,7 @@ function getCurrentWeatherDataFromLocalStation($in_arr)
                 <li>Luftfeuchtigkeit: <?php echo ($weather['ws_available'] == true ? $weather['ws_OH'] : $weather['main.humidity']); ?> %</li>
                 <li>Luftdruck: <?php echo ($weather['ws_available'] == true ? $weather['ws_P'] : $weather['main.pressure'])." hPa"; ?></li>
                 <li>Windgeschwindigkeit: <?php echo ($weather['ws_available'] == true ? $weather['ws_Wind'] : $weather['wind.speed'])." km/h"; ?></li>
-                <li>Windrichtung: <?php echo ($weather['ws_available'] == true ? $weather['ws_WindDir'] : $weather['wind.dir']." (".$weather['wind.deg']."°)"); ?></li>
+                <li>Windrichtung: <?php echo ($weather['ws_available'] == true ? $weather['ws_WindDir'] : $weather['wind.dir']); ?></li>
                 <li>Sonnenaufgang: <?php echo $sunrise." Uhr"; ?></li>
                 <li>Sonnenuntergang: <?php echo $sunset." Uhr"; ?></li>
 
@@ -263,26 +263,22 @@ function getCurrentWeatherDataFromLocalStation($in_arr)
 
             if (isset($dwdregion->karten_region)) {
           ?>
-                <li class="weather"><img src="http://www.dwd.de/wundk/wetter/de/<?php echo $dwdregion->karten_region; ?>.jpg"></li>
+                <li class="weather"><img src="http://www.wettergefahren.de/wundk/wetter/de/<?php echo $dwdregion->karten_region; ?>.jpg"></li>
           <?php } else { ?>
-                <li class="weather"><img src="http://www.dwd.de/wundk/wetter/de/Deutschland.jpg"></li>
+                <li class="weather"><img src="http://www.wettergefahren.de/wundk/wetter/de/Deutschland.jpg"></li>
           <?php } } else { ?>
-                <li class="weather"><img src="http://www.dwd.de/wundk/wetter/de/Deutschland.jpg"></li>
+                <li class="weather"><img src="http://www.wettergefahren.de/wundk/wetter/de/Deutschland.jpg"></li>
           <?php }
 
-          if (isset($dwd_warnung) && $dwd_warnung != "") {
+          if (stripos($dwd_warnung, "Es liegt aktuell keine Warnung") != FALSE) {
           ?>
-                <li class="list-divider">Wetterwarnung</li>
-                <?php if (stripos($dwd_warnung, "Es liegt aktuell keine Warnung") != FALSE) { ?>
+                <li class="list-divider">Warnmeldung</li>
                     <li class="weatherwarning alarm"><?php echo $dwd_warnung; ?></li>
-                <?php } else { ?>
-                    <li class="weatherwarning"><?php echo $dwd_warnung; ?></li>
           <?php
-                      }
+          }
           ?>
-                <li class="list-divider">Report</li>
-                <li class="weatherwarning"><?php echo $dwd_report; ?></li>
-          <?php } ?>
+                <li class="list-divider">Warnlagebericht</li>
+                <li class="weatherwarning"><?php echo $dwd_region_report_warning; ?></li>
             </ul>
             <br><br><br>
         </div>

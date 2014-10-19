@@ -282,12 +282,12 @@
             $dwdregion = mysql_fetch_object($dwdresult);
 
           if (isset($dwdregion->karten_region)) {
-            print("<div id=\"image\"><img src=\"http://www.dwd.de/wundk/wetter/de/".$dwdregion->karten_region.".jpg\"></div>");
+            print("<div id=\"image\"><img src=\"http://www.wettergefahren.de/wundk/wetter/de/".$dwdregion->karten_region.".jpg\"></div>");
           } else {
-            print("<div id=\"image\"><img src=\"http://www.dwd.de/wundk/wetter/de/Deutschland.jpg\"></div>");
+            print("<div id=\"image\"><img src=\"http://www.wettergefahren.de/wundk/wetter/de/Deutschland.jpg\"></div>");
           }
         } else {
-          print("<div id=\"image\"><img src=\"http://www.dwd.de/wundk/wetter/de/Deutschland.jpg\"></div>");
+          print("<div id=\"image\"><img src=\"http://www.wettergefahren.de/wundk/wetter/de/Deutschland.jpg\"></div>");
         }
 
         print("</div>");
@@ -375,32 +375,40 @@
 
     if ($_GET['cmd'] == 'refresh_weather_report') {
       if ($__CONFIG['dwd_region'] != "") {
-            print("<div id=\"title\">Report</div>");
+            print("<div id=\"title\">Warnlagebericht</div>");
             print("<div style=\"position: absolute; width: 98%;\"><div id=\"icon\"></div></div>");
             print("<div id=\"rows\">");
 
-            $dwd = "SELECT dwd_warngebiet.region_id, dwd_region.region_name, dwd_region.karten_region
-                    FROM dwd_warngebiet
+            $dwdsql = "SELECT dwd_warngebiet.region_id,land_id,karten_region FROM dwd_warngebiet
                     INNER JOIN dwd_region
                     ON dwd_warngebiet.region_id=dwd_region.region_id
                     WHERE dwd_warngebiet.warngebiet_dwd_kennung = '".$__CONFIG['dwd_region']."' LIMIT 1;";
-            $dwdresult = mysql_query($dwd);
-            $dwdregion = mysql_fetch_object($dwdresult);
+            $dwdresult = mysql_query($dwdsql);
+            $dwd_region = mysql_fetch_object($dwdresult);
 
-            $html = file_get_html("http://www.dwd.de/dyn/app/ws/html/reports/".$dwdregion->region_id."_report_de.html");
-            $dwd_report = "";
 
-            if (strlen($html) > 0) {
-                foreach ($html->find('div') as $element) {
-                    if($element->id == "ebp_ws_report_content")
-                        $dwd_report = trim($element);
-                        //$dwd_report = strip_tags(trim($element));
+            if (isset($dwd_region->region_id) && $dwd_region->region_id != "") {
+              $html = file_get_html("http://www.wettergefahren.de/dyn/app/ws/html/reports/".$dwd_region->region_id."_report_de.html");
+
+              if (strlen($html) > 0) {
+                $tmp = explode(".", trim(strip_tags($html->find('p', '2'))));
+                $dwd_region_report0 = $tmp[0].".";
+                $dwd_region_report_warning = "<p>".trim(strip_tags($html->find('p', '2')))."</p>";
+                $dwd_region_report_warning .= "<p><i>Entwicklung für die nächsten 24 Stunden</i></p>";
+
+                for ($i = "4"; $i < "10"; $i++) {
+                  if (strpos($html->find('p', $i), "Nächste Aktualisierung")) {
+                    break;
+                  } else {
+                    $dwd_region_report_warning .= "<p>".trim(strip_tags($html->find('p', $i)))."</p>";
+                  }
                 }
 
-                print("<div id=\"message\">".$dwd_report."</div>");
-            } else {
-                print("<div id=\"message\">Aktueller Bericht vom DWD konnte nicht geladen werden!</div>");
+              } else {
+                  $dwd_region_report_warning = "<p>Aktueller DWD Warnlagebericht konnte nicht geladen werden.</p>";
+              }
             }
+            print("<div id=\"message\">".$dwd_region_report_warning."</div>");
 
             print("</div>");
         print("</div>");
