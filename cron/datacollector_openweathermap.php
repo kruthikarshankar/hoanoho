@@ -72,5 +72,8 @@ if ($__CONFIG['position_latitude'] != "" && $__CONFIG['position_longitude'] != "
     }
   }
 
+} else {
+  // delete old data
+  mysql_query("TRUNCATE TABLE openweathermap;");
 }
 ?>

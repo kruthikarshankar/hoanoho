@@ -43,6 +43,9 @@ while ($row = mysql_fetch_array($result)) {
     $__CONFIG[$row[0]] = $row[1];
 }
 
+// delete old data
+mysql_query("TRUNCATE TABLE openweathermap_forecast;");
+
 // forecast
 if ($__CONFIG['position_latitude'] != "" && $__CONFIG['position_longitude'] != "") {
   $latitude = $__CONFIG['position_latitude'];
@@ -66,9 +69,6 @@ if ($__CONFIG['position_latitude'] != "" && $__CONFIG['position_longitude'] != "
   $parsedData = parseData(null,$data);
   if ($parsedData != "") {
     $parsedData = explode(';', $parsedData);
-
-    // delete old data
-    mysql_query("truncate table openweathermap_forecast");
 
     foreach ($parsedData as $query) {
         mysql_query($query);
