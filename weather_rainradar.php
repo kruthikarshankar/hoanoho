@@ -43,7 +43,7 @@
 
     <section class="main_weather">
         <h1><span>Deutschland</span></h1>
-            <div id="radar"><img src="http://www.dwd.de/wundk/radar/Radarfilm_WEB_DL.gif"></div>
+            <div id="radar"><a href="http://www.wettergefahren.de/wetter/deutschland/aktuell.html" target="_blank"><img src="http://www.wettergefahren.de/wundk/radar/Radarfilm_WEB_DL.gif"></a></div>
             <div id="legend"><img src="./img/weather_radar_legend.png"></div>
     </section>
 
@@ -62,7 +62,8 @@
 
       <section class="main_weather">
           <h1><span><?php echo $dwdregion->region_name ?></span></h1>
-          <div id="radar"><img src="http://www.dwd.de/wundk/radar/Webradar_<?php echo $dwdregion->karten_region ?>.jpg"></div>
+          <div id="radar"><a href="http://www.wettergefahren.de/wetter/region/<?php echo strtolower($dwdregion->karten_region) ?>/aktuell.html" target="_blank"><img src="http://www.wettergefahren.de/wundk/radar/Webradar_<?php echo $dwdregion->karten_region ?>.jpg"></a></div>
+          <div id="legend"><img src="./img/weather_radar_legend.png"></div>
       </section>
 
     <?php

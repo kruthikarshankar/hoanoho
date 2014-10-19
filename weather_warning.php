@@ -57,22 +57,23 @@
 
             ?>
 
-            <div id="radar"><a href="http://www.dwd.de/bvbw/appmanager/bvbw/dwdwwwDesktop?_nfpb=true&_windowLabel=T14600649251144330032285&_urlType=action&_pageLabel=_dwdwww_wetter_warnungen_warnungen&WEEKLY_REPORT_VIEW=false&TIME=x&SHOW_HEIGHT_SEL=true&MAP_VIEW=true&MOVIE_VIEW=false&TABLE_VIEW=false&HEIGHT=x&SHOW_TIME_SEL=true&STATIC_CONTENT_VIEW=false&WARNING_TYPE=0&_state=maximized&LAND_CODE=<?= $dwdregion->region_id ?>" target="_blank"><img src="http://www.dwd.de/dyn/app/ws/maps/<?= $dwdregion->region_id ?>_x_x_0.gif"></a></div>
+            <div id="radar"><a href="http://www.wettergefahren.de/app/ws/index.jsp?view=map&land_code=<?= $dwdregion->region_id ?>&height=x&warn_type=0" target="_blank"><img src="http://www.wettergefahren.de/dyn/app/ws/maps/<?= $dwdregion->region_id ?>_x_x_0.gif"></a></div>
 
             <?php
             }
 
             if (isset($dwd_warnung) && $dwd_warnung != "") {
             ?>
-            <div id="title">Warnung</div>
+            <div id="title">Warnmeldung</div>
             <div id="text"><?php echo $dwd_warnung; ?></div>
             <?php
             }
 
-            if (isset($dwd_report) && $dwd_report != "") {
+            if (isset($dwd_region_report_warning) && $dwd_region_report_warning != "") {
             ?>
-            <div id="title">Report</div>
-            <div id="text"><?php echo $dwd_report; ?></div>
+            <div id="title">Warnlagebericht</div>
+            <div id="text"><?php echo $dwd_region_report_warning; ?></div>
+            <div id="source">Quelle: Deutscher Wetterdienst</div>
             <?php
             }
             ?>

@@ -19,7 +19,7 @@ while ($row = mysql_fetch_array($result)) {
 /* **************************
    DWD Wetterwarnung für den Kreis
    ************************** */
-$html = file_get_html("http://www.dwd.de/dyn/app/ws/html/reports/".$__CONFIG['dwd_region']."_warning_de.html");
+$html = file_get_html("http://www.wettergefahren.de/dyn/app/ws/html/reports/".$__CONFIG['dwd_region']."_warning_de.html");
 
 $dwd_warnung = "";
 $dwd_name_landkreis = " ";

@@ -81,6 +81,13 @@
     font-weight: bold;
 }
 
+.main_weather #source {
+    margin-left: 20px;
+    margin-right: 20px;
+    text-align: right;
+    display: block;
+}
+
 .main_weather #details div {
     margin-bottom: 3px;
 }
@@ -120,6 +127,8 @@
     margin-left: 20px;
     margin-right: 20px;
     margin-bottom: 15px;
+    text-align: justify;
+    display: block;
 }
 
 .main_weather #text p {

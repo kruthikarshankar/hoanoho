@@ -204,7 +204,7 @@ VALUES
 
 INSERT IGNORE INTO `dwd_region` (`region_id`, `region_name`, `karten_region`)
 VALUES
-	('EF','Thrüringen','Ost');
+	('EF','Thüringen','Ost');
 
 INSERT IGNORE INTO `dwd_region` (`region_id`, `region_name`, `karten_region`)
 VALUES

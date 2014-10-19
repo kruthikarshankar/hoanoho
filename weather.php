@@ -237,7 +237,7 @@ switch ($day) {
         <h1><span>Aktuelle Wetterlage</span></h1>
             <div id="weathericon"><img src="<?php echo "./img/weather/openweathermap/".$weather['weather.0.icon'].".png"; ?>"></div>
             <div id="details">
-                <div><b>Beschreibung:</b> <?php echo $weather['weather.0.description']; ?></div>
+                <div><?php echo $weather['weather.0.description']."; ".$dwd_region_report0; ?></div>
                 <div>&nbsp;</div>
                 <div><b>Temperatur:</b> <?php echo ($weather['ws_available'] == true ? $weather['ws_OT']."°C  (".$weather['ws_WC']." °C gefühlt)" : $weather['main.temp']." °C"); ?></div>
                 <div><b>Tages Temperatur Min.:</b> <?php echo $weather['main.temp_min']." °C"; ?></div>
@@ -262,9 +262,7 @@ switch ($day) {
                 <div><b>Sonnenuntergang:</b> <?php echo $sunset." Uhr"; ?></div>
                 <div>&nbsp;</div>
             </div>
-            <?php
-            if (isset($dwd_warnung) && $dwd_warnung != "") {
-            ?>
+            <?php if (stripos($dwd_warnung, "Es liegt aktuell keine Warnung") != FALSE) { ?>
               <div id="warnung"><?php echo $dwd_warnung; ?></div>
             <?php
             }
@@ -289,7 +287,7 @@ switch ($day) {
 
       <section class="main_weather">
           <h1><span><?php echo $dwdregion->region_name ?></span></h1>
-          <div id="dwdimage"><a href="http://www.dwd.de/wetter-<?php echo strtolower($dwdregion->karten_region) ?>" target="_blank"><img src="http://www.dwd.de/wundk/wetter/de/<?php echo $dwdregion->karten_region ?>.jpg"></a></div>
+          <div id="dwdimage"><a href="http://www.wettergefahren.de/wetter/region/<?php echo strtolower($dwdregion->karten_region) ?>/aktuell.html" target="_blank"><img src="http://www.wettergefahren.de/wundk/wetter/de/<?php echo $dwdregion->karten_region ?>.jpg"></a></div>
       </section>
 
     <?php
@@ -299,7 +297,7 @@ switch ($day) {
 
     <section class="main_weather">
         <h1><span>Deutschland</span></h1>
-        <div id="dwdimage"><a href="http://www.dwd.de/deutschlandwetter" target="_blank"><img src="http://www.dwd.de/wundk/wetter/de/Deutschland.jpg"></a></div>
+        <div id="dwdimage"><a href="http://www.wettergefahren.de/wetter/deutschland/aktuell.html" target="_blank"><img src="http://www.wettergefahren.de/wundk/wetter/de/Deutschland.jpg"></a></div>
     </section>
 
     <?php
@@ -314,25 +312,29 @@ switch ($day) {
 
             echo "<div id=\"weathericon\"><img src=\"./img/weather/openweathermap/".$forecast[$i]['list.'.$i.'.weather.0.icon'].".png\"></div>";
             echo "<div id=\"details\">";
-                echo "<div>Beschreibung: ".$forecast[$i]['list.'.$i.'.weather.0.description']."</div>";
+                echo "<div>".$forecast[$i]['list.'.$i.'.weather.0.description']."</div>";
                 echo "<div>&nbsp;</div>";
-                echo "<div>Temperatur Morgens: ".$forecast[$i]['list.'.$i.'.temp.morn']." °C</div>";
-                echo "<div>Temperatur Tagsüber: ".$forecast[$i]['list.'.$i.'.temp.day']." °C</div>";
-                echo "<div>Temperatur Abends: ".$forecast[$i]['list.'.$i.'.temp.eve']." °C</div>";
-                echo "<div>Temperatur Nachts: ".$forecast[$i]['list.'.$i.'.temp.night']." °C</div>";
+                echo "<div><b>Temperatur Morgens:</b> ".$forecast[$i]['list.'.$i.'.temp.morn']." °C</div>";
+                echo "<div><b>Temperatur Tagsüber:</b> ".$forecast[$i]['list.'.$i.'.temp.day']." °C</div>";
+                echo "<div><b>Temperatur Abends:</b> ".$forecast[$i]['list.'.$i.'.temp.eve']." °C</div>";
+                echo "<div><b>Temperatur Nachts:</b> ".$forecast[$i]['list.'.$i.'.temp.night']." °C</div>";
                 echo "<div>&nbsp;</div>";
-                echo "<div>Temperatur Minimum: ".$forecast[$i]['list.'.$i.'.temp.min']." °C</div>";
-                echo "<div>Temperatur Maximum: ".$forecast[$i]['list.'.$i.'.temp.max']." °C</div>";
+                echo "<div><b>Temperatur Minimum:</b> ".$forecast[$i]['list.'.$i.'.temp.min']." °C</div>";
+                echo "<div><b>Temperatur Maximum:</b> ".$forecast[$i]['list.'.$i.'.temp.max']." °C</div>";
                 echo "<div>&nbsp;</div>";
-                echo "<div>Regenmenge: ".(isset($forecast[$i]['list.'.$i.'.rain']) ? $forecast[$i]['list.'.$i.'.rain'] : "0")." l/qm.</div>";
-                print("<div>Bewölkung: ".$forecast[$i]['list.'.$i.'.clouds']."%</div>");
-                print("<div>Luftfeuchtigkeit: ".$forecast[$i]['list.'.$i.'.humidity']."%</div>");
-                print("<div>Luftdruck: ".$forecast[$i]['list.'.$i.'.pressure']." hPa</div>");
+                echo "<div><b>Regenmenge:</b> ".(isset($forecast[$i]['list.'.$i.'.rain']) ? $forecast[$i]['list.'.$i.'.rain'] : "0")." l/qm.</div>";
+                print("<div><b>Bewölkung:</b> ".$forecast[$i]['list.'.$i.'.clouds']." %</div>");
+                print("<div><b>Luftfeuchtigkeit:</b> ".$forecast[$i]['list.'.$i.'.humidity']." %</div>");
+                print("<div><b>Luftdruck:</b> ".$forecast[$i]['list.'.$i.'.pressure']." hPa</div>");
                 print("<div>&nbsp;</div>");
-                print("<div>Windgeschwindigkeit: ".$forecast[$i]['list.'.$i.'.speed']." km/h</div>");
-                print("<div>Windrichtung: ".$forecast[$i]['list.'.$i.'.dir']."</div>");
+                print("<div><b>Windgeschwindigkeit:</b> ".$forecast[$i]['list.'.$i.'.speed']." km/h</div>");
+                print("<div><b>Windrichtung:</b> ".$forecast[$i]['list.'.$i.'.dir']."</div>");
                 print("<div>&nbsp;</div>");
             echo "</div>";
+            echo "<div id=\"title\">Wetterbericht</div>";
+            echo "<div id=\"text\">".$dwd_region_report[$i]."</div>";
+            echo "<div id=\"source\">Quelle: Deutscher Wetterdienst</div>";
+            echo "<div id=\"footer\"></div>";
         echo "</section>";
       }
     }
