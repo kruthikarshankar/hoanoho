@@ -63,12 +63,13 @@
             <?php
             }
 
-            if (isset($dwd_warnung) && $dwd_warnung != "") {
+            if (stripos($dwd_warnung_kurz, "Es liegt aktuell keine Warnung") !== FALSE) {
             ?>
+            <div id="title">Warnmeldung</div>
+            <?php } ?>
             <div id="warnung"><?php echo $dwd_warnung; ?></div>
-            <?php
-            }
 
+            <?php
             if (isset($dwd_region_report_warning) && $dwd_region_report_warning != "") {
             ?>
             <div id="title">Warnlagebericht</div>
