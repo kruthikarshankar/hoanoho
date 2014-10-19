@@ -1,6 +1,14 @@
 <?php
     include dirname(__FILE__).'/../includes/sessionhandler.php';
     include dirname(__FILE__).'/../includes/getConfiguration.php';
+
+    // check automation configuration
+    $sql_automation = "select * from device_floors where position > 0 order by position asc";
+    $result_automation = mysql_query($sql_automation);
+
+    // check webcam configuration
+    $sql_webcam = "SELECT dev_id,devices.name from devices left join device_types on device_types.dtype_id = devices.dtype_id left join types on types.type_id = device_types.type_id where types.name = 'Webcam'";
+    $result_webcam = mysql_query($sql_webcam);
 ?>
 
 <script type="text/javascript">
@@ -103,11 +111,15 @@
                     <div class="dropOut">
                         <div class="triangle"></div>
                         <ul>
+                            <?php if (mysql_num_rows($result_automation) > 0) { ?>
                             <a href="./automation.php"><li><img src="./img/magnifier.png">Übersicht</li></a>
+                            <?php } ?>
                             <!-- <a href="./scenario.php"><li><img src="./img/scenario.png">Szenarien</li></a> -->
                             <a href="./reports.php"><li><img src="./img/chart3.png">Auswertung</li></a>
+                            <?php if (mysql_num_rows($result_webcam) > 0) { ?>
                             <li><hr></li>
                             <a href="./webcam.php"><li><img src="./img/webcam.png">Webcams</li></a>
+                            <?php } ?>
                         </ul>
                     </div>
                 </div>
