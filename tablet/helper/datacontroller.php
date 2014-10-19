@@ -408,7 +408,7 @@
                   $dwd_region_report_warning = "<p>Aktueller DWD Warnlagebericht konnte nicht geladen werden.</p>";
               }
             }
-            print("<div id=\"message\">".$dwd_region_report_warning."</div>");
+            print("<div id=\"message\">".$dwd_region_report_warning."<br /><p>Quelle: Deutscher Wetterdienst</p></div>");
 
             print("</div>");
         print("</div>");

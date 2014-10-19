@@ -270,15 +270,15 @@ function getCurrentWeatherDataFromLocalStation($in_arr)
                 <li class="weather"><img src="http://www.wettergefahren.de/wundk/wetter/de/Deutschland.jpg"></li>
           <?php }
 
-          if (stripos($dwd_warnung, "Es liegt aktuell keine Warnung") != FALSE) {
+          if (stripos($dwd_warnung, "Es liegt aktuell keine Warnung") === FALSE) {
           ?>
                 <li class="list-divider">Warnmeldung</li>
-                    <li class="weatherwarning alarm"><?php echo $dwd_warnung; ?></li>
+                    <li class="weatherwarning"><?php echo $dwd_warnung; ?></li>
           <?php
           }
           ?>
                 <li class="list-divider">Warnlagebericht</li>
-                <li class="weatherwarning"><?php echo $dwd_region_report_warning; ?></li>
+                <li class="weatherwarning"><?php echo $dwd_region_report_warning; ?><br /><p>Quelle: Deutscher Wetterdienst</p></li>
             </ul>
             <br><br><br>
         </div>

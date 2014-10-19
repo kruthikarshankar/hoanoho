@@ -69,15 +69,14 @@
 }
 
 .main_weather #warnung {
-    margin-left: 50px;
-    margin-right: 50px;
+    margin-left: 20px;
+    margin-right: 20px;
     text-align: justify;
     display: block;
     margin-bottom: 10px;
 }
 
 .main_weather #warnung #aktiv {
-    color: #ff0000;
     font-weight: bold;
 }
 
@@ -126,7 +125,7 @@
 .main_weather #text {
     margin-left: 20px;
     margin-right: 20px;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
     text-align: justify;
     display: block;
 }

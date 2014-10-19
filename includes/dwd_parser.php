@@ -49,26 +49,57 @@ $dwd_region = mysql_fetch_object($dwdresult);
   $html = file_get_html("http://www.wettergefahren.de/dyn/app/ws/html/reports/".$__CONFIG['dwd_region']."_warning_de.html");
 
   $dwd_warnung = "";
+  $dwd_warnung_kurz = "";
   $dwd_name_landkreis = " ";
 
   if (strlen($html) > 0) {
-      foreach ($html->find('div') as $element) {
-          if($element->id == "ebp_ws_warning_content")
-              $dwd_warnung .= "<div id=\"aktiv\">".strip_tags(trim($element))."</div>";
-      }
 
-      foreach ($html->find('h1') as $element) {
-          if ($element->class == "app_ws_headline") {
-            $tmp = trim(strip_tags($element));
-            $dwd_name_landkreis = " für ".trim(explode("-", $tmp)[1], 1)." ";
+      $dwd_warning_headline = trim(strip_tags($html->find('h1[class=app_ws_headline]', '0')));
+      if (strpos($dwd_warning_headline, "Es ist") !== FALSE || strpos($dwd_warning_headline, "Es sind") !== FALSE) {
+        $warning_no = explode(" ", $dwd_warning_headline)[2];
+
+        $p = 0;
+        for ($i = "0"; $i < $warning_no; $i++) {
+          $dwd_warnung_farbe = explode(":", $html->find('div[class=app_ws_warning_content_text]', $i)->style)[1];
+
+          if ($i == 0) {
+            if ($dwd_warnung_farbe != "") {
+              $dwd_warnung_kurz = "<p id=\"aktiv\" style=\"color:$dwd_warnung_farbe\">";
+            } else {
+              $dwd_warnung_kurz = "<p id=\"aktiv\">";
+            }
+            $dwd_warnung = "<img src=\"http://www.wettergefahren.de/dyn/app/ws/maps/".$__CONFIG['dwd_region']."_timeline.png\" width=\"100%\" /><br /><br />";
           }
-      }
-  } else {
-      $dwd_warnung = "DWD Wetterwarnung konnten nicht geladen werden!";
-  }
 
-  if(strlen($dwd_warnung) == 0)
-      $dwd_warnung = "Es liegt aktuell keine Warnung".$dwd_name_landkreis."vor.";
+          if ($i > 0) {
+            $dwd_warnung_kurz .= "<br />";
+            $dwd_warnung .= "<p></p>";
+          }
+
+          $dwd_warnung_kurz .= trim(strip_tags($html->find('p', $p)));
+
+          if ($dwd_warnung_farbe != "") {
+            $dwd_warnung .= "<p id=\"aktiv\" style=\"color:$dwd_warnung_farbe\">".trim(strip_tags($html->find('p', $p)))."</p>";
+          } else {
+            $dwd_warnung .= "<p id=\"aktiv\">".trim(strip_tags($html->find('p', $p)))."</p>";
+          }
+
+          $dwd_warnung .= "<p>".trim(strip_tags($html->find('p', $p+6)))."<br />".trim(strip_tags($html->find('p', $p+7)))."</p>";
+
+          $p = $p+9;
+        }
+        $dwd_warnung_kurz .= "</p>";
+
+      } else {
+        $dwd_name_landkreis = " für ".explode("-", $dwd_warning_headline, 2)[1] . " ";
+        $dwd_warnung_kurz = "<p>Es liegt aktuell keine Warnung".$dwd_name_landkreis."vor.</p>";
+        $dwd_warnung = "<p>Es liegt aktuell keine Warnung".$dwd_name_landkreis."vor.</p>";
+      }
+
+  } else {
+    $dwd_warnung_kurz = "<p>DWD Wetterwarnung konnten nicht geladen werden!</p>";
+    $dwd_warnung = "<p>DWD Wetterwarnung konnten nicht geladen werden!</p>";
+  }
 
 
 /* **************************

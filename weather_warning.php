@@ -58,14 +58,14 @@
             ?>
 
             <div id="radar"><a href="http://www.wettergefahren.de/app/ws/index.jsp?view=map&land_code=<?= $dwdregion->region_id ?>&height=x&warn_type=0" target="_blank"><img src="http://www.wettergefahren.de/dyn/app/ws/maps/<?= $dwdregion->region_id ?>_x_x_0.gif"></a></div>
+            <div id="legend"><img src="./img/weather_warning_legend.gif"></div>
 
             <?php
             }
 
             if (isset($dwd_warnung) && $dwd_warnung != "") {
             ?>
-            <div id="title">Warnmeldung</div>
-            <div id="text"><?php echo $dwd_warnung; ?></div>
+            <div id="warnung"><?php echo $dwd_warnung; ?></div>
             <?php
             }
 

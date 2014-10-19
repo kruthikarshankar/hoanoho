@@ -22,20 +22,27 @@ while ($row = mysql_fetch_array($result)) {
 $html = file_get_html("http://www.wettergefahren.de/dyn/app/ws/html/reports/".$__CONFIG['dwd_region']."_warning_de.html");
 
 $dwd_warnung = "";
-$dwd_name_landkreis = " ";
 
 if (strlen($html) > 0) {
-    foreach ($html->find('div') as $element) {
-        if($element->id == "ebp_ws_warning_content")
-            $dwd_warnung .= strip_tags(trim($element));
+  $dwd_warning_headline = trim(strip_tags($html->find('h1[class=app_ws_headline]', '0')));
+
+  if (strpos($dwd_warning_headline, "Es ist") !== FALSE || strpos($dwd_warning_headline, "Es sind") !== FALSE) {
+    $warning_no = explode(" ", $dwd_warning_headline)[2];
+
+    $p = 0;
+
+    for ($i = "0"; $i < $warning_no; $i++) {
+
+      if ($i > 0) {
+        $dwd_warnung .= "\n\n ";
+      }
+
+      $dwd_warnung .= trim(strip_tags($html->find('p', $p))) . ": " . trim(strip_tags($html->find('p', $p+6)))." ".trim(strip_tags($html->find('p', $p+7)));
+      $p = $p+9;
     }
 
-    foreach ($html->find('h1') as $element) {
-        if($element->class == "app_ws_headline") {
-          $tmp = strip_tags(trim($element));
-          $dwd_name_landkreis = " für ".trim(explode("-", $tmp)[1], 1);
-        }
-    }
+    $dwd_warnung .= "\n\n Quelle: Deutscher Wetterdienst";
+  }
 }
 
 $sql = "SELECT data from cron_data where name = 'dwd_warning'";
@@ -47,9 +54,9 @@ if(mysql_num_rows($result2) > 0)
 // nur wenn sich die warnung geändert hat
 if ($resultObj2 != null && strlen($resultObj2->data) != strlen($dwd_warnung)) {
     if (strlen($dwd_warnung) > 0) {
-        pushMessageToUsers("Geänderte Wetterwarnung".$dwd_name_landkreis, $dwd_warnung, 1);
+        pushMessageToUsers("Geänderte Wetterwarnung", $dwd_warnung, 1);
     } else {
-        pushMessageToUsers("Entwarnung", "Es liegt keine Wetterwarnung mehr".$dwd_name_landkreis." vor.", 0);
+        pushMessageToUsers("Entwarnung", "Es liegt keine Wetterwarnung mehr vor.", 0);
     }
 
     $sql = "DELETE FROM cron_data where name = 'dwd_warning'";
@@ -63,7 +70,7 @@ if ($resultObj2 != null && strlen($resultObj2->data) != strlen($dwd_warnung)) {
     mysql_query($sql);
 
     if (strlen($dwd_warnung) > 0) {
-        pushMessageToUsers("Neue Wetterwarnung".$dwd_name_landkreis, $dwd_warnung, 1);
+        pushMessageToUsers("Neue Wetterwarnung", $dwd_warnung, 1);
     }
 }
 

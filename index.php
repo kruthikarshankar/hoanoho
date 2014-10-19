@@ -548,14 +548,14 @@
                         }
                         // weather warning
                         else if ($block_meta->type == 5) {
-                            if (!stristr($dwd_warnung, "Es liegt aktuell keine Warnung")) {
+                            if (stristr($dwd_warnung_kurz, "Es liegt aktuell keine Warnung") === FALSE) {
                                 echo "<div id=\"block\">";
                                     if($block_meta->iconid != -1)
                                         print("<div id=\"headline_icon\" style=\"background-image: url('helper/datacontroller.php?cmd=getimage&id=".$block_meta->iconid."')\"></div><div id=\"headline\">".$block_meta->title."</div>");
                                     else
                                         print("<div id=\"headline_icon\"></div><div id=\"headline\">".$block_meta->title."</div>");
 
-                                    echo "<div id=\"value_oneline_thick\">".$dwd_warnung."</div>";
+                                    echo "<div id=\"value_oneline_thick\"><a href=\"weather_warning.php\"".$dwd_warnung_kurz."</a></div>";
                                 echo "</div>";
                             }
                         }
