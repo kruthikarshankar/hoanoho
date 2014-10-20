@@ -555,6 +555,7 @@
                         }
                         // weather warning
                         else if ($block_meta->type == 5) {
+                          if ($__CONFIG['dwd_region'] != "") {
                             if (stristr($dwd_warnung_kurz, "Es liegt aktuell keine Warnung") === FALSE) {
                                 echo "<div id=\"block\">";
                                     if($block_meta->iconid != -1)
@@ -565,6 +566,7 @@
                                     echo "<div id=\"value_oneline_thick\"><a href=\"weather_warning.php\"".$dwd_warnung_kurz."</a></div>";
                                 echo "</div>";
                             }
+                          }
                         }
                     }
                 ?>

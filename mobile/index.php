@@ -348,11 +348,13 @@
                     }
                     // weather warning
                     else if ($block_meta->type == 5) {
+                      if ($__CONFIG['dwd_region'] != "") {
                         // Warnings (DWD)
-                        if (!stristr($dwd_warnung, "Es liegt aktuell keine Warnung")) {
+                        if (stristr($dwd_warnung_kurz, "Es liegt aktuell keine Warnung") === FALSE) {
                             echo "<li class=\"list-divider\">".$block_meta->title."</li>";
-                            echo "<li class=\"alarm weatherwarning\"><div class=\"full-length\">$dwd_warnung</div></li>";
+                            echo "<li class=\"weatherwarning alarm\"><div class=\"full-length\"><a href=\"weather.php#warnmeldung\">$dwd_warnung_kurz</a></div></li>";
                         }
+                      }
                     }
                 }
                 ?>

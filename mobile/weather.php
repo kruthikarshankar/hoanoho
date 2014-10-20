@@ -249,8 +249,6 @@ function getCurrentWeatherDataFromLocalStation($in_arr)
 
           <?php } ?>
 
-                <li class="list-divider">Wetterkarte</li>
-
           <?php
           if ($__CONFIG['dwd_region'] != "") {
             $dwd = "SELECT dwd_warngebiet.region_id, dwd_region.region_name, dwd_region.karten_region
@@ -263,22 +261,29 @@ function getCurrentWeatherDataFromLocalStation($in_arr)
 
             if (isset($dwdregion->karten_region)) {
           ?>
+                <li class="list-divider"><a id="region"><?php echo $dwdregion->region_name ?></a></li>
                 <li class="weather"><img src="http://www.wettergefahren.de/wundk/wetter/de/<?php echo $dwdregion->karten_region; ?>.jpg"></li>
-          <?php } else { ?>
-                <li class="weather"><img src="http://www.wettergefahren.de/wundk/wetter/de/Deutschland.jpg"></li>
-          <?php } } else { ?>
-                <li class="weather"><img src="http://www.wettergefahren.de/wundk/wetter/de/Deutschland.jpg"></li>
-          <?php }
-
-          if (stripos($dwd_warnung, "Es liegt aktuell keine Warnung") === FALSE) {
-          ?>
-                <li class="list-divider">Warnmeldung</li>
-                    <li class="weatherwarning"><?php echo $dwd_warnung; ?></li>
           <?php
+            }
           }
           ?>
-                <li class="list-divider">Warnlagebericht</li>
+
+          <li class="list-divider"><a id="deutschland">Deutschland</a></li>
+          <li class="weather"><img src="http://www.wettergefahren.de/wundk/wetter/de/Deutschland.jpg"></li>
+
+          <?php
+          if ($__CONFIG['dwd_region'] != "") {
+            if (stripos($dwd_warnung, "Es liegt aktuell keine Warnung") === FALSE) {
+          ?>
+                <li class="list-divider"><a id="warnmeldung">Warnmeldung</a></li>
+                    <li class="weatherwarning alarm"><?php echo $dwd_warnung; ?></li>
+            <?php
+            }
+            ?>
+                <li class="list-divider"><a id="bericht">Warnlagebericht</a></li>
                 <li class="weatherwarning"><?php echo $dwd_region_report_warning; ?><br /><p>Quelle: Deutscher Wetterdienst</p></li>
+
+          <?php } ?>
             </ul>
             <br><br><br>
         </div>
