@@ -274,11 +274,11 @@
             }
         </script>
 
-        <title><?php echo $__CONFIG['main_sitetitle'] ?> - Übersicht</title>
+        <title><?php echo $__CONFIG['main_sitetitle'] ?> - Pinnwand</title>
     </head>
     <body>
         <header class="bar-title">
-            <h1 class="title">Übersicht</h1>
+            <h1 class="title">Pinnwand</h1>
             <a class="button" href="javascript:redirectToURL('<?php echo "../index.php?full=yes"; ?>');" data-ignore="push">Desktop</a>
         </header>
 
