@@ -237,7 +237,7 @@ switch ($day) {
         <h1><span>Aktuelle Wetterlage</span></h1>
             <div id="weathericon"><img src="<?php echo "./img/weather/openweathermap/".$weather['weather.0.icon'].".png"; ?>"></div>
             <div id="details">
-                <div><?php echo $weather['weather.0.description']."; ".$dwd_region_report0; ?></div>
+                <div><?php echo $weather['weather.0.description']."; ".(isset($dwd_region_report0) ? $dwd_region_report0 : ""); ?></div>
                 <div>&nbsp;</div>
                 <div><b>Temperatur:</b> <?php echo ($weather['ws_available'] == true ? $weather['ws_OT']."°C  (".$weather['ws_WC']." °C gefühlt)" : $weather['main.temp']." °C"); ?></div>
                 <div><b>Tages Temperatur Min.:</b> <?php echo $weather['main.temp_min']." °C"; ?></div>
@@ -262,7 +262,7 @@ switch ($day) {
                 <div><b>Sonnenuntergang:</b> <?php echo $sunset." Uhr"; ?></div>
                 <div>&nbsp;</div>
             </div>
-            <?php if (stripos($dwd_warnung_kurz, "Es liegt aktuell keine Warnung") === FALSE) { ?>
+            <?php if (isset($dwd_warnung_kurz) && stripos($dwd_warnung_kurz, "Es liegt aktuell keine Warnung") === FALSE) { ?>
               <div id="title" style="text-align:center">Warnmeldung</div>
               <div id="warnung" style="text-align:center"><a href="weather_warning.php"><?php echo $dwd_warnung_kurz; ?></a></div>
             <?php } ?>
@@ -330,9 +330,11 @@ switch ($day) {
                 print("<div><b>Windrichtung:</b> ".$forecast[$i]['list.'.$i.'.dir']."</div>");
                 print("<div>&nbsp;</div>");
             echo "</div>";
-            echo "<div id=\"title\">Bericht</div>";
-            echo "<div id=\"text\">".$dwd_region_report[$i]."</div>";
-            echo "<div id=\"source\">Quelle: Deutscher Wetterdienst</div>";
+            if (isset($dwd_region_report)) {
+                echo "<div id=\"title\">Bericht</div>";
+                echo "<div id=\"text\">".$dwd_region_report[$i]."</div>";
+                echo "<div id=\"source\">Quelle: Deutscher Wetterdienst</div>";
+            }
             echo "<div id=\"footer\"></div>";
         echo "</section>";
       }

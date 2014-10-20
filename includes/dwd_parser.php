@@ -129,6 +129,7 @@ $dwd_region = mysql_fetch_object($dwdresult);
     $html0 = file_get_html("http://www.wettergefahren.de/wetter/region/".strtolower($dwd_region->karten_region)."/heute/bericht_".$land.".html");
     $html1 = file_get_html("http://www.wettergefahren.de/wetter/region/".strtolower($dwd_region->karten_region)."/morgen/bericht_".$land.".html");
     $html2 = file_get_html("http://www.wettergefahren.de/wetter/region/".strtolower($dwd_region->karten_region)."/ueberm/bericht_".$land.".html");
+    $dwd_region_report = array();
 
     for ($i = "0"; $i < "3"; $i++) {
       if (strlen(${"html".$i}) > 0) {
@@ -137,7 +138,7 @@ $dwd_region = mysql_fetch_object($dwdresult);
           if (strpos(${"html".$i}->find('p', $i2), "Letzte Aktualisierung")) {
             break;
           } else {
-            $dwd_region_report[$i] .= "<p>".trim(strip_tags(${"html".$i}->find('p', $i2)))."</p>";
+            $dwd_region_report[] .= "<p>".trim(strip_tags(${"html".$i}->find('p', $i2)))."</p>";
           }
         }
 
