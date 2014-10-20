@@ -58,7 +58,7 @@ $dwd_region = mysql_fetch_object($dwdresult);
       if (strpos($dwd_warning_headline, "Es ist") !== FALSE || strpos($dwd_warning_headline, "Es sind") !== FALSE) {
         $warning_no = explode(" ", $dwd_warning_headline)[2];
 
-        $p = 0;
+        $p = "0";
         for ($i = "0"; $i < $warning_no; $i++) {
           $dwd_warnung_farbe = explode(":", $html->find('div[class=app_ws_warning_content_text]', $i)->style)[1];
 
@@ -84,9 +84,17 @@ $dwd_region = mysql_fetch_object($dwdresult);
             $dwd_warnung .= "<p id=\"aktiv\">".trim(strip_tags($html->find('p', $p)))."</p>";
           }
 
-          $dwd_warnung .= "<p>".trim(strip_tags($html->find('p', $p+6)))."<br />".trim(strip_tags($html->find('p', $p+7)))."</p>";
+          // loop through the text items until we find the end
+          for ($p2 = $p+6; $p2 < $p+20; $p2++) {
+            if (strpos($html->find('p', $p2), "DWD / ")) {
+              break;
+            } else {
+              $dwd_warnung .= "<p>".trim(strip_tags($html->find('p', $p2)))."</p>";
+            }
+          }
+          
 
-          $p = $p+9;
+          $p = $p2+1;
         }
         $dwd_warnung_kurz .= "</p>";
 
@@ -129,16 +137,16 @@ $dwd_region = mysql_fetch_object($dwdresult);
     $html0 = file_get_html("http://www.wettergefahren.de/wetter/region/".strtolower($dwd_region->karten_region)."/heute/bericht_".$land.".html");
     $html1 = file_get_html("http://www.wettergefahren.de/wetter/region/".strtolower($dwd_region->karten_region)."/morgen/bericht_".$land.".html");
     $html2 = file_get_html("http://www.wettergefahren.de/wetter/region/".strtolower($dwd_region->karten_region)."/ueberm/bericht_".$land.".html");
-    $dwd_region_report = array();
 
     for ($i = "0"; $i < "3"; $i++) {
       if (strlen(${"html".$i}) > 0) {
+        $dwd_region_report[$i] = "";
 
         for ($i2 = "0"; $i2 < "10"; $i2++) {
           if (strpos(${"html".$i}->find('p', $i2), "Letzte Aktualisierung")) {
             break;
           } else {
-            $dwd_region_report[] .= "<p>".trim(strip_tags(${"html".$i}->find('p', $i2)))."</p>";
+            $dwd_region_report[$i] .= "<p>".trim(strip_tags(${"html".$i}->find('p', $i2)))."</p>";
           }
         }
 
