@@ -36,7 +36,7 @@ if ($title == "Musik") {
             </button></a>
         </div>
         <div class="btn-group dropup" style="margin-right: 20px">
-            <button type="button" class="btn btn-custom dropdown-toggle" data-toggle="dropdown">Ebenen</button>
+            <button type="button" class="btn btn-custom dropdown-toggle" data-toggle="dropdown">Geschoss</button>
             <ul class="dropdown-menu scrollable-menu" role="menu">
                 <?php
                 $sql = "select floor_id, name from device_floors order by position asc";
