@@ -2,7 +2,33 @@
     $referer = "";
 
     if (!isset($_SESSION)) {
-        session_start();
+      session_start();
+    }
+
+    if (ini_get("session.use_cookies")) {
+        $params = session_get_cookie_params();
+
+        if (isset($_GET['login'])) {
+          setcookie(
+            session_name(),
+            '',
+            time() + (10 * 365 * 24 * 60 * 60),
+            $params["path"],
+            $params["domain"],
+            $params["secure"],
+            $params["httponly"]
+          );
+        } else {
+          setcookie(
+            session_name(),
+            '',
+            time() - 42000,
+            $params["path"],
+            $params["domain"],
+            $params["secure"],
+            $params["httponly"]
+          );
+        }
     }
 
     if(isset($_GET['cmd']) && $_GET['cmd'] == "logout")
@@ -11,14 +37,7 @@
     if(isset($_SESSION['REAL_REFERER']))
         $referer = $_SESSION['REAL_REFERER'];
 
-    $_SESSION = array();
-    if (ini_get("session.use_cookies")) {
-        $params = session_get_cookie_params();
-        setcookie(session_name(), '', time() - 42000, $params["path"],
-            $params["domain"], $params["secure"], $params["httponly"]
-        );
-    }
-
+    session_unset();
     session_destroy();
 
     include dirname(__FILE__).'/../includes/dbconnection.php';
@@ -48,7 +67,7 @@
             $sql = "UPDATE users set lastlogin = now() where uid = " . $row->uid;
             mysql_query($sql);
 
-            header('Location: ./index.php?login='.$_GET['login']);
+            header('Location: ./?login='.$_GET['login']);
             exit;
         }
     }
@@ -70,11 +89,13 @@
                     $sql = "UPDATE users set lastlogin = now() where uid = " . $row->uid;
                     mysql_query($sql);
 
-                    if(isset($_POST['referer']) && $_POST['referer'] != "")
+                    if(isset($_POST['referer']) && $_POST['referer'] != "") {
                         header('Location:'.$_POST['referer']);
-                    else
-                        header('Location: ./index.php');
-                    exit;
+                        exit;
+                    } else {
+                        header('Location: ./');
+                        exit;
+                    }
                 }
             }
         }

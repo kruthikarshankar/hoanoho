@@ -1,6 +1,7 @@
 <?php
     if (!isset($_POST['cmd'])) {
       if (isset($_SESSION)) {
+          session_unset();
           session_destroy();
       }
     } elseif ($_POST['cmd'] == "checkdb") {
