@@ -6,6 +6,7 @@ if ( isset($_GET['cmd']) && isset($_GET['pin']) && isset($_GET['value']) && isse
     curl_setopt($curl, CURLOPT_URL, $url);
     curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, 0);
     curl_setopt($curl, CURLOPT_FOLLOWLOCATION, 1);
+    curl_setopt($curl, CURLOPT_USERAGENT, "Mozilla/4.0");
     curl_exec($curl);
     curl_close($curl);
 }

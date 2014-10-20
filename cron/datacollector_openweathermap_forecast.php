@@ -60,6 +60,7 @@ if ($__CONFIG['position_latitude'] != "" && $__CONFIG['position_longitude'] != "
   curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
   curl_setopt($curl, CURLOPT_URL, $url);
   curl_setopt($curl, CURLOPT_TIMEOUT, 30);
+  curl_setopt($curl, CURLOPT_USERAGENT, "Mozilla/4.0");
   $json = curl_exec($curl);
   curl_close($curl);
   $data = json_decode($json);

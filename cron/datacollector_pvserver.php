@@ -90,6 +90,7 @@ while ($device = mysql_fetch_object($result)) {
   curl_setopt($curl, CURLOPT_POST, 1);
   curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, 0);
   curl_setopt($curl, CURLOPT_FOLLOWLOCATION, 1);
+  curl_setopt($curl, CURLOPT_USERAGENT, "Mozilla/4.0");
   curl_exec($curl);
   curl_close($curl);
 }
