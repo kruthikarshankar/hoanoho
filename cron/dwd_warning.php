@@ -29,19 +29,17 @@ if (strlen($html) > 0) {
   if (strpos($dwd_warning_headline, "Es ist") !== FALSE || strpos($dwd_warning_headline, "Es sind") !== FALSE) {
     $warning_no = explode(" ", $dwd_warning_headline)[2];
 
-    $p = 0;
+    $dwd_warnung .= trim(strip_tags($html->find('p', 0))) . ": ";
 
-    for ($i = "0"; $i < $warning_no; $i++) {
-
-      if ($i > 0) {
-        $dwd_warnung .= "\n\n ";
+    for ($p = "6"; $p < "15"; $p++) {
+      if (strpos($html->find('p', $p), "DWD / ")) {
+        break;
+      } else {
+        $dwd_warnung .= trim(strip_tags($html->find('p', $p)))." ";
       }
-
-      $dwd_warnung .= trim(strip_tags($html->find('p', $p))) . ": " . trim(strip_tags($html->find('p', $p+6)))." ".trim(strip_tags($html->find('p', $p+7)));
-      $p = $p+9;
     }
 
-    $dwd_warnung .= "\n\n Quelle: Deutscher Wetterdienst";
+    $dwd_warnung .= "- Quelle: Deutscher Wetterdienst";
   }
 }
 

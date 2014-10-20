@@ -74,10 +74,14 @@
     text-align: justify;
     display: block;
     margin-bottom: 10px;
+    background-color: #E3EAFE;
+    padding: 5px;
 }
 
 .main_weather #warnung #aktiv {
     font-weight: bold;
+    margin-top: 10px;
+    margin-bottom: 5px;
 }
 
 .main_weather #source {
