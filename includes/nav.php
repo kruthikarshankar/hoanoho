@@ -146,6 +146,7 @@
                 </div>
             </li>
 
+            <?php if ($__CONFIG['sharefile_remoteaddress'] != "") { ?>
             <li class="drop">
                 <a href="#"><img src="./img/star.png">Diverses</a>
 
@@ -153,11 +154,14 @@
                     <div class="dropOut">
                         <div class="triangle"></div>
                         <ul>
+                            <?php if ($__CONFIG['sharefile_remoteaddress'] != "") { ?>
                             <a href="./sharefile.php"><li><img src="./img/upload.png">Bereitstellen</li></a>
+                            <?php } ?>
                         </ul>
                     </div>
                 </div>
             </li>
+            <?php } ?>
 
             <li class="drop">
                 <a href="#"><img src="./img/tools.png">Einstellungen</a>
