@@ -22,14 +22,18 @@
 			
 					if (connectWebSocket.connectProt == null) {
 						if (window.location.protocol == "http:") {
-							connectWebSocket.connectProt = "wss";
+							connectWebSocket.connectProt = "ws";
 						} else if(window.location.protocol == "https:") {
 							connectWebSocket.connectProt = "wss";
 						}
 					}
 				}
 				var host = window.location.hostname;
-				var address = connectWebSocket.connectProt + "://" + host +  ":" + port + "/ws";
+      	if (port == "80" || port == "443") {
+      	  var address = connectWebSocket.connectProt + "://" + host + "/ws";
+        } else {
+        	var address = connectWebSocket.connectProt + "://" + host +  ":" + port + "/ws";
+        }
 			
                 // Connect to Socketserver
                 var socket = new WebSocket(address);
@@ -43,14 +47,6 @@
                     var param_message = <?php echo $_GET['message'] ?>;
                     socket.send(JSON.stringify({command: param_command, message: param_message}));
                 };
-				
-				socket.onerror = function () {
-					connectWebSocket.connectCnt++;
-					if(connectWebSocket.connectCnt >= 4 && connectWebSocket.connectProt == "wss") {
-						connectWebSocket.connectProt = "ws";
-						connectWebSocket.connectCnt = 0;
-					}
-				};
 
             }
         </script>

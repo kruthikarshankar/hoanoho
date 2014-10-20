@@ -85,14 +85,18 @@
 			
 					if (connectWebSocket.connectProt == null) {
 						if (window.location.protocol == "http:") {
-							connectWebSocket.connectProt = "wss";
+							connectWebSocket.connectProt = "ws";
 						} else if(window.location.protocol == "https:") {
 							connectWebSocket.connectProt = "wss";
 						}
 					}
 				}
 				var host = window.location.hostname;
-				var address = connectWebSocket.connectProt + "://" + host +  ":" + port + "/ws";
+      	if (port == "80" || port == "443") {
+      	  var address = connectWebSocket.connectProt + "://" + host + "/ws";
+        } else {
+        	var address = connectWebSocket.connectProt + "://" + host +  ":" + port + "/ws";
+        }
 				
                 // Connect to Socketserver
                 var socket = new WebSocket(address);
@@ -105,19 +109,21 @@
                     if($('#titlebar #left #status').attr('class') == "disconnected")
                         $('#titlebar #left #status').switchClass("disconnected", "connected", 500, "easeInOutQuad");
                 };
-				
-				socket.onerror = function () {
-					connectWebSocket.connectCnt++;
-					if(connectWebSocket.connectCnt >= 4 && connectWebSocket.connectProt == "wss") {
-						connectWebSocket.connectProt = "ws";
-						connectWebSocket.connectCnt = 0;
-					}
-				};
 
                 socket.onclose = function () {
                     //try to reconnect to socketserver in 5 seconds
                     if($('#titlebar #left #status').attr('class') == "connected")
                         $('#titlebar #left #status').switchClass("connected", "disconnected", 500, "easeInOutQuad");
+
+                    // special handling for Safari to fall back to HTTP/WS
+                    // in case self-signed certificate is used
+                		if(navigator.userAgent.indexOf('Safari') != -1 &&
+                      navigator.userAgent.indexOf('Chrome') == -1 &&
+                      event.wasClean == false &&
+                      connectWebSocket.connectProt == "wss") {
+                			connectWebSocket.connectProt = "ws";
+                			connectWebSocket.connectCnt = 0;
+                		}
 
                     setTimeout(function () {connectWebSocket(port)}, 5000);
                 };
