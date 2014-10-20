@@ -141,6 +141,13 @@
                 </div>
             </form>
 
+          <?php if (isset($__CONFIG['maintenance_msg']) && $__CONFIG['maintenance_msg'] != "") { ?>
+          <ul class="list inset">
+            <li class="list-divider">Systemnachricht</li>
+            <li><?php echo $__CONFIG['maintenance_msg'] ?></li>
+          </ul>
+          <?php } ?>
+
           </div>
     </body>
 </html>
