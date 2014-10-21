@@ -140,7 +140,7 @@ function toggleDevice(device_id, d_identifier, type, value) {
 		var protocol = document.getElementById("gpio_raspi_protocol" + device_id);
 
 		// TODO: check if call is localhost then do call without wrapper
-		cmdurl = "/helper-client/gpio_wrapper.php?cmd=set&protocol="+protocol.value+"&remote_addr="+el_raspi_address.value+"&pin="+el_outputpin.value+"&value="+value+"&identifier="+d_identifier;
+		cmdurl = "./helper-client/gpio_wrapper.php?cmd=set&protocol="+protocol.value+"&remote_addr="+el_raspi_address.value+"&pin="+el_outputpin.value+"&value="+value+"&identifier="+d_identifier;
 
 		mygetrequest.open("GET", cmdurl, true);
         mygetrequest.send(null);
