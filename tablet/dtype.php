@@ -473,12 +473,8 @@
                     var el_raspi_address = document.getElementById("gpio_raspi_address" + device_id);
                     var el_outputpin = document.getElementById("gpio_outputpin" + device_id);
 
-          			if(isset($_SERVER['HTTPS']))
-         			{
-                    	cmdurl = "https://"+el_raspi_address.value+"/helper-client/gpio.php?cmd=set&pin="+el_outputpin.value+"&value="+value+"&identifier="+d_identifier+"&t=0";
-         			}else{
-         				cmdurl = "http://"+el_raspi_address.value+"/helper-client/gpio.php?cmd=set&pin="+el_outputpin.value+"&value="+value+"&identifier="+d_identifier+"&t=0";
-             		}
+                    cmdurl = "http://"+el_raspi_address.value+"/helper-client/gpio.php?cmd=set&pin="+el_outputpin.value+"&value="+value+"&identifier="+d_identifier+"&t=0";
+
                     mygetrequest.open("GET", cmdurl+value, true);
                     mygetrequest.send(null);
                 } else {
