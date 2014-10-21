@@ -1,7 +1,5 @@
 <?php
-if (!isset($_SESSION)) {
-    session_start();
-}
+include dirname(__FILE__).'/../../../includes/sessionhandler.php';
 
 $template = 'index';
 

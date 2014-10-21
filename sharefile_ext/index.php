@@ -203,7 +203,6 @@ if (isset($_GET['f'])) {
     } elseif ($curr_file['protected'] == 1 && isset($_SESSION['filePassword'])) {
         // check password
         if ($curr_file['File_AccessPassword'] != $_SESSION['filePassword']) {
-            session_unset();
             session_destroy();
             header('Location: ./?f='.$_GET['f']);
         } else

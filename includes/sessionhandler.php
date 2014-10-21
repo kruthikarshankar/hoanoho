@@ -1,5 +1,9 @@
 <?php
 
+if (!isset($_SESSION)) {
+    session_start();
+}
+
 if (isset($__CONFIG) && isset($__CONFIG['accessable_ipranges']) && $__CONFIG['accessable_ipranges'] != "") {
   $valid_access = false;
 
@@ -27,8 +31,10 @@ if (isset($__CONFIG) && isset($__CONFIG['accessable_ipranges']) && $__CONFIG['ac
   if ($valid_access == false) {
 
     if (isset($_SESSION)) {
-      session_unset();
-      session_destroy();
+      foreach($_SESSION as $key => $value) {
+        unset($_SESSION[$key]);
+      }
+      $_SESSION['REAL_REFERER'] = $_SERVER['REQUEST_URI'];
     }
 
     $uri = array_pop( explode("/", dirname($_SERVER['SCRIPT_NAME'])) );
@@ -41,8 +47,10 @@ if (isset($__CONFIG) && isset($__CONFIG['accessable_ipranges']) && $__CONFIG['ac
       }
       exit;
     } else {
-      if ($uri == "helper-client") {
-        header('Location: ../login.php');
+      if ($uri == "pupnp") {
+        header('Location: ../../../login.php');
+      } elseif ($uri == "tablet" || $uri == "helper-client") {
+          header('Location: ../login.php');
       } else {
         header('Location: ./login.php');
       }
@@ -50,12 +58,6 @@ if (isset($__CONFIG) && isset($__CONFIG['accessable_ipranges']) && $__CONFIG['ac
     }
   }
 }
-
-if (!isset($_SESSION)) {
-    session_start();
-}
-
-$_SESSION['REAL_REFERER'] = $_SERVER['REQUEST_URI'];
 
 if (isset($_GET['login'])) {
   $result = mysql_query("SELECT users.uid, password, username, grpname, isAdmin from users left join usergroups on users.uid = usergroups.uid left join groups on groups.gid = usergroups.gid  where users.hash = '" . $_GET['login'] . "' limit 1");
@@ -87,8 +89,10 @@ if (isset($_GET['login'])) {
   }
 } else {
   if (isset($_SESSION)) {
-    session_unset();
-    session_destroy();
+    foreach($_SESSION as $key => $value) {
+      unset($_SESSION[$key]);
+    }
+    $_SESSION['REAL_REFERER'] = $_SERVER['REQUEST_URI'];
   }
 
   $uri = array_pop( explode("/", dirname($_SERVER['SCRIPT_NAME'])) );
@@ -101,8 +105,10 @@ if (isset($_GET['login'])) {
     }
     exit;
   } else {
-    if ($uri == "helper-client") {
-      header('Location: ../login.php');
+    if ($uri == "pupnp") {
+      header('Location: ../../../login.php');
+    } elseif ($uri == "tablet" || $uri == "helper-client") {
+        header('Location: ../login.php');
     } else {
       header('Location: ./login.php');
     }

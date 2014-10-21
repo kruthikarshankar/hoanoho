@@ -31,13 +31,12 @@
         }
     }
 
-    if(isset($_GET['cmd']) && $_GET['cmd'] == "logout")
-        $_SESSION['REAL_REFERER'] = "";
+    if(isset($_GET['cmd']) && $_GET['cmd'] == "logout" && isset($_SERVER['HTTP_REFERER']))
+        $_SESSION['REAL_REFERER'] = $_SERVER['HTTP_REFERER'];
 
     if(isset($_SESSION['REAL_REFERER']))
         $referer = $_SESSION['REAL_REFERER'];
 
-    session_unset();
     session_destroy();
 
     include dirname(__FILE__).'/../includes/dbconnection.php';
