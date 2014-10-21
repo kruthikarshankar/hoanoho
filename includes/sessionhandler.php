@@ -41,7 +41,7 @@ if (isset($__CONFIG) && isset($__CONFIG['accessable_ipranges']) && $__CONFIG['ac
       }
       exit;
     } else {
-      if ($uri == "includes" || $uri == "helper") {
+      if ($uri == "helper-client") {
         header('Location: ../login.php');
       } else {
         header('Location: ./login.php');
@@ -101,7 +101,7 @@ if (isset($_GET['login'])) {
     }
     exit;
   } else {
-    if ($uri == "includes" || $uri == "helper") {
+    if ($uri == "helper-client") {
       header('Location: ../login.php');
     } else {
       header('Location: ./login.php');
