@@ -1,6 +1,5 @@
 <?php
 include dirname(__FILE__).'/../includes/dbconnection.php';
-include dirname(__FILE__).'/../includes/sessionhandler.php';
 
 if (isset($_GET['cmd'])) {
     if ($_GET['cmd'] == "set" && isset($_GET['pin']) && isset($_GET['value'])) {

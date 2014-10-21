@@ -54,7 +54,7 @@ while ($task = mysql_fetch_object($result)) {
             $raspi_output_pin = $configResult['value'];
 
             // TODO: check if call is localhost then do call without wrapper
-            $url = "http://localhost/helper-client/gpio_wrapper.php?cmd=set&protocol=".$raspi_protocol."&remote_addr=".$raspi_address."&pin=".$raspi_output_pin."&value=".$task->dev_state."&identifier=".$task->identifier;
+            $url = "http://localhost/helper-server/gpio_wrapper.php?cmd=set&protocol=".$raspi_protocol."&remote_addr=".$raspi_address."&pin=".$raspi_output_pin."&value=".$task->dev_state."&identifier=".$task->identifier;
             $curl = curl_init();
             curl_setopt($curl, CURLOPT_URL, $url);
             curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, 0);

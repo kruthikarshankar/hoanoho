@@ -1,5 +1,4 @@
 <?php
-include dirname(__FILE__).'/../includes/sessionhandler.php';
 
 if ( isset($_GET['cmd']) && isset($_GET['pin']) && isset($_GET['value']) && isset($_GET['remote_addr']) && isset($_GET['identifier']) && isset($_GET['protocol']) ) {
     $url = "http://localhost/helper-server/gpio.php?cmd=".$_GET['cmd']."&pin=".$_GET['pin']."&value=".$_GET['value']."&identifier=".$_GET['identifier'];

@@ -236,7 +236,7 @@
             var timeout = null;
             function toggleDevice(device_id, d_identifier, type, value)
             {
-                var cmdurl = "../includes/fhem.php?cmd=set";
+                var cmdurl = "../helper-client/fhem.php?cmd=set";
 
                 var mygetrequest = new ajaxRequest();
                 mygetrequest.onreadystatechange=function () {
