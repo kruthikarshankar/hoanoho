@@ -34,8 +34,11 @@
     if(isset($_GET['cmd']) && $_GET['cmd'] == "logout" && isset($_SERVER['HTTP_REFERER']))
         $_SESSION['REAL_REFERER'] = $_SERVER['HTTP_REFERER'];
 
-    if(isset($_SESSION['REAL_REFERER']))
-        $referer = $_SESSION['REAL_REFERER'];
+    if(isset($_SESSION['REAL_REFERER'])) {
+      $referer = $_SESSION['REAL_REFERER'];
+    } elseif(isset($_POST['referer'])) {
+      $referer = $_POST['referer'];
+    }
 
     session_destroy();
 
