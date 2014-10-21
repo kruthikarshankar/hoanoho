@@ -65,7 +65,7 @@
         <script language="javascript">
             function copyToClipboard(text)
             {
-                window.prompt ("In die Zwischenablage kopieren: Ctrl+C, Enter", text);
+                window.prompt ("Der folgende Code kann über Ctrl+C in die Zwischenablage kopiert und an eine beliebige Hoanoho-URL angehängt werden, um automatisch eingeloggt zu werden.", text);
             }
 
             $(document).ready(function () {
@@ -173,7 +173,7 @@
                 <div id="password"><input type="password" name="password"></div>
                 <div id="group"><?php displayUserGroup($user->gid); ?></div>
                 <div id="action">
-                    <a href="javascript:copyToClipboard('<?php echo "/login.php?login=".$user->hash; ?>')" title="Quick Login"><img src="./img/quicklogin.png"></a>
+                    <a href="javascript:copyToClipboard('<?php echo "?login=".$user->hash; ?>')" title="Quick Login"><img src="./img/quicklogin.png"></a>
                     <a class="saveuserbutton" id="saveuserbutton-<?php echo $user->uid; ?>" href="#" title="Änderungen speichern"><img src="./img/save.png"></a>&nbsp;
                     <a class="deleteuserbutton" id="deleteuserbutton-<?php echo $user->uid; ?>" href="#" title="Benutzer löschen"><img src="./img/delete.png"></a>
                 </div>
