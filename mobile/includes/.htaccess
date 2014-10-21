@@ -1,0 +1,6 @@
+# Allow only local/webserver internal access to this directory.
+# If you use a reverse proxy running locally, it needs to protect this directory from it's own perspective!
+order deny,allow
+deny from all
+allow from 127.0.0.1
+allow from ::1
