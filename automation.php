@@ -351,7 +351,7 @@
 
             print("<style type=\"text/css\">");
             while ($type = mysql_fetch_object($result)) {
-                print(".main_automation .type".$type->dtype_id." { background-image: url('./helper/datacontroller.php?cmd=getimage&id=".$type->image_off_id."'); background-repeat: no-repeat; background-position: center; }");
+                print(".main_automation .type".$type->dtype_id." { background-image: url('./helper-client/datacontroller.php?cmd=getimage&id=".$type->image_off_id."'); background-repeat: no-repeat; background-position: center; }");
             }
             print("</style>\n");
 
@@ -361,7 +361,7 @@
 
             while ($floor = mysql_fetch_object($result)) {
                 print("<style type=\"text/css\">");
-                print(".main_automation #floor".$floor->floor_id." { width: 640px; height: 480px; background-image: url('./helper/datacontroller.php?cmd=getimage&id=".$floor->image_id."'); background-repeat: no-repeat; background-position: center; background-size: 95%; }");
+                print(".main_automation #floor".$floor->floor_id." { width: 640px; height: 480px; background-image: url('./helper-client/datacontroller.php?cmd=getimage&id=".$floor->image_id."'); background-repeat: no-repeat; background-position: center; background-size: 95%; }");
                 print("</style>");
             }
 

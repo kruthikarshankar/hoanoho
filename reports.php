@@ -144,7 +144,7 @@
                         jscolor.init();
                     }
                 }
-                xmlhttp.open("GET","helper/report_getIdentifiersForConfigurationInterface.php?dev_id="+dev_id+"&rid="+rid,true);
+                xmlhttp.open("GET","helper-client/report_getIdentifiersForConfigurationInterface.php?dev_id="+dev_id+"&rid="+rid,true);
                 xmlhttp.send();
             }
         </script>

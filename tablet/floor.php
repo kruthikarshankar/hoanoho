@@ -478,9 +478,9 @@
 
          			if(isset($_SERVER['HTTPS']))
          			{
-         				cmdurl = "https://"+el_raspi_address.value+"/helper/gpio.php?cmd=set&pin="+el_outputpin.value+"&value="+value+"&identifier="+d_identifier+"&t=0";
+         				cmdurl = "https://"+el_raspi_address.value+"/helper-client/gpio.php?cmd=set&pin="+el_outputpin.value+"&value="+value+"&identifier="+d_identifier+"&t=0";
          			}else{
-         				cmdurl = "http://"+el_raspi_address.value+"/helper/gpio.php?cmd=set&pin="+el_outputpin.value+"&value="+value+"&identifier="+d_identifier+"&t=0";
+         				cmdurl = "http://"+el_raspi_address.value+"/helper-client/gpio.php?cmd=set&pin="+el_outputpin.value+"&value="+value+"&identifier="+d_identifier+"&t=0";
          			}
 
                     mygetrequest.open("GET", cmdurl+value, true);

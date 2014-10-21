@@ -174,7 +174,7 @@
           }
         }
 
-        $url = "http://localhost/includes/sendMessageToSocketServer.php?command=\"update_device\"&message=\"".$_POST['dev_id']."\"";
+        $url = "http://localhost/helper-server/sendMessageToSocketServer.php?command=\"update_device\"&message=\"".$_POST['dev_id']."\"";
         $curl = curl_init();
         curl_setopt($curl, CURLOPT_URL, $url);
         curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, 0);
@@ -330,8 +330,8 @@
 
         function uploadFile(input)
         {
-            var storeURL = "./includes/storeFile.php";
-            var associateURL = "./includes/associateFile.php";
+            var storeURL = "./helper-client/storeFile.php";
+            var associateURL = "./helper-client/associateFile.php";
 
             var associate_id = document.getElementById("modal-image_associate_id").value;
 
@@ -380,9 +380,9 @@
                                         update_image_frame = document.getElementsByName("modal-image_icon");
 
                                         if(target_column == "image_off_id")
-                                            update_image_frame[0].style.backgroundImage = "url(./helper/datacontroller.php?cmd=getimage&id="+inserted_image_id+")";
+                                            update_image_frame[0].style.backgroundImage = "url(./helper-client/datacontroller.php?cmd=getimage&id="+inserted_image_id+")";
                                         else if(target_column == "image_on_id")
-                                            update_image_frame[1].style.backgroundImage = "url(./helper/datacontroller.php?cmd=getimage&id="+inserted_image_id+")";
+                                            update_image_frame[1].style.backgroundImage = "url(./helper-client/datacontroller.php?cmd=getimage&id="+inserted_image_id+")";
                                     }
                                 }
                             };
@@ -469,7 +469,7 @@
                 eltmp = document.getElementById("modal-image_image");
 
                 if(current_image_ids.length > 0)
-                    eltmp.style.backgroundImage = "url(./helper/datacontroller.php?cmd=getimage&id="+current_image_ids[0]+")";
+                    eltmp.style.backgroundImage = "url(./helper-client/datacontroller.php?cmd=getimage&id="+current_image_ids[0]+")";
                 else {
                     eltmp.style.backgroundSize = "60% auto";
                     eltmp.style.backgroundImage = "url(./img/photo_placeholder.png)";
@@ -484,8 +484,8 @@
 
                 if (current_image_ids.length > 0) {
                     var eltmp2 = document.getElementsByName("modal-image_icon");
-                    eltmp2[1].style.backgroundImage = "url(./helper/datacontroller.php?cmd=getimage&id="+current_image_ids[0]+")";
-                    eltmp2[0].style.backgroundImage = "url(./helper/datacontroller.php?cmd=getimage&id="+current_image_ids[1]+")";
+                    eltmp2[1].style.backgroundImage = "url(./helper-client/datacontroller.php?cmd=getimage&id="+current_image_ids[0]+")";
+                    eltmp2[0].style.backgroundImage = "url(./helper-client/datacontroller.php?cmd=getimage&id="+current_image_ids[1]+")";
                 } else {
                     var eltmp2 = document.getElementsByName("modal-image_icon");
                     eltmp2[0].style.backgroundSize = "60% auto";
@@ -574,7 +574,7 @@
                     document.getElementById("replacetxt_"+dev_id).innerHTML=xmlhttp.responseText;
                 }
             }
-            xmlhttp.open("GET","helper/datacollector_getIdentifiersForConfigurationInterface.php?dev_id="+dev_id,true);
+            xmlhttp.open("GET","helper-client/datacollector_getIdentifiersForConfigurationInterface.php?dev_id="+dev_id,true);
             xmlhttp.send();
         }
 
@@ -629,7 +629,7 @@
 
             print("<style type=\"text/css\">");
             while ($type = mysql_fetch_object($result)) {
-                print(".main_configuration_automation .type".$type->dtype_id." { background-image: url('./helper/datacontroller.php?cmd=getimage&id=".$type->image_off_id."'); background-repeat: no-repeat; background-position: center; }");
+                print(".main_configuration_automation .type".$type->dtype_id." { background-image: url('./helper-client/datacontroller.php?cmd=getimage&id=".$type->image_off_id."'); background-repeat: no-repeat; background-position: center; }");
             }
             print("</style>");
 
@@ -639,7 +639,7 @@
 
             print("<style type=\"text/css\">");
             while ($floor = mysql_fetch_object($result)) {
-                print(".main_configuration_automation #floor".$floor->floor_id." { width: 640px; height: 480px; background-image: url('./helper/datacontroller.php?cmd=getimage&id=".$floor->image_id."'); background-repeat: no-repeat; background-position: center; background-size: 95%; }");
+                print(".main_configuration_automation #floor".$floor->floor_id." { width: 640px; height: 480px; background-image: url('./helper-client/datacontroller.php?cmd=getimage&id=".$floor->image_id."'); background-repeat: no-repeat; background-position: center; background-size: 95%; }");
             }
             print("</style>");
 

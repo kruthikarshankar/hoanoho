@@ -76,7 +76,7 @@
                         var myData = 'cmd=addnewuser';
                         jQuery.ajax({
                         type: "POST",
-                        url: "helper/datacontroller.php",
+                        url: "helper-client/datacontroller.php",
                         dataType:"text", // Data type, HTML
                         data:myData, //Form variables
                         success:function (response) {
@@ -104,7 +104,7 @@
                     var myData = 'cmd=saveuser&uid='+DbNumberID+'&username='+$(post_username).val()+'&password='+$(post_password).val()+'&usergroup='+$(post_usergroup).val(); //build a post data structure
                     jQuery.ajax({
                     type: "POST",
-                    url: "helper/datacontroller.php",
+                    url: "helper-client/datacontroller.php",
                     dataType:"text", // Data type
                     data:myData, //Form variables
                     success:function (response) {
@@ -129,7 +129,7 @@
 
                         jQuery.ajax({
                         type: "POST",
-                        url: "helper/datacontroller.php",
+                        url: "helper-client/datacontroller.php",
                         dataType:"text", // Data type
                         data:myData, //Form variables
                         success:function (response) {

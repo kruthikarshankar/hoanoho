@@ -56,19 +56,19 @@
                 connectWebSocket(<?php echo "\"".$__CONFIG['main_socketport']."\""; ?>);
 
                 // responsive
-                $("#boxitem.wetter_aktuell").load("helper/datacontroller.php?cmd=refresh_current_weather").fadeIn('500');
+                $("#boxitem.wetter_aktuell").load("helper-client/datacontroller.php?cmd=refresh_current_weather").fadeIn('500');
                 var refreshId = setInterval(function () {
-                    $("#boxitem.wetter_aktuell").load('helper/datacontroller.php?cmd=refresh_current_weather&' + 1*new Date()).fadeIn('500');
+                    $("#boxitem.wetter_aktuell").load('helper-client/datacontroller.php?cmd=refresh_current_weather&' + 1*new Date()).fadeIn('500');
                 }, 600000);
 
-                $("#boxitem.wetter_prognose").load("helper/datacontroller.php?cmd=refresh_weather_forecast").fadeIn('500');
+                $("#boxitem.wetter_prognose").load("helper-client/datacontroller.php?cmd=refresh_weather_forecast").fadeIn('500');
                 var refreshId = setInterval(function () {
-                    $("#boxitem.wetter_prognose").load('helper/datacontroller.php?cmd=refresh_weather_forecast&' + 1*new Date()).fadeIn('500');
+                    $("#boxitem.wetter_prognose").load('helper-client/datacontroller.php?cmd=refresh_weather_forecast&' + 1*new Date()).fadeIn('500');
                 }, 600000);
 
-                $("#boxitem.wetter_report").load("helper/datacontroller.php?cmd=refresh_weather_report").fadeIn('500');
+                $("#boxitem.wetter_report").load("helper-client/datacontroller.php?cmd=refresh_weather_report").fadeIn('500');
                 var refreshId = setInterval(function () {
-                    $("#boxitem.wetter_report").load('helper/datacontroller.php?cmd=refresh_weather_report&' + 1*new Date()).fadeIn('500');
+                    $("#boxitem.wetter_report").load('helper-client/datacontroller.php?cmd=refresh_weather_report&' + 1*new Date()).fadeIn('500');
                 }, 600000);
 
                 $('#titlebar').scrollToFixed();

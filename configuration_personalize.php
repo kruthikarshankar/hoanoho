@@ -100,7 +100,7 @@
                         var myData = 'usertoken='+$(usertoken).val()+'&apptoken='+$(apptoken).val();
                         jQuery.ajax({
                         type: "POST",
-                        url: "helper/pushover_testmessage.php",
+                        url: "helper-client/pushover_testmessage.php",
                         dataType:"text", // Data type, HTML
                         data:myData, //Form variables
                         success:function (response) {
@@ -156,7 +156,7 @@
                     }
                 }
 
-                mygetrequest.open("GET", "./includes/update_usersettings.php?uid=" + uid + "&backgroundimage=" + backgroundimage, true);
+                mygetrequest.open("GET", "./helper-client/update_usersettings.php?uid=" + uid + "&backgroundimage=" + backgroundimage, true);
                 mygetrequest.send(null);
             }
         </script>

@@ -121,7 +121,7 @@ function displayDeviceData($dev_id, $dev_value)
                         var myData = 'cmd=pinboard_updateposition&'+data;
                         jQuery.ajax({
                             type: "POST",
-                            url: "helper/datacontroller.php",
+                            url: "helper-client/datacontroller.php",
                             dataType:"text", // Data type, HTML
                             data:myData, //Form variables
                             success:function (response) {
@@ -173,7 +173,7 @@ function displayDeviceData($dev_id, $dev_value)
                                   }
                             };
 
-                            storeRequest.open('POST', 'helper/datacontroller.php', true);
+                            storeRequest.open('POST', 'helper-client/datacontroller.php', true);
                             storeRequest.send(storeData);
                         };
 
@@ -213,7 +213,7 @@ function displayDeviceData($dev_id, $dev_value)
                                     var myData = 'cmd=pinboard_update&updateid='+updateid+'&updatekey=title&updatevalue='+$(element).html();
                                     jQuery.ajax({
                                         type: "POST",
-                                        url: "helper/datacontroller.php",
+                                        url: "helper-client/datacontroller.php",
                                         dataType:"text", // Data type, HTML
                                         data:myData, //Form variables
                                         success:function (response) {
@@ -242,7 +242,7 @@ function displayDeviceData($dev_id, $dev_value)
                                 var myData = 'cmd=pinboard_update&updateid='+updateid+'&updatekey=title&updatevalue='+$(element).html();
                                 jQuery.ajax({
                                     type: "POST",
-                                    url: "helper/datacontroller.php",
+                                    url: "helper-client/datacontroller.php",
                                     dataType:"text", // Data type, HTML
                                     data:myData, //Form variables
                                     success:function (response) {
@@ -279,7 +279,7 @@ function displayDeviceData($dev_id, $dev_value)
                     var myData = 'cmd=pinboard_update&updateid='+updateid+'&updatekey='+$(element).attr('name')+'&updatevalue='+value;
                     jQuery.ajax({
                         type: "POST",
-                        url: "helper/datacontroller.php",
+                        url: "helper-client/datacontroller.php",
                         dataType:"text", // Data type, HTML
                         data:myData, //Form variables
                         success:function (response) {
@@ -292,7 +292,7 @@ function displayDeviceData($dev_id, $dev_value)
                                     var myData = 'cmd=pinboard_getdevicedata&id='+value;
                                     jQuery.ajax({
                                         type: "POST",
-                                        url: "helper/datacontroller.php",
+                                        url: "helper-client/datacontroller.php",
                                         dataType:"text", // Data type, HTML
                                         data:myData, //Form variables
                                         success:function (response) {
@@ -306,7 +306,7 @@ function displayDeviceData($dev_id, $dev_value)
                                     var myData = 'cmd=pinboard_update&updateid='+updateid+'&updatekey=dev_value&updatevalue=';
                                     jQuery.ajax({
                                         type: "POST",
-                                        url: "helper/datacontroller.php",
+                                        url: "helper-client/datacontroller.php",
                                         dataType:"text", // Data type, HTML
                                         data:myData //Form variables
                                     });
@@ -326,7 +326,7 @@ function displayDeviceData($dev_id, $dev_value)
                     var myData = 'cmd=pinboard_block_new&owner=page_left';
                     jQuery.ajax({
                         type: "POST",
-                        url: "helper/datacontroller.php",
+                        url: "helper-client/datacontroller.php",
                         dataType:"text", // Data type, HTML
                         data:myData, //Form variables
                         success:function (response) {
@@ -346,7 +346,7 @@ function displayDeviceData($dev_id, $dev_value)
                     var myData = 'cmd=pinboard_block_delete&id='+id;
                     jQuery.ajax({
                         type: "POST",
-                        url: "helper/datacontroller.php",
+                        url: "helper-client/datacontroller.php",
                         dataType:"text", // Data type, HTML
                         data:myData, //Form variables
                         success:function (response) {
@@ -369,7 +369,7 @@ function displayDeviceData($dev_id, $dev_value)
                     var myData = 'cmd=pinboard_row_new&owner='+$(owner).attr('id')+'&parentid='+parentid;
                     jQuery.ajax({
                         type: "POST",
-                        url: "helper/datacontroller.php",
+                        url: "helper-client/datacontroller.php",
                         dataType:"text", // Data type, HTML
                         data:myData, //Form variables
                         success:function (response) {
@@ -389,7 +389,7 @@ function displayDeviceData($dev_id, $dev_value)
                     var myData = 'cmd=pinboard_row_delete&id='+id;
                     jQuery.ajax({
                         type: "POST",
-                        url: "helper/datacontroller.php",
+                        url: "helper-client/datacontroller.php",
                         dataType:"text", // Data type, HTML
                         data:myData, //Form variables
                         success:function (response) {
@@ -468,7 +468,7 @@ function displayDeviceData($dev_id, $dev_value)
 
                         print("<div id=\"block-".$block->id."\">");
                             if($block_meta->iconid != -1)
-                                print("<div class=\"icon\" id=\"headline_icon\" style=\"background-image: url('helper/datacontroller.php?cmd=getimage&id=".$block_meta->iconid."')\"></div><div id=\"headline\">".$block_meta->title."</div><div id=\"headline_type\">".displayBlockTypes($block_meta->type)."</div><div id=\"headline_action\"><a href=\"#\" class=\"newRowButton\" title=\"Gerät hinzufügen\"><img src=\"./img/add.png\"></a>&nbsp;&nbsp;<a href=\"#\" class=\"deleteBlockButton\" title=\"Bereich löschen\"><img src=\"./img/delete.png\"></a></div>");
+                                print("<div class=\"icon\" id=\"headline_icon\" style=\"background-image: url('helper-client/datacontroller.php?cmd=getimage&id=".$block_meta->iconid."')\"></div><div id=\"headline\">".$block_meta->title."</div><div id=\"headline_type\">".displayBlockTypes($block_meta->type)."</div><div id=\"headline_action\"><a href=\"#\" class=\"newRowButton\" title=\"Gerät hinzufügen\"><img src=\"./img/add.png\"></a>&nbsp;&nbsp;<a href=\"#\" class=\"deleteBlockButton\" title=\"Bereich löschen\"><img src=\"./img/delete.png\"></a></div>");
                             else
                                 print("<div class=\"icon\" id=\"headline_icon\"></div><div id=\"headline\">".$block_meta->title."</div><div id=\"headline_type\">".displayBlockTypes($block_meta->type)."</div><div id=\"headline_action\"><a href=\"#\" class=\"newRowButton\" title=\"Gerät hinzufügen\"><img src=\"./img/add.png\"></a>&nbsp;&nbsp;<a href=\"#\" class=\"deleteBlockButton\" title=\"Bereich löschen\"><img src=\"./img/delete.png\"></a></div>");
 

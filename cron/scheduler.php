@@ -54,7 +54,7 @@ while ($task = mysql_fetch_object($result)) {
             $raspi_output_pin = $configResult['value'];
 
             // TODO: check if call is localhost then do call without wrapper
-            $url = "http://localhost/helper/gpio_wrapper.php?cmd=set&protocol=".$raspi_protocol."&remote_addr=".$raspi_address."&pin=".$raspi_output_pin."&value=".$task->dev_state."&identifier=".$task->identifier;
+            $url = "http://localhost/helper-client/gpio_wrapper.php?cmd=set&protocol=".$raspi_protocol."&remote_addr=".$raspi_address."&pin=".$raspi_output_pin."&value=".$task->dev_state."&identifier=".$task->identifier;
             $curl = curl_init();
             curl_setopt($curl, CURLOPT_URL, $url);
             curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, 0);
@@ -77,7 +77,7 @@ while ($task = mysql_fetch_object($result)) {
             }
 
             if($reading != "")
-                $url = "http://localhost/includes/fhem.php?cmd=set&device=".$task->identifier."&value=".$task->dev_state."&reading=".$reading;
+                $url = "http://localhost/helper-server/fhem.php?cmd=set&device=".$task->identifier."&value=".$task->dev_state."&reading=".$reading;
             $curl = curl_init();
             curl_setopt($curl, CURLOPT_URL, $url);
         curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, 0);
@@ -85,7 +85,7 @@ while ($task = mysql_fetch_object($result)) {
             curl_exec($curl);
             curl_close($curl);
             else
-                $url = "http://localhost/includes/fhem.php?cmd=set&device=".$task->identifier."&value=".$task->dev_state;
+                $url = "http://localhost/helper-server/fhem.php?cmd=set&device=".$task->identifier."&value=".$task->dev_state;
             $curl = curl_init();
             curl_setopt($curl, CURLOPT_URL, $url);
         curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, 0);

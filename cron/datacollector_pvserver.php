@@ -84,7 +84,7 @@ while ($device = mysql_fetch_object($result)) {
   $JSON=$JSON."] }";
 
   $curl = curl_init();
-  curl_setopt($curl, CURLOPT_URL, "http://localhost/helper/datacollector.php");
+  curl_setopt($curl, CURLOPT_URL, "http://localhost/helper-server/datacollector.php");
   curl_setopt($curl, CURLOPT_CUSTOMREQUEST, "POST");
   curl_setopt($curl, CURLOPT_POSTFIELDS, "json=".$JSON);
   curl_setopt($curl, CURLOPT_POST, 1);

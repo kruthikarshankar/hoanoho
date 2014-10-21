@@ -117,8 +117,8 @@ var Dragdrop = function (evt) {
                 var save_xpos = elem.style.left.substr(0,elem.style.left.length-2);
                 var save_ypos = elem.style.top.substr(0,elem.style.top.length-2);
 
-                //mygetrequest.open("GET", "./includes/update_device.php?id=" + elem.id.substr(6,elem.id.length-6) + "&pos_x=" + elem.style.left + "&pos_y=" + elem.style.top, true);
-                mygetrequest.open("GET", "./includes/update_device.php?id=" + elem.id.substr(6,elem.id.length-6) + "&pos_x=" + save_xpos + "&pos_y=" + save_ypos, true);
+                //mygetrequest.open("GET", "./helper-client/update_device.php?id=" + elem.id.substr(6,elem.id.length-6) + "&pos_x=" + elem.style.left + "&pos_y=" + elem.style.top, true);
+                mygetrequest.open("GET", "./helper-client/update_device.php?id=" + elem.id.substr(6,elem.id.length-6) + "&pos_x=" + save_xpos + "&pos_y=" + save_ypos, true);
                 mygetrequest.send(null);
 
                 elem.onStop(elem);

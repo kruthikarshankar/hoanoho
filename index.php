@@ -290,7 +290,7 @@
                         var myData = 'cmd=savenote&title='+$("#notetitle").val()+'&content='+$("#notecontent").val()+'&papercolor='+$("#papercolor").val();
                         jQuery.ajax({
                         type: "POST",
-                        url: "helper/datacontroller.php",
+                        url: "helper-client/datacontroller.php",
                         dataType:"text", // Data type, HTML
                         data:myData, //Form variables
                         success:function (response) {
@@ -321,7 +321,7 @@
 
                     jQuery.ajax({
                     type: "POST",
-                    url: "helper/datacontroller.php",
+                    url: "helper-client/datacontroller.php",
                     dataType:"text", // Data type
                     data:myData, //Form variables
                     success:function (response) {
@@ -435,7 +435,7 @@
                         if ($block_meta->type == 1) {
                             print("<div id=\"block\">");
                                 if($block_meta->iconid != -1)
-                                    print("<div id=\"headline_icon\" style=\"background-image: url('helper/datacontroller.php?cmd=getimage&id=".$block_meta->iconid."')\"></div><div id=\"headline\">".$block_meta->title."</div>");
+                                    print("<div id=\"headline_icon\" style=\"background-image: url('helper-client/datacontroller.php?cmd=getimage&id=".$block_meta->iconid."')\"></div><div id=\"headline\">".$block_meta->title."</div>");
                                 else
                                     print("<div id=\"headline_icon\"></div><div id=\"headline\">".$block_meta->title."</div>");
 
@@ -464,7 +464,7 @@
                                 echo "<div id=\"block\">";
 
                                 if($block_meta->iconid != -1)
-                                    print("<div id=\"headline_icon\" style=\"background-image: url('helper/datacontroller.php?cmd=getimage&id=".$block_meta->iconid."')\"></div><div id=\"headline\">".$block_meta->title."</div>");
+                                    print("<div id=\"headline_icon\" style=\"background-image: url('helper-client/datacontroller.php?cmd=getimage&id=".$block_meta->iconid."')\"></div><div id=\"headline\">".$block_meta->title."</div>");
                                 else
                                     print("<div id=\"headline_icon\"></div><div id=\"headline\">".$block_meta->title."</div>");
 
@@ -485,7 +485,7 @@
                                 echo "<div id=\"block\">";
 
                                 if($block_meta->iconid != -1)
-                                    print("<div id=\"headline_icon\" style=\"background-image: url('helper/datacontroller.php?cmd=getimage&id=".$block_meta->iconid."')\"></div><div id=\"headline\">".$block_meta->title."</div>");
+                                    print("<div id=\"headline_icon\" style=\"background-image: url('helper-client/datacontroller.php?cmd=getimage&id=".$block_meta->iconid."')\"></div><div id=\"headline\">".$block_meta->title."</div>");
                                 else
                                     print("<div id=\"headline_icon\"></div><div id=\"headline\">".$block_meta->title."</div>");
 
@@ -526,7 +526,7 @@
                                             if ($firstTime) {
                                                 echo "<div id=\"block\">";
                                                 if($block_meta->iconid != -1)
-                                                    print("<div id=\"headline_icon\" style=\"background-image: url('helper/datacontroller.php?cmd=getimage&id=".$block_meta->iconid."')\"></div><div id=\"headline\">".$block_meta->title."</div>");
+                                                    print("<div id=\"headline_icon\" style=\"background-image: url('helper-client/datacontroller.php?cmd=getimage&id=".$block_meta->iconid."')\"></div><div id=\"headline\">".$block_meta->title."</div>");
                                                 else
                                                     print("<div id=\"headline_icon\"></div><div id=\"headline\">".$block_meta->title."</div>");
                                                 $firstTime = false;
@@ -559,7 +559,7 @@
                             if (stristr($dwd_warnung_kurz, "Es liegt aktuell keine Warnung") === FALSE) {
                                 echo "<div id=\"block\">";
                                     if($block_meta->iconid != -1)
-                                        print("<div id=\"headline_icon\" style=\"background-image: url('helper/datacontroller.php?cmd=getimage&id=".$block_meta->iconid."')\"></div><div id=\"headline\">".$block_meta->title."</div>");
+                                        print("<div id=\"headline_icon\" style=\"background-image: url('helper-client/datacontroller.php?cmd=getimage&id=".$block_meta->iconid."')\"></div><div id=\"headline\">".$block_meta->title."</div>");
                                     else
                                         print("<div id=\"headline_icon\"></div><div id=\"headline\">".$block_meta->title."</div>");
 
