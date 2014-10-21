@@ -46,6 +46,8 @@ Depending on your actual installation directory, you should add **HOANOHO_DIR="/
 FHEM needs to have DbLog module activated and configured properly. The DbLog database needs to be named **fhem**.
 Hoanoho and FHEM require to use the same MySQL server. The MySQL user for Hoanoho needs to have as least read-only access to the FHEM database as well as read+write access to it's own database.
 
+If you are using a reverse proxy in your setup, you might want to ensure the URI **/helper-server** can only be access via localhost.
+
 ## Compatibility List
 
 Currently the following devices are supported:
